@@ -162,7 +162,7 @@ bool Hiv(const double Age, const bool Sex, const double Time)
 		serum = theRng->Sample( hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() );
 	else
 		serum = theRng->Sample( hivInc [Sex] [i] [j] );
-	
+
 	if(serum) {
 		D(cout << "currentAge = " << Age << ". (years = " << Age / 365.25 << ")" << endl);
 		D(cout << "Sex = " << Sex << endl);

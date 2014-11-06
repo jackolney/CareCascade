@@ -5,7 +5,7 @@ dyn.load("main.so")
 
 
 system.time(
-result <- .Call("CallCascade",10, #Pop;
+result <- .Call("CallCascade",1, #Pop;
 						      0,  #Hbct; 
 						      0,  #Vct; 
 						      0,  #HbctPocCd4; 
@@ -28,7 +28,6 @@ par(mfrow=c(3,1))
 plot(result$sPOP,type='l',lwd=2)
 plot(result$sHIV,type='l',lwd=2)
 plot(result$sART,type='l',lwd=2)
-
 
 # Figures
 graphics.off()
@@ -77,7 +76,7 @@ plot(seq(0,59,1),onart,
 	col=p[2],
 	lwd=2,
 	ylim=c(0,0.5),
-	main='Proportion of PLWHIV on ART'
+	main='Proportion of PLWHIV on ART',
 	xlab='Year',
 	ylab='Proportion',
 	xaxt='n')
