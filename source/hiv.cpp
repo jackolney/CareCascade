@@ -145,14 +145,14 @@ bool Hiv(const double Age, const bool Sex, const double Time)
 		yr[i] = (5+i) * 365.25;
 	
 	int i = 0;
-	while(Time > yr[i] && i < 54)
+	while(Time > yr[i+1] && i < 54)
 		i++;
-		
+
 	//Find j for age
 	int j = 0;
-	unsigned int ageCatMax [16] = {5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80};
+	unsigned int ageCatMax [17] = {5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,200};
 
-	while ( (Age / 365.25) > ageCatMax[j] )
+	while ( (Age / 365.25) > ageCatMax[j] && j < 17 )
 		j++;
 	
 	//Determine SerStatus
@@ -162,7 +162,7 @@ bool Hiv(const double Age, const bool Sex, const double Time)
 		serum = theRng->Sample( hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() );
 	else
 		serum = theRng->Sample( hivInc [Sex] [i] [j] );
-
+	
 	if(serum) {
 		D(cout << "currentAge = " << Age << ". (years = " << Age / 365.25 << ")" << endl);
 		D(cout << "Sex = " << Sex << endl);
@@ -171,7 +171,7 @@ bool Hiv(const double Age, const bool Sex, const double Time)
 		D(cout << "yr[i] = " << yr[i] << endl);
 		D(cout << "j = " << j << endl);
 		D(cout << "hivInc [Sex] [i] [j] = " << hivInc [Sex] [i] [j] << endl);
-		if(theTrans->GetBeta() && theTrans->GetIncidenceWeight() < 1) {
+		if(theTrans->GetBeta()) {
 			D(cout << "IncidenceWeight = " << theTrans->GetIncidenceWeight() << endl);
 			D(cout << "hivInc[Sex][i][j] * IncidenceWeight = " << hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() << endl);
 		}
