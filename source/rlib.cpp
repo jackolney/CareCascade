@@ -22,6 +22,7 @@ using namespace std;
 Rng * theRng;
 eventQ * theQ;
 
+/* Output Pointers */
 extern double * theCARE;
 extern double * theDALY;
 extern double * theCOST;
@@ -29,7 +30,7 @@ extern double * thePOP;
 extern double * theHIV;
 extern double * theART;
 
-/* Need to use these pointers. */
+/* Intervention Pointers */
 int const * p_Hbct;
 int const * p_Vct;
 int const * p_HbctPocCd4;
@@ -74,7 +75,22 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(s_ArtOutreach = coerceVector(s_ArtOutreach, INTSXP));
 	PROTECT(s_ImmediateArt = coerceVector(s_ImmediateArt, INTSXP)); 
 	PROTECT(s_UniversalTestAndTreat = coerceVector(s_UniversalTestAndTreat, INTSXP)); 
-	PROTECT(s_Adherence = coerceVector(s_Adherence, INTSXP)); 
+	PROTECT(s_Adherence = coerceVector(s_Adherence, INTSXP));
+
+
+	/* Assigning Pointers */
+	p_Hbct = INTEGER(s_Hbct);
+	p_Vct = INTEGER(s_Vct);
+	p_HbctPocCd4 = INTEGER(s_HbctPocCd4);
+	p_Linkage = INTEGER(s_Linkage);
+	p_PreOutreach = INTEGER(s_PreOutreach);
+	p_ImprovedCare = INTEGER(s_ImprovedCare);
+	p_PocCd4 = INTEGER(s_PocCd4);
+	p_VctPocCd4 = INTEGER(s_VctPocCd4);
+	p_ArtOutreach = INTEGER(s_ArtOutreach);
+	p_ImmediateArt = INTEGER(s_ImmediateArt);
+	p_UniversalTestAndTreat = INTEGER(s_UniversalTestAndTreat);
+	p_Adherence = INTEGER(s_Adherence);
 
 	cout << "Hello, Jack - the model is running..." << endl;
 
@@ -133,7 +149,7 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,5,mkChar("sART"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(9);
+	UNPROTECT(21);
 	return(sOUT);
 	}
 
