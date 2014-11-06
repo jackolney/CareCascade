@@ -1,5 +1,5 @@
-#priorityQ
+#CareCascade
 
 ####Cascade model update
 
-Currently a work in progress, still exploring possible model structures and basic underlying architecture.
+Still very much a work in progress. This repo was cloned from PriorityQ but added as a new repo as I want to move away from Xcode development and interface with the code through R.
