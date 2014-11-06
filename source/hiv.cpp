@@ -158,9 +158,9 @@ bool Hiv(const double Age, const bool Sex, const double Time)
 	//Determine SerStatus
 	bool serum = false;
 	
-	// if(theTrans->GetBeta())
-	// 	serum = theRng->Sample( hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() );
-	// else
+	if(theTrans->GetBeta() && theTrans->GetIncidenceWeight() < 1)
+		serum = theRng->Sample( hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() );
+	else
 		serum = theRng->Sample( hivInc [Sex] [i] [j] );
 	
 	if(serum) {
@@ -171,7 +171,7 @@ bool Hiv(const double Age, const bool Sex, const double Time)
 		D(cout << "yr[i] = " << yr[i] << endl);
 		D(cout << "j = " << j << endl);
 		D(cout << "hivInc [Sex] [i] [j] = " << hivInc [Sex] [i] [j] << endl);
-		if(theTrans->GetBeta()) {
+		if(theTrans->GetBeta() && theTrans->GetIncidenceWeight() < 1) {
 			D(cout << "IncidenceWeight = " << theTrans->GetIncidenceWeight() << endl);
 			D(cout << "hivInc[Sex][i][j] * IncidenceWeight = " << hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() << endl);
 		}

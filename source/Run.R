@@ -3,7 +3,7 @@
 setwd("/Users/jack/git/CareCascade/source")
 dyn.load("main.so")
 
-# Sys.sleep(2)
+
 system.time(
 result <- .Call("CallCascade",10, #Pop;
 						      0,  #Hbct; 
