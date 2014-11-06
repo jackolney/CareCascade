@@ -145,7 +145,7 @@ bool Hiv(const double Age, const bool Sex, const double Time)
 		yr[i] = (5+i) * 365.25;
 	
 	int i = 0;
-	while(Time > yr[i] && i < 55)
+	while(Time > yr[i] && i < 54)
 		i++;
 		
 	//Find j for age
@@ -163,17 +163,31 @@ bool Hiv(const double Age, const bool Sex, const double Time)
 	else
 		serum = theRng->Sample( hivInc [Sex] [i] [j] );
 	
+	// if(serum) {
+	// 	D(cout << "currentAge = " << Age << ". (years = " << Age / 365.25 << ")" << endl);
+	// 	D(cout << "Sex = " << Sex << endl);
+	// 	D(cout << "Time = " << Time << ". (years = " << Time / 365.25 << ")" << endl);
+	// 	D(cout << "i = " << i << endl);
+	// 	D(cout << "yr[i] = " << yr[i] << endl);
+	// 	D(cout << "j = " << j << endl);
+	// 	D(cout << "hivInc [Sex] [i] [j] = " << hivInc [Sex] [i] [j] << endl);
+	// 	if(theTrans->GetBeta()) {
+	// 		D(cout << "IncidenceWeight = " << theTrans->GetIncidenceWeight() << endl);
+	// 		D(cout << "hivInc[Sex][i][j] * IncidenceWeight = " << hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() << endl);
+	// 	}
+	// }
+
 	if(serum) {
-		D(cout << "currentAge = " << Age << ". (years = " << Age / 365.25 << ")" << endl);
-		D(cout << "Sex = " << Sex << endl);
-		D(cout << "Time = " << Time << ". (years = " << Time / 365.25 << ")" << endl);
-		D(cout << "i = " << i << endl);
-		D(cout << "yr[i] = " << yr[i] << endl);
-		D(cout << "j = " << j << endl);
-		D(cout << "hivInc [Sex] [i] [j] = " << hivInc [Sex] [i] [j] << endl);
+		cout << "currentAge = " << Age << ". (years = " << Age / 365.25 << ")" << endl;
+		cout << "Sex = " << Sex << endl;
+		cout << "Time = " << Time << ". (years = " << Time / 365.25 << ")" << endl;
+		cout << "i = " << i << endl;
+		cout << "yr[i] = " << yr[i] << endl;
+		cout << "j = " << j << endl;
+		cout << "hivInc [Sex] [i] [j] = " << hivInc [Sex] [i] [j] << endl;
 		if(theTrans->GetBeta()) {
-			D(cout << "IncidenceWeight = " << theTrans->GetIncidenceWeight() << endl);
-			D(cout << "hivInc[Sex][i][j] * IncidenceWeight = " << hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() << endl);
+			cout << "IncidenceWeight = " << theTrans->GetIncidenceWeight() << endl;
+			cout << "hivInc[Sex][i][j] * IncidenceWeight = " << hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() << endl;
 		}
 	}
 
