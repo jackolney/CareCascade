@@ -29,6 +29,21 @@ extern double * thePOP;
 extern double * theHIV;
 extern double * theART;
 
+/* Need to use these pointers. */
+int const * p_Hbct;
+int const * p_Vct;
+int const * p_HbctPocCd4;
+int const * p_Linkage;
+int const * p_PreOutreach;
+int const * p_ImprovedCare;
+int const * p_PocCd4;
+int const * p_VctPocCd4;
+int const * p_ArtOutreach;
+int const * p_ImmediateArt;
+int const * p_UniversalTestAndTreat;
+int const * p_Adherence;
+
+
 extern "C" {
 
 /////////////////////
