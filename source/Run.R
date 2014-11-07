@@ -44,6 +44,7 @@ art <- result$sART
 #Hiv Prevalence
 pop_15to49 <- result$sPOP_15to49
 hiv_15to49 <- result$sHIV_15to49
+art_15to49 <- result$sART_15to49
 
 #Hiv Prevalence
 prev_15to49 <- hiv_15to49 / pop_15to49
@@ -73,11 +74,11 @@ legend("topright",c("UNAIDS 15-49yr","CareCascade 15-49yr"),
 abline(v=31)
 
 #PlwhivOnArt
-onart <- art / hiv
+onart_15to49 <- art_15to49 / hiv_15to49
 
 Unaids_PlwhivOnArt <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_PlwhivOnArt_Kenya.csv",header=TRUE)
 
-plot(seq(0,59,1),onart,
+plot(seq(0,59,1),onart_15to49,
 	type='l',
 	col=p[2],
 	lwd=2,

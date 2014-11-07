@@ -31,6 +31,7 @@ extern double * theHIV;
 extern double * theART;
 extern double * thePOP_15to49;
 extern double * theHIV_15to49;
+extern double * theART_15to49;
 
 /* Intervention Pointers */
 int const * p_Hbct;
@@ -106,7 +107,7 @@ SEXP CallCascade(SEXP s_pop,
 
 
 	/* OUTPUTS */
-	SEXP sOUT, sCARE, sDALY, sCOST, sPOP, sHIV, sART, sPOP_15to49, sHIV_15to49, sOUTNAMES;
+	SEXP sOUT, sCARE, sDALY, sCOST, sPOP, sHIV, sART, sPOP_15to49, sHIV_15to49, sART_15to49, sOUTNAMES;
 
 	PROTECT(sCARE = allocVector(REALSXP,5));
 	PROTECT(sDALY = allocVector(REALSXP,20));
@@ -116,6 +117,7 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sART = allocVector(REALSXP,60));
 	PROTECT(sPOP_15to49 = allocVector(REALSXP,60));
 	PROTECT(sHIV_15to49 = allocVector(REALSXP,60));
+	PROTECT(sART_15to49 = allocVector(REALSXP,60));
 
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
@@ -125,6 +127,7 @@ SEXP CallCascade(SEXP s_pop,
 	double * pART = REAL(sART);
 	double * pPOP_15to49 = REAL(sPOP_15to49);
 	double * pHIV_15to49 = REAL(sHIV_15to49);
+	double * pART_15to49 = REAL(sART_15to49);
 
 	for(size_t i=0;i<60;i++) {
 		if(i<5)
@@ -138,9 +141,10 @@ SEXP CallCascade(SEXP s_pop,
 		pART[i] = theART[i];
 		pPOP_15to49[i] = thePOP_15to49[i];
 		pHIV_15to49[i] = theHIV_15to49[i];
+		pART_15to49[i] = theART_15to49[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,8));
+	PROTECT(sOUT = allocVector(VECSXP,9));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
@@ -149,8 +153,9 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,5,sART);
 	SET_VECTOR_ELT(sOUT,6,sPOP_15to49);
 	SET_VECTOR_ELT(sOUT,7,sHIV_15to49);
+	SET_VECTOR_ELT(sOUT,8,sART_15to49);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,8));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,9));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
@@ -159,9 +164,10 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,5,mkChar("sART"));
 	SET_VECTOR_ELT(sOUTNAMES,6,mkChar("sPOP_15to49"));
 	SET_VECTOR_ELT(sOUTNAMES,7,mkChar("sHIV_15to49"));
+	SET_VECTOR_ELT(sOUTNAMES,8,mkChar("sART_15to49"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(23);
+	UNPROTECT(24);
 	return(sOUT);
 	}
 

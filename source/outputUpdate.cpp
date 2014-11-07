@@ -19,6 +19,7 @@ extern double * theHIV;
 extern double * theART;
 extern double * thePOP_15to49;
 extern double * theHIV_15to49;
+extern double * theART_15to49;
 
 /////////////////////
 /////////////////////
@@ -75,8 +76,12 @@ void WriteArt(person * const thePerson)
 	while(theQ->GetTime() > yr[i] && i < 59)
 		i++;
 	
-	if(thePerson->Alive())
+	if(thePerson->Alive()) {
 		theART[i] += thePerson->GetArtInitiationState();
+		thePerson->SetAge(theQ->GetTime());
+		if(thePerson->GetAge() > 15 * 365.25 && thePerson->GetAge() <= 49 * 365.25)
+			theART_15to49[i] += thePerson->GetArtInitiationState();
+	}
 }
 
 /////////////////////
