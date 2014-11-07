@@ -1,11 +1,10 @@
 #Test Script for CareCascade
-
 setwd("/Users/jack/git/CareCascade/source")
 dyn.load("main.so")
 
 
 system.time(
-result <- .Call("CallCascade",100, #Pop;
+result <- .Call("CallCascade",10, #Pop;
 						      0,  #Hbct; 
 						      0,  #Vct; 
 						      0,  #HbctPocCd4; 
@@ -35,17 +34,24 @@ quartz.options(h=10,w=10)
 library(RColorBrewer)
 p <- brewer.pal(9,"Set1")
 
+plot(result$sPOP_15to49,type='l',lwd=2)
+plot(result$sHIV_15to49,type='l',lwd=2)
+
 pop <- result$sPOP
 hiv <- result$sHIV
 art <- result$sART
 
 #Hiv Prevalence
-prev <- hiv / pop
+pop_15to49 <- result$sPOP_15to49
+hiv_15to49 <- result$sHIV_15to49
+
+#Hiv Prevalence
+prev_15to49 <- hiv_15to49 / pop_15to49
 
 Unaids_HivPrev <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_HivPrevalence_Kenya.csv",header=TRUE)
 Unaids_HivPrev$year
 
-plot(seq(0,59,1),prev,
+plot(seq(0,59,1),prev_15to49,
 	type='l',
 	col=p[2],
 	lwd=2,
@@ -90,3 +96,5 @@ legend("topright",c("UNAIDS","CareCascade"),
 	box.lty=0,
 	border=NA,
 	cex=1.2)
+
+#####

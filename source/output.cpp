@@ -20,6 +20,8 @@ double * theCOST;
 double * thePOP;
 double * theHIV;
 double * theART;
+double * thePOP_15to49;
+double * theHIV_15to49;
 
 /////////////////////
 /////////////////////
@@ -72,6 +74,8 @@ void CreateOutputArray()
 	thePOP = new double[60];
 	theHIV = new double[60];
 	theART = new double[60];
+	thePOP_15to49 = new double[60];
+	theHIV_15to49 = new double[60];
 	
 	for(size_t i=0;i<60;i++) {
 		if(i<5)
@@ -83,6 +87,8 @@ void CreateOutputArray()
 		thePOP[i] = 0;
 		theHIV[i] = 0;
 		theART[i] = 0;
+		thePOP_15to49[i] = 0;
+		theHIV_15to49[i] = 0;
 	}
 }
 
