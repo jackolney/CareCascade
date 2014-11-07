@@ -4,7 +4,7 @@ dyn.load("main.so")
 
 
 system.time(
-result <- .Call("CallCascade",10, #Pop;
+result <- .Call("CallCascade",100, #Pop;
 						      0,  #Hbct; 
 						      0,  #Vct; 
 						      0,  #HbctPocCd4; 
@@ -65,12 +65,12 @@ lines(seq(20,42,1),Unaids_HivPrev$HIV_prev,
 	lty=3,
 	col=p[1])
 axis(1,seq(0,60,5),seq(1970,2030,5))
-legend("topright",c("UNAIDS","CareCascade"),
+legend("topright",c("UNAIDS 15-49yr","CareCascade 15-49yr"),
 	fill=p[1:2],
 	box.lty=0,
 	border=NA,
 	cex=1.2)
-
+abline(v=31)
 
 #PlwhivOnArt
 onart <- art / hiv
