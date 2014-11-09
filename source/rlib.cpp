@@ -121,6 +121,15 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sPOP_15to49 = allocVector(REALSXP,60));
 	PROTECT(sHIV_15to49 = allocVector(REALSXP,60));
 	PROTECT(sART_15to49 = allocVector(REALSXP,60));
+	PROTECT(theAidsDeath_15plus = allocVector(REALSXP,60);
+	PROTECT(thePOP_AgeSex_2007 = allocVector(REALSXP,16);
+	PROTECT(theHIV_AgeSex_2007 = allocVector(REALSXP,16);
+	PROTECT(thePOP_AgeSex_2012 = allocVector(REALSXP,16);
+	PROTECT(theHIV_AgeSex_2012 = allocVector(REALSXP,16);
+	PROTECT(theCd4_200 = allocVector(REALSXP,60);
+	PROTECT(theCd4_200350 = allocVector(REALSXP,60);
+	PROTECT(theCd4_350500 = allocVector(REALSXP,60);
+	PROTECT(theCd4_500 = allocVector(REALSXP,60);
 
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
@@ -128,6 +137,15 @@ SEXP CallCascade(SEXP s_pop,
 	double * pPOP_15to49 = REAL(sPOP_15to49);
 	double * pHIV_15to49 = REAL(sHIV_15to49);
 	double * pART_15to49 = REAL(sART_15to49);
+	double * pAidsDeath_15plus = REAL(sAidsDeath_15plus);
+	double * pPOP_AgeSex_2007 = REAL(sPOP_AgeSex_2007);
+	double * pHIV_AgeSex_2007 = REAL(sHIV_AgeSex_2007);
+	double * pPOP_AgeSex_2012 = REAL(sPOP_AgeSex_2012);
+	double * pHIV_AgeSex_2012 = REAL(sHIV_AgeSex_2012);
+	double * pCd4_200 = REAL(sCd4_200);
+	double * pCd4_200350 = REAL(sCd4_200350);
+	double * pCd4_350500 = REAL(sCd4_350500);
+	double * pCd4_500 = REAL(sCd4_500);
 
 	for(size_t i=0;i<60;i++) {
 		if(i<5)
@@ -136,29 +154,58 @@ SEXP CallCascade(SEXP s_pop,
 			pDALY[i] = theDALY[i];
 		if(i<20)
 			pCOST[i] = theCOST[i];
+		if(i<16) {
+			pPOP_AgeSex_2007[i] = thePOP_AgeSex_2007[i]
+			pHIV_AgeSex_2007[i] = theHIV_AgeSex_2007[i]
+			pPOP_AgeSex_2012[i] = thePOP_AgeSex_2012[i]
+			pHIV_AgeSex_2012[i] = theHIV_AgeSex_2012[i]
+		}
 		pPOP_15to49[i] = thePOP_15to49[i];
 		pHIV_15to49[i] = theHIV_15to49[i];
 		pART_15to49[i] = theART_15to49[i];
+		pAidsDeath_15plus[i] = theAidsDeath_15plus[i];
+		pCd4_200[i] = theCd4_200[i];
+		pCd4_200350[i] = theCd4_200350[i];
+		pCd4_350500[i] = theCd4_350500[i];
+		pCd4_500[i] = theCd4_500[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,6));
+	PROTECT(sOUT = allocVector(VECSXP,15));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
 	SET_VECTOR_ELT(sOUT,3,sPOP_15to49);
 	SET_VECTOR_ELT(sOUT,4,sHIV_15to49);
 	SET_VECTOR_ELT(sOUT,5,sART_15to49);
+	SET_VECTOR_ELT(sOUT,6,sAidsDeath_15plus);
+	SET_VECTOR_ELT(sOUT,7,sPOP_AgeSex_2007);
+	SET_VECTOR_ELT(sOUT,8,sHIV_AgeSex_2007);
+	SET_VECTOR_ELT(sOUT,9,sPOP_AgeSex_2012);
+	SET_VECTOR_ELT(sOUT,10,sHIV_AgeSex_2012);
+	SET_VECTOR_ELT(sOUT,11,sCd4_200);
+	SET_VECTOR_ELT(sOUT,12,sCd4_200350);
+	SET_VECTOR_ELT(sOUT,13,sCd4_350500);
+	SET_VECTOR_ELT(sOUT,14,sCd4_500);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,6));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,15));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
 	SET_VECTOR_ELT(sOUTNAMES,3,mkChar("sPOP_15to49"));
 	SET_VECTOR_ELT(sOUTNAMES,4,mkChar("sHIV_15to49"));
 	SET_VECTOR_ELT(sOUTNAMES,5,mkChar("sART_15to49"));
+	SET_VECTOR_ELT(sOUT,6,mkChar("sAidsDeath_15plus"));
+	SET_VECTOR_ELT(sOUT,7,mkChar("sPOP_AgeSex_2007"));
+	SET_VECTOR_ELT(sOUT,8,mkChar("sHIV_AgeSex_2007"));
+	SET_VECTOR_ELT(sOUT,9,mkChar("sPOP_AgeSex_2012"));
+	SET_VECTOR_ELT(sOUT,10,mkChar("sHIV_AgeSex_2012"));
+	SET_VECTOR_ELT(sOUT,11,mkChar("sCd4_200"));
+	SET_VECTOR_ELT(sOUT,12,mkChar("sCd4_200350"));
+	SET_VECTOR_ELT(sOUT,13,mkChar("sCd4_350500"));
+	SET_VECTOR_ELT(sOUT,14,mkChar("sCd4_500"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(21);
+	UNPROTECT(30);
 	return(sOUT);
 	}
 
