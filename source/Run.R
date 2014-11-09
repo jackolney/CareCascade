@@ -54,7 +54,7 @@ plot(seq(0,59,1),prev,
 	xlab='Year',
 	ylab='Prevalence',
 	xaxt='n')
-lines(seq(20,42,1),Unaids_HivPrev$HIV_prev,
+lines(seq(20,42,1),Unaids_HivPrev$prev,
 	lwd=2,
 	lty=3,
 	col=p[1])
@@ -80,7 +80,7 @@ plot(seq(0,59,1),onart,
 	xlab='Year',
 	ylab='Proportion',
 	xaxt='n')
-lines(seq(34,42,1),Unaids_PlwhivOnArt$prop_of_hiv_onart,
+lines(seq(34,42,1),Unaids_PlwhivOnArt$propPlwhivOnArt,
 	lwd=2,
 	lty=3,
 	col=p[1])
