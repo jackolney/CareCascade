@@ -73,8 +73,8 @@ iDALY(0),
 iHctVisitCost(0),
 iRapidHivTestCost(0),
 iPreArtClinicVisitCost(0),
-iLabCd4Test(0),
-iPocCd4Test(0),
+iLabCd4TestCost(0),
+iPocCd4TestCost(0),
 iAnnualArtCost(0),
 iAdherenceCost(0),
 iOutreachCost(0)
@@ -169,7 +169,7 @@ bool person::AssignGender()
 /////////////////////
 /////////////////////
 
-double person::GenerateNatDeathDate()
+double person::GenerateNatDeathAge()
 {
 	/* Declare survival distribution */
 	const double surv [2] [100] =
@@ -207,17 +207,16 @@ double person::GenerateNatDeathDate()
 
 double person::AssignNatDeathDate(const double Time)
 {
-	double deathDate = 0;
-	
-	/* Ensure that deathDate is not < initialAge */
-	while(deathDate < initialAge)
-		deathDate = GenerateNatDeathDate();
+	double deathAge = 0;
+	/* Ensure that deathAge is not < initialAge */
+	while(deathAge < initialAge)
+		deathAge = GenerateNatDeathAge();
 	
 	/* Create Natural Death Date Event & Add to eventQ */
-	new Death(this,Time + deathDate - initialAge,false);
-	D(cout << "NatDeathDate = " << Time + deathDate - initialAge << " (year = " << (Time + deathDate - initialAge) / 365.25 << ")" << endl);
+	new Death(this,Time + deathAge - initialAge,false);
+	D(cout << "NatDeathDate = " << Time + deathAge - initialAge << " (year = " << (Time + deathAge - initialAge) / 365.25 << ")" << endl);
 	
-	return Time + deathDate - initialAge;
+	return Time + deathAge - initialAge;
 }
 
 /////////////////////

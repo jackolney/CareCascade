@@ -1,5 +1,4 @@
 #Test Script for CareCascade
-
 setwd("/Users/jack/git/CareCascade/source")
 dyn.load("main.so")
 
@@ -35,17 +34,25 @@ quartz.options(h=10,w=10)
 library(RColorBrewer)
 p <- brewer.pal(9,"Set1")
 
+plot(result$sPOP_15to49,type='l',lwd=2)
+plot(result$sHIV_15to49,type='l',lwd=2)
+
 pop <- result$sPOP
 hiv <- result$sHIV
 art <- result$sART
 
 #Hiv Prevalence
-prev <- hiv / pop
+pop_15to49 <- result$sPOP_15to49
+hiv_15to49 <- result$sHIV_15to49
+art_15to49 <- result$sART_15to49
+
+#Hiv Prevalence
+prev_15to49 <- hiv_15to49 / pop_15to49
 
 Unaids_HivPrev <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_HivPrevalence_Kenya.csv",header=TRUE)
 Unaids_HivPrev$year
 
-plot(seq(0,59,1),prev,
+plot(seq(0,59,1),prev_15to49,
 	type='l',
 	col=p[2],
 	lwd=2,
@@ -59,19 +66,19 @@ lines(seq(20,42,1),Unaids_HivPrev$prev,
 	lty=3,
 	col=p[1])
 axis(1,seq(0,60,5),seq(1970,2030,5))
-legend("topright",c("UNAIDS","CareCascade"),
+legend("topright",c("UNAIDS 15-49yr","CareCascade 15-49yr"),
 	fill=p[1:2],
 	box.lty=0,
 	border=NA,
 	cex=1.2)
-
+abline(v=31)
 
 #PlwhivOnArt
-onart <- art / hiv
+onart_15to49 <- art_15to49 / hiv_15to49
 
 Unaids_PlwhivOnArt <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_PlwhivOnArt_Kenya.csv",header=TRUE)
 
-plot(seq(0,59,1),onart,
+plot(seq(0,59,1),onart_15to49,
 	type='l',
 	col=p[2],
 	lwd=2,
@@ -90,3 +97,5 @@ legend("topright",c("UNAIDS","CareCascade"),
 	box.lty=0,
 	border=NA,
 	cex=1.2)
+
+#####
