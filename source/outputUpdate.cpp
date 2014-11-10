@@ -17,6 +17,7 @@ extern eventQ * theQ;
 extern double * thePOP_15to49;
 extern double * theHIV_15to49;
 extern double * theART_15to49;
+extern double * thePOP_15plus;
 
 /////////////////////
 /////////////////////
@@ -33,6 +34,8 @@ void WritePop(person * const thePerson)
 	
 	if(theQ->GetTime() > thePerson->GetBirthDay()) {
 		thePerson->SetAge(theQ->GetTime());
+		if(thePerson->GetAge() > 15 * 365.25)
+			thePOP_15plus[i] += thePerson->Alive();
 		if(thePerson->GetAge() > 15 * 365.25 && thePerson->GetAge() <= 49 * 365.25)
 			thePOP_15to49[i] += thePerson->Alive();
 	}

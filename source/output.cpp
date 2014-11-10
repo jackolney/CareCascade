@@ -20,6 +20,7 @@ double * theCOST;
 double * thePOP_15to49;
 double * theHIV_15to49;
 double * theART_15to49;
+double * thePOP_15plus;
 double * theAidsDeath_15plus;
 double * thePOP_AgeSex_2007;
 double * theHIV_AgeSex_2007;
@@ -83,6 +84,7 @@ void CreateOutputArray()
 	thePOP_15to49 = new double[60];
 	theHIV_15to49 = new double[60];
 	theART_15to49 = new double[60];
+	thePOP_15plus = new double[60];
 	theAidsDeath_15plus = new double[60];
 	thePOP_AgeSex_2007 = new double[16];
 	theHIV_AgeSex_2007 = new double[16];
@@ -109,6 +111,7 @@ void CreateOutputArray()
 		thePOP_15to49[i] = 0;
 		theHIV_15to49[i] = 0;
 		theART_15to49[i] = 0;
+		thePOP_15plus[i] = 0;
 		theAidsDeath_15plus[i] = 0;
 		theCd4_200[i] = 0;
 		theCd4_200350[i] = 0;
