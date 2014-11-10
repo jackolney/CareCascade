@@ -141,7 +141,7 @@ void Write2007(person * const thePerson)
 			
 			thePOP_AgeSex_2007[i] += thePerson->Alive();
 			if(thePerson->Alive())
-				theHIV_AgeSex_2007[i] += thePerson->GetArtInitiationState();
+				theHIV_AgeSex_2007[i] += thePerson->GetSeroStatus();
 		}
 	}
 }
@@ -151,7 +151,22 @@ void Write2007(person * const thePerson)
 
 void Write2012(person * const thePerson)
 {
+	if(theQ->GetTime() > thePerson->GetBirthDay()) {
+		thePerson->SetAge(theQ->GetTime());
+		if(thePerson->GetAge() > 15 * 365.25 && thePerson->GetAge() <= 64 * 365.25) {
+			unsigned int ageCatMax [8] = {19,24,29,34,39,44,49,64};
+			unsigned int i = 0;
+			while(thePerson->GetAge() > ageCatMax[i] && i < 7)
+				i++;
 
+			if(thePerson->GetGender())
+				i += 10;
+			
+			thePOP_AgeSex_2012[i] += thePerson->Alive();
+			if(thePerson->Alive())
+				theHIV_AgeSex_2012[i] += thePerson->GetSeroStatus();
+		}
+	}
 }
 
 /////////////////////
