@@ -24,9 +24,9 @@ result
 graphics.off()
 quartz.options(h=12,w=5)
 par(mfrow=c(3,1))
-plot(result$sPOP,type='l',lwd=2)
-plot(result$sHIV,type='l',lwd=2)
-plot(result$sART,type='l',lwd=2)
+plot(result$sPOP_15to49,type='l',lwd=2)
+plot(result$sHIV_15to49,type='l',lwd=2)
+plot(result$sART_15to49,type='l',lwd=2)
 
 # Figures
 graphics.off()
@@ -34,25 +34,12 @@ quartz.options(h=10,w=10)
 library(RColorBrewer)
 p <- brewer.pal(9,"Set1")
 
-plot(result$sPOP_15to49,type='l',lwd=2)
-plot(result$sHIV_15to49,type='l',lwd=2)
-
-pop <- result$sPOP
-hiv <- result$sHIV
-art <- result$sART
-
+####################
 #Hiv Prevalence
-pop_15to49 <- result$sPOP_15to49
-hiv_15to49 <- result$sHIV_15to49
-art_15to49 <- result$sART_15to49
-
-#Hiv Prevalence
-prev_15to49 <- hiv_15to49 / pop_15to49
-
 Unaids_HivPrev <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_HivPrevalence_Kenya.csv",header=TRUE)
 Unaids_HivPrev$year
 
-plot(seq(0,59,1),prev_15to49,
+plot(seq(0,59,1),result$sHIV_15to49 / result$sPOP_15to49,
 	type='l',
 	col=p[2],
 	lwd=2,
@@ -71,14 +58,12 @@ legend("topright",c("UNAIDS 15-49yr","CareCascade 15-49yr"),
 	box.lty=0,
 	border=NA,
 	cex=1.2)
-abline(v=31)
 
+####################
 #PlwhivOnArt
-onart_15to49 <- art_15to49 / hiv_15to49
-
 Unaids_PlwhivOnArt <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_PlwhivOnArt_Kenya.csv",header=TRUE)
 
-plot(seq(0,59,1),onart_15to49,
+plot(seq(0,59,1),result$sART_15to49 / result$sHIV_15to49,
 	type='l',
 	col=p[2],
 	lwd=2,
@@ -98,4 +83,516 @@ legend("topright",c("UNAIDS","CareCascade"),
 	border=NA,
 	cex=1.2)
 
-#####
+####################
+#Proportion of AIDS-related deaths in general population
+Unaids_AidsDeaths <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_AidsRelatedDeaths.csv",header=TRUE)
+
+
+plot(seq(0,59,1),result$sAidsDeath_15plus / result$sPOP_15plus,
+	type='l',
+	col=p[2],
+	lwd=2,
+	ylim=c(0,0.01),
+	main='Proportion of AIDS-realted deaths in population',
+	xlab='Year',
+	ylab='Proportion',
+	xaxt='n')
+lines(seq(20,42,1),Unaids_AidsDeaths$proportion,
+	lwd=2,
+	lty=3,
+	col=p[1])
+axis(1,seq(0,60,5),seq(1970,2030,5))
+legend("topright",c("UNAIDS (unspecified)","CareCascade >15yrs"),
+	fill=p[1:2],
+	box.lty=0,
+	border=NA,
+	cex=1.2)
+
+
+####################
+#KAIS 2007 - HIV prevalence by Age and Sex. (National)
+Kais2007_PrevByAgeSex <- read.csv("/Users/jack/git/CareCascade/estimates/Kais2007_PrevByAgeSex.csv",header=TRUE)
+
+######
+#MALE#
+######
+
+par(family="Avenir Next Bold")
+plot((result$sHIV_AgeSex_2007 / result$sPOP_AgeSex_2007)[11:20],
+	type='b',
+	lwd=3,
+	main="HIV prevalence among men 15-64 years old",
+	xlab="Age (years)",
+	ylab="HIV prevalence (%)",
+	xaxt='n',
+	cex=2,
+	cex.main=1.5,
+	cex.lab=1.2,
+	yaxt='n',
+	col=p[1],
+	ylim=c(0,0.15))
+lines(Kais2007_PrevByAgeSex$male,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+axis(1,seq(1,10,1),
+	c("15-19",
+		"20-24",
+		"25-29",
+		"30-34",
+		"35-39",
+		"40-44",
+		"45-49",
+		"50-54",
+		"55-59",
+		"60-64"),
+	cex.axis=1.2)
+axis(2,seq(0,0.15,0.02),seq(0,15,2),las=1,cex.axis=1.2)
+legend("topright",
+	c("Model 2007 - Males","KAIS 2007 - Males"),
+	fill=p[1:2],
+	border=NA,
+	box.lty=0,
+	cex=1.5)
+
+########
+#FEMALE#
+########
+
+par(family="Avenir Next Bold")
+plot((result$sHIV_AgeSex_2007 / result$sPOP_AgeSex_2007)[1:10],
+	type='b',
+	lwd=3,
+	main="HIV prevalence among women 15-64 years old",
+	xlab="Age (years)",
+	ylab="HIV prevalence (%)",
+	xaxt='n',
+	cex=2,
+	cex.main=1.5,
+	cex.lab=1.2,
+	yaxt='n',
+	col=p[1],
+	ylim=c(0,0.15))
+lines(Kais2007_PrevByAgeSex$female,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+axis(1,seq(1,10,1),
+	c("15-19",
+		"20-24",
+		"25-29",
+		"30-34",
+		"35-39",
+		"40-44",
+		"45-49",
+		"50-54",
+		"55-59",
+		"60-64"),
+	cex.axis=1.2)
+axis(2,seq(0,0.15,0.02),seq(0,15,2),las=1,cex.axis=1.2)
+legend("topright",
+	c("Model 2007 - Females","KAIS 2007 - Females"),
+	fill=p[1:2],
+	border=NA,
+	box.lty=0,
+	cex=1.5)
+
+####################
+#KAIS 2012 - HIV prevalence by Age and Sex. (National)
+Kais2012_PrevByAgeSex <- read.csv("/Users/jack/git/CareCascade/estimates/Kais2012_PrevByAgeSex.csv",header=TRUE)
+
+(result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[1:8]
+(result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[9:16]
+
+######
+#MALE#
+######
+
+par(family="Avenir Next Bold")
+plot((result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[9:16],
+	type='b',
+	lwd=3,
+	main="HIV prevalence among Men in Kenya Nationally in 2012",
+	xlab="Age (years)",
+	ylab="HIV prevalence (%)",
+	xaxt='n',
+	cex=2,
+	cex.main=1.5,
+	cex.lab=1.5,
+	yaxt='n',
+	col=p[1],
+	ylim=c(0,0.16),
+	)
+
+lines(Kais2012_PrevByAgeSex$men,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confLower.1,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confHigher.1,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+axis(1,seq(1,8,1),
+	c("15-19",
+		"20-24",
+		"25-29",
+		"30-34",
+		"35-39",
+		"40-44",
+		"45-49",
+		"50-64"),
+	cex.axis=1.5)
+axis(2,seq(0,0.16,0.02),seq(0,16,2),las=1,cex.axis=1.5)
+legend("topright",
+	c("Model 2012 - Males","KAIS 2012 Nyanza - Males"),
+	fill=p[1:2],
+	border=NA,
+	box.lty=0,
+	cex=1.5)
+
+########
+#FEMALE#
+########
+
+par(family="Avenir Next Bold")
+plot((result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[1:8],
+	type='b',
+	lwd=3,
+	main="HIV prevalence among Women in Kenya Nationally in 2012",
+	xlab="Age (years)",
+	ylab="HIV prevalence (%)",
+	xaxt='n',
+	cex=2,
+	cex.main=1.5,
+	cex.lab=1.5,
+	yaxt='n',
+	col=p[1],
+	ylim=c(0,0.16),
+	)
+
+lines(Kais2012_PrevByAgeSex$women,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confLower.2,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confHigher.2,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+axis(1,seq(1,8,1),
+	c("15-19",
+		"20-24",
+		"25-29",
+		"30-34",
+		"35-39",
+		"40-44",
+		"45-49",
+		"50-64"),
+	cex.axis=1.5)
+axis(2,seq(0,0.16,0.02),seq(0,16,2),las=1,cex.axis=1.5)
+legend("topright",
+	c("Model 2012 - Females","KAIS 2012 Nyanza - Females"),
+	fill=p[1:2],
+	border=NA,
+	box.lty=0,
+	cex=1.5)
+
+#################
+#NYANZA PROVINCE#
+#################
+
+######
+#MALE#
+######
+
+par(family="Avenir Next Bold")
+plot((result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[9:16],
+	type='b',
+	lwd=3,
+	main="HIV prevalence among Men in Nyanza Province in 2012",
+	xlab="Age (years)",
+	ylab="HIV prevalence (%)",
+	xaxt='n',
+	cex=2,
+	cex.main=1.5,
+	cex.lab=1.5,
+	yaxt='n',
+	col=p[1],
+	ylim=c(0,0.5),
+	)
+
+lines(Kais2012_PrevByAgeSex$men.1,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confLower.4,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confHigher.4,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+axis(1,seq(1,8,1),
+	c("15-19",
+		"20-24",
+		"25-29",
+		"30-34",
+		"35-39",
+		"40-44",
+		"45-49",
+		"50-64"),
+	cex.axis=1.5)
+axis(2,seq(0,0.5,0.05),seq(0,50,5),las=1,cex.axis=1.5)
+legend("topright",
+	c("Model 2012 - Males","KAIS 2012 Nyanza - Males"),
+	fill=p[1:2],
+	border=NA,
+	box.lty=0,
+	cex=1.5)
+
+########
+#FEMALE#
+########
+
+par(family="Avenir Next Bold")
+plot((result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[1:8],
+	type='b',
+	lwd=3,
+	main="HIV prevalence among Women in Nyanza Province in 2012",
+	xlab="Age (years)",
+	ylab="HIV prevalence (%)",
+	xaxt='n',
+	cex=2,
+	cex.main=1.5,
+	cex.lab=1.5,
+	yaxt='n',
+	col=p[1],
+	ylim=c(0,0.5),
+	)
+
+lines(Kais2012_PrevByAgeSex$women.1,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confLower.5,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confHigher.5,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+
+axis(1,seq(1,8,1),
+	c("15-19",
+		"20-24",
+		"25-29",
+		"30-34",
+		"35-39",
+		"40-44",
+		"45-49",
+		"50-64"),
+	cex.axis=1.5)
+axis(2,seq(0,0.5,0.05),seq(0,50,5),las=1,cex.axis=1.5)
+legend("topright",
+	c("Model 2012 - Females","KAIS 2012 Nyanza - Females"),
+	fill=p[1:2],
+	border=NA,
+	box.lty=0,
+	cex=1.5)
+
+##################
+#WESTERN PROVINCE#
+##################
+
+######
+#MALE#
+######
+
+par(family="Avenir Next Bold")
+plot((result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[9:16],
+	type='b',
+	lwd=3,
+	main="HIV prevalence among Men in Western Province in 2012",
+	xlab="Age (years)",
+	ylab="HIV prevalence (%)",
+	xaxt='n',
+	cex=2,
+	cex.main=1.5,
+	cex.lab=1.5,
+	yaxt='n',
+	col=p[1],
+	ylim=c(0,0.3),
+	)
+
+lines(Kais2012_PrevByAgeSex$men.2,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confLower.7,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confHigher.7,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+axis(1,seq(1,8,1),
+	c("15-19",
+		"20-24",
+		"25-29",
+		"30-34",
+		"35-39",
+		"40-44",
+		"45-49",
+		"50-64"),
+	cex.axis=1.5)
+axis(2,seq(0,0.3,0.05),seq(0,30,5),las=1,cex.axis=1.5)
+legend("topright",
+	c("Model 2012 - Males","KAIS 2012 Western - Males"),
+	fill=p[1:2],
+	border=NA,
+	box.lty=0,
+	cex=1.5)
+
+########
+#FEMALE#
+########
+
+
+par(family="Avenir Next Bold")
+plot((result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[1:8],
+	type='b',
+	lwd=3,
+	main="HIV prevalence among Women in Western Province in 2012",
+	xlab="Age (years)",
+	ylab="HIV prevalence (%)",
+	xaxt='n',
+	cex=2,
+	cex.main=1.5,
+	cex.lab=1.5,
+	yaxt='n',
+	col=p[1],
+	ylim=c(0,0.3),
+	)
+
+lines(Kais2012_PrevByAgeSex$women.2,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confLower.8,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+
+lines(Kais2012_PrevByAgeSex$confHigher.8,
+	type='l',
+	col=p[2],
+	cex=2,
+	lty=3,
+	lwd=3)
+axis(1,seq(1,8,1),
+	c("15-19",
+		"20-24",
+		"25-29",
+		"30-34",
+		"35-39",
+		"40-44",
+		"45-49",
+		"50-64"),
+	cex.axis=1.5)
+axis(2,seq(0,0.3,0.05),seq(0,30,5),las=1,cex.axis=1.5)
+legend("topright",
+	c("Model 2012 - Females","KAIS 2012 Western - Females"),
+	fill=p[1:2],
+	border=NA,
+	box.lty=0,
+	cex=1.5)
+
+####################
+#CD4 distribution over time
+
+Cd4DistributionTotal <- matrix(0,4,60)
+Cd4DistributionTotal[1,] <- result$sCd4_200
+Cd4DistributionTotal[2,] <- result$sCd4_200350
+Cd4DistributionTotal[3,] <- result$sCd4_350500
+Cd4DistributionTotal[4,] <- result$sCd4_500
+
+Cd4DistributionProp <- matrix(0,4,60)
+Cd4DistributionProp[1,] <- result$sCd4_200 / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[2,] <- result$sCd4_200350 / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[3,] <- result$sCd4_350500 / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[4,] <- result$sCd4_500 / colSums(Cd4DistributionTotal)
+
+require(RColorBrewer)
+m <- brewer.pal(11,"RdYlGn")
+
+par(family="Avenir Next Bold")
+barplot(Cd4DistributionProp,
+	space=0,
+	border=1,
+	col=c(m[1:4]),
+	xlab="Year",
+	main="CD4 distribution among HIV-positive individuals over time",
+	ylab="Proportion",
+	yaxt='n',
+	xlim=c(5,60))
+axis(1,seq(4.5,59.5,5),seq(1975,2030,5))
+axis(2,seq(0,1,0.1),las=1)

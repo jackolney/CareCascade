@@ -30,6 +30,10 @@ double * theCd4_200;
 double * theCd4_200350;
 double * theCd4_350500;
 double * theCd4_500;
+double * theCd4_200_Art;
+double * theCd4_200350_Art;
+double * theCd4_350500_Art;
+double * theCd4_500_Art;
 
 /////////////////////
 /////////////////////
@@ -97,6 +101,10 @@ void CreateOutputArray()
 	theCd4_200350 = new double[60];
 	theCd4_350500 = new double[60];
 	theCd4_500 = new double[60];
+	theCd4_200_Art = new double[60];
+	theCd4_200350_Art = new double[60];
+	theCd4_350500_Art = new double[60];
+	theCd4_500_Art = new double[60];
 	
 	for(size_t i=0;i<60;i++) {
 		if(i<5)
@@ -120,6 +128,10 @@ void CreateOutputArray()
 		theCd4_200350[i] = 0;
 		theCd4_350500[i] = 0;
 		theCd4_500[i] = 0;
+		theCd4_200_Art[i] = 0;
+		theCd4_200350_Art[i] = 0;
+		theCd4_350500_Art[i] = 0;
+		theCd4_500_Art[i] = 0;
 	}
 }
 

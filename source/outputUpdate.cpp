@@ -30,6 +30,10 @@ extern double * theCd4_200;
 extern double * theCd4_200350;
 extern double * theCd4_350500;
 extern double * theCd4_500;
+extern double * theCd4_200_Art;
+extern double * theCd4_200350_Art;
+extern double * theCd4_350500_Art;
+extern double * theCd4_500_Art;
 
 /////////////////////
 /////////////////////
@@ -192,6 +196,17 @@ void WriteCd4(person * const thePerson)
 	theCd4_200350[i] = theCd4Counter->GetCd4VectorSize_2();
 	theCd4_350500[i] = theCd4Counter->GetCd4VectorSize_3();
 	theCd4_500[i] = theCd4Counter->GetCd4VectorSize_4();
+
+	if(theQ->GetTime() > thePerson->GetBirthDay() && thePerson->Alive()) {
+		if(thePerson->GetCurrentCd4() == 1)
+			theCd4_200_Art[i] += thePerson->GetArtInitiationState();
+		else if(thePerson->GetCurrentCd4() == 2)
+			theCd4_200350_Art[i] += thePerson->GetArtInitiationState();
+		else if(thePerson->GetCurrentCd4() == 3)
+			theCd4_350500_Art[i] += thePerson->GetArtInitiationState();
+		else if(thePerson->GetCurrentCd4() == 4)
+			theCd4_500_Art[i] += thePerson->GetArtInitiationState();
+	}
 }
 
 /////////////////////

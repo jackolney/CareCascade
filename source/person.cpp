@@ -23,11 +23,13 @@
 #include "discount.h"
 #include "transmission.h"
 #include "incidence.h"
+#include "cd4Counter.h"
 
 extern Rng * theRng;
 extern eventQ * theQ;
 extern Transmission * theTrans;
 extern Incidence * theInc;
+extern Cd4Counter * theCd4Counter;
 
 using namespace std;
 
@@ -288,6 +290,7 @@ void person::SetHivIndicators()
 	SetInitialWhoStage();
 	AssignHivDeathDate(); //function will call GenerateHivDeathDate()
 	theTrans->UpdateVector(this);
+	theCd4Counter->UpdateVector(this);
 }
 
 /////////////////////

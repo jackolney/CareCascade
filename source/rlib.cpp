@@ -35,10 +35,14 @@ extern double * thePOP_AgeSex_2007;
 extern double * theHIV_AgeSex_2007;
 extern double * thePOP_AgeSex_2012;
 extern double * theHIV_AgeSex_2012;
-extern double * theCd4_200; //Setup a Cd4 class which fills in vectors dynamically (as transmission works), as we need to get CD4 at a point in time and it is highly dynamic.
+extern double * theCd4_200;
 extern double * theCd4_200350;
 extern double * theCd4_350500;
 extern double * theCd4_500;
+extern double * theCd4_200_Art;
+extern double * theCd4_200350_Art;
+extern double * theCd4_350500_Art;
+extern double * theCd4_500_Art;
 
 /* Intervention Pointers */
 int const * p_Hbct;
@@ -111,7 +115,8 @@ SEXP CallCascade(SEXP s_pop,
 
 	/* OUTPUTS */
 	SEXP sOUT, sCARE, sDALY, sCOST, sPOP_15to49, sHIV_15to49, sART_15to49, sPOP_15plus, sAidsDeath_15plus,
-	sPOP_AgeSex_2007, sHIV_AgeSex_2007, sPOP_AgeSex_2012, sHIV_AgeSex_2012, sCd4_200, sCd4_200350, sCd4_350500, sCd4_500, sOUTNAMES;
+	sPOP_AgeSex_2007, sHIV_AgeSex_2007, sPOP_AgeSex_2012, sHIV_AgeSex_2012, sCd4_200, sCd4_200350, sCd4_350500, sCd4_500,
+	sCd4_200_Art, sCd4_200350_Art, sCd4_350500_Art, sCd4_500_Art, sOUTNAMES;
 
 	PROTECT(sCARE = allocVector(REALSXP,5));
 	PROTECT(sDALY = allocVector(REALSXP,20));
@@ -129,6 +134,10 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sCd4_200350 = allocVector(REALSXP,60));
 	PROTECT(sCd4_350500 = allocVector(REALSXP,60));
 	PROTECT(sCd4_500 = allocVector(REALSXP,60));
+	PROTECT(sCd4_200_Art = allocVector(REALSXP,60));
+	PROTECT(sCd4_200350_Art = allocVector(REALSXP,60));
+	PROTECT(sCd4_350500_Art = allocVector(REALSXP,60));
+	PROTECT(sCd4_500_Art = allocVector(REALSXP,60));
 
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
@@ -146,6 +155,10 @@ SEXP CallCascade(SEXP s_pop,
 	double * pCd4_200350 = REAL(sCd4_200350);
 	double * pCd4_350500 = REAL(sCd4_350500);
 	double * pCd4_500 = REAL(sCd4_500);
+	double * pCd4_200_Art = REAL(sCd4_200_Art);
+	double * pCd4_200350_Art = REAL(sCd4_200350_Art);
+	double * pCd4_350500_Art = REAL(sCd4_350500_Art);
+	double * pCd4_500_Art = REAL(sCd4_500_Art);
 
 	for(size_t i=0;i<60;i++) {
 		if(i<5)
@@ -169,9 +182,13 @@ SEXP CallCascade(SEXP s_pop,
 		pCd4_200350[i] = theCd4_200350[i];
 		pCd4_350500[i] = theCd4_350500[i];
 		pCd4_500[i] = theCd4_500[i];
+		pCd4_200_Art[i] = theCd4_200_Art[i];
+		pCd4_200350_Art[i] = theCd4_200350_Art[i];
+		pCd4_350500_Art[i] = theCd4_350500_Art[i];
+		pCd4_500_Art[i] = theCd4_500_Art[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,16));
+	PROTECT(sOUT = allocVector(VECSXP,20));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
@@ -188,8 +205,12 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,13,sCd4_200350);
 	SET_VECTOR_ELT(sOUT,14,sCd4_350500);
 	SET_VECTOR_ELT(sOUT,15,sCd4_500);
+	SET_VECTOR_ELT(sOUT,16,sCd4_200_Art);
+	SET_VECTOR_ELT(sOUT,17,sCd4_200350_Art);
+	SET_VECTOR_ELT(sOUT,18,sCd4_350500_Art);
+	SET_VECTOR_ELT(sOUT,19,sCd4_500_Art);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,16));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,20));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
@@ -206,9 +227,13 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,13,mkChar("sCd4_200350"));
 	SET_VECTOR_ELT(sOUTNAMES,14,mkChar("sCd4_350500"));
 	SET_VECTOR_ELT(sOUTNAMES,15,mkChar("sCd4_500"));
+	SET_VECTOR_ELT(sOUTNAMES,16,mkChar("sCd4_200_Art"));
+	SET_VECTOR_ELT(sOUTNAMES,17,mkChar("sCd4_200350_Art"));
+	SET_VECTOR_ELT(sOUTNAMES,18,mkChar("sCd4_350500_Art"));
+	SET_VECTOR_ELT(sOUTNAMES,19,mkChar("sCd4_500_Art"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(31);
+	UNPROTECT(35);
 	return(sOUT);
 	}
 
