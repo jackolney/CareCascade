@@ -100,6 +100,7 @@ void Death::Execute()
 	UpdateDaly(pPerson);
 	pPerson->Kill(GetTime(),hivRelated);
 	theTrans->UpdateVector(pPerson);
+	theCd4Counter->UpdateVector(pPerson);
 	WriteCare(pPerson,GetTime());
 	if(hivRelated) {
 		D(cout << "Death executed (HIV-related)." << endl);

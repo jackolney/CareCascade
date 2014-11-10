@@ -144,7 +144,7 @@ void Write2007(person * const thePerson)
 	if(theQ->GetTime() > thePerson->GetBirthDay()) {
 		thePerson->SetAge(theQ->GetTime());
 		if(thePerson->GetAge() > 15 * 365.25 && thePerson->GetAge() <= 64 * 365.25) {
-			unsigned int ageCatMax [10] = {19,24,29,34,39,44,49,54,59,64};
+			const unsigned int ageCatMax [10] = {19,24,29,34,39,44,49,54,59,64};
 			unsigned int i = 0;
 			while(thePerson->GetAge() / 365.25 > ageCatMax[i] && i < 9)
 				i++;
@@ -178,7 +178,7 @@ void Write2012(person * const thePerson)
 	if(theQ->GetTime() > thePerson->GetBirthDay()) {
 		thePerson->SetAge(theQ->GetTime());
 		if(thePerson->GetAge() > 15 * 365.25 && thePerson->GetAge() <= 64 * 365.25) {
-			unsigned int ageCatMax [8] = {19,24,29,34,39,44,49,64};
+			const unsigned int ageCatMax [8] = {19,24,29,34,39,44,49,64};
 			unsigned int i = 0;
 			while(thePerson->GetAge() / 365.25 > ageCatMax[i] && i < 7)
 				i++;
@@ -201,7 +201,7 @@ void Write2014(person * const thePerson)
 	if(theQ->GetTime() > thePerson->GetBirthDay()) {
 		thePerson->SetAge(theQ->GetTime());
 
-		unsigned int ageCatMax [5] = {14,21,29,46,200};
+		const unsigned int ageCatMax [5] = {14,21,29,46,200};
 		unsigned int i = 0;
 		while(thePerson->GetAge() / 365.25 > ageCatMax[i] && i < 4)
 			i++;
@@ -232,6 +232,17 @@ void WriteCd4(person * const thePerson)
 	theCd4_200350[i] = theCd4Counter->GetCd4VectorSize_2();
 	theCd4_350500[i] = theCd4Counter->GetCd4VectorSize_3();
 	theCd4_500[i] = theCd4Counter->GetCd4VectorSize_4();
+
+	// if(theQ->GetTime() > thePerson->GetBirthDay()) {
+	// 	if(thePerson->GetCurrentCd4() == 1)
+	// 		theCd4_200[i] += thePerson->Alive();
+	// 	else if(thePerson->GetCurrentCd4() == 2)
+	// 		theCd4_200350[i] += thePerson->Alive();
+	// 	else if(thePerson->GetCurrentCd4() == 3)
+	// 		theCd4_350500[i] += thePerson->Alive();
+	// 	else if(thePerson->GetCurrentCd4() == 4)
+	// 		theCd4_500[i] += thePerson->Alive();
+	// }
 
 	if(theQ->GetTime() > thePerson->GetBirthDay() && thePerson->Alive()) {
 		if(thePerson->GetCurrentCd4() == 1)

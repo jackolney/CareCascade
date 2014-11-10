@@ -64,8 +64,7 @@ void ScheduleCd4Update(person * const thePerson)
 		{1.97615529,1.90352509,5.64408302},
 		{0.83767622,0.80688886,2.39248106}
 	};
-	
-		//Cd4TimeArt [WHO-1] [CD4-1 (1,2)]
+
 	const double Cd4RecoverTimeArt [4] [2] =
 	{
 		{0.17366500,0.44638000},
