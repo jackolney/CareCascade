@@ -120,15 +120,15 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sHIV_15to49 = allocVector(REALSXP,60));
 	PROTECT(sART_15to49 = allocVector(REALSXP,60));
 	PROTECT(sPOP_15plus = allocVector(REALSXP,60));
-	PROTECT(sAidsDeath_15plus = allocVector(REALSXP,60);
-	PROTECT(sPOP_AgeSex_2007 = allocVector(REALSXP,16);
-	PROTECT(sHIV_AgeSex_2007 = allocVector(REALSXP,16);
-	PROTECT(sPOP_AgeSex_2012 = allocVector(REALSXP,16);
-	PROTECT(sHIV_AgeSex_2012 = allocVector(REALSXP,16);
-	PROTECT(sCd4_200 = allocVector(REALSXP,60);
-	PROTECT(sCd4_200350 = allocVector(REALSXP,60);
-	PROTECT(sCd4_350500 = allocVector(REALSXP,60);
-	PROTECT(sCd4_500 = allocVector(REALSXP,60);
+	PROTECT(sAidsDeath_15plus = allocVector(REALSXP,60));
+	PROTECT(sPOP_AgeSex_2007 = allocVector(REALSXP,16));
+	PROTECT(sHIV_AgeSex_2007 = allocVector(REALSXP,16));
+	PROTECT(sPOP_AgeSex_2012 = allocVector(REALSXP,16));
+	PROTECT(sHIV_AgeSex_2012 = allocVector(REALSXP,16));
+	PROTECT(sCd4_200 = allocVector(REALSXP,60));
+	PROTECT(sCd4_200350 = allocVector(REALSXP,60));
+	PROTECT(sCd4_350500 = allocVector(REALSXP,60));
+	PROTECT(sCd4_500 = allocVector(REALSXP,60));
 
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
@@ -150,15 +150,15 @@ SEXP CallCascade(SEXP s_pop,
 	for(size_t i=0;i<60;i++) {
 		if(i<5)
 			pCARE[i] = theCARE[i];
-		if(i<20)
+		if(i<20) {
 			pDALY[i] = theDALY[i];
-		if(i<20)
 			pCOST[i] = theCOST[i];
+		}
 		if(i<16) {
-			pPOP_AgeSex_2007[i] = thePOP_AgeSex_2007[i]
-			pHIV_AgeSex_2007[i] = theHIV_AgeSex_2007[i]
-			pPOP_AgeSex_2012[i] = thePOP_AgeSex_2012[i]
-			pHIV_AgeSex_2012[i] = theHIV_AgeSex_2012[i]
+			pPOP_AgeSex_2007[i] = thePOP_AgeSex_2007[i];
+			pHIV_AgeSex_2007[i] = theHIV_AgeSex_2007[i];
+			pPOP_AgeSex_2012[i] = thePOP_AgeSex_2012[i];
+			pHIV_AgeSex_2012[i] = theHIV_AgeSex_2012[i];
 		}
 		pPOP_15to49[i] = thePOP_15to49[i];
 		pHIV_15to49[i] = theHIV_15to49[i];

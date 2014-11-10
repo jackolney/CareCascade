@@ -14,6 +14,7 @@ using namespace std;
 
 extern eventQ * theQ;
 
+extern double * theCARE;
 extern double * thePOP_15to49;
 extern double * theHIV_15to49;
 extern double * theART_15to49;
