@@ -20,6 +20,10 @@ extern double * theHIV_15to49;
 extern double * theART_15to49;
 extern double * thePOP_15plus;
 extern double * theAidsDeath_15plus;
+extern double * thePOP_AgeSex_2007;
+extern double * theHIV_AgeSex_2007;
+extern double * thePOP_AgeSex_2012;
+extern double * theHIV_AgeSex_2012;
 
 /////////////////////
 /////////////////////
@@ -117,6 +121,37 @@ void WriteAidsDeath(person * const thePerson)
 
 	if(thePerson->GetAge() > 15 * 365.25)
 		theAidsDeath_15plus[i] += thePerson->GetSeroStatus();
+}
+
+/////////////////////
+/////////////////////
+
+void Write2007(person * const thePerson)
+{
+	if(theQ->GetTime() > thePerson->GetBirthDay()) {
+		thePerson->SetAge(theQ->GetTime());
+		if(thePerson->GetAge() > 15 * 365.25 && thePerson->GetAge() <= 53 * 365.25) {
+			unsigned int ageCatMax [10] = {19,24,29,34,39,44,49,54,59,53};
+			unsigned int i = 0;
+			while(thePerson->GetAge() > ageCatMax[i] && i < 9)
+				i++;
+
+			if(thePerson->GetGender())
+				i += 10;
+			
+			thePOP_AgeSex_2007[i] += thePerson->Alive();
+			if(thePerson->Alive())
+				theHIV_AgeSex_2007[i] += thePerson->GetArtInitiationState();
+		}
+	}
+}
+
+/////////////////////
+/////////////////////
+
+void Write2012(person * const thePerson)
+{
+
 }
 
 /////////////////////

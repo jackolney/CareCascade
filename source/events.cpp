@@ -94,17 +94,17 @@ bool Death::CheckValid()
 
 void Death::Execute()
 {
+	UpdateAge(pPerson);
+	UpdateDaly(pPerson);
+	pPerson->Kill(GetTime(),hivRelated);
+	theTrans->UpdateVector(pPerson);
+	WriteCare(pPerson,GetTime());
 	if(hivRelated) {
 		D(cout << "Death executed (HIV-related)." << endl);
 		WriteAidsDeath(pPerson);
 	}
 	else
 		D(cout << "Death executed (Natural)." << endl);
-	UpdateAge(pPerson);
-	UpdateDaly(pPerson);
-	pPerson->Kill(GetTime(),hivRelated);
-	theTrans->UpdateVector(pPerson);
-	WriteCare(pPerson,GetTime());
 }
 
 /////////////////////

@@ -22,4 +22,8 @@ void WriteCare(person * const thePerson, const double theTime);
 
 void WriteAidsDeath(person * const thePerson);
 
+void Write2007(person * const thePerson);
+
+void Write2012(person * const thePerson);
+
 #endif /* defined(__priorityQ__outputUpdate__) */

@@ -69,6 +69,10 @@ void Output::Execute()
 	WritePop(pPerson);
 	WriteHiv(pPerson);
 	WriteArt(pPerson);
+	if(GetTime() == 13514.25)
+		Write2007(pPerson);
+	if(GetTime() == 15340.5)
+		Write2012(pPerson);
 	//WriteCd4(pPerson);
 }
 
@@ -85,8 +89,8 @@ void CreateOutputArray()
 	theART_15to49 = new double[60];
 	thePOP_15plus = new double[60];
 	theAidsDeath_15plus = new double[60];
-	thePOP_AgeSex_2007 = new double[16];
-	theHIV_AgeSex_2007 = new double[16];
+	thePOP_AgeSex_2007 = new double[20];
+	theHIV_AgeSex_2007 = new double[20];
 	thePOP_AgeSex_2012 = new double[16];
 	theHIV_AgeSex_2012 = new double[16];
 	theCd4_200 = new double[60];
@@ -97,13 +101,13 @@ void CreateOutputArray()
 	for(size_t i=0;i<60;i++) {
 		if(i<5)
 			theCARE[i] = 0;
-		if(i<20)
+		if(i<20) {
 			theDALY[i] = 0;
-		if(i<20)
 			theCOST[i] = 0;
-		if(i<16) {
 			thePOP_AgeSex_2007[i] = 0;
 			theHIV_AgeSex_2007[i] = 0;
+		}
+		if(i<16) {
 			thePOP_AgeSex_2012[i] = 0;
 			theHIV_AgeSex_2012[i] = 0;
 		}
