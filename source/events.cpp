@@ -94,8 +94,10 @@ bool Death::CheckValid()
 
 void Death::Execute()
 {
-	if(hivRelated)
+	if(hivRelated) {
 		D(cout << "Death executed (HIV-related)." << endl);
+		WriteAidsDeath(pPerson);
+	}
 	else
 		D(cout << "Death executed (Natural)." << endl);
 	UpdateAge(pPerson);

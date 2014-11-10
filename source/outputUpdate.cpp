@@ -19,6 +19,7 @@ extern double * thePOP_15to49;
 extern double * theHIV_15to49;
 extern double * theART_15to49;
 extern double * thePOP_15plus;
+extern double * theAidsDeath_15plus;
 
 /////////////////////
 /////////////////////
@@ -99,6 +100,23 @@ void WriteCare(person * const thePerson, const double theTime)
 			//ArtEarly
 		theCARE[4] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() > 1);
 	}
+}
+
+/////////////////////
+/////////////////////
+
+void WriteAidsDeath(person * const thePerson)
+{
+	double yr [60];
+	for(size_t i = 0; i<60; i++)
+		yr[i] = 365.25 + (i * 365.25);
+	
+	unsigned int i = 0;
+	while(theQ->GetTime() > yr[i] && i < 59)
+		i++;
+
+	if(thePerson->GetAge() > 15 * 365.25)
+		theAidsDeath_15plus[i] += thePerson->GetSeroStatus();
 }
 
 /////////////////////

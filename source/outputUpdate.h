@@ -20,4 +20,6 @@ void WriteArt(person * const thePerson);
 
 void WriteCare(person * const thePerson, const double theTime);
 
+void WriteAidsDeath(person * const thePerson);
+
 #endif /* defined(__priorityQ__outputUpdate__) */
