@@ -41,9 +41,4 @@ void CreateOutputArray();
 /////////////////////
 /////////////////////
 
-void WriteCare(person * const thePerson, const double theTime);
-
-/////////////////////
-/////////////////////
-
 #endif /* defined(__priorityQ__output__) */

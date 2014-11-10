@@ -18,4 +18,6 @@ void WriteHiv(person * const thePerson);
 
 void WriteArt(person * const thePerson);
 
+void WriteCare(person * const thePerson, const double theTime);
+
 #endif /* defined(__priorityQ__outputUpdate__) */

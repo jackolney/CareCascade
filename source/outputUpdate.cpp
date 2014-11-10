@@ -83,3 +83,22 @@ void WriteArt(person * const thePerson)
 
 /////////////////////
 /////////////////////
+
+void WriteCare(person * const thePerson, const double theTime)
+{
+	if(thePerson->GetHivDeath() && theTime >= 14610 && theTime < 21915) {
+			//NeverDiagnosed
+		theCARE[0] += !thePerson->GetDiagnosedState();
+			//DiagnosedButNeverInitiatedArt
+		theCARE[1] += (thePerson->GetDiagnosedState() && !thePerson->GetEverArt());
+			//ArtLate
+		theCARE[2] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() == 1);
+			//ArtButDiedOffArt
+		theCARE[3] += (thePerson->GetEverArt() && !thePerson->GetArtDeath());
+			//ArtEarly
+		theCARE[4] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() > 1);
+	}
+}
+
+/////////////////////
+/////////////////////

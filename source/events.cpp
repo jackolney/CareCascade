@@ -15,7 +15,7 @@
 #include "cascadeUpdate.h"
 #include "cohort.h"
 #include "impact.h"
-#include "output.h"
+#include "outputUpdate.h"
 #include "transmission.h"
 
 extern Transmission * theTrans;
