@@ -69,7 +69,6 @@ void Output::Execute()
 	WritePop(pPerson);
 	WriteHiv(pPerson);
 	WriteArt(pPerson);
-	//WriteAidsDeaths() in Kill();
 	//WriteCd4(pPerson);
 }
 
