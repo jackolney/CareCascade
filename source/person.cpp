@@ -65,7 +65,7 @@ everCd4TestResult(false),
 cd4TestResultCount(0),
 art(false),
 everArt(false),
-adherence(theRng->Sample(0.75)),
+adherence(theRng->Sample(0.75)), //EDIT
 cd4AtArt(0),
 hivDeath(false),
 artDeath(false),
