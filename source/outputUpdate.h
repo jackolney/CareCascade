@@ -30,4 +30,6 @@ void Write2014(person * const thePerson);
 
 void WriteCd4(person * const thePerson);
 
+void WriteWho(person * const thePerson);
+
 #endif /* defined(__priorityQ__outputUpdate__) */

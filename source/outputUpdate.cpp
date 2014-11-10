@@ -29,14 +29,22 @@ extern double * thePOP_AgeSex_2012;
 extern double * theHIV_AgeSex_2012;
 extern double * thePOP_AgeSex_2014;
 extern double * theHIV_AgeSex_2014;
-extern double * theCd4_200;
-extern double * theCd4_200350;
-extern double * theCd4_350500;
-extern double * theCd4_500;
-extern double * theCd4_200_Art;
-extern double * theCd4_200350_Art;
-extern double * theCd4_350500_Art;
-extern double * theCd4_500_Art;
+extern double * theCD4_200;
+extern double * theCD4_200350;
+extern double * theCD4_350500;
+extern double * theCD4_500;
+extern double * theCD4_200_Art;
+extern double * theCD4_200350_Art;
+extern double * theCD4_350500_Art;
+extern double * theCD4_500_Art;
+extern double * theWHO_1;
+extern double * theWHO_2;
+extern double * theWHO_3;
+extern double * theWHO_4;
+extern double * theWHO_1_Art;
+extern double * theWHO_2_Art;
+extern double * theWHO_3_Art;
+extern double * theWHO_4_Art;
 
 /////////////////////
 /////////////////////
@@ -228,31 +236,56 @@ void WriteCd4(person * const thePerson)
 	while(theQ->GetTime() > yr[i] && i < 59)
 		i++;
 
-	theCd4_200[i] = theCd4Counter->GetCd4VectorSize_1();
-	theCd4_200350[i] = theCd4Counter->GetCd4VectorSize_2();
-	theCd4_350500[i] = theCd4Counter->GetCd4VectorSize_3();
-	theCd4_500[i] = theCd4Counter->GetCd4VectorSize_4();
-
-	// if(theQ->GetTime() > thePerson->GetBirthDay()) {
-	// 	if(thePerson->GetCurrentCd4() == 1)
-	// 		theCd4_200[i] += thePerson->Alive();
-	// 	else if(thePerson->GetCurrentCd4() == 2)
-	// 		theCd4_200350[i] += thePerson->Alive();
-	// 	else if(thePerson->GetCurrentCd4() == 3)
-	// 		theCd4_350500[i] += thePerson->Alive();
-	// 	else if(thePerson->GetCurrentCd4() == 4)
-	// 		theCd4_500[i] += thePerson->Alive();
-	// }
+	theCD4_200[i] = theCd4Counter->GetCd4VectorSize_1();
+	theCD4_200350[i] = theCd4Counter->GetCd4VectorSize_2();
+	theCD4_350500[i] = theCd4Counter->GetCd4VectorSize_3();
+	theCD4_500[i] = theCd4Counter->GetCd4VectorSize_4();
 
 	if(theQ->GetTime() > thePerson->GetBirthDay() && thePerson->Alive()) {
 		if(thePerson->GetCurrentCd4() == 1)
-			theCd4_200_Art[i] += thePerson->GetArtInitiationState();
+			theCD4_200_Art[i] += thePerson->GetArtInitiationState();
 		else if(thePerson->GetCurrentCd4() == 2)
-			theCd4_200350_Art[i] += thePerson->GetArtInitiationState();
+			theCD4_200350_Art[i] += thePerson->GetArtInitiationState();
 		else if(thePerson->GetCurrentCd4() == 3)
-			theCd4_350500_Art[i] += thePerson->GetArtInitiationState();
+			theCD4_350500_Art[i] += thePerson->GetArtInitiationState();
 		else if(thePerson->GetCurrentCd4() == 4)
-			theCd4_500_Art[i] += thePerson->GetArtInitiationState();
+			theCD4_500_Art[i] += thePerson->GetArtInitiationState();
+	}
+}
+
+/////////////////////
+/////////////////////
+
+void WriteWho(person * const thePerson)
+{
+	double yr [60];
+	for(size_t i = 0; i<60; i++)
+		yr[i] = 365.25 + (i * 365.25);
+	
+	unsigned int i = 0;
+	while(theQ->GetTime() > yr[i] && i < 59)
+		i++;
+
+	if(theQ->GetTime() > thePerson->GetBirthDay()) {
+		if(thePerson->GetCurrentWho() == 1)
+			theWHO_1[i] += thePerson->Alive();
+		else if(thePerson->GetCurrentWho() == 2)
+			theWHO_2[i] += thePerson->Alive();
+		else if(thePerson->GetCurrentWho() == 3)
+			theWHO_3[i] += thePerson->Alive();
+		else if(thePerson->GetCurrentWho() == 4)
+			theWHO_4[i] += thePerson->Alive();
+	}
+
+	if(theQ->GetTime() > thePerson->GetBirthDay() && thePerson->Alive()) {
+		if(thePerson->GetCurrentWho() == 1)
+			theWHO_1_Art[i] += thePerson->GetArtInitiationState();
+		else if(thePerson->GetCurrentWho() == 2)
+			theWHO_2_Art[i] += thePerson->GetArtInitiationState();
+		else if(thePerson->GetCurrentWho() == 3)
+			theWHO_3_Art[i] += thePerson->GetArtInitiationState();
+		else if(thePerson->GetCurrentWho() == 4)
+			theWHO_4_Art[i] += thePerson->GetArtInitiationState();
 	}
 }
 

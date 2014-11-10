@@ -29,14 +29,22 @@ double * thePOP_AgeSex_2012;
 double * theHIV_AgeSex_2012;
 double * thePOP_AgeSex_2014;
 double * theHIV_AgeSex_2014;
-double * theCd4_200;
-double * theCd4_200350;
-double * theCd4_350500;
-double * theCd4_500;
-double * theCd4_200_Art;
-double * theCd4_200350_Art;
-double * theCd4_350500_Art;
-double * theCd4_500_Art;
+double * theCD4_200;
+double * theCD4_200350;
+double * theCD4_350500;
+double * theCD4_500;
+double * theCD4_200_Art;
+double * theCD4_200350_Art;
+double * theCD4_350500_Art;
+double * theCD4_500_Art;
+double * theWHO_1;
+double * theWHO_2;
+double * theWHO_3;
+double * theWHO_4;
+double * theWHO_1_Art;
+double * theWHO_2_Art;
+double * theWHO_3_Art;
+double * theWHO_4_Art;
 
 /////////////////////
 /////////////////////
@@ -77,6 +85,7 @@ void Output::Execute()
 	WriteHiv(pPerson);
 	WriteArt(pPerson);
 	WriteCd4(pPerson);
+	WriteWho(pPerson);
 	if(GetTime() == 13879.5)
 		Write2007(pPerson);
 	if(GetTime() == 15705.75)
@@ -105,14 +114,22 @@ void CreateOutputArray()
 	theHIV_AgeSex_2012 = new double[16];
 	thePOP_AgeSex_2014 = new double[10];
 	theHIV_AgeSex_2014 = new double[10];
-	theCd4_200 = new double[60];
-	theCd4_200350 = new double[60];
-	theCd4_350500 = new double[60];
-	theCd4_500 = new double[60];
-	theCd4_200_Art = new double[60];
-	theCd4_200350_Art = new double[60];
-	theCd4_350500_Art = new double[60];
-	theCd4_500_Art = new double[60];
+	theCD4_200 = new double[60];
+	theCD4_200350 = new double[60];
+	theCD4_350500 = new double[60];
+	theCD4_500 = new double[60];
+	theCD4_200_Art = new double[60];
+	theCD4_200350_Art = new double[60];
+	theCD4_350500_Art = new double[60];
+	theCD4_500_Art = new double[60];
+	theWHO_1 = new double[60];
+	theWHO_2 = new double[60];
+	theWHO_3 = new double[60];
+	theWHO_4 = new double[60];
+	theWHO_1_Art = new double[60];
+	theWHO_2_Art = new double[60];
+	theWHO_3_Art = new double[60];
+	theWHO_4_Art = new double[60];
 	
 	for(size_t i=0;i<60;i++) {
 		if(i<4)
@@ -138,14 +155,22 @@ void CreateOutputArray()
 		theART_15to49[i] = 0;
 		thePOP_15plus[i] = 0;
 		theAidsDeath_15plus[i] = 0;
-		theCd4_200[i] = 0;
-		theCd4_200350[i] = 0;
-		theCd4_350500[i] = 0;
-		theCd4_500[i] = 0;
-		theCd4_200_Art[i] = 0;
-		theCd4_200350_Art[i] = 0;
-		theCd4_350500_Art[i] = 0;
-		theCd4_500_Art[i] = 0;
+		theCD4_200[i] = 0;
+		theCD4_200350[i] = 0;
+		theCD4_350500[i] = 0;
+		theCD4_500[i] = 0;
+		theCD4_200_Art[i] = 0;
+		theCD4_200350_Art[i] = 0;
+		theCD4_350500_Art[i] = 0;
+		theCD4_500_Art[i] = 0;
+		theWHO_1[i] = 0;
+		theWHO_2[i] = 0;
+		theWHO_3[i] = 0;
+		theWHO_4[i] = 0;
+		theWHO_1_Art[i] = 0;
+		theWHO_2_Art[i] = 0;
+		theWHO_3_Art[i] = 0;
+		theWHO_4_Art[i] = 0;
 	}
 }
 

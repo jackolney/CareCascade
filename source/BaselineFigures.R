@@ -550,24 +550,24 @@ quartz.save("./baselineFigures/HivPrevFemale_Western_Kais2012.pdf",type='pdf')
 #CD4 distribution over time
 
 Cd4DistributionTotal <- matrix(0,8,60)
-Cd4DistributionTotal[1,] <- result$sCd4_200 - result$sCd4_200_Art
-Cd4DistributionTotal[2,] <- result$sCd4_200_Art
-Cd4DistributionTotal[3,] <- result$sCd4_200350 - result$sCd4_200350_Art
-Cd4DistributionTotal[4,] <- result$sCd4_200350_Art
-Cd4DistributionTotal[5,] <- result$sCd4_350500 - result$sCd4_350500_Art
-Cd4DistributionTotal[6,] <- result$sCd4_350500_Art
-Cd4DistributionTotal[7,] <- result$sCd4_500 - result$sCd4_500_Art
-Cd4DistributionTotal[8,] <- result$sCd4_500_Art
+Cd4DistributionTotal[1,] <- result$sCD4_200 - result$sCD4_200_Art
+Cd4DistributionTotal[2,] <- result$sCD4_200_Art
+Cd4DistributionTotal[3,] <- result$sCD4_200350 - result$sCD4_200350_Art
+Cd4DistributionTotal[4,] <- result$sCD4_200350_Art
+Cd4DistributionTotal[5,] <- result$sCD4_350500 - result$sCD4_350500_Art
+Cd4DistributionTotal[6,] <- result$sCD4_350500_Art
+Cd4DistributionTotal[7,] <- result$sCD4_500 - result$sCD4_500_Art
+Cd4DistributionTotal[8,] <- result$sCD4_500_Art
 
 Cd4DistributionProp <- matrix(0,8,60)
-Cd4DistributionProp[1,] <- (result$sCd4_200 - result$sCd4_200_Art) / colSums(Cd4DistributionTotal)
-Cd4DistributionProp[2,] <- result$sCd4_200_Art / colSums(Cd4DistributionTotal)
-Cd4DistributionProp[3,] <- (result$sCd4_200350 - result$sCd4_200350_Art) / colSums(Cd4DistributionTotal)
-Cd4DistributionProp[4,] <- result$sCd4_200350_Art / colSums(Cd4DistributionTotal)
-Cd4DistributionProp[5,] <- (result$sCd4_350500 - result$sCd4_350500_Art) / colSums(Cd4DistributionTotal)
-Cd4DistributionProp[6,] <- result$sCd4_350500_Art / colSums(Cd4DistributionTotal)
-Cd4DistributionProp[7,] <- (result$sCd4_500 - result$sCd4_500_Art) / colSums(Cd4DistributionTotal)
-Cd4DistributionProp[8,] <- result$sCd4_500_Art / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[1,] <- (result$sCD4_200 - result$sCD4_200_Art) / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[2,] <- result$sCD4_200_Art / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[3,] <- (result$sCD4_200350 - result$sCD4_200350_Art) / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[4,] <- result$sCD4_200350_Art / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[5,] <- (result$sCD4_350500 - result$sCD4_350500_Art) / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[6,] <- result$sCD4_350500_Art / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[7,] <- (result$sCD4_500 - result$sCD4_500_Art) / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[8,] <- result$sCD4_500_Art / colSums(Cd4DistributionTotal)
 
 require(RColorBrewer)
 m <- brewer.pal(11,"RdYlGn")
@@ -585,6 +585,46 @@ barplot(Cd4DistributionProp,
 axis(1,seq(4.5,59.5,5),seq(1975,2030,5))
 axis(2,seq(0,1,0.1),las=1)
 quartz.save("./baselineFigures/Cd4Distribution.pdf",type='pdf')
+
+####################
+#WHO distribution over time
+
+WHODistributionTotal <- matrix(0,8,60)
+WHODistributionTotal[1,] <- result$sWHO_4 - result$sWHO_4_Art
+WHODistributionTotal[2,] <- result$sWHO_4_Art
+WHODistributionTotal[3,] <- result$sWHO_3 - result$sWHO_3_Art
+WHODistributionTotal[4,] <- result$sWHO_3_Art
+WHODistributionTotal[5,] <- result$sWHO_2 - result$sWHO_2_Art
+WHODistributionTotal[6,] <- result$sWHO_2_Art
+WHODistributionTotal[7,] <- result$sWHO_1 - result$sWHO_1_Art
+WHODistributionTotal[8,] <- result$sWHO_1_Art
+
+WHODistributionProp <- matrix(0,8,60)
+WHODistributionProp[1,] <- (result$sWHO_4 - result$sWHO_4_Art) / colSums(WHODistributionTotal)
+WHODistributionProp[2,] <- result$sWHO_4_Art / colSums(WHODistributionTotal)
+WHODistributionProp[3,] <- (result$sWHO_3 - result$sWHO_3_Art) / colSums(WHODistributionTotal)
+WHODistributionProp[4,] <- result$sWHO_3_Art / colSums(WHODistributionTotal)
+WHODistributionProp[5,] <- (result$sWHO_2 - result$sWHO_2_Art) / colSums(WHODistributionTotal)
+WHODistributionProp[6,] <- result$sWHO_2_Art / colSums(WHODistributionTotal)
+WHODistributionProp[7,] <- (result$sWHO_1 - result$sWHO_1_Art) / colSums(WHODistributionTotal)
+WHODistributionProp[8,] <- result$sWHO_1_Art / colSums(WHODistributionTotal)
+
+require(RColorBrewer)
+m <- brewer.pal(11,"RdYlGn")
+
+par(family="Avenir Next Bold")
+barplot(WHODistributionProp,
+	space=0,
+	border=1,
+	col=c(m[1],m[11],m[2],m[10],m[3],m[9],m[4],m[8]),
+	xlab="Year",
+	main="WHO distribution among HIV-positive individuals over time",
+	ylab="Proportion",
+	yaxt='n',
+	xlim=c(5,60))
+axis(1,seq(4.5,59.5,5),seq(1975,2030,5))
+axis(2,seq(0,1,0.1),las=1)
+quartz.save("./baselineFigures/WHODistribution.pdf",type='pdf')
 
 ####################
 #Cd4 distrubition among people not on ART in 2007
