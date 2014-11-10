@@ -9,10 +9,12 @@
 #include <iostream>
 #include "outputUpdate.h"
 #include "eventQ.h"
+#include "cd4Counter.h"
 
 using namespace std;
 
 extern eventQ * theQ;
+extern Cd4Counter * theCd4Counter;
 
 extern double * theCARE;
 extern double * thePOP_15to49;
@@ -24,6 +26,10 @@ extern double * thePOP_AgeSex_2007;
 extern double * theHIV_AgeSex_2007;
 extern double * thePOP_AgeSex_2012;
 extern double * theHIV_AgeSex_2012;
+extern double * theCd4_200;
+extern double * theCd4_200350;
+extern double * theCd4_350500;
+extern double * theCd4_500;
 
 /////////////////////
 /////////////////////
@@ -167,6 +173,25 @@ void Write2012(person * const thePerson)
 				theHIV_AgeSex_2012[i] += thePerson->GetSeroStatus();
 		}
 	}
+}
+
+/////////////////////
+/////////////////////
+
+void WriteCd4(person * const thePerson)
+{
+	double yr [60];
+	for(size_t i = 0; i<60; i++)
+		yr[i] = 365.25 + (i * 365.25);
+	
+	unsigned int i = 0;
+	while(theQ->GetTime() > yr[i] && i < 59)
+		i++;
+
+	theCd4_200[i] = theCd4Counter->GetCd4VectorSize_1();
+	theCd4_200350[i] = theCd4Counter->GetCd4VectorSize_2();
+	theCd4_350500[i] = theCd4Counter->GetCd4VectorSize_3();
+	theCd4_500[i] = theCd4Counter->GetCd4VectorSize_4();
 }
 
 /////////////////////

@@ -69,11 +69,11 @@ void Output::Execute()
 	WritePop(pPerson);
 	WriteHiv(pPerson);
 	WriteArt(pPerson);
+	WriteCd4(pPerson);
 	if(GetTime() == 13514.25)
 		Write2007(pPerson);
 	if(GetTime() == 15340.5)
 		Write2012(pPerson);
-	//WriteCd4(pPerson);
 }
 
 /////////////////////
