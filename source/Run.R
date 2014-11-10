@@ -569,17 +569,25 @@ legend("topright",
 ####################
 #CD4 distribution over time
 
-Cd4DistributionTotal <- matrix(0,4,60)
-Cd4DistributionTotal[1,] <- result$sCd4_200
-Cd4DistributionTotal[2,] <- result$sCd4_200350
-Cd4DistributionTotal[3,] <- result$sCd4_350500
-Cd4DistributionTotal[4,] <- result$sCd4_500
+Cd4DistributionTotal <- matrix(0,8,60)
+Cd4DistributionTotal[1,] <- result$sCd4_200 - result$sCd4_200_Art
+Cd4DistributionTotal[2,] <- result$sCd4_200_Art
+Cd4DistributionTotal[3,] <- result$sCd4_200350 - result$sCd4_200350_Art
+Cd4DistributionTotal[4,] <- result$sCd4_200350_Art
+Cd4DistributionTotal[5,] <- result$sCd4_350500 - result$sCd4_350500_Art
+Cd4DistributionTotal[6,] <- result$sCd4_350500_Art
+Cd4DistributionTotal[7,] <- result$sCd4_500 - result$sCd4_500_Art
+Cd4DistributionTotal[8,] <- result$sCd4_500_Art
 
-Cd4DistributionProp <- matrix(0,4,60)
-Cd4DistributionProp[1,] <- result$sCd4_200 / colSums(Cd4DistributionTotal)
-Cd4DistributionProp[2,] <- result$sCd4_200350 / colSums(Cd4DistributionTotal)
-Cd4DistributionProp[3,] <- result$sCd4_350500 / colSums(Cd4DistributionTotal)
-Cd4DistributionProp[4,] <- result$sCd4_500 / colSums(Cd4DistributionTotal)
+Cd4DistributionProp <- matrix(0,8,60)
+Cd4DistributionProp[1,] <- (result$sCd4_200 - result$sCd4_200_Art) / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[2,] <- result$sCd4_200_Art / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[3,] <- (result$sCd4_200350 - result$sCd4_200350_Art) / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[4,] <- result$sCd4_200350_Art / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[5,] <- (result$sCd4_350500 - result$sCd4_350500_Art) / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[6,] <- result$sCd4_350500_Art / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[7,] <- (result$sCd4_500 - result$sCd4_500_Art) / colSums(Cd4DistributionTotal)
+Cd4DistributionProp[8,] <- result$sCd4_500_Art / colSums(Cd4DistributionTotal)
 
 require(RColorBrewer)
 m <- brewer.pal(11,"RdYlGn")
@@ -588,7 +596,7 @@ par(family="Avenir Next Bold")
 barplot(Cd4DistributionProp,
 	space=0,
 	border=1,
-	col=c(m[1:4]),
+	col=c(m[1],m[11],m[2],m[10],m[3],m[9],m[4],m[8]),
 	xlab="Year",
 	main="CD4 distribution among HIV-positive individuals over time",
 	ylab="Proportion",
