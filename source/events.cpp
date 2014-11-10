@@ -17,8 +17,10 @@
 #include "impact.h"
 #include "outputUpdate.h"
 #include "transmission.h"
+#include "cd4Counter.h"
 
 extern Transmission * theTrans;
+extern Cd4Counter * theCd4Counter;
 
 using namespace std;
 
@@ -165,6 +167,7 @@ void Cd4Decline::Execute()
 	ScheduleCd4Update(pPerson);
 	pPerson->AssignHivDeathDate();
 	theTrans->UpdateVector(pPerson);
+	theCd4Counter->UpdateVector(pPerson);
 }
 
 /////////////////////
@@ -199,6 +202,7 @@ void Cd4Recover::Execute()
 	ScheduleCd4Update(pPerson);
 	pPerson->AssignHivDeathDate();
 	theTrans->UpdateVector(pPerson);
+	theCd4Counter->UpdateVector(pPerson);
 }
 
 /////////////////////
