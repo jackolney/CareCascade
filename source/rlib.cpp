@@ -78,10 +78,10 @@ SEXP CallCascade(SEXP s_pop,
 				 SEXP s_Vct, 
 				 SEXP s_HbctPocCd4, 
 				 SEXP s_Linkage,
+				 SEXP s_VctPocCd4,
 		 		 SEXP s_PreOutreach, 
 		 		 SEXP s_ImprovedCare, 
-		 		 SEXP s_PocCd4, 
-		 		 SEXP s_VctPocCd4, 
+		 		 SEXP s_PocCd4,  
 		 		 SEXP s_ArtOutreach,
 		 		 SEXP s_ImmediateArt, 
 		 		 SEXP s_UniversalTestAndTreat, 
@@ -92,10 +92,10 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(s_Vct = coerceVector(s_Vct, INTSXP)); 
 	PROTECT(s_HbctPocCd4 = coerceVector(s_HbctPocCd4, INTSXP)); 
 	PROTECT(s_Linkage = coerceVector(s_Linkage, INTSXP));
+	PROTECT(s_VctPocCd4 = coerceVector(s_VctPocCd4, INTSXP));
 	PROTECT(s_PreOutreach = coerceVector(s_PreOutreach, INTSXP)); 
 	PROTECT(s_ImprovedCare = coerceVector(s_ImprovedCare, INTSXP)); 
-	PROTECT(s_PocCd4 = coerceVector(s_PocCd4, INTSXP)); 
-	PROTECT(s_VctPocCd4 = coerceVector(s_VctPocCd4, INTSXP)); 
+	PROTECT(s_PocCd4 = coerceVector(s_PocCd4, INTSXP));  
 	PROTECT(s_ArtOutreach = coerceVector(s_ArtOutreach, INTSXP));
 	PROTECT(s_ImmediateArt = coerceVector(s_ImmediateArt, INTSXP)); 
 	PROTECT(s_UniversalTestAndTreat = coerceVector(s_UniversalTestAndTreat, INTSXP)); 
@@ -106,10 +106,10 @@ SEXP CallCascade(SEXP s_pop,
 	p_Vct = INTEGER(s_Vct);
 	p_HbctPocCd4 = INTEGER(s_HbctPocCd4);
 	p_Linkage = INTEGER(s_Linkage);
+	p_VctPocCd4 = INTEGER(s_VctPocCd4);
 	p_PreOutreach = INTEGER(s_PreOutreach);
 	p_ImprovedCare = INTEGER(s_ImprovedCare);
 	p_PocCd4 = INTEGER(s_PocCd4);
-	p_VctPocCd4 = INTEGER(s_VctPocCd4);
 	p_ArtOutreach = INTEGER(s_ArtOutreach);
 	p_ImmediateArt = INTEGER(s_ImmediateArt);
 	p_UniversalTestAndTreat = INTEGER(s_UniversalTestAndTreat);
