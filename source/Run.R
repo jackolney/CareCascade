@@ -4,7 +4,7 @@ dyn.load("main.so")
 
 
 system.time(
-result <- .Call("CallCascade",1, #Pop;
+result <- .Call("CallCascade",100, #Pop;
 						      0,  #Hbct; 
 						      0,  #Vct; 
 						      0,  #HbctPocCd4; 

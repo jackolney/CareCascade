@@ -143,8 +143,8 @@ void Write2007(person * const thePerson)
 {
 	if(theQ->GetTime() > thePerson->GetBirthDay()) {
 		thePerson->SetAge(theQ->GetTime());
-		if(thePerson->GetAge() > 15 * 365.25 && thePerson->GetAge() <= 53 * 365.25) {
-			unsigned int ageCatMax [10] = {19,24,29,34,39,44,49,54,59,53};
+		if(thePerson->GetAge() > 15 * 365.25 && thePerson->GetAge() <= 64 * 365.25) {
+			unsigned int ageCatMax [10] = {19,24,29,34,39,44,49,54,59,64};
 			unsigned int i = 0;
 			while(thePerson->GetAge() / 365.25 > ageCatMax[i] && i < 9)
 				i++;

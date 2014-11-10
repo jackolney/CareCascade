@@ -104,6 +104,7 @@ void Death::Execute()
 	if(hivRelated) {
 		D(cout << "Death executed (HIV-related)." << endl);
 		WriteAidsDeath(pPerson);
+		cout << GetTime() << endl;
 	}
 	else
 		D(cout << "Death executed (Natural)." << endl);
