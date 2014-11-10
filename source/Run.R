@@ -511,7 +511,6 @@ legend("topright",
 #FEMALE#
 ########
 
-
 par(family="Avenir Next Bold")
 plot((result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[1:8],
 	type='b',
@@ -604,3 +603,125 @@ barplot(Cd4DistributionProp,
 	xlim=c(5,60))
 axis(1,seq(4.5,59.5,5),seq(1975,2030,5))
 axis(2,seq(0,1,0.1),las=1)
+
+####################
+#Cd4 distrubition among people not on ART in 2007
+Kais2007_Cd4 <- read.csv("/Users/jack/git/CareCascade/estimates/Kais2007_Cd4.csv",header=TRUE)
+
+Model_Cd4_1 <- result$sPOP_NoArtCd4_2007[1] / sum(result$sPOP_NoArtCd4_2007)
+Model_Cd4_2 <- result$sPOP_NoArtCd4_2007[2] / sum(result$sPOP_NoArtCd4_2007)
+Model_Cd4_3 <- result$sPOP_NoArtCd4_2007[3] / sum(result$sPOP_NoArtCd4_2007)
+Model_Cd4_4 <- result$sPOP_NoArtCd4_2007[4] / sum(result$sPOP_NoArtCd4_2007)
+Model_Cd4 <- c(Model_Cd4_1,Model_Cd4_2,Model_Cd4_3,Model_Cd4_4)
+
+Cd4_Bar <- matrix(0,4,2)
+Cd4_Bar[,1] <- Model_Cd4
+Cd4_Bar[,2] <- Kais2007_Cd4[,2]
+
+graphics.off()
+quartz.options(w=10,h=12)
+
+par(family="Helvetica Neue Bold")
+barplot(Cd4_Bar,
+	border=NA,
+	width=c(1,1),
+	main="CD4 distribution among individuals not on ART in 2007",
+	yaxt='n',
+	ylab="Proportion",
+	cex.main=1.5,
+	cex.lab=1.2,
+	ylim=c(0,1),
+	col=m)
+axis(2,seq(0,1,0.1),las=1,cex.axis=1.2)
+mtext("Model 2007",1,at=0.7,1,cex=1.5)
+mtext("KAIS 2007",1,at=1.9,1,cex=1.5)
+
+####################
+#AMPATH Prevalence in 2014
+Ampath2014 <- read.csv("/Users/jack/git/CareCascade/estimates/Ampath2014_PrevByAgeSex.csv",header=TRUE)
+
+######
+#MALE#
+######
+
+par(family="Avenir Next Bold")
+plot((result$sHIV_AgeSex_2014 / result$sPOP_AgeSex_2014)[6:10],
+	type='b',
+	lwd=3,
+	main="HIV prevalence among Men on 22/05/2014",
+	xlab="Age (years)",
+	ylab="HIV prevalence (%)",
+	xaxt='n',
+	cex=2,
+	cex.main=1.5,
+	cex.lab=1.5,
+	yaxt='n',
+	col=p[1],
+	ylim=c(0,0.24))
+lines(Ampath2014$male,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+axis(1,seq(1,5,1),
+	c("0-14",
+		"14-21",
+		"21-29",
+		"29-46",
+		">46"),
+	cex.axis=1.5)
+axis(2,seq(0,0.24,0.02),seq(0,24,2),las=1,cex.axis=1.5)
+legend("topright",
+	c("Model 22/05/2014 - Males","AMPATH 22/05/2014 - Males"),
+	fill=p[1:2],
+	border=NA,
+	box.lty=0,
+	cex=1.5)
+
+lines(Ampath2014$male,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+
+########
+#FEMALE#
+########
+
+par(family="Avenir Next Bold")
+plot((result$sHIV_AgeSex_2014 / result$sPOP_AgeSex_2014)[1:5],
+	type='b',
+	lwd=3,
+	main="HIV prevalence among Women on 22/05/2014",
+	xlab="Age (years)",
+	ylab="HIV prevalence (%)",
+	xaxt='n',
+	cex=2,
+	cex.main=1.5,
+	cex.lab=1.5,
+	yaxt='n',
+	col=p[1],
+	ylim=c(0,0.24))
+lines(Ampath2014$female,
+	type='b',
+	col=p[2],
+	cex=2,
+	lty=1,
+	lwd=3)
+
+axis(1,seq(1,5,1),
+	c("0-14",
+		"14-21",
+		"21-29",
+		"29-46",
+		">46"),
+	cex.axis=1.5)
+axis(2,seq(0,0.24,0.02),seq(0,24,2),las=1,cex.axis=1.5)
+legend("topright",
+	c("Model 22/05/2014 - Females","AMPATH 22/05/2014 - Females"),
+	fill=p[1:2],
+	border=NA,
+	box.lty=0,
+	cex=1.5)

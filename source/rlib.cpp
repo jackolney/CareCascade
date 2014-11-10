@@ -33,8 +33,11 @@ extern double * thePOP_15plus;
 extern double * theAidsDeath_15plus;
 extern double * thePOP_AgeSex_2007;
 extern double * theHIV_AgeSex_2007;
+extern double * thePOP_NoArtCd4_2007;
 extern double * thePOP_AgeSex_2012;
 extern double * theHIV_AgeSex_2012;
+extern double * thePOP_AgeSex_2014;
+extern double * theHIV_AgeSex_2014;
 extern double * theCd4_200;
 extern double * theCd4_200350;
 extern double * theCd4_350500;
@@ -115,8 +118,8 @@ SEXP CallCascade(SEXP s_pop,
 
 	/* OUTPUTS */
 	SEXP sOUT, sCARE, sDALY, sCOST, sPOP_15to49, sHIV_15to49, sART_15to49, sPOP_15plus, sAidsDeath_15plus,
-	sPOP_AgeSex_2007, sHIV_AgeSex_2007, sPOP_AgeSex_2012, sHIV_AgeSex_2012, sCd4_200, sCd4_200350, sCd4_350500, sCd4_500,
-	sCd4_200_Art, sCd4_200350_Art, sCd4_350500_Art, sCd4_500_Art, sOUTNAMES;
+	sPOP_AgeSex_2007, sHIV_AgeSex_2007, sPOP_NoArtCd4_2007, sPOP_AgeSex_2012, sHIV_AgeSex_2012, sPOP_AgeSex_2014, sHIV_AgeSex_2014,
+	sCd4_200, sCd4_200350, sCd4_350500, sCd4_500, sCd4_200_Art, sCd4_200350_Art, sCd4_350500_Art, sCd4_500_Art, sOUTNAMES;
 
 	PROTECT(sCARE = allocVector(REALSXP,5));
 	PROTECT(sDALY = allocVector(REALSXP,20));
@@ -128,8 +131,11 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sAidsDeath_15plus = allocVector(REALSXP,60));
 	PROTECT(sPOP_AgeSex_2007 = allocVector(REALSXP,20));
 	PROTECT(sHIV_AgeSex_2007 = allocVector(REALSXP,20));
+	PROTECT(sPOP_NoArtCd4_2007 = allocVector(REALSXP,4));
 	PROTECT(sPOP_AgeSex_2012 = allocVector(REALSXP,16));
 	PROTECT(sHIV_AgeSex_2012 = allocVector(REALSXP,16));
+	PROTECT(sPOP_AgeSex_2014 = allocVector(REALSXP,10));
+	PROTECT(sHIV_AgeSex_2014 = allocVector(REALSXP,10));
 	PROTECT(sCd4_200 = allocVector(REALSXP,60));
 	PROTECT(sCd4_200350 = allocVector(REALSXP,60));
 	PROTECT(sCd4_350500 = allocVector(REALSXP,60));
@@ -149,8 +155,11 @@ SEXP CallCascade(SEXP s_pop,
 	double * pAidsDeath_15plus = REAL(sAidsDeath_15plus);
 	double * pPOP_AgeSex_2007 = REAL(sPOP_AgeSex_2007);
 	double * pHIV_AgeSex_2007 = REAL(sHIV_AgeSex_2007);
+	double * pPOP_NoArtCd4_2007 = REAL(sPOP_NoArtCd4_2007);
 	double * pPOP_AgeSex_2012 = REAL(sPOP_AgeSex_2012);
 	double * pHIV_AgeSex_2012 = REAL(sHIV_AgeSex_2012);
+	double * pPOP_AgeSex_2014 = REAL(sPOP_AgeSex_2014);
+	double * pHIV_AgeSex_2014 = REAL(sHIV_AgeSex_2014);
 	double * pCd4_200 = REAL(sCd4_200);
 	double * pCd4_200350 = REAL(sCd4_200350);
 	double * pCd4_350500 = REAL(sCd4_350500);
@@ -161,8 +170,14 @@ SEXP CallCascade(SEXP s_pop,
 	double * pCd4_500_Art = REAL(sCd4_500_Art);
 
 	for(size_t i=0;i<60;i++) {
+		if(i<4)
+			pPOP_NoArtCd4_2007[i] = thePOP_NoArtCd4_2007[i];
 		if(i<5)
 			pCARE[i] = theCARE[i];
+		if(i<10) {
+			pPOP_AgeSex_2014[i] = thePOP_AgeSex_2014[i];
+			pHIV_AgeSex_2014[i] = theHIV_AgeSex_2014[i];
+		}
 		if(i<20) {
 			pDALY[i] = theDALY[i];
 			pCOST[i] = theCOST[i];
@@ -188,7 +203,7 @@ SEXP CallCascade(SEXP s_pop,
 		pCd4_500_Art[i] = theCd4_500_Art[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,20));
+	PROTECT(sOUT = allocVector(VECSXP,23));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
@@ -199,18 +214,21 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,7,sAidsDeath_15plus);
 	SET_VECTOR_ELT(sOUT,8,sPOP_AgeSex_2007);
 	SET_VECTOR_ELT(sOUT,9,sHIV_AgeSex_2007);
-	SET_VECTOR_ELT(sOUT,10,sPOP_AgeSex_2012);
-	SET_VECTOR_ELT(sOUT,11,sHIV_AgeSex_2012);
-	SET_VECTOR_ELT(sOUT,12,sCd4_200);
-	SET_VECTOR_ELT(sOUT,13,sCd4_200350);
-	SET_VECTOR_ELT(sOUT,14,sCd4_350500);
-	SET_VECTOR_ELT(sOUT,15,sCd4_500);
-	SET_VECTOR_ELT(sOUT,16,sCd4_200_Art);
-	SET_VECTOR_ELT(sOUT,17,sCd4_200350_Art);
-	SET_VECTOR_ELT(sOUT,18,sCd4_350500_Art);
-	SET_VECTOR_ELT(sOUT,19,sCd4_500_Art);
+	SET_VECTOR_ELT(sOUT,10,sPOP_NoArtCd4_2007);
+	SET_VECTOR_ELT(sOUT,11,sPOP_AgeSex_2012);
+	SET_VECTOR_ELT(sOUT,12,sHIV_AgeSex_2012);
+	SET_VECTOR_ELT(sOUT,13,sPOP_AgeSex_2014);
+	SET_VECTOR_ELT(sOUT,14,sHIV_AgeSex_2014);
+	SET_VECTOR_ELT(sOUT,15,sCd4_200);
+	SET_VECTOR_ELT(sOUT,16,sCd4_200350);
+	SET_VECTOR_ELT(sOUT,17,sCd4_350500);
+	SET_VECTOR_ELT(sOUT,18,sCd4_500);
+	SET_VECTOR_ELT(sOUT,19,sCd4_200_Art);
+	SET_VECTOR_ELT(sOUT,20,sCd4_200350_Art);
+	SET_VECTOR_ELT(sOUT,21,sCd4_350500_Art);
+	SET_VECTOR_ELT(sOUT,22,sCd4_500_Art);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,20));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,23));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
@@ -221,19 +239,22 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,7,mkChar("sAidsDeath_15plus"));
 	SET_VECTOR_ELT(sOUTNAMES,8,mkChar("sPOP_AgeSex_2007"));
 	SET_VECTOR_ELT(sOUTNAMES,9,mkChar("sHIV_AgeSex_2007"));
-	SET_VECTOR_ELT(sOUTNAMES,10,mkChar("sPOP_AgeSex_2012"));
-	SET_VECTOR_ELT(sOUTNAMES,11,mkChar("sHIV_AgeSex_2012"));
-	SET_VECTOR_ELT(sOUTNAMES,12,mkChar("sCd4_200"));
-	SET_VECTOR_ELT(sOUTNAMES,13,mkChar("sCd4_200350"));
-	SET_VECTOR_ELT(sOUTNAMES,14,mkChar("sCd4_350500"));
-	SET_VECTOR_ELT(sOUTNAMES,15,mkChar("sCd4_500"));
-	SET_VECTOR_ELT(sOUTNAMES,16,mkChar("sCd4_200_Art"));
-	SET_VECTOR_ELT(sOUTNAMES,17,mkChar("sCd4_200350_Art"));
-	SET_VECTOR_ELT(sOUTNAMES,18,mkChar("sCd4_350500_Art"));
-	SET_VECTOR_ELT(sOUTNAMES,19,mkChar("sCd4_500_Art"));
+	SET_VECTOR_ELT(sOUTNAMES,10,mkChar("sPOP_NoArtCd4_2007"));
+	SET_VECTOR_ELT(sOUTNAMES,11,mkChar("sPOP_AgeSex_2012"));
+	SET_VECTOR_ELT(sOUTNAMES,12,mkChar("sHIV_AgeSex_2012"));
+	SET_VECTOR_ELT(sOUTNAMES,13,mkChar("sPOP_AgeSex_2014"));
+	SET_VECTOR_ELT(sOUTNAMES,14,mkChar("sHIV_AgeSex_2014"));
+	SET_VECTOR_ELT(sOUTNAMES,15,mkChar("sCd4_200"));
+	SET_VECTOR_ELT(sOUTNAMES,16,mkChar("sCd4_200350"));
+	SET_VECTOR_ELT(sOUTNAMES,17,mkChar("sCd4_350500"));
+	SET_VECTOR_ELT(sOUTNAMES,18,mkChar("sCd4_500"));
+	SET_VECTOR_ELT(sOUTNAMES,19,mkChar("sCd4_200_Art"));
+	SET_VECTOR_ELT(sOUTNAMES,20,mkChar("sCd4_200350_Art"));
+	SET_VECTOR_ELT(sOUTNAMES,21,mkChar("sCd4_350500_Art"));
+	SET_VECTOR_ELT(sOUTNAMES,22,mkChar("sCd4_500_Art"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(35);
+	UNPROTECT(38);
 	return(sOUT);
 	}
 

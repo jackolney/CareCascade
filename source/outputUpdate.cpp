@@ -24,8 +24,11 @@ extern double * thePOP_15plus;
 extern double * theAidsDeath_15plus;
 extern double * thePOP_AgeSex_2007;
 extern double * theHIV_AgeSex_2007;
+extern double * thePOP_NoArtCd4_2007;
 extern double * thePOP_AgeSex_2012;
 extern double * theHIV_AgeSex_2012;
+extern double * thePOP_AgeSex_2014;
+extern double * theHIV_AgeSex_2014;
 extern double * theCd4_200;
 extern double * theCd4_200350;
 extern double * theCd4_350500;
@@ -150,8 +153,19 @@ void Write2007(person * const thePerson)
 				i += 10;
 			
 			thePOP_AgeSex_2007[i] += thePerson->Alive();
-			if(thePerson->Alive())
+			if(thePerson->Alive()) {
 				theHIV_AgeSex_2007[i] += thePerson->GetSeroStatus();
+				if(!thePerson->GetArtInitiationState()) {
+					if(thePerson->GetCurrentCd4() == 1)
+						thePOP_NoArtCd4_2007[0] += 1;
+					else if(thePerson->GetCurrentCd4() == 2)
+						thePOP_NoArtCd4_2007[1] += 1;
+					else if(thePerson->GetCurrentCd4() == 3)
+						thePOP_NoArtCd4_2007[2] += 1;
+					else if(thePerson->GetCurrentCd4() == 4)
+						thePOP_NoArtCd4_2007[3] += 1;
+				}
+			}
 		}
 	}
 }
@@ -170,12 +184,34 @@ void Write2012(person * const thePerson)
 				i++;
 
 			if(thePerson->GetGender())
-				i += 10;
+				i += 8;
 			
 			thePOP_AgeSex_2012[i] += thePerson->Alive();
 			if(thePerson->Alive())
 				theHIV_AgeSex_2012[i] += thePerson->GetSeroStatus();
 		}
+	}
+}
+
+/////////////////////
+/////////////////////
+
+void Write2014(person * const thePerson)
+{
+	if(theQ->GetTime() > thePerson->GetBirthDay()) {
+		thePerson->SetAge(theQ->GetTime());
+
+		unsigned int ageCatMax [5] = {14,21,29,46,200};
+		unsigned int i = 0;
+		while(thePerson->GetAge() / 365.25 > ageCatMax[i] && i < 4)
+			i++;
+
+		if(thePerson->GetGender())
+			i += 5;
+		
+		thePOP_AgeSex_2014[i] += thePerson->Alive();
+		if(thePerson->Alive())
+			theHIV_AgeSex_2014[i] += thePerson->GetSeroStatus();
 	}
 }
 
