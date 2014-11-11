@@ -41,7 +41,7 @@ cAdherence 				<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0)
 cImmediateArt 			<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0)
 cUniversalTestAndTreat 	<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2)
 
-GlobalPopSize = 1
+GlobalPopSize = 100
 
 #Intervention Loop
 for(i in 1:length(Interventions)) {
@@ -49,4 +49,12 @@ for(i in 1:length(Interventions)) {
 	assign(Interventions[i],Output)
 }
 
+<<<<<<< HEAD
 get(Interventions[1])
+=======
+# get(Interventions[1])
+save.image(file="currentWorkspace.RData")
+
+load("currentWorkspace.RData")
+ls()
+>>>>>>> dff6746e273195cc13fcad172607e7416e344b96
