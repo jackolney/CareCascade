@@ -1,6 +1,6 @@
 #Test Script for CareCascade
 setwd("/Users/jack/git/CareCascade")
-source("./source/Cascade.R")
+source("./rScript/Cascade.R")
 dyn.load("./source/main.so")
 
 Interventions <- 
@@ -41,7 +41,7 @@ cAdherence 				<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0)
 cImmediateArt 			<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0)
 cUniversalTestAndTreat 	<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2)
 
-GlobalPopSize = 1
+GlobalPopSize = 100
 
 #Intervention Loop
 for(i in 1:length(Interventions)) {
@@ -50,3 +50,7 @@ for(i in 1:length(Interventions)) {
 }
 
 # get(Interventions[1])
+save.image(file="currentWorkspace.RData")
+
+load("currentWorkspace.RData")
+ls()
