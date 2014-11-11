@@ -1,6 +1,6 @@
 #Test Script for CareCascade
 setwd("/Users/jack/git/CareCascade")
-source("./source/Cascade.R")
+source("./rScript/Cascade.R")
 dyn.load("./source/main.so")
 
 Interventions <- 
@@ -49,4 +49,4 @@ for(i in 1:length(Interventions)) {
 	assign(Interventions[i],Output)
 }
 
-# get(Interventions[1])
+get(Interventions[1])
