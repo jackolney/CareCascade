@@ -1,7 +1,7 @@
 #Accessing the files on fi--san02.dide.local
 #Results from sweep_ONE (run_1)
 setwd("/Volumes/jjo11/cascade/post_paris/18th_September/")
-
+#Don't actually use the below.
 
 graphics.off()
 quartz.options(w=18,h=12)
