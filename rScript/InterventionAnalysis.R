@@ -49,12 +49,48 @@ for(i in 1:length(Interventions)) {
 	assign(Interventions[i],Output)
 }
 
-<<<<<<< HEAD
+
 get(Interventions[1])
-=======
+
 # get(Interventions[1])
 save.image(file="currentWorkspace.RData")
 
 load("currentWorkspace.RData")
-ls()
->>>>>>> dff6746e273195cc13fcad172607e7416e344b96
+
+
+
+bDALY <- sum(Baseline$sDALY)
+
+resultDALY <- matrix(0,2,12)
+resultDALY[1,1] <- bDaly - sum(Hbct_1$sDALY)
+resultDALY[2,1] <- bDaly - sum(Hbct_2$sDALY)
+resultDALY[1,2] <- bDALY - sum(Vct_1$sDALY)
+resultDALY[2,2] <- bDALY - sum(Vct_2$sDALY)
+resultDALY[1,3] <- bDALY - sum(HbctPocCd4_1$sDALY)
+resultDALY[2,3] <- bDALY - sum(HbctPocCd4_2$sDALY)
+resultDALY[1,4] <- bDALY - sum(Linkage_1$sDALY)
+resultDALY[2,4] <- bDALY - sum(Linkage_2$sDALY)
+resultDALY[1,5] <- bDALY - sum(VctPocCd4$sDALY)
+resultDALY[1,6] <- bDALY - sum(PreOutreach_1$sDALY)
+resultDALY[2,6] <- bDALY - sum(PreOutreach_2$sDALY)
+resultDALY[1,7] <- bDALY - sum(ImprovedCare_1$sDALY)
+resultDALY[2,7] <- bDALY - sum(ImprovedCare_2$sDALY)
+resultDALY[1,8] <- bDALY - sum(PocCd4$sDALY)
+resultDALY[1,9] <- bDALY - sum(ArtOutreach_1$sDALY)
+resultDALY[2,9] <- bDALY - sum(ArtOutreach_2$sDALY)
+resultDALY[1,10] <- bDALY - sum(Adherence_1$sDALY)
+resultDALY[2,10] <- bDALY - sum(Adherence_2$sDALY)
+resultDALY[1,11] <- bDALY - sum(ImmediateArt_1$sDALY)
+resultDALY[2,11] <- bDALY - sum(ImmediateArt_2$sDALY)
+resultDALY[1,12] <- bDALY - sum(UniversalTestAndTreat_1$sDALY)
+resultDALY[2,12] <- bDALY - sum(UniversalTestAndTreat_2$sDALY)
+
+barplot(resultDALY[1,])
+barplot(resultDALY[2,],add=TRUE,col="red")
+
+# NOTES #
+
+# 1) There is no ImmediateArt_2 intervention - IDIOT.
+
+# Need the colour script to work out which intervention is which.
+
