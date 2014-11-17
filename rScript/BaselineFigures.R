@@ -29,7 +29,7 @@ legend("topright",c("UNAIDS 15-49yr","CareCascade 15-49yr"),
 	box.lty=0,
 	border=NA,
 	cex=1.2)
-quartz.save("./baselineFigures/HivPrev_Unaids.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrev_Unaids.pdf",type='pdf')
 
 ####################
 #PlwhivOnArt
@@ -54,7 +54,7 @@ legend("topright",c("UNAIDS","CareCascade"),
 	box.lty=0,
 	border=NA,
 	cex=1.2)
-quartz.save("./baselineFigures/PlwhivOnArt_Unaids.pdf",type='pdf')
+# quartz.save("./baselineFigures/PlwhivOnArt_Unaids.pdf",type='pdf')
 
 ####################
 #Proportion of AIDS-related deaths in general population
@@ -80,7 +80,7 @@ legend("topright",c("UNAIDS (unspecified)","CareCascade >15yrs"),
 	box.lty=0,
 	border=NA,
 	cex=1.2)
-quartz.save("./baselineFigures/AidsDeath_Unaids.pdf",type='pdf')
+# quartz.save("./baselineFigures/AidsDeath_Unaids.pdf",type='pdf')
 
 ####################
 #KAIS 2007 - HIV prevalence by Age and Sex. (National)
@@ -129,7 +129,7 @@ legend("topright",
 	border=NA,
 	box.lty=0,
 	cex=1.5)
-quartz.save("./baselineFigures/HivPrevMale_Kais2007.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrevMale_Kais2007.pdf",type='pdf')
 
 ########
 #FEMALE#
@@ -174,7 +174,7 @@ legend("topright",
 	border=NA,
 	box.lty=0,
 	cex=1.5)
-quartz.save("./baselineFigures/HivPrevFemale_Kais2007.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrevFemale_Kais2007.pdf",type='pdf')
 
 ####################
 #KAIS 2012 - HIV prevalence by Age and Sex. (National)
@@ -240,7 +240,7 @@ legend("topright",
 	border=NA,
 	box.lty=0,
 	cex=1.5)
-quartz.save("./baselineFigures/HivPrevMale_Kais2012.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrevMale_Kais2012.pdf",type='pdf')
 
 ########
 #FEMALE#
@@ -299,7 +299,7 @@ legend("topright",
 	border=NA,
 	box.lty=0,
 	cex=1.5)
-quartz.save("./baselineFigures/HivPrevFemale_Kais2012.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrevFemale_Kais2012.pdf",type='pdf')
 
 #################
 #NYANZA PROVINCE#
@@ -362,7 +362,7 @@ legend("topright",
 	border=NA,
 	box.lty=0,
 	cex=1.5)
-quartz.save("./baselineFigures/HivPrevMale_Nyanza_Kais2012.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrevMale_Nyanza_Kais2012.pdf",type='pdf')
 
 ########
 #FEMALE#
@@ -422,7 +422,7 @@ legend("topright",
 	border=NA,
 	box.lty=0,
 	cex=1.5)
-quartz.save("./baselineFigures/HivPrevFemale_Nyanza_Kais2012.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrevFemale_Nyanza_Kais2012.pdf",type='pdf')
 
 ##################
 #WESTERN PROVINCE#
@@ -485,7 +485,7 @@ legend("topright",
 	border=NA,
 	box.lty=0,
 	cex=1.5)
-quartz.save("./baselineFigures/HivPrevMale_Western_Kais2012.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrevMale_Western_Kais2012.pdf",type='pdf')
 
 ########
 #FEMALE#
@@ -544,7 +544,7 @@ legend("topright",
 	border=NA,
 	box.lty=0,
 	cex=1.5)
-quartz.save("./baselineFigures/HivPrevFemale_Western_Kais2012.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrevFemale_Western_Kais2012.pdf",type='pdf')
 
 ####################
 #CD4 distribution over time
@@ -584,7 +584,7 @@ barplot(Cd4DistributionProp,
 	xlim=c(5,60))
 axis(1,seq(4.5,59.5,5),seq(1975,2030,5))
 axis(2,seq(0,1,0.1),las=1)
-quartz.save("./baselineFigures/Cd4Distribution.pdf",type='pdf')
+# quartz.save("./baselineFigures/Cd4Distribution.pdf",type='pdf')
 
 ####################
 #WHO distribution over time
@@ -624,7 +624,7 @@ barplot(WHODistributionProp,
 	xlim=c(5,60))
 axis(1,seq(4.5,59.5,5),seq(1975,2030,5))
 axis(2,seq(0,1,0.1),las=1)
-quartz.save("./baselineFigures/WHODistribution.pdf",type='pdf')
+# quartz.save("./baselineFigures/WHODistribution.pdf",type='pdf')
 
 ####################
 #Cd4 distrubition among people not on ART in 2007
@@ -640,8 +640,8 @@ Cd4_Bar <- matrix(0,4,2)
 Cd4_Bar[,1] <- Model_Cd4
 Cd4_Bar[,2] <- Kais2007_Cd4[1:4,2]
 
-graphics.off()
-quartz.options(w=10,h=12)
+# graphics.off()
+# quartz.options(w=10,h=12)
 
 par(family="Helvetica Neue Bold")
 barplot(Cd4_Bar,
@@ -657,7 +657,7 @@ barplot(Cd4_Bar,
 axis(2,seq(0,1,0.1),las=1,cex.axis=1.2)
 mtext("Model 2007",1,at=0.7,1,cex=1.5)
 mtext("KAIS 2007",1,at=1.9,1,cex=1.5)
-quartz.save("./baselineFigures/Cd4Distribution_Kais2007.pdf",type='pdf')
+# quartz.save("./baselineFigures/Cd4Distribution_Kais2007.pdf",type='pdf')
 
 ####################
 #AMPATH Prevalence in 2014
@@ -708,7 +708,7 @@ lines(Ampath2014$male,
 	cex=2,
 	lty=1,
 	lwd=3)
-quartz.save("./baselineFigures/HivPrevMale_Ampath2014.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrevMale_Ampath2014.pdf",type='pdf')
 
 ########
 #FEMALE#
@@ -749,6 +749,6 @@ legend("topright",
 	border=NA,
 	box.lty=0,
 	cex=1.5)
-quartz.save("./baselineFigures/HivPrevFemale_Ampath2014.pdf",type='pdf')
+# quartz.save("./baselineFigures/HivPrevFemale_Ampath2014.pdf",type='pdf')
 
 }
