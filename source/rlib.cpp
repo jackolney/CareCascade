@@ -118,7 +118,7 @@ SEXP CallCascade(SEXP s_pop,
 	/* THE MODEL */
 	cout << "Hello, Jack - the model is running..." << endl;
 	theRng = new Rng(mach_absolute_time());
-	theQ = new eventQ(0);
+	theQ = new eventQ(0,200 * 365.25);
 	new population(*REAL(s_pop));
 	theQ->RunEvents();
 	delete theQ;

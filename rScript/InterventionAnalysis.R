@@ -40,13 +40,77 @@ cAdherence 				<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0)
 cImmediateArt 			<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0)
 cUniversalTestAndTreat 	<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2)
 
-GlobalPopSize = 100
+GlobalPopSize = 10
 
 #Intervention Loop
 for(i in 1:length(Interventions)) {
+	print(Interventions[i]) 
+	flush.console()	
 	Output <- Cascade(GlobalPopSize,cHbct[i],cVct[i],cHbctPocCd4[i],cLinkage[i],cVctPocCd4[i],cPreOutreach[i],cImprovedCare[i],cPocCd4[i],cArtOutreach[i],cAdherence[i],cImmediateArt[i],cUniversalTestAndTreat[i])
 	assign(Interventions[i],Output)
 }
+
+
+########################
+
+baseline <- Cascade(10,0,0,0,0,0,0,0,0,0,0,0,0)
+art <- Cascade(10,0,0,0,0,0,0,0,0,1,0,0,0)
+
+Unaids_PlwhivOnArt <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_PlwhivOnArt_Kenya.csv",header=TRUE)
+graphics.off()
+quartz.options(h=10,w=10)
+library(RColorBrewer)
+p <- brewer.pal(9,"Set1")
+
+plot(seq(0,59,1),baseline$sART_15to49 / baseline$sHIV_15to49,
+	type='l',
+	col=p[2],
+	lwd=2,
+	ylim=c(0,0.5),
+	main='Proportion of PLWHIV on ART',
+	xlab='Year',
+	ylab='Proportion',
+	xaxt='n')
+lines(seq(0,59,1),art$sART_15to49 / art$sHIV_15to49,
+	lwd=2,
+	lty=3,
+	col=p[3])
+lines(seq(34,42,1),Unaids_PlwhivOnArt$propPlwhivOnArt,
+	lwd=2,
+	lty=3,
+	col=p[1])
+axis(1,seq(0,60,5),seq(1970,2030,5))
+legend("topright",c("UNAIDS","CareCascade"),
+	fill=p[1:2],
+	box.lty=0,
+	border=NA,
+	cex=1.2)
+
+plot(seq(0,59,1),Baseline$sART_15to49 / Baseline$sHIV_15to49,
+	type='l',
+	col=p[2],
+	lwd=2,
+	ylim=c(0,0.5),
+	main='Proportion of PLWHIV on ART',
+	xlab='Year',
+	ylab='Proportion',
+	xaxt='n')
+lines(seq(0,59,1),ArtOutreach_1$sART_15to49 / ArtOutreach_1$sHIV_15to49,
+	lwd=2,
+	col=p[3])
+lines(seq(34,42,1),Unaids_PlwhivOnArt$propPlwhivOnArt,
+	lwd=2,
+	lty=3,
+	col=p[1])
+axis(1,seq(0,60,5),seq(1970,2030,5))
+legend("topright",c("UNAIDS","CareCascade"),
+	fill=p[1:2],
+	box.lty=0,
+	border=NA,
+	cex=1.2)
+
+
+abline(v=33)
 
 
 get(Interventions[1])
@@ -57,6 +121,7 @@ save.image(file="currentWorkspace.RData")
 load("currentWorkspace.RData")
 ls()
 
+########################
 
 #####################
 # PLOTS AND FIGURES #
@@ -94,7 +159,7 @@ resultDALY[1,9] <- bDALY - sum(ArtOutreach_1$sDALY)
 resultDALY[2,9] <- bDALY - sum(ArtOutreach_2$sDALY)
 resultDALY[1,10] <- bDALY - sum(Adherence_1$sDALY)
 resultDALY[2,10] <- bDALY - sum(Adherence_2$sDALY)
-resultDALY[1,11] <- bDALY - sum(ImmediateArt_1$sDALY)
+resultDALY[1,11] <- bDALY - sum(ImmediateArt$sDALY)
 resultDALY[1,12] <- bDALY - sum(UniversalTestAndTreat_1$sDALY)
 resultDALY[2,12] <- bDALY - sum(UniversalTestAndTreat_2$sDALY)
 
@@ -105,7 +170,7 @@ par(family="Avenir Next Bold")
 		cex.main=1.5,
 		cex.lab=1.2,
 		main="DALY's averted between 2010 and 2030",
-		ylim=c(0,1e+05),
+		ylim=c(0,1e+04),
 		ylab="DALY's averted",
 		yaxt='n')
 	axis(2,at=seq(0,5e+05,5e+04),labels=format(seq(0,5e+05,5e+04),big.mark=","),las=3,cex.axis=1)
@@ -173,13 +238,28 @@ pie(ArtOutreach_1$sCARE,
 	border=NA,
 	cex=2)
 
+par(family="Avenir Next Bold")
+pie(art$sCARE,
+	labels=c("Never tested",
+		"Tested but never\n initiated ART",
+		"Initiated ART but\n died following late initiation (<200)",
+		"Initiated ART but\n died off ART",
+		"Initiatied ART but\n not late (>200)"),
+	col=c(m[1:5]),
+	border=NA,
+	cex=2)
 
 ##################
 # INVESTIGATIONS #
 ##################
 
 source("./rScript/BaselineFigures.R")
-GenerateBaselineFigures(PocCd4)
+GenerateBaselineFigures(Baseline)
+GenerateBaselineFigures(ArtOutreach_1)
+
+abline(v=37)
+
+art$
 
 
 #########

@@ -28,8 +28,9 @@ bool timeComparison::operator()(const event *lhs, const event *rhs) const
 }
 
 /* Define constructor */
-eventQ::eventQ(const double startTime) :
-currentTime(startTime),
+eventQ::eventQ(const double theStartTime, const double theStopTime) :
+currentTime(theStartTime),
+stopTime(theStopTime),
 incrementalTime(0)
 {}
 
@@ -46,7 +47,7 @@ void eventQ::AddEvent(event * const theEvent)
 /* Define RunEvents() */
 void eventQ::RunEvents()
 {
-	while(!Empty()) {
+	while(!Empty() && currentTime < stopTime) {
 		event * nextEvent = GetTop();
 		UpdateTime(nextEvent->GetTime());
 		PopTop();

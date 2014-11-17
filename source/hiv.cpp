@@ -158,9 +158,9 @@ bool Hiv(const double Age, const bool Sex, const double Time)
 	//Determine SerStatus
 	bool serum = false;
 	
-	if(theTrans->GetBeta() && theTrans->GetIncidenceWeight() < 1)
-		serum = theRng->Sample( hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() );
-	else
+	// if(theTrans->GetBeta() && theTrans->GetIncidenceWeight() < 1)
+	// 	serum = theRng->Sample( hivInc [Sex] [i] [j] * theTrans->GetIncidenceWeight() );
+	// else
 		serum = theRng->Sample( hivInc [Sex] [i] [j] );
 	
 	if(serum) {
