@@ -16,11 +16,6 @@
 #include "cohort.h"
 #include "impact.h"
 #include "outputUpdate.h"
-#include "transmission.h"
-#include "cd4Counter.h"
-
-extern Transmission * theTrans;
-extern Cd4Counter * theCd4Counter;
 
 using namespace std;
 
@@ -44,6 +39,100 @@ void CohortStart::Execute()
 {
 	D(cout << "CohortStart executed." << endl);
 	pCohort->GenerateCohort();
+}
+
+/////////////////////
+/////////////////////
+
+VectorUpdate::VectorUpdate(person * const thePerson, const double Time) :
+event(Time),
+pPerson(thePerson)
+{
+	D(cout << "VectorUpdate on day = " << Time << endl);
+	pPerson->SetVectorUpdateDate(Time);
+}
+
+VectorUpdate::~VectorUpdate()
+{}
+
+bool VectorUpdate::CheckValid()
+{
+	if(pPerson->GetVectorUpdateDate() == GetTime())
+		return pPerson->Alive();
+	else
+		return false;
+}
+
+void VectorUpdate::Execute()
+{
+	pPerson->UpdatePopulation();
+}
+
+/////////////////////
+/////////////////////
+
+Incidence::Incidence(population * const thePopulation, const double Time) :
+event(Time),
+pPopulation(thePopulation)
+{}
+
+Incidence::~Incidence()
+{}
+
+bool Incidence::CheckValid()
+{
+	return true;
+}
+
+void Incidence::Execute()
+{
+	pPopulation->CalculateIncidence();
+}
+
+/////////////////////
+/////////////////////
+
+BetaCalculation::BetaCalculation(population * const thePopulation, const double Time) :
+event(Time),
+pPopulation(thePopulation)
+{
+	D(cout << "BetaCalculation scheduled for = " << Time << endl);
+}
+
+BetaCalculation::~BetaCalculation()
+{}
+
+bool BetaCalculation::CheckValid()
+{
+	return true;
+}
+
+void BetaCalculation::Execute()
+{
+	pPopulation->CalculateBeta();
+}
+
+/////////////////////
+/////////////////////
+
+Infection::Infection(person * const thePerson, const double Time) :
+event(Time),
+pPerson(thePerson)
+{
+	pPerson->SetHivDate(Time);
+}
+
+Infection::~Infection()
+{}
+
+bool Infection::CheckValid()
+{
+	return pPerson->Alive();
+}
+
+void Infection::Execute()
+{
+	pPerson->Hiv();
 }
 
 /////////////////////
@@ -77,7 +166,7 @@ pPerson(thePerson),
 hivRelated(hivCause)
 {
 	if(hivCause)
-		thePerson->SetHivDeathDate(Time);
+		pPerson->SetHivDeathDate(Time);
 }
 
 Death::~Death()
@@ -96,11 +185,8 @@ bool Death::CheckValid()
 
 void Death::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	pPerson->Kill(GetTime(),hivRelated);
-	theTrans->UpdateVector(pPerson);
-	theCd4Counter->UpdateVector(pPerson);
 	WriteCare(pPerson,GetTime());
 	if(hivRelated) {
 		D(cout << "Death executed (HIV-related)." << endl);
@@ -113,37 +199,11 @@ void Death::Execute()
 /////////////////////
 /////////////////////
 
-
-HivIncidence::HivIncidence(person * const thePerson, const double Time) :
-event(Time),
-pPerson(thePerson)
-{}
-
-HivIncidence::~HivIncidence()
-{}
-
-bool HivIncidence::CheckValid()
-{
-	if(pPerson->Alive() && !pPerson->GetSeroStatus())
-		return true;
-	else
-		return false;
-}
-
-void HivIncidence::Execute()
-{
-	UpdateAge(pPerson);
-	pPerson->CheckHiv(GetTime());
-}
-
-/////////////////////
-/////////////////////
-
 Cd4Decline::Cd4Decline(person * const thePerson, const double Time) :
 event(Time),
 pPerson(thePerson)
 {
-	thePerson->SetCd4DeclineDate(Time);
+	pPerson->SetCd4DeclineDate(Time);
 }
 
 Cd4Decline::~Cd4Decline()
@@ -159,7 +219,6 @@ bool Cd4Decline::CheckValid()
 
 void Cd4Decline::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	D(cout << "Cd4Decline executed." << endl);
 	D(cout << "\tCd4Decline from " << pPerson->GetCurrentCd4() << " to ");
@@ -167,8 +226,7 @@ void Cd4Decline::Execute()
 	D(cout << pPerson->GetCurrentCd4() << endl);
 	ScheduleCd4Update(pPerson);
 	pPerson->AssignHivDeathDate();
-	theTrans->UpdateVector(pPerson);
-	theCd4Counter->UpdateVector(pPerson);
+	pPerson->UpdateInfectiousnessArray();
 }
 
 /////////////////////
@@ -178,7 +236,7 @@ Cd4Recover::Cd4Recover(person * const thePerson, const double Time) :
 event(Time),
 pPerson(thePerson)
 {
-	thePerson->SetCd4RecoverDate(Time);
+	pPerson->SetCd4RecoverDate(Time);
 }
 
 Cd4Recover::~Cd4Recover()
@@ -194,7 +252,6 @@ bool Cd4Recover::CheckValid()
 
 void Cd4Recover::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	D(cout << "Cd4Recover executed." << endl);
 	D(cout << "\tCd4Recover from " << pPerson->GetCurrentCd4() << " to ");
@@ -202,8 +259,7 @@ void Cd4Recover::Execute()
 	D(cout << pPerson->GetCurrentCd4() << endl);
 	ScheduleCd4Update(pPerson);
 	pPerson->AssignHivDeathDate();
-	theTrans->UpdateVector(pPerson);
-	theCd4Counter->UpdateVector(pPerson);
+	pPerson->UpdateInfectiousnessArray();
 }
 
 /////////////////////
@@ -213,7 +269,7 @@ WhoDecline::WhoDecline(person * const thePerson, const double Time) :
 event(Time),
 pPerson(thePerson)
 {
-	thePerson->SetWhoDeclineDate(Time);
+	pPerson->SetWhoDeclineDate(Time);
 }
 
 WhoDecline::~WhoDecline()
@@ -229,7 +285,6 @@ bool WhoDecline::CheckValid()
 
 void WhoDecline::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	D(cout << "WhoDecline executed." << endl);
 	D(cout << "\tWhoDecline from " << pPerson->GetCurrentWho() << " to ");
@@ -248,7 +303,7 @@ WhoRecover::WhoRecover(person * const thePerson, const double Time) :
 event(Time),
 pPerson(thePerson)
 {
-	thePerson->SetWhoRecoverDate(Time);
+	pPerson->SetWhoRecoverDate(Time);
 }
 
 WhoRecover::~WhoRecover()
@@ -264,8 +319,7 @@ bool WhoRecover::CheckValid()
 
 void WhoRecover::Execute()
 {
-	UpdateAge(pPerson);
-	UpdateDaly(pPerson);	
+	UpdateDaly(pPerson);
 	D(cout << "WhoRecover executed." << endl);
 	D(cout << "\tWhoRecover from " << pPerson->GetCurrentWho() << " to ");
 	pPerson->SetCurrentWhoStage(pPerson->GetCurrentWho()-1);

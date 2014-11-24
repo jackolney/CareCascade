@@ -25,33 +25,6 @@ using namespace std;
 ////////////////////
 ////////////////////
 
-void SeedHiv(person * const thePerson)
-{
-	D(cout << "Seeding Hiv." << endl);
-
-	/* HivIncidence function run every year from 1975 (theRng->doub() allows the exact time to vary within the year) */
-	double yr [55];
-	for(size_t i = 0; i < 55; i++) {
-		yr[i] = (5 + i + theRng->doub()) * 365.25;
-		if(thePerson->GetBirthDay() < yr[i])
-			new HivIncidence(thePerson,yr[i]);
-	}
-
-		//For development purposes.
-//	new HivIncidence(thePerson,theQ->GetTime());
-}
-
-////////////////////
-////////////////////
-
-void UpdateAge(person * const thePerson)
-{
-	thePerson->SetAge(theQ->GetTime());
-}
-
-////////////////////
-////////////////////
-
 void ScheduleCd4Update(person * const thePerson)
 {
 	D(cout << "ScheduleCd4Update called." << endl);
@@ -64,7 +37,8 @@ void ScheduleCd4Update(person * const thePerson)
 		{1.97615529,1.90352509,5.64408302},
 		{0.83767622,0.80688886,2.39248106}
 	};
-
+	
+		//Cd4TimeArt [WHO-1] [CD4-1 (1,2)]
 	const double Cd4RecoverTimeArt [4] [2] =
 	{
 		{0.17366500,0.44638000},
@@ -81,7 +55,7 @@ void ScheduleCd4Update(person * const thePerson)
 		event * theEvent = new Cd4Recover(thePerson, theQ->GetTime() + theRng->SampleExpDist(Cd4RecoverTimeArt [thePerson->GetCurrentWho()-1] [thePerson->GetCurrentCd4()-1] * 365.25));
 		D(cout << "\tCd4Recover from " << thePerson->GetCurrentCd4() << " to occur on = " << theEvent->GetTime() << endl);
 	}
-
+	
 }
 
 ////////////////////
@@ -126,6 +100,32 @@ void ScheduleWhoUpdate(person * const thePerson)
 			D(cout << "\tWhoRecover (ART) from " << thePerson->GetCurrentWho() << " to occur on = " << theRecoverEvent->GetTime() << endl);
 		}
 	}
+}
+
+////////////////////
+////////////////////
+
+void ScheduleVectorUpdate(person * const thePerson, const double theTime)
+{
+	new VectorUpdate(thePerson,theQ->GetTime() + theTime+1); //+1 to get into the next time bracket.
+}
+
+////////////////////
+////////////////////
+
+void ScheduleIncidence(population * thePopulation)
+{
+	for(size_t i=0; i<60; i++)
+		new Incidence(thePopulation,i * 365.25);
+}
+
+////////////////////
+////////////////////
+
+void ScheduleBetaCalculation(population * thePopulation)
+{
+	if(theQ->GetTime() < thePopulation->GetReferenceYear() - 1)
+		new BetaCalculation(thePopulation,thePopulation->GetReferenceYear() - 1);
 }
 
 ////////////////////

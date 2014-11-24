@@ -1,10 +1,10 @@
-	//
-	//  impact.cpp
-	//  priorityQ
-	//
-	//  Created by Jack Olney on 27/10/2014.
-	//  Copyright (c) 2014 Jack Olney. All rights reserved.
-	//
+//
+//  impact.cpp
+//  priorityQ
+//
+//  Created by Jack Olney on 27/10/2014.
+//  Copyright (c) 2014 Jack Olney. All rights reserved.
+//
 
 #include <iostream>
 #include "impact.h"
@@ -60,7 +60,6 @@ void WriteDaly(person * const thePerson)
 	
 	if(theQ->GetTime() > 14610)
 		theDALY[i] += thePerson->GetDalys(); //+= should specify that DALYs can accumulate.
-	
 	
 	thePerson->ResetDalys();
 }

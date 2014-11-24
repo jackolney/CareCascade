@@ -11,13 +11,16 @@
 
 #include <stdio.h>
 #include "person.h"
-
-void SeedHiv(person * const thePerson);
-
-void UpdateAge(person * const thePerson);
+#include "population.h"
 
 void ScheduleCd4Update(person * const thePerson);
 
 void ScheduleWhoUpdate(person * const thePerson);
+
+void ScheduleVectorUpdate(person * const thePerson, const double theTime);
+
+void ScheduleIncidence(population * thePopulation);
+
+void ScheduleBetaCalculation(population * thePopulation);
 
 #endif /* defined(__priorityQ__update__) */

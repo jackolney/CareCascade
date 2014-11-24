@@ -12,12 +12,13 @@
 #include <vector>
 #include <stdio.h>
 #include "person.h"
+#include "population.h"
 
 using namespace std;
 
 class cohort {
 public:
-	cohort(const unsigned int Size, const unsigned int StartTime); //constructor
+	cohort(population * const thePop, const unsigned int Size, const unsigned int StartTime); //constructor
 	~cohort(); //destructor
 	
 	/* methods */
@@ -28,15 +29,10 @@ public:
 	/* accessor methods */
 	unsigned int GetCohortSize() const;
 	
-	/* vector */
-	vector<person*> cohortContainer;
-	
-	/* vector methods */
-	void PushToVector(person * const thePerson);
-
 private:
-	unsigned int cohortSize; //Unsigned denotes type can only contain positive values.
-	unsigned int cohortStartTime; //Specifies the time that the cohort will enter the model.
+	population * const iPop;
+	unsigned int cohortSize; // Unsigned denotes type can only contain positive values.
+	unsigned int cohortStartTime; // Specifies the time that the cohort will enter the model.
 	
 };
 

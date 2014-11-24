@@ -14,8 +14,11 @@
 #include "cascadeEvents.h"
 #include "cascadeUpdate.h"
 #include "toolbox.h"
+#include "eventQ.h"
 
 using namespace std;
+
+extern eventQ * theQ;
 
 /* Intervention Pointers */
 extern int const * p_Hbct;
@@ -27,16 +30,16 @@ extern int const * p_ImprovedCare;
 extern int const * p_PocCd4;
 extern int const * p_VctPocCd4;
 extern int const * p_ArtOutreach;
-extern int const * p_Adherence;
 extern int const * p_ImmediateArt;
 extern int const * p_UniversalTestAndTreat;
+extern int const * p_Adherence;
 
 /////////////////////
 /////////////////////
 
 void SeedInterventions(person * const thePerson)
 {
-	if(*p_Hbct || *p_Vct || *p_HbctPocCd4 || *p_Linkage || *p_PreOutreach || *p_ImprovedCare || *p_PocCd4 || *p_VctPocCd4 || *p_ArtOutreach || *p_Adherence || *p_ImmediateArt || *p_UniversalTestAndTreat) {
+	if(*p_Hbct || *p_Vct || *p_HbctPocCd4 || *p_Linkage || *p_PreOutreach || *p_ImprovedCare || *p_PocCd4 || *p_VctPocCd4 || *p_ArtOutreach || *p_ImmediateArt || *p_UniversalTestAndTreat || *p_Adherence) {
 		if(thePerson->GetBirthDay() < 14610)
 			new Interventions(thePerson,14610);
 		else
@@ -100,7 +103,7 @@ void Interventions::Execute()
 		for(size_t i=0;i<5;i++)
 			if(GetTime() <= 14610 + (i * 1461))
 				new SeedHct(pPerson,14610 + (i * 1461),true);
-
+		
 		if(*p_HbctPocCd4 == 1) {
 			hctProbLink = 1;
 			hctProbLinkPreviouslyDiagnosed = 1;
@@ -236,6 +239,6 @@ void Interventions::Execute()
 /////////////////////
 	
 }
-	
+
 /////////////////////
 /////////////////////

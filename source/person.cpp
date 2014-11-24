@@ -17,23 +17,16 @@
 #include "update.h"
 #include "cascadeUpdate.h"
 #include "cascadeEvents.h"
-#include "hiv.h"
 #include "output.h"
 #include "interventions.h"
 #include "discount.h"
-#include "transmission.h"
-#include "incidence.h"
-#include "cd4Counter.h"
 
 extern Rng * theRng;
 extern eventQ * theQ;
-extern Transmission * theTrans;
-extern Incidence * theInc;
-extern Cd4Counter * theCd4Counter;
 
 using namespace std;
 
-person::person(const double Time) : //can use Time to specify the start time for the individual.
+person::person(population * thePop,const double Time) : //can use Time to specify the start time for the individual.
 gender(0),
 currentAge(0),
 initialAge(0),
@@ -47,6 +40,7 @@ deathDay(0),
 birthDay(Time),
 artDay(0),
 artTime(0),
+hivDate(0),
 hivDeathDate(0),
 cd4DeclineDate(0),
 cd4RecoverDate(0),
@@ -65,7 +59,7 @@ everCd4TestResult(false),
 cd4TestResultCount(0),
 art(false),
 everArt(false),
-adherence(theRng->Sample(0.75)), //EDIT
+adherence(theRng->Sample(0.75)),
 cd4AtArt(0),
 hivDeath(false),
 artDeath(false),
@@ -79,13 +73,17 @@ iLabCd4TestCost(0),
 iPocCd4TestCost(0),
 iAnnualArtCost(0),
 iAdherenceCost(0),
-iOutreachCost(0)
+iOutreachCost(0),
+iPop(thePop),
+personIndex(0),
+rowIndex(0),
+infectiousnessIndex(5)
 {
 	gender = AssignGender();
 	AssignInitialAge(Time);
 	D(cout << "Gender is = " << gender << endl);
 	natDeathDate = AssignNatDeathDate(Time);
-	SeedHiv(this);
+	iPop->AddPerson(this);
 	SeedOutput(this);
 	SeedInterventions(this);
 	SeedDiscount(this);
@@ -134,7 +132,7 @@ void person::AssignInitialAge(const double Time)
 	} else {
 		initialAge = theRng->doub() * 365.25;
 	}
-
+	
 	currentAge = initialAge;
 	D(cout << "Initial age = " << initialAge << ". (year = " << initialAge / 365.25 << ")" << endl);
 }
@@ -229,6 +227,9 @@ void person::Kill(const double Time, const bool theCause)
 	deathDay = Time;
 	hivDeath = theCause;
 	artDeath = art;
+	iPop->RemovePerson(this);
+	if(GetHivDate() && !GetSeroStatus())
+		iPop->PassInfection(GetRowIndex());
 	D(cout << "\tDeathDate = " << deathDay << endl);
 	return;
 }
@@ -236,8 +237,9 @@ void person::Kill(const double Time, const bool theCause)
 /////////////////////
 /////////////////////
 
-double person::GetAge() const
+double person::GetAge()
 {
+	SetAge(theQ->GetTime());
 	return currentAge;
 }
 
@@ -254,31 +256,24 @@ void person::SetAge(const double Time)
 /////////////////////
 /////////////////////
 
-bool person::CheckHiv(const double Time)
+void person::Hiv()
 {
-	if(Time >= 1826) {
-		D(cout << "CheckHIV executed." << endl);
-		bool HivResult = Hiv(currentAge,gender,Time);
-		if(HivResult) {
-			D(cout << "HIV+" << endl);
-			SetSeroStatus(true);
-			SetSeroconversionDay(Time);
-			SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
-			ScheduleHivIndicatorUpdate();
-			theInc->UpdateIncidence(this);
-		}
-		return HivResult;
-	}
-	else
-		return false;
+	D(cout << "HIV+" << endl);
+	SetSeroStatus(true);
+	SetSeroconversionDay(theQ->GetTime());
+	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
+	ScheduleHivIndicatorUpdate();
+	UpdatePopulation();
+	iPop->AddCase();
+	iPop->UpdateArray(this);
 	
 	//For development purposes.
-//	D(cout << "HIV+" << endl);
-//	SetSeroStatus(true);
-//	SetSeroconversionDay(Time);
-//	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
-//	ScheduleHivIndicatorUpdate(); //ScheduleHivIndicatorUpdate
-//	return true;
+	//	D(cout << "HIV+" << endl);
+	//	SetSeroStatus(true);
+	//	SetSeroconversionDay(Time);
+	//	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
+	//	ScheduleHivIndicatorUpdate(); //ScheduleHivIndicatorUpdate
+	//	return true;
 }
 
 /////////////////////
@@ -288,9 +283,7 @@ void person::SetHivIndicators()
 {
 	SetInitialCd4Count();
 	SetInitialWhoStage();
-	AssignHivDeathDate(); //function will call GenerateHivDeathDate()
-	theTrans->UpdateVector(this);
-	theCd4Counter->UpdateVector(this);
+	AssignHivDeathDate();
 }
 
 /////////////////////

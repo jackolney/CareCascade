@@ -19,9 +19,6 @@
 #include "cost.h"
 #include "interventionEvents.h"
 #include "interventionUpdate.h"
-#include "transmission.h"
-
-extern Transmission * theTrans;
 
 using namespace std;
 
@@ -103,7 +100,6 @@ bool VctHivTest::CheckValid()
 
 void VctHivTest::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	ChargeVctPictHivTest(pPerson);
 	D(cout << "VctHivTest executed." << endl);
@@ -148,7 +144,6 @@ bool PictHivTest::CheckValid()
 
 void PictHivTest::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	ChargeVctPictHivTest(pPerson);
 	D(cout << "PictHivTest executed." << endl);
@@ -193,7 +188,6 @@ bool Cd4Test::CheckValid()
 
 void Cd4Test::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	ChargePreArtClinicVisit(pPerson);
 	ChargePreArtClinicCd4Test(pPerson);
@@ -228,7 +222,6 @@ bool Cd4TestResult::CheckValid()
 
 void Cd4TestResult::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	ChargePreArtClinicCd4ResultVisit(pPerson);
 	D(cout << "Cd4TestResult executed." << endl);
@@ -269,7 +262,6 @@ bool ArtInitiation::CheckValid()
 
 void ArtInitiation::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	D(cout << "ArtInitiation executed." << endl);
 	if(!pPerson->GetArtAdherenceState())
@@ -278,7 +270,7 @@ void ArtInitiation::Execute()
 	ScheduleCd4Update(pPerson);
 	ScheduleWhoUpdate(pPerson);
 	ScheduleArtDropout(pPerson);
-	theTrans->UpdateVector(pPerson);
+	pPerson->UpdateInfectiousnessArray();
 }
 
 /////////////////////
@@ -300,14 +292,13 @@ bool ArtDropout::CheckValid()
 }
 
 void ArtDropout::Execute()
-{
-	UpdateAge(pPerson);
-	UpdateDaly(pPerson);	
+{	
+	UpdateDaly(pPerson);
 	D(cout << "ArtDropout executed." << endl);
 	pPerson->SetArtInitiationState(false,GetTime());
 	ScheduleCd4Update(pPerson);
 	ScheduleWhoUpdate(pPerson);
-	theTrans->UpdateVector(pPerson);	
+	pPerson->UpdateInfectiousnessArray();
 }
 
 /////////////////////

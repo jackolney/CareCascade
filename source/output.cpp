@@ -1,10 +1,10 @@
-	//
-	//  output.cpp
-	//  priorityQ
-	//
-	//  Created by Jack Olney on 28/10/2014.
-	//  Copyright (c) 2014 Jack Olney. All rights reserved.
-	//
+//
+//  output.cpp
+//  priorityQ
+//
+//  Created by Jack Olney on 28/10/2014.
+//  Copyright (c) 2014 Jack Olney. All rights reserved.
+//
 
 #include <iostream>
 #include "output.h"
@@ -17,6 +17,8 @@ using namespace std;
 double * theCARE;
 double * theDALY;
 double * theCOST;
+double * thePOP;
+double * theHIV;
 double * thePOP_15to49;
 double * theHIV_15to49;
 double * theART_15to49;
@@ -102,6 +104,8 @@ void CreateOutputArray()
 	theCARE = new double[5]; //NeverDiagnosed, DiagnosedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly.
 	theDALY = new double[20];
 	theCOST = new double[20];
+	thePOP = new double[60];
+	theHIV = new double[60];
 	thePOP_15to49 = new double[60];
 	theHIV_15to49 = new double[60];
 	theART_15to49 = new double[60];
@@ -150,6 +154,8 @@ void CreateOutputArray()
 			thePOP_AgeSex_2012[i] = 0;
 			theHIV_AgeSex_2012[i] = 0;
 		}
+		thePOP[i] = 0;
+		theHIV[i] = 0;
 		thePOP_15to49[i] = 0;
 		theHIV_15to49[i] = 0;
 		theART_15to49[i] = 0;

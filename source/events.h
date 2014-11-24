@@ -33,6 +33,70 @@ private:
 /////////////////////
 /////////////////////
 
+class VectorUpdate : public event {
+public:
+	VectorUpdate(person * const thePerson, const double Time); //constructor
+	~VectorUpdate(); //destructor
+	
+	/* Methods */
+	bool CheckValid();
+	void Execute();
+	
+private:
+	person * const pPerson;
+};
+
+/////////////////////
+/////////////////////
+
+class Incidence : public event {
+public:
+	Incidence(population * const thePopulation, const double Time); //constructor
+	~Incidence(); //destructor
+	
+	/* Methods */
+	bool CheckValid();
+	void Execute();
+	
+private:
+	population * const pPopulation;
+};
+
+/////////////////////
+/////////////////////
+
+class BetaCalculation : public event {
+public:
+	BetaCalculation(population * const thePopulation, const double Time); //constructor
+	~BetaCalculation(); //destructor
+	
+	/* Methods */
+	bool CheckValid();
+	void Execute();
+
+private:
+	population * const pPopulation;
+};
+
+/////////////////////
+/////////////////////
+
+class Infection : public event {
+public:
+	Infection(person * const thePerson, const double Time); //constructor
+	~Infection(); // destructor
+	
+	/* Methods */
+	bool CheckValid();
+	void Execute();
+	
+private:
+	person * pPerson;
+};
+
+/////////////////////
+/////////////////////
+
 class PersonStart : public event {
 public:
 	PersonStart(cohort * const iCohort, const double Time); //constructor
@@ -61,22 +125,6 @@ public:
 private:
 	person * const pPerson; // pPerson here is the pointer to the relevant person that will experience the event.
 	const bool hivRelated;
-};
-
-/////////////////////
-/////////////////////
-
-class HivIncidence : public event {
-public:
-	HivIncidence(person * const thePerson, const double Time); //constructor
-	~HivIncidence(); //destructor
-	
-	/* Methods */
-	bool CheckValid();
-	void Execute();
-	
-private:
-	person * const pPerson;
 };
 
 ///////////////////////

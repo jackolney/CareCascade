@@ -76,7 +76,6 @@ bool HctHivTest::CheckValid()
 
 void HctHivTest::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	ChargeHctVisit(pPerson);
 	D(cout << "HctHivTest executed." << endl);
@@ -113,7 +112,6 @@ bool HctPocCd4Test::CheckValid()
 
 void HctPocCd4Test::Execute()
 {
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	ChargePocCd4Test(pPerson);
 	D(cout << "HctPocCd4Test executed." << endl);
@@ -183,7 +181,6 @@ void VctPocCd4Test::Execute()
 {
 	D(cout << "VctPocCd4Test executed." << endl);
 	D(cout << "Entered care." << endl);
-	UpdateAge(pPerson);
 	UpdateDaly(pPerson);
 	ChargePreArtClinicVisit(pPerson);
 	ChargePocCd4Test(pPerson);
@@ -224,14 +221,13 @@ bool PocCd4Test::CheckValid()
 
 void PocCd4Test::Execute()
 {
-	D(cout << "PocCd4Test executed." << endl);
-	UpdateAge(pPerson);
+	D(cout << "PocCd4Test executed." << endl);	
 	UpdateDaly(pPerson);
 	ChargePreArtClinicVisit(pPerson);
 	ChargePocCd4Test(pPerson);
 	pPerson->SetEverCd4TestState(true);
 	pPerson->SetEverCD4TestResultState(true);
-	pPerson->SetInCareState(true);	
+	pPerson->SetInCareState(true);
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson);
 	else if(pPerson->GetEligible()) {

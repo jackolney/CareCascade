@@ -10,10 +10,11 @@
 #define __priorityQ__person__
 
 #include <stdio.h>
+#include "population.h"
 
 class person {
 public:
-	person(const double Time); //constuctor
+	person(population * thePop,const double Time); //constuctor
 	virtual ~person(); //destructor
 	
 	/* Initialiser functions */
@@ -27,9 +28,9 @@ public:
 	/////////////
 	void Kill(const double Time, const bool theCause);
 	void SetAge(const double Time);
-
+	
 	/* Hiv Acquisition Functions */
-	bool CheckHiv(const double Time);
+	void Hiv();
 	void SetSeroStatus(const bool theState) { seroStatus = theState; }
 	void SetSeroconversionDay(const double Time) { seroconversionDay = Time; }
 	void SetHivIndicators();
@@ -40,24 +41,25 @@ public:
 	void ScheduleHivIndicatorUpdate();
 	void SetCurrentCd4Count(unsigned int theCount) { currentCd4 = theCount; }
 	void SetCurrentWhoStage(unsigned int theStage) { currentWho = theStage; }
-	double GenerateHivDeathDate(); //function returns the HivDeathDate Value;
-	void AssignHivDeathDate(); //function creates the Death event.
+	double GenerateHivDeathDate();
+	void AssignHivDeathDate();
 	
 	/* Hiv Care Functions */
-	void SetDiagnosedState(const bool theState,unsigned int theRoute) { diagnosed = theState; diagnosisCount += 1; diagnosisRoute = theRoute; }
-	void SetEverCd4TestState(const bool theState) { everCd4Test = theState; cd4TestCount += 1; }
-	void SetEverCD4TestResultState(const bool theState) { everCd4TestResult = theState; cd4TestResultCount +=1; }
+	void SetDiagnosedState(const bool theState,unsigned int theRoute) { diagnosed = theState; diagnosisCount++; diagnosisRoute = theRoute; }
+	void SetEverCd4TestState(const bool theState) { everCd4Test = theState; cd4TestCount++; }
+	void SetEverCD4TestResultState(const bool theState) { everCd4TestResult = theState; cd4TestResultCount++; }
 	void SetInCareState(const bool theState) { inCare = theState; }
 	void SetArtInitiationState(const bool theState, const double theTime);
 	void SetArtAdherenceState(const double theProb);
-
+	
 	/* Natural History Date Setting Functions */
+	void SetHivDate(double theDate) { hivDate = theDate; }
 	void SetHivDeathDate(double theDate) { hivDeathDate = theDate; }
 	void SetCd4DeclineDate(double theDate) { cd4DeclineDate = theDate; }
 	void SetCd4RecoverDate(double theDate) { cd4RecoverDate = theDate; }
 	void SetWhoDeclineDate(double theDate) { whoDeclineDate = theDate; }
 	void SetWhoRecoverDate(double theDate) { whoRecoverDate = theDate; }
-
+	
 	/* Hiv Care Date Setting Functions */
 	void SetHctHivTestDate(double theDate) { hctHivTestDate = theDate; }
 	void SetVctHivTestDate(double theDate) { vctHivTestDate = theDate; }
@@ -81,13 +83,23 @@ public:
 	void SetOutreachCost(const double theCost) { iOutreachCost += theCost; }
 	void ResetCost() { iHctVisitCost = 0; iRapidHivTestCost = 0; iPreArtClinicVisitCost = 0; iLabCd4TestCost = 0; iPocCd4TestCost = 0; iAnnualArtCost = 0; iAdherenceCost = 0; iOutreachCost = 0; }
 	
+	/* Vector functions */
+	void SetPersonIndex(const size_t theIndex) { personIndex = theIndex; }
+	void SetRowIndex(const size_t theIndex) { rowIndex = theIndex; }
+	void SetVectorUpdateDate(const double theDate) { vectorUpdateDate = theDate; }
+	void SetInfectiousnessIndex(const size_t theIndex) { infectiousnessIndex = theIndex; }
+	
+	/* Population function */
+	void UpdatePopulation() { iPop->UpdateVector(this); }
+	void UpdateInfectiousnessArray() { iPop->UpdateArray(this); }
+	
 	//////////////////////
 	/* Accessor methods */
 	//////////////////////
 	bool GetGender() const;
 	double GetNatDeathDate() const;
 	bool Alive() const;
-	double GetAge() const;
+	double GetAge();
 	const double GetBirthDay() const { return birthDay; }
 	unsigned int GetCurrentCd4() const { return currentCd4; }
 	unsigned int GetCurrentWho() const { return currentWho; }
@@ -110,6 +122,7 @@ public:
 	double GetArtTime() const { return artTime; }
 	
 	/* Hiv Care Date Getting Functions */
+	double GetHivDate() const { return hivDate; }
 	double GetHivDeathDate() const { return hivDeathDate; }
 	double GetCd4DeclineDate() const { return cd4DeclineDate; }
 	double GetCd4RecoverDate() const { return cd4RecoverDate; }
@@ -143,6 +156,12 @@ public:
 	bool GetArtDeath() const { return artDeath; }
 	unsigned int GetCd4AtArt() const { return cd4AtArt; }
 	
+	/* Vector function */
+	size_t GetPersonIndex() const { return personIndex; }
+	size_t GetRowIndex() const { return rowIndex; }
+	size_t GetInfectiousnessIndex() const { return infectiousnessIndex; }
+	double GetVectorUpdateDate() const { return vectorUpdateDate; }
+	
 private:
 	/* basic characteristics */
 	bool gender;
@@ -162,15 +181,17 @@ private:
 	/* Day = time an event occured */
 	double deathDay;
 	const double birthDay;
-	double artDay;		//Art start day.
-	double artTime;		//Time spent on Art.
+	double artDay; // Art start day.
+	double artTime;	// Time spent on Art.
 	
 	/* Date = time an event will occur */
+	double hivDate;
 	double hivDeathDate;
 	double cd4DeclineDate;
 	double cd4RecoverDate;
 	double whoDeclineDate;
 	double whoRecoverDate;
+	double vectorUpdateDate;
 	
 	/* Hiv test dates */
 	double hctHivTestDate;
@@ -180,7 +201,7 @@ private:
 	/* Hiv care flags */
 	bool diagnosed;
 	unsigned int diagnosisCount;
-	unsigned int diagnosisRoute; //1 = Hct, 2 = Vct, 3 = Pict.
+	unsigned int diagnosisRoute; // 1 = Hct, 2 = Vct, 3 = Pict.
 	bool inCare;
 	bool everCd4Test;
 	unsigned int cd4TestCount;
@@ -212,6 +233,12 @@ private:
 	double iAnnualArtCost;
 	double iAdherenceCost;
 	double iOutreachCost;
+	
+	/* Data */
+	population * const iPop;
+	size_t personIndex;
+	size_t rowIndex;
+	size_t infectiousnessIndex;
 };
 
 #endif /* defined(__priorityQ__person__) */
