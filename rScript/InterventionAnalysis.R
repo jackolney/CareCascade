@@ -40,7 +40,7 @@ cAdherence 				<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0)
 cImmediateArt 			<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0)
 cUniversalTestAndTreat 	<- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2)
 
-GlobalPopSize = 10
+GlobalPopSize = 100
 
 #Intervention Loop
 for(i in 1:length(Interventions)) {
@@ -50,6 +50,7 @@ for(i in 1:length(Interventions)) {
 	assign(Interventions[i],Output)
 }
 
+save.image(file="currentWorkspace.RData")
 
 ########################
 
@@ -119,7 +120,6 @@ get(Interventions[1])
 save.image(file="currentWorkspace.RData")
 
 load("currentWorkspace.RData")
-ls()
 
 ########################
 
@@ -170,7 +170,7 @@ par(family="Avenir Next Bold")
 		cex.main=1.5,
 		cex.lab=1.2,
 		main="DALY's averted between 2010 and 2030",
-		ylim=c(0,1e+04),
+		ylim=c(0,1e+05),
 		ylab="DALY's averted",
 		yaxt='n')
 	axis(2,at=seq(0,5e+05,5e+04),labels=format(seq(0,5e+05,5e+04),big.mark=","),las=3,cex.axis=1)
@@ -228,7 +228,7 @@ pie(Baseline$sCARE,
 	cex=2)
 
 par(family="Avenir Next Bold")
-pie(ArtOutreach_1$sCARE,
+pie(ArtOutreach_2$sCARE,
 	labels=c("Never tested",
 		"Tested but never\n initiated ART",
 		"Initiated ART but\n died following late initiation (<200)",
@@ -239,7 +239,7 @@ pie(ArtOutreach_1$sCARE,
 	cex=2)
 
 par(family="Avenir Next Bold")
-pie(art$sCARE,
+pie(ArtOutreach_1$sCARE,
 	labels=c("Never tested",
 		"Tested but never\n initiated ART",
 		"Initiated ART but\n died following late initiation (<200)",

@@ -1,8 +1,7 @@
 #Test Script for CareCascade
 setwd("/Users/jack/git/CareCascade")
-source("./source/BaselineFigures.R")
+source("./rScript/BaselineFigures.R")
 dyn.load("./source/main.so")
-
 
 system.time(
 result <- .Call("CallCascade",100, #Pop;
@@ -20,14 +19,8 @@ result <- .Call("CallCascade",100, #Pop;
 						      0   #UniversalTestAndTreat; 
 	)
 )
-#result
-sum(result$sDALY)
-#Create Plots
-GenerateBaselineFigures(result)
 
-graphics.off()
-quartz.options(h=12,w=5)
-par(mfrow=c(3,1))
-plot(result$sPOP_15to49,type='l',lwd=2)
-plot(result$sHIV_15to49,type='l',lwd=2)
-plot(result$sART_15to49,type='l',lwd=2)
+#result
+
+#Create Plots
+# GenerateBaselineFigures(result)
