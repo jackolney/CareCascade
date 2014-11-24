@@ -41,8 +41,8 @@ public:
 	void ScheduleHivIndicatorUpdate();
 	void SetCurrentCd4Count(unsigned int theCount) { currentCd4 = theCount; }
 	void SetCurrentWhoStage(unsigned int theStage) { currentWho = theStage; }
-	double GenerateHivDeathDate();
-	void AssignHivDeathDate();
+	double GenerateHivDeathDate(); //function returns the HivDeathDate Value;
+	void AssignHivDeathDate(); //function creates the Death event.
 	
 	/* Hiv Care Functions */
 	void SetDiagnosedState(const bool theState,unsigned int theRoute) { diagnosed = theState; diagnosisCount++; diagnosisRoute = theRoute; }
@@ -155,6 +155,7 @@ public:
 	bool GetHivDeath() const { return hivDeath; }
 	bool GetArtDeath() const { return artDeath; }
 	unsigned int GetCd4AtArt() const { return cd4AtArt; }
+	unsigned int GetArtCount() const { return artCount; }
 	
 	/* Vector function */
 	size_t GetPersonIndex() const { return personIndex; }
@@ -181,8 +182,8 @@ private:
 	/* Day = time an event occured */
 	double deathDay;
 	const double birthDay;
-	double artDay; // Art start day.
-	double artTime;	// Time spent on Art.
+	double artDay;		//Art start day.
+	double artTime;		//Time spent on Art.
 	
 	/* Date = time an event will occur */
 	double hivDate;
@@ -201,7 +202,7 @@ private:
 	/* Hiv care flags */
 	bool diagnosed;
 	unsigned int diagnosisCount;
-	unsigned int diagnosisRoute; // 1 = Hct, 2 = Vct, 3 = Pict.
+	unsigned int diagnosisRoute; //1 = Hct, 2 = Vct, 3 = Pict.
 	bool inCare;
 	bool everCd4Test;
 	unsigned int cd4TestCount;
@@ -209,6 +210,7 @@ private:
 	unsigned int cd4TestResultCount;
 	bool art;
 	bool everArt;
+	unsigned int artCount;
 	bool adherence;
 	
 	/* Ouput info */
@@ -239,6 +241,7 @@ private:
 	size_t personIndex;
 	size_t rowIndex;
 	size_t infectiousnessIndex;
+	
 };
 
 #endif /* defined(__priorityQ__person__) */
