@@ -182,8 +182,10 @@ void Interventions::Execute()
 /////////////////////
 	/* VctPocCd4 */
 	
-	if(*p_VctPocCd4)
+	if(*p_VctPocCd4) {
 		vctPocFlag = true;
+		ScheduleVctHivTest(pPerson);
+	}
 	
 /////////////////////
 	/* ArtOutreach */
