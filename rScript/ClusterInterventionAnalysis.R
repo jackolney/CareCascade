@@ -2,7 +2,6 @@
 rm(list=ls())
 setwd("/Volumes/jjo11/cascade/CareCascadeV2/November/24th/Sweep/")
 
-
 load("./output/Baseline/currentWorkspace.RData") 
 Baseline <- result
 load("./output/Hbct_1/currentWorkspace.RData")
@@ -133,6 +132,121 @@ abline(v=9.7,lty=3,lwd=1.5)
 abline(v=12.1,lty=3,lwd=1.5)
 
 quartz.save("/Users/jack/git/CareCascade/interventionFigures/impact.pdf",type='pdf')
+
+######################
+# COST IMPACT FIGURE #
+######################
+graphics.off()
+quartz.options(w=18,h=12)
+library(RColorBrewer)
+p <- brewer.pal(12,"Set3")
+d <- brewer.pal(12,"Paired")
+R <-brewer.pal(9,"Reds")
+O <- brewer.pal(9,"Oranges")
+G <-brewer.pal(9,"Greens")
+B <-brewer.pal(9,"Blues")
+plot_col <- c(R[7],R[5],O[6],p[6],O[3],G[7],p[7],G[3],B[7],B[5],d[10],d[9])
+
+bCOST <- sum(Baseline$sCOST)
+
+resultCOST <- matrix(0,2,12)
+resultCOST[1,1] <- sum(Hbct_1$sCOST) - bDALY
+resultCOST[2,1] <- sum(Hbct_2$sCOST) - bDALY
+resultCOST[1,2] <- sum(Vct_1$sCOST) - bDALY
+resultCOST[2,2] <- sum(Vct_2$sCOST) - bDALY
+resultCOST[1,3] <- sum(HbctPocCd4_1$sCOST) - bDALY
+resultCOST[2,3] <- sum(HbctPocCd4_2$sCOST) - bDALY
+resultCOST[1,4] <- sum(Linkage_1$sCOST) - bDALY
+resultCOST[2,4] <- sum(Linkage_2$sCOST) - bDALY
+resultCOST[1,5] <- sum(VctPocCd4$sCOST) - bDALY
+resultCOST[1,6] <- sum(PreOutreach_1$sCOST) - bDALY
+resultCOST[2,6] <- sum(PreOutreach_2$sCOST) - bDALY
+resultCOST[1,7] <- sum(ImprovedCare_1$sCOST) - bDALY
+resultCOST[2,7] <- sum(ImprovedCare_2$sCOST) - bDALY
+resultCOST[1,8] <- sum(PocCd4$sCOST) - bDALY
+resultCOST[1,9] <- sum(ArtOutreach_1$sCOST) - bDALY
+resultCOST[2,9] <- sum(ArtOutreach_2$sCOST) - bDALY
+resultCOST[1,10] <- sum(Adherence_1$sCOST) - bDALY
+resultCOST[2,10] <- sum(Adherence_2$sCOST) - bDALY
+resultCOST[1,11] <- sum(ImmediateArt$sCOST) - bDALY
+resultCOST[1,12] <- sum(UniversalTestAndTreat_1$sCOST) - bDALY
+resultCOST[2,12] <- sum(UniversalTestAndTreat_2$sCOST) - bDALY
+
+par(family="Avenir Next Bold")
+plot(resultDALY[1,1],resultCOST[1,1],
+	pch=19,
+	cex=1.5,
+	cex.main=1.5,
+	cex.lab=1.2,
+	cex.axis=1.2,
+	col=plot_col[1],
+	xlim=c(0,5e+05),
+	main="DALY's averted against additional cost of interventions acting on HIV care between 2010 and 2030",
+	xlab="DALY's averted",
+	ylab="Additional cost (2013 USD)",
+	ylim=c(0,7e+9))
+# abline(h=0,lwd=1.5)
+# abline(v=0,lwd=1.5)
+
+points(resultDALY[2,1],resultCOST[2,1],col=plot_col[1],pch=17,cex=1.5)
+
+points(resultDALY[1,2],resultCOST[1,2],col=plot_col[2],pch=19,cex=1.5)
+points(resultDALY[2,2],resultCOST[2,2],col=plot_col[2],pch=17,cex=1.5)
+
+points(resultDALY[1,3],resultCOST[1,3],col=plot_col[3],pch=19,cex=1.5)
+points(resultDALY[2,3],resultCOST[2,3],col=plot_col[3],pch=17,cex=1.5)
+
+points(resultDALY[1,4],resultCOST[1,4],col=plot_col[4],pch=19,cex=1.5)
+points(resultDALY[2,4],resultCOST[2,4],col=plot_col[4],pch=17,cex=1.5)
+
+points(resultDALY[1,5],resultCOST[1,5],col=plot_col[5],pch=19,cex=1.5)
+
+points(resultDALY[1,6],resultCOST[1,6],col=plot_col[6],pch=19,cex=1.5)
+points(resultDALY[2,6],resultCOST[2,6],col=plot_col[6],pch=17,cex=1.5)
+
+points(resultDALY[1,7],resultCOST[1,7],col=plot_col[7],pch=19,cex=1.5)
+points(resultDALY[2,7],resultCOST[2,7],col=plot_col[7],pch=19,cex=1.5)
+
+points(resultDALY[1,8],resultCOST[1,8],col=plot_col[8],pch=19,cex=1.5)
+
+points(resultDALY[1,9],resultCOST[1,9],col=plot_col[9],pch=19,cex=1.5)
+points(resultDALY[2,9],resultCOST[2,9],col=plot_col[9],pch=17,cex=1.5)
+
+points(resultDALY[1,10],resultCOST[1,10],col=plot_col[10],pch=19,cex=1.5)
+points(resultDALY[2,10],resultCOST[2,10],col=plot_col[10],pch=17,cex=1.5)
+
+points(resultDALY[1,11],resultCOST[1,11],col=plot_col[11],pch=19,cex=1.5)
+
+points(resultDALY[1,12],resultCOST[1,12],col=plot_col[12],pch=19,cex=1.5)
+points(resultDALY[2,12],resultCOST[2,12],col=plot_col[12],pch=17,cex=1.5)
+
+legend("topright",
+	c("HBCT",
+		"VCT",
+		"HBCT POC CD4",
+		"Linkage",
+		"Pre-ART Outreach",
+		"Improved Care",
+		"VCT POC CD4",
+		"POC CD4",
+		"On-ART Outreach",
+		"Adherence",
+		"Immediate ART",
+		"UTT"),
+	fill=plot_col,
+	border=NA,
+	box.lty=0,
+	cex=1.2)
+
+legend(c(0,7e+9),
+	c("Maximum Impact",
+		"Realistic Impact"),
+	pch=c(19,17),
+	col=c(1),
+	border=NA,
+	box.lty=0,
+	cex=1.2)
+quartz.save("/Users/jack/git/CareCascade/interventionFigures/costImpact.pdf",type='pdf')
 
 ##################
 # CARE PIE CHART #
