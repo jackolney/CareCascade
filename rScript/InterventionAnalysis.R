@@ -1,7 +1,6 @@
 #Test Script for CareCascade
+rm(list=ls())
 setwd("/Users/jack/git/CareCascade")
-source("./rScript/Cascade.R")
-dyn.load("./source/main.so")
 
 Interventions <- 
 c("Baseline",
@@ -44,13 +43,32 @@ GlobalPopSize = 100
 
 #Intervention Loop
 for(i in 1:length(Interventions)) {
+	startTime <- proc.time()
+	system("date")
 	print(Interventions[i]) 
 	flush.console()	
-	Output <- Cascade(GlobalPopSize,cHbct[i],cVct[i],cHbctPocCd4[i],cLinkage[i],cVctPocCd4[i],cPreOutreach[i],cImprovedCare[i],cPocCd4[i],cArtOutreach[i],cAdherence[i],cImmediateArt[i],cUniversalTestAndTreat[i])
-	assign(Interventions[i],Output)
+	dyn.load("./source/main.so")
+	result <- .Call("CallCascade",GlobalPopSize, 				# Pop;
+						      	  cHbct[i],  					# Hbct; 
+						      	  cVct[i],  					# Vct; 
+						      	  cHbctPocCd4[i],  				# HbctPocCd4; 
+						      	  cLinkage[i],  				# Linkage;
+						      	  cVctPocCd4[i],  				# VctPocCd4; 						      
+						      	  cPreOutreach[i],  			# PreOutreach; 
+						      	  cImprovedCare[i],  			# ImprovedCare; 
+						      	  cPocCd4[i],  					# PocCd4; 
+						      	  cArtOutreach[i],  			# ArtOutreach;
+						      	  cAdherence[i],  				# Adherence;						      
+						      	  cImmediateArt[i],  			# ImmediateArt; 
+						      	  cUniversalTestAndTreat[i]   	# UniversalTestAndTreat; 
+	)
+	assign(Interventions[i],result)
+	print(proc.time() - startTime)
+	flush.console()
 }
 
 save.image(file="currentWorkspace.RData")
+
 
 ########################
 
@@ -170,10 +188,10 @@ par(family="Avenir Next Bold")
 		cex.main=1.5,
 		cex.lab=1.2,
 		main="DALY's averted between 2010 and 2030",
-		ylim=c(0,1e+05),
+		ylim=c(0,5e+04),
 		ylab="DALY's averted",
 		yaxt='n')
-	axis(2,at=seq(0,5e+05,5e+04),labels=format(seq(0,5e+05,5e+04),big.mark=","),las=3,cex.axis=1)
+	axis(2,at=seq(0,5e+04,1e+04),labels=format(seq(0,5e+04,1e+04),big.mark=","),las=3,cex.axis=1)
 	mtext("HBCT",1,								at=0.7,1,cex=1)
 	mtext("VCT",1,								at=1.9,1,cex=1)
 	mtext("HBCT\n POC CD4",1,					at=3.1,1.5,cex=1)
@@ -207,6 +225,8 @@ abline(v=6.1,lty=3,lwd=1.5)
 abline(v=9.7,lty=3,lwd=1.5)
 abline(v=12.1,lty=3,lwd=1.5)
 
+quartz.save("./interventionFigures/impact.pdf",type='pdf')
+
 ##################
 # CARE PIE CHART #
 ##################
@@ -216,7 +236,7 @@ quartz.options(w=20,h=12)
 library(RColorBrewer)
 m <- brewer.pal(9,"Spectral")
 
-par(family="Avenir Next Bold")
+par(mfrow=c(1,3),family="Avenir Next Bold")
 pie(Baseline$sCARE,
 	labels=c("Never tested",
 		"Tested but never\n initiated ART",
@@ -227,8 +247,7 @@ pie(Baseline$sCARE,
 	border=NA,
 	cex=2)
 
-par(family="Avenir Next Bold")
-pie(ArtOutreach_2$sCARE,
+pie(Adherence_2$sCARE,
 	labels=c("Never tested",
 		"Tested but never\n initiated ART",
 		"Initiated ART but\n died following late initiation (<200)",
@@ -238,8 +257,7 @@ pie(ArtOutreach_2$sCARE,
 	border=NA,
 	cex=2)
 
-par(family="Avenir Next Bold")
-pie(ArtOutreach_1$sCARE,
+pie(Adherence_1$sCARE,
 	labels=c("Never tested",
 		"Tested but never\n initiated ART",
 		"Initiated ART but\n died following late initiation (<200)",
@@ -256,7 +274,8 @@ pie(ArtOutreach_1$sCARE,
 source("./rScript/BaselineFigures.R")
 GenerateBaselineFigures(Baseline)
 GenerateBaselineFigures(ArtOutreach_1)
-
+GenerateBaselineFigures(Adherence_1)
+Adherence_1$sART_15to49
 abline(v=37)
 
 art$
