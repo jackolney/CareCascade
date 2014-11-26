@@ -8,7 +8,7 @@ interventions <- c("Baseline", "Hbct_1", "Hbct_2", "Vct_1", "Vct_2", "HbctPocCd4
 
 # for(i in 1:length(sweep)) {
 # 	for(j in 1:length(interventions)) {
-# 		load(gsub(" ","",paste("./",sweep[i],"/output/",interventions[j],"/currentWorkspace.RData")))
+# 		load(gsub(" ","",paste("./",sweep[i],"/output/",interventions[j],"/currentWorkspace.RData")))		
 # 	}
 # }
 
@@ -90,7 +90,7 @@ par(family="Avenir Next Bold")
 	mtext("VCT",1,								at=1.9,1,cex=1)
 	mtext("HBCT\n POC CD4",1,					at=3.1,1.5,cex=1)
 	mtext("Linkage",1,							at=4.3,1,cex=1)
-	mtext("VCT\nPOC CD4",1,						at=5.5,1.5,cex=1)
+	mtext("VCT\nPOC CD4",1,						at=5.5,1.5,cex=1)	
 	mtext("Pre-ART\n Outreach",1,				at=6.7,1.5,cex=1)
 	mtext("Improved\n Care",1,					at=7.9,1.5,cex=1)
 	mtext("POC CD4",1,							at=9.1,1,cex=1)
@@ -98,7 +98,7 @@ par(family="Avenir Next Bold")
 	mtext("Adherence",1,						at=11.5,1.5,cex=1)
 	mtext("Immediate\n ART",1,					at=12.7,1.5,cex=1)
 	mtext("UTT",1,								at=13.9,1.5,cex=1)
-
+	
 	barplot(resultDALY[2,],
 		yaxt='n',
 		border=NA,
@@ -126,7 +126,7 @@ quartz.save("/Users/jack/git/CareCascade/interventionFigures/impact.pdf",type='p
 ###########
 
 for(j in 1:length(interventions)) {
-	load(gsub(" ","",paste("./",sweep[5],"/output/",interventions[j],"/currentWorkspace.RData")))
+	load(gsub(" ","",paste("./",sweep[5],"/output/",interventions[j],"/currentWorkspace.RData")))		
 }
 
 
@@ -179,7 +179,7 @@ par(family="Avenir Next Bold")
 	mtext("VCT",1,								at=1.9,1,cex=1)
 	mtext("HBCT\n POC CD4",1,					at=3.1,1.5,cex=1)
 	mtext("Linkage",1,							at=4.3,1,cex=1)
-	mtext("VCT\nPOC CD4",1,						at=5.5,1.5,cex=1)
+	mtext("VCT\nPOC CD4",1,						at=5.5,1.5,cex=1)	
 	mtext("Pre-ART\n Outreach",1,				at=6.7,1.5,cex=1)
 	mtext("Improved\n Care",1,					at=7.9,1.5,cex=1)
 	mtext("POC CD4",1,							at=9.1,1,cex=1)
@@ -187,7 +187,7 @@ par(family="Avenir Next Bold")
 	mtext("Adherence",1,						at=11.5,1.5,cex=1)
 	mtext("Immediate\n ART",1,					at=12.7,1.5,cex=1)
 	mtext("UTT",1,								at=13.9,1.5,cex=1)
-
+	
 	barplot(resultDALY[2,],
 		yaxt='n',
 		border=NA,
@@ -402,7 +402,7 @@ for(i in 1:length(Interventions)) {
 		col=c(m[1:5]),
 		border=NA,
 		cex=2)
-	quartz.save(gsub(" ","",paste("/Users/jack/git/CareCascade/interventionFigures/pie/",Interventions[i],".pdf")),type='pdf')
+	quartz.save(gsub(" ","",paste("/Users/jack/git/CareCascade/interventionFigures/pie/",Interventions[i],".pdf")),type='pdf')				
 }
 
 ################

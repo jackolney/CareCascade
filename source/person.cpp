@@ -375,9 +375,9 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		cd4AtArt = currentCd4;
 		artCount++;
 	} else if(theTime > 14610 && artDay <= 14610)
-		artTime = theTime - 14610;
+		artTime += theTime - 14610;
 	else if(theTime > 14610)
-		artTime = theTime - artDay;
+		artTime += theTime - artDay;
 }
 
 /////////////////////
