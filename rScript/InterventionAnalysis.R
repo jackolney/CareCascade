@@ -2,22 +2,22 @@
 rm(list=ls())
 setwd("/Users/jack/git/CareCascade")
 
-Interventions <- 
+Interventions <-
 c("Baseline",
 "Hbct_1",
-"Hbct_2", 
+"Hbct_2",
 "Vct_1",
-"Vct_2", 
+"Vct_2",
 "HbctPocCd4_1",
-"HbctPocCd4_2", 
+"HbctPocCd4_2",
 "Linkage_1",
 "Linkage_2",
 "VctPocCd4",
 "PreOutreach_1",
-"PreOutreach_2", 
+"PreOutreach_2",
 "ImprovedCare_1",
-"ImprovedCare_2", 
-"PocCd4", 
+"ImprovedCare_2",
+"PocCd4",
 "ArtOutreach_1",
 "ArtOutreach_2",
 "Adherence_1",
@@ -45,22 +45,22 @@ GlobalPopSize = 100
 for(i in 1:length(Interventions)) {
 	startTime <- proc.time()
 	system("date")
-	print(Interventions[i]) 
-	flush.console()	
+	print(Interventions[i])
+	flush.console()
 	dyn.load("./source/main.so")
 	result <- .Call("CallCascade",GlobalPopSize, 				# Pop;
-						      	  cHbct[i],  					# Hbct; 
-						      	  cVct[i],  					# Vct; 
-						      	  cHbctPocCd4[i],  				# HbctPocCd4; 
+						      	  cHbct[i],  					# Hbct;
+						      	  cVct[i],  					# Vct;
+						      	  cHbctPocCd4[i],  				# HbctPocCd4;
 						      	  cLinkage[i],  				# Linkage;
-						      	  cVctPocCd4[i],  				# VctPocCd4; 						      
-						      	  cPreOutreach[i],  			# PreOutreach; 
-						      	  cImprovedCare[i],  			# ImprovedCare; 
-						      	  cPocCd4[i],  					# PocCd4; 
+						      	  cVctPocCd4[i],  				# VctPocCd4;
+						      	  cPreOutreach[i],  			# PreOutreach;
+						      	  cImprovedCare[i],  			# ImprovedCare;
+						      	  cPocCd4[i],  					# PocCd4;
 						      	  cArtOutreach[i],  			# ArtOutreach;
-						      	  cAdherence[i],  				# Adherence;						      
-						      	  cImmediateArt[i],  			# ImmediateArt; 
-						      	  cUniversalTestAndTreat[i]   	# UniversalTestAndTreat; 
+						      	  cAdherence[i],  				# Adherence;
+						      	  cImmediateArt[i],  			# ImmediateArt;
+						      	  cUniversalTestAndTreat[i]   	# UniversalTestAndTreat;
 	)
 	assign(Interventions[i],result)
 	print(proc.time() - startTime)
@@ -196,7 +196,7 @@ par(family="Avenir Next Bold")
 	mtext("VCT",1,								at=1.9,1,cex=1)
 	mtext("HBCT\n POC CD4",1,					at=3.1,1.5,cex=1)
 	mtext("Linkage",1,							at=4.3,1,cex=1)
-	mtext("VCT\nPOC CD4",1,						at=5.5,1.5,cex=1)	
+	mtext("VCT\nPOC CD4",1,						at=5.5,1.5,cex=1)
 	mtext("Pre-ART\n Outreach",1,				at=6.7,1.5,cex=1)
 	mtext("Improved\n Care",1,					at=7.9,1.5,cex=1)
 	mtext("POC CD4",1,							at=9.1,1,cex=1)
@@ -204,7 +204,7 @@ par(family="Avenir Next Bold")
 	mtext("Adherence",1,						at=11.5,1.5,cex=1)
 	mtext("Immediate\n ART",1,					at=12.7,1.5,cex=1)
 	mtext("UTT",1,								at=13.9,1.5,cex=1)
-	
+
 	barplot(resultDALY[2,],
 		yaxt='n',
 		border=NA,
