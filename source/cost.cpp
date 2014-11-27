@@ -97,9 +97,17 @@ void ChargeAdherence(person * const thePerson)
 /////////////////////
 /////////////////////
 
-void ChargeOutreach(person * const thePerson)
+void ChargePreArtOutreach(person * const thePerson)
 {
-	thePerson->SetOutreachCost(outreachCost);
+	thePerson->SetPreArtOutreachCost(outreachCost);
+}
+
+/////////////////////
+/////////////////////
+
+void ChargeArtOutreach(person * const thePerson)
+{
+	thePerson->SetArtOutreachCost(outreachCost);
 }
 
 /////////////////////
@@ -121,7 +129,7 @@ void WriteCost(person * const thePerson)
 			i++;
 		
 		if(theQ->GetTime() > 14610)
-			theCOST[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetAnnualArtCost() + thePerson->GetAnnualAdherenceCost() + thePerson->GetOutreachCost();
+			theCOST[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetAnnualArtCost() + thePerson->GetAnnualAdherenceCost() + thePerson->GetArtOutreachCost() + thePerson->GetPreArtOutreachCost();
 		
 		if(theQ->GetTime() == 14610)
 			thePerson->ResetCost();

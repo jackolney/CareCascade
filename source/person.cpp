@@ -74,7 +74,8 @@ iLabCd4TestCost(0),
 iPocCd4TestCost(0),
 iAnnualArtCost(0),
 iAdherenceCost(0),
-iOutreachCost(0),
+iArtOutreachCost(0),
+iPreArtOutreachCost(0),
 iPop(thePop),
 personIndex(0),
 rowIndex(0),
@@ -375,9 +376,9 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		cd4AtArt = currentCd4;
 		artCount++;
 	} else if(theTime > 14610 && artDay <= 14610)
-		artTime += theTime - 14610;
+		artTime = theTime - 14610;
 	else if(theTime > 14610)
-		artTime += theTime - artDay;
+		artTime = theTime - artDay;
 }
 
 /////////////////////
