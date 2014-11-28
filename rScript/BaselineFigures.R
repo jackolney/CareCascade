@@ -1,7 +1,7 @@
-GenerateBaselineFigures <- function(result,directory) {
+GenerateBaselineFigures <- function(result,directory,sizeAdjustment) {
 
 graphics.off()
-quartz.options(h=10,w=10)
+quartz.options(w=15,h=12)
 library(RColorBrewer)
 p <- brewer.pal(9,"Set1")
 
@@ -640,9 +640,6 @@ Cd4_Bar <- matrix(0,4,2)
 Cd4_Bar[,1] <- Model_Cd4
 Cd4_Bar[,2] <- Kais2007_Cd4[1:4,2]
 
-# graphics.off()
-# quartz.options(w=10,h=12)
-
 par(family="Helvetica Neue Bold")
 barplot(Cd4_Bar,
 	border=NA,
@@ -750,4 +747,65 @@ legend("topright",
 	box.lty=0,
 	cex=1.5)
 quartz.save(gsub(" ","",paste(directory,"/HivPrevFemale_Ampath2014.pdf")),type='pdf')
+
+##################
+# COST BREAKDOWN #
+##################
+
+costBreakdown <- matrix(0,2,20)
+costBreakdown[1,] <- cumsum(result$sPreArtCOST) / cumsum(result$sPreArtCOST + result$sArtCOST)
+costBreakdown[2,] <- cumsum(result$sArtCOST) / cumsum(result$sPreArtCOST + result$sArtCOST)
+
+library(RColorBrewer)
+m <- brewer.pal(9,"Spectral")
+
+par(family="Avenir Next Bold")
+barplot(costBreakdown,
+	col=c(m[1],m[3]),
+	ylab="Proportion of total cost (2013 USD)",
+	main="Cost breakdown between 2010 and 2030 (2013 USD)",
+	yaxt='n')
+year = 2009
+i = 1
+for(i in 1:20) {
+mtext(paste(year + i),1,at=0.5 + (1.2 * i-1),1,cex=1)
+}
+axis(2,seq(0,1,0.1),las=2)
+legend("top",
+	c("Pre-ART Cost","ART Cost"),
+	fill=c(m[1],m[3]),
+	box.lty=0,
+	cex=1.2)
+quartz.save(gsub(" ","",paste(directory,"/CostBreakdown.pdf")),type='pdf')
+
+#############
+# INCIDENCE #
+#############
+
+SpectrumIncidence <- read.csv("/Users/jack/git/CareCascade/estimates/SpectrumIncidence.csv",header=TRUE)
+
+par(family="Avenir Next Bold")
+plot(Baseline$sINCIDENCE * sizeAdjustment,
+	type='l',
+	lwd=2,
+	col=p[2],
+	xaxt='n',
+	yaxt='n',
+	ylab='Incident Cases',
+	xlab='Year',
+	main="Incidence",
+	ylim=c(0,3e+05))
+axis(1,seq(0,60,5),seq(1970,2030,5))
+axis(2,seq(0,3e+05,1e+05),las=3)
+lines(SpectrumIncidence$SpectrumIncidence,
+	col=p[1:2],
+	lwd=2)
+legend("topright",
+	c("Spectrum Incidence","Model Incidence"),
+	fill=p[1:2],
+	box.lty=0,
+	border=NA,
+	cex=1.2)
+quartz.save(gsub(" ","",paste(directory,"/Incidence.pdf")),type='pdf')
+
 }
