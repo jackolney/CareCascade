@@ -17,6 +17,7 @@
 #include "events.h"
 #include "toolbox.h"
 #include "outputUpdate.h"
+#include "discount.h"
 
 using namespace std;
 
@@ -35,6 +36,7 @@ beta(1)
 	CreateOutputArray();
 	ScheduleIncidence(this);
 	ScheduleBetaCalculation(this);
+	SeedDiscount();
 	for(size_t i=0;i<5;i++)
 		infectiousness[i] = 0;
 }

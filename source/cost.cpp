@@ -16,6 +16,10 @@ using namespace std;
 
 extern eventQ * theQ;
 extern double * theCOST;
+extern double * thePreArtCOST;
+extern double * theArtCOST;
+extern double * thePreArtCOST_Hiv;
+extern double * theArtCOST_Hiv;
 
 /////////////////////
 /////////////////////
@@ -72,13 +76,22 @@ void ChargePocCd4Test(person * const thePerson)
 void ChargeArtCare(person * const thePerson)
 {
 	if(thePerson->GetArtInitiationState()) {
-		if(thePerson->GetArtDay() <= 14610)
-			thePerson->SetAnnualArtCost((((theQ->GetTime() - 14610) + thePerson->GetArtTime()) / 365.25) * annualArtCost);
+		double yr [22];
+		for(size_t i = 0; i<22; i++)
+			yr[i] = 14610 + (i * 365.25);
+		
+		unsigned int i = 0;
+		while(theQ->GetTime() > yr[i] && i < 21)
+			i++;
+		
+		if(thePerson->GetArtDay() <= yr[i-1])
+			thePerson->SetAnnualArtCost((((theQ->GetTime() - yr[i-1]) + thePerson->GetArtTime()) / 365.25) * annualArtCost);
 		else
 			thePerson->SetAnnualArtCost((((theQ->GetTime() - thePerson->GetArtDay()) + thePerson->GetArtTime()) / 365.25) * annualArtCost);
 	} else
 		thePerson->SetAnnualArtCost((thePerson->GetArtTime() / 365.25) * annualArtCost);
 }
+
 
 /////////////////////
 /////////////////////
@@ -86,8 +99,16 @@ void ChargeArtCare(person * const thePerson)
 void ChargeAdherence(person * const thePerson)
 {
 	if(adherenceFlag && thePerson->GetArtInitiationState()) {
-		if(thePerson->GetArtDay() <= 14610)
-			thePerson->SetAnnualAdherenceCost((((theQ->GetTime() - 14610) + thePerson->GetArtTime()) / 365.25) * annualAdherenceCost);
+		double yr [22];
+		for(size_t i = 0; i<22; i++)
+			yr[i] = 14610 + (i * 365.25);
+		
+		unsigned int i = 0;
+		while(theQ->GetTime() > yr[i] && i < 21)
+			i++;
+		
+		if(thePerson->GetArtDay() <= yr[i-1])
+			thePerson->SetAnnualAdherenceCost((((theQ->GetTime() - yr[i-1]) + thePerson->GetArtTime()) / 365.25) * annualAdherenceCost);
 		else
 			thePerson->SetAnnualAdherenceCost((((theQ->GetTime() - thePerson->GetArtDay()) + thePerson->GetArtTime()) / 365.25) * annualAdherenceCost);
 	} else
@@ -116,8 +137,6 @@ void ChargeArtOutreach(person * const thePerson)
 void WriteCost(person * const thePerson)
 {
 	if(thePerson->Alive()) {
-		ChargeArtCare(thePerson);
-		ChargeAdherence(thePerson);
 		
 		/* Create array with dates from 2011 to 2030 (to allow us to capture DALYs at year end between 2010 and 2030). */
 		double yr [20];
@@ -128,11 +147,24 @@ void WriteCost(person * const thePerson)
 		while(theQ->GetTime() > yr[i])
 			i++;
 		
-		if(theQ->GetTime() > 14610)
+		if(theQ->GetTime() > 14610) {
+			ChargeArtCare(thePerson);
+			ChargeAdherence(thePerson);
 			theCOST[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetAnnualArtCost() + thePerson->GetAnnualAdherenceCost() + thePerson->GetArtOutreachCost() + thePerson->GetPreArtOutreachCost();
-		
-		if(theQ->GetTime() == 14610)
-			thePerson->ResetCost();
+			
+			thePreArtCOST[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetPreArtOutreachCost();
+			
+			theArtCOST[i] += thePerson->GetAnnualArtCost() + thePerson->GetAnnualAdherenceCost() + thePerson->GetArtOutreachCost() + thePerson->GetPreArtOutreachCost();
+
+			if(thePerson->GetSeroStatus()) {
+				thePreArtCOST_Hiv[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetPreArtOutreachCost();
+				
+				theArtCOST_Hiv[i] += thePerson->GetAnnualArtCost() + thePerson->GetAnnualAdherenceCost() + thePerson->GetArtOutreachCost() + thePerson->GetPreArtOutreachCost();
+			}
+			
+		}
+	
+		thePerson->ResetCost();
 	}
 }
 
