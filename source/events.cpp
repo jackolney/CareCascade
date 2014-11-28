@@ -16,6 +16,7 @@
 #include "cohort.h"
 #include "impact.h"
 #include "outputUpdate.h"
+#include "cost.h"
 
 using namespace std;
 
@@ -186,6 +187,7 @@ bool Death::CheckValid()
 void Death::Execute()
 {
 	UpdateDaly(pPerson);
+	WriteCost(pPerson);	
 	pPerson->Kill(GetTime(),hivRelated);
 	WriteCare(pPerson,GetTime());
 	if(hivRelated) {
@@ -244,7 +246,7 @@ Cd4Recover::~Cd4Recover()
 
 bool Cd4Recover::CheckValid()
 {
-	if(pPerson->GetArtInitiationState() && pPerson->GetArtAdherenceState() && pPerson->GetCd4RecoverDate()	== GetTime())
+	if(pPerson->GetArtInitiationState() && pPerson->GetArtAdherenceState() && pPerson->GetCd4RecoverDate() == GetTime())
 		return pPerson->Alive();
 	else
 		return false;

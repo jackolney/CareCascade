@@ -23,7 +23,7 @@ dyn.load("./source/main.so")
 
 
 system("date")
-popSize = 10000
+popSize = 1000
 dyn.load("./source/main.so")
 baseline 					<- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 # hbct_1 						<- .Call("CallCascade",popSize, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -55,7 +55,12 @@ sum(baseline$sDALY) - sum(artOutreach_1$sDALY)
 sum(baseline$sDALY) - sum(adherence_1$sDALY)
 sum(baseline$sDALY) - sum(universalTestAndTreat_1$sDALY)
 
+plot(baseline$sINCIDENCE,type='b')
 
+plot(baseline$sPreArtCOST,type='b')
+plot(baseline$sPreArtCOST_Hiv)
+plot(baseline$sArtCOST,type='b')
+plot(baseline$sArtCOST_Hiv)
 #result
 
 #Create Plots

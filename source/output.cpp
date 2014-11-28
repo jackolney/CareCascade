@@ -48,6 +48,10 @@ double * theWHO_2_Art;
 double * theWHO_3_Art;
 double * theWHO_4_Art;
 double * theINCIDENCE;
+double * thePreArtCOST;
+double * theArtCOST;
+double * thePreArtCOST_Hiv;
+double * theArtCOST_Hiv;
 
 /////////////////////
 /////////////////////
@@ -136,6 +140,10 @@ void CreateOutputArray()
 	theWHO_3_Art = new double[60];
 	theWHO_4_Art = new double[60];
 	theINCIDENCE = new double[60];
+	thePreArtCOST = new double[20];
+	theArtCOST = new double[20];
+	thePreArtCOST_Hiv = new double[20];
+	theArtCOST_Hiv = new double[20];
 	
 	for(size_t i=0;i<60;i++) {
 		if(i<4)
@@ -151,6 +159,10 @@ void CreateOutputArray()
 			theCOST[i] = 0;
 			thePOP_AgeSex_2007[i] = 0;
 			theHIV_AgeSex_2007[i] = 0;
+			thePreArtCOST[i] = 0;
+			theArtCOST[i] = 0;
+			thePreArtCOST_Hiv[i] = 0;
+			theArtCOST_Hiv[i] = 0;
 		}
 		if(i<16) {
 			thePOP_AgeSex_2012[i] = 0;
