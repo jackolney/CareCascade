@@ -23,7 +23,7 @@ dyn.load("./source/main.so")
 
 
 system("date")
-popSize = 1000
+popSize = 10000
 dyn.load("./source/main.so")
 baseline 					<- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 # hbct_1 						<- .Call("CallCascade",popSize, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
