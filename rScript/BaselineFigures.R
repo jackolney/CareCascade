@@ -10,6 +10,7 @@ p <- brewer.pal(9,"Set1")
 Unaids_HivPrev <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_HivPrevalence_Kenya.csv",header=TRUE)
 Unaids_HivPrev$year
 
+par(family="Avenir Next Bold")
 plot(seq(0,59,1),result$sHIV_15to49 / result$sPOP_15to49,
 	type='l',
 	col=p[2],
@@ -35,6 +36,7 @@ quartz.save(gsub(" ","",paste(directory,"/HivPrev_Unaids.pdf")),type='pdf')
 #PlwhivOnArt
 Unaids_PlwhivOnArt <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_PlwhivOnArt_Kenya.csv",header=TRUE)
 
+par(family="Avenir Next Bold")
 plot(seq(0,59,1),result$sART_15to49 / result$sHIV_15to49,
 	type='l',
 	col=p[2],
@@ -60,12 +62,13 @@ quartz.save(gsub(" ","",paste(directory,"/PlwhivOnArt_Unaids.pdf")),type='pdf')
 #Proportion of AIDS-related deaths in general population
 Unaids_AidsDeaths <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_AidsRelatedDeaths.csv",header=TRUE)
 
-
-plot(seq(0,59,1),result$sAidsDeath_15plus / result$sPOP_15plus,
+par(family="Avenir Next Bold")
+plot(seq(0,58,1),(result$sAidsDeath_15plus / result$sPOP_15plus)[1:59],
 	type='l',
 	col=p[2],
 	lwd=2,
 	ylim=c(0,0.01),
+	xlim=c(0,60),
 	main='Proportion of AIDS-realted deaths in population',
 	xlab='Year',
 	ylab='Proportion',
@@ -640,7 +643,7 @@ Cd4_Bar <- matrix(0,4,2)
 Cd4_Bar[,1] <- Model_Cd4
 Cd4_Bar[,2] <- Kais2007_Cd4[1:4,2]
 
-par(family="Helvetica Neue Bold")
+par(family="Avenir Next Bold")
 barplot(Cd4_Bar,
 	border=NA,
 	width=c(1,1),
@@ -778,6 +781,32 @@ legend("top",
 	cex=1.2)
 quartz.save(gsub(" ","",paste(directory,"/CostBreakdown.pdf")),type='pdf')
 
+hivCostBreakdown <- matrix(0,2,20)
+hivCostBreakdown[1,] <- cumsum(result$sPreArtCOST_Hiv) / cumsum(result$sPreArtCOST_Hiv + result$sArtCOST_Hiv)
+hivCostBreakdown[2,] <- cumsum(result$sArtCOST_Hiv) / cumsum(result$sPreArtCOST_Hiv + result$sArtCOST_Hiv)
+
+library(RColorBrewer)
+m <- brewer.pal(9,"Spectral")
+
+par(family="Avenir Next Bold")
+barplot(hivCostBreakdown,
+	col=c(m[1],m[3]),
+	ylab="Proportion of total cost (2013 USD)",
+	main="Cost breakdown between 2010 and 2030 among HIV-positive individuals (2013 USD)",
+	yaxt='n')
+year = 2009
+i = 1
+for(i in 1:20) {
+mtext(paste(year + i),1,at=0.5 + (1.2 * i-1),1,cex=1)
+}
+axis(2,seq(0,1,0.1),las=2)
+legend("top",
+	c("Pre-ART Cost","ART Cost"),
+	fill=c(m[1],m[3]),
+	box.lty=0,
+	cex=1.2)
+quartz.save(gsub(" ","",paste(directory,"/hivCostBreakdown.pdf")),type='pdf')
+
 #############
 # INCIDENCE #
 #############
@@ -785,7 +814,7 @@ quartz.save(gsub(" ","",paste(directory,"/CostBreakdown.pdf")),type='pdf')
 SpectrumIncidence <- read.csv("/Users/jack/git/CareCascade/estimates/SpectrumIncidence.csv",header=TRUE)
 
 par(family="Avenir Next Bold")
-plot(Baseline$sINCIDENCE * sizeAdjustment,
+plot((result$sINCIDENCE * sizeAdjustment)[1:59],
 	type='l',
 	lwd=2,
 	col=p[2],
@@ -794,9 +823,10 @@ plot(Baseline$sINCIDENCE * sizeAdjustment,
 	ylab='Incident Cases',
 	xlab='Year',
 	main="Incidence",
-	ylim=c(0,3e+05))
+	ylim=c(0,3e+05),
+	xlim=c(0,60))
 axis(1,seq(0,60,5),seq(1970,2030,5))
-axis(2,seq(0,3e+05,1e+05),las=3)
+axis(2,seq(0,3e+05,0.5e+05),las=3)
 lines(SpectrumIncidence$SpectrumIncidence,
 	col=p[1:2],
 	lwd=2)
