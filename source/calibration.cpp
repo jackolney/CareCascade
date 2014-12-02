@@ -251,32 +251,32 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 		ART4[0] += thePerson->GetCalAtArtPreArtVisitCount();
 	
 		// ART5 - Proportion of ppl initiating ART after diagnosis and successful retention in care until becoming eligible for treatment.
-	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare() && !thePerson->GetArtAtEnrollment())
+	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetArtAtEnrollment())
 		ART5[thePerson->GetCalAtArtDiagRoute()-1]++;
 	
 		// ART6 - Mean time from diagnosis to ART initiation for ppl successfully retained in care. (HCT ONLY)
-	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalCareRoute() == 1 && !thePerson->GetArtAtEnrollment()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalCareRoute() == 1 && !thePerson->GetArtAtEnrollment()) {
 		ART6[0] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART6_Counter[0]++;
 	}
 	
 		// ART9 - Proportion of ppl initiating ART, loss but return prior to becoming eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare())
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare())
 		ART9[thePerson->GetCalAtArtDiagRoute()-1]++;
 	
 		// ART10 - Mean time from diagnosis to ART initiation for ppl lost but returned prior to becoming eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare()) {
 		ART10[0] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART10_Counter[0]++;
 	}
 	
 		// ART11 - Proportion of ppl initiating ART, loss andd return when eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare())
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare())
 		ART11[thePerson->GetCalAtArtDiagRoute()-1]++;
 	
 	
 		// ART12 - Mean time from diagnosis to ART initiation for ppl lost and returned when eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare()) {
 		ART12[0] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART12_Counter[0]++;
 	}
@@ -360,32 +360,32 @@ void UpdateCalibrationArrayTwo(person * const thePerson)
 		ART4[1] += thePerson->GetCalAtArtPreArtVisitCount();
 	
 		// ART5 - Proportion of ppl initiating ART after diagnosis and successful retention in care until becoming eligible for treatment.
-	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare() && !thePerson->GetArtAtEnrollment())
+	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetArtAtEnrollment())
 		ART5[3 + (thePerson->GetCalAtArtDiagRoute()-1)]++;
 	
 		// ART6 - Mean time from diagnosis to ART initiation for ppl successfully retained in care. (HCT ONLY)
-	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalCareRoute() == 1 && !thePerson->GetArtAtEnrollment()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalCareRoute() == 1 && !thePerson->GetArtAtEnrollment()) {
 		ART6[1] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART6_Counter[1]++;
 	}
 	
 		// ART9 - Proportion of ppl initiating ART, loss but return prior to becoming eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare())
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare())
 		ART9[3 + (thePerson->GetCalAtArtDiagRoute()-1)]++;
 	
 		// ART10 - Mean time from diagnosis to ART initiation for ppl lost but returned prior to becoming eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare()) {
 		ART10[1] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART10_Counter[1]++;
 	}
 	
 		// ART11 - Proportion of ppl initiating ART, loss andd return when eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare())
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare())
 		ART11[3 + (thePerson->GetCalAtArtDiagRoute()-1)]++;
 	
 	
 		// ART12 - Mean time from diagnosis to ART initiation for ppl lost and returned when eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare()) {
 		ART12[1] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART12_Counter[1]++;
 	}
@@ -461,32 +461,32 @@ void UpdateCalibrationArrayThree(person * const thePerson)
 		ART4[2] += thePerson->GetCalAtArtPreArtVisitCount();
 	
 		// ART5 - Proportion of ppl initiating ART after diagnosis and successful retention in care until becoming eligible for treatment.
-	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare() && !thePerson->GetArtAtEnrollment())
+	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetArtAtEnrollment())
 		ART5[6 + (thePerson->GetCalAtArtDiagRoute()-1)]++;
 	
 		// ART6 - Mean time from diagnosis to ART initiation for ppl successfully retained in care. (HCT ONLY)
-	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalCareRoute() == 1 && !thePerson->GetArtAtEnrollment()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalCareRoute() == 1 && !thePerson->GetArtAtEnrollment()) {
 		ART6[2] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART6_Counter[2]++;
 	}
 	
 		// ART9 - Proportion of ppl initiating ART, loss but return prior to becoming eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare())
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare())
 		ART9[6 + (thePerson->GetCalAtArtDiagRoute()-1)]++;
 	
 		// ART10 - Mean time from diagnosis to ART initiation for ppl lost but returned prior to becoming eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare()) {
 		ART10[2] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART10_Counter[2]++;
 	}
 	
 		// ART11 - Proportion of ppl initiating ART, loss andd return when eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare())
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare())
 		ART11[6 + (thePerson->GetCalAtArtDiagRoute()-1)]++;
 	
 	
 		// ART12 - Mean time from diagnosis to ART initiation for ppl lost and returned when eligible.
-	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare()) {
 		ART12[2] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART12_Counter[2]++;
 	}
