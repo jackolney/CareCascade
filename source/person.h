@@ -45,10 +45,10 @@ public:
 	void AssignHivDeathDate(); //function creates the Death event.
 	
 	/* Hiv Care Functions */
-	void SetDiagnosedState(const bool theState,unsigned int theRoute) { diagnosed = theState; diagnosisCount++; diagnosisRoute = theRoute; }
-	void SetEverCd4TestState(const bool theState) { everCd4Test = theState; cd4TestCount++; }
+	void SetDiagnosedState(const bool theState, unsigned int theRoute, const double theTime) { diagnosed = theState; diagnosisCount++; diagnosisRoute = theRoute; calEverDiag = theState; calDiagRoute = theRoute; calDiagDay = theTime; }
+	void SetEverCd4TestState(const bool theState) { everCd4Test = theState; cd4TestCount++; calCd4TestCount++; if(cd4TestCount == 1) { calCd4EntryCare = currentCd4;} if(cd4TestCount > 1) {calSecondaryCd4TestCount++;} }
 	void SetEverCd4TestResultState(const bool theState) { everCd4TestResult = theState; cd4TestResultCount++; }
-	void SetInCareState(const bool theState) { inCare = theState; }
+	void SetInCareState(const bool theState, const double theTime);
 	void SetArtInitiationState(const bool theState, const double theTime);
 	void SetArtAdherenceState(const double theProb);
 	
@@ -93,7 +93,7 @@ public:
 	/* Population function */
 	void UpdatePopulation() { iPop->UpdateVector(this); }
 	void UpdateInfectiousnessArray() { iPop->UpdateArray(this); }
-	
+		
 	//////////////////////
 	/* Accessor methods */
 	//////////////////////
@@ -165,6 +165,28 @@ public:
 	size_t GetInfectiousnessIndex() const { return infectiousnessIndex; }
 	double GetVectorUpdateDate() const { return vectorUpdateDate; }
 	
+	/* Calibration functions */
+	void ResetCalibration();
+	bool GetCalEverDiag() const { return calEverDiag; }
+	double GetCalDiagDay() const { return calDiagDay; }
+	unsigned int GetCalDiagRoute() const { return calDiagRoute; }
+	bool GetCalEverCare() const { return calEverCare; }
+	double GetCalCareDay() const { return calCareDay; }
+	unsigned int GetCalCd4EntryCare() const { return calCd4EntryCare; }
+	unsigned int GetCalCd4TestCount() const { return calCd4TestCount; }
+	unsigned int GetCalSecondaryCd4TestCount() const { return calSecondaryCd4TestCount; }
+	unsigned int GetCalCd4SecondaryCd4Test() const { return calCd4SecondaryCd4Test; }
+	bool GetCalEverArt() const { return calEverArt; }
+	double GetCalArtDay() const { return calArtDay; }
+	unsigned int GetCalCd4AtArt() const { return calCd4AtArt; }
+	unsigned int GetCalAtArtDiagRoute() const { return calAtArtDiagRoute; }
+	unsigned int GetCalAtArtPreArtVisitCount() const { return calAtArtPreArtVisitCount; }
+	bool GetCalAtArtEverLostCare() const { return calAtArtEverLostPreArtCare; }
+	bool GetCalAtArtEverReturnCare() const { return calAtArtEverReturnPreArtCare; }
+	bool GetCalAtArtEligibleAtReturnCare() const { return calAtArtEligibleAtReturnPreArtCare; }
+	bool GetCalArtAtEnrollment() const { return calArtAtEnrollment; }
+	bool GetCalEverReturnArt() const { return calEverReturnArt; }
+	
 private:
 	/* basic characteristics */
 	bool gender;
@@ -180,7 +202,6 @@ private:
 	unsigned int initialCd4;
 	unsigned int currentWho;
 	unsigned int initialWho;
-	
 	/* Day = time an event occured */
 	double deathDay;
 	const double birthDay;
@@ -210,9 +231,15 @@ private:
 	unsigned int cd4TestCount;
 	bool everCd4TestResult;
 	unsigned int cd4TestResultCount;
+	bool everLostPreArtCare;
+	bool everReturnPreArtCare;
+	bool eligibleAtReturnPreArtCare;
 	bool art;
 	bool everArt;
+	bool artAtEnrollment;
 	unsigned int artCount;
+	bool everLostArt;
+	bool everReturnArt;
 	bool adherence;
 	
 	/* Ouput info */
@@ -245,6 +272,27 @@ private:
 	size_t rowIndex;
 	size_t infectiousnessIndex;
 	
+	/* Calibration */
+	bool calEverDiag;
+	double calDiagDay;
+	unsigned int calDiagRoute;
+	bool calEverCare;
+	double calCareDay;
+	unsigned int calCd4EntryCare;
+	unsigned int calCd4TestCount;
+	unsigned int calSecondaryCd4TestCount;
+	unsigned int calCd4SecondaryCd4Test;
+	
+	bool calEverArt;
+	double calArtDay;
+	unsigned int calCd4AtArt;
+	unsigned int calAtArtDiagRoute;
+	unsigned int calAtArtPreArtVisitCount;
+	bool calAtArtEverLostPreArtCare;
+	bool calAtArtEverReturnPreArtCare;
+	bool calAtArtEligibleAtReturnPreArtCare;
+	bool calArtAtEnrollment;
+	bool calEverReturnArt;
 };
 
 #endif /* defined(__priorityQ__person__) */

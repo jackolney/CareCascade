@@ -19,6 +19,7 @@
 #include "cascadeEvents.h"
 #include "output.h"
 #include "interventions.h"
+#include "calibration.h"
 
 extern Rng * theRng;
 extern eventQ * theQ;
@@ -56,9 +57,15 @@ everCd4Test(false),
 cd4TestCount(0),
 everCd4TestResult(false),
 cd4TestResultCount(0),
+everLostPreArtCare(false),
+everReturnPreArtCare(false),
+eligibleAtReturnPreArtCare(false),
 art(false),
 everArt(false),
+artAtEnrollment(false),
 artCount(0),
+everLostArt(false),
+everReturnArt(false),
 adherence(theRng->Sample(0.75)),
 cd4AtArt(0),
 hivDeath(false),
@@ -78,7 +85,26 @@ iPreArtOutreachCost(0),
 iPop(thePop),
 personIndex(0),
 rowIndex(0),
-infectiousnessIndex(5)
+infectiousnessIndex(5),
+calEverDiag(false),
+calDiagDay(0),
+calDiagRoute(0),
+calEverCare(false),
+calCareDay(0),
+calCd4EntryCare(0),
+calCd4TestCount(0),
+calSecondaryCd4TestCount(0),
+calCd4SecondaryCd4Test(0),
+calEverArt(false),
+calArtDay(0),
+calCd4AtArt(0),
+calAtArtDiagRoute(0),
+calAtArtPreArtVisitCount(0),
+calAtArtEverLostPreArtCare(false),
+calAtArtEverReturnPreArtCare(false),
+calAtArtEligibleAtReturnPreArtCare(false),
+calArtAtEnrollment(false),
+calEverReturnArt(false)
 {
 	gender = AssignGender();
 	AssignInitialAge(Time);
@@ -86,6 +112,7 @@ infectiousnessIndex(5)
 	natDeathDate = AssignNatDeathDate(Time);
 	iPop->AddPerson(this);
 	SeedOutput(this);
+	SeedCalibration(this,13514.25,14609,14974,16225);
 	SeedInterventions(this);
 	if(Time > 12418) {
 		new SeedInitialHivTests(this,Time);
@@ -365,6 +392,24 @@ void person::ScheduleHivIndicatorUpdate()
 /////////////////////
 /////////////////////
 
+void person::SetInCareState(const bool theState, const double theTime)
+{
+	if(theState && !GetInCareState()) {
+		calCareDay = theTime;
+		if(everLostPreArtCare) {
+			everReturnPreArtCare = true;
+			if(GetEligible())
+				eligibleAtReturnPreArtCare = true;
+		}
+	} else if(!theState && GetInCareState())
+		everLostPreArtCare = true;
+	inCare = theState;
+	calEverCare = theState;
+}
+
+/////////////////////
+/////////////////////
+
 void person::SetArtInitiationState(const bool theState, const double theTime)
 {
 	art = theState;
@@ -373,7 +418,21 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		artDay = theTime;
 		cd4AtArt = currentCd4;
 		artCount++;
+		if(!GetEverCd4TestResultState() && GetCd4TestCount() == 1 && GetDiagnosisRoute() > 1 && GetEligible()) { artAtEnrollment = true; calArtAtEnrollment = true; }
+		if(everLostArt) { everReturnArt = true; calEverReturnArt = true; }
+		
+		/* Calibration */
+		calEverArt = true;
+		calArtDay = theTime;
+		calCd4AtArt = currentCd4;
+		calAtArtDiagRoute = diagnosisRoute;
+		calAtArtPreArtVisitCount = cd4TestCount + cd4TestResultCount;
+		calAtArtEverLostPreArtCare = everLostPreArtCare;
+		calAtArtEverReturnPreArtCare = everReturnPreArtCare;
+		calAtArtEligibleAtReturnPreArtCare = eligibleAtReturnPreArtCare;
+		
 	} else if(theTime > 14610) {
+		everLostArt = true;
 		double yr [22];
 		for(size_t i = 0; i<22; i++)
 			yr[i] = 14610 + (i * 365.25);
@@ -395,6 +454,32 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 void person::SetArtAdherenceState(const double theProb)
 {
 	adherence = theRng->Sample(theProb);
+}
+
+/////////////////////
+/////////////////////
+
+void person::ResetCalibration()
+{
+	calEverDiag = false;
+	calDiagDay = 0;
+	calDiagRoute = 0;
+	calEverCare = false;
+	calCareDay = 0;
+	calCd4EntryCare = 0;
+	calCd4TestCount = 0;
+	calSecondaryCd4TestCount = 0;
+	calCd4SecondaryCd4Test = 0;
+	calEverArt = false;
+	calArtDay = 0;
+	calCd4AtArt = 0;
+	calAtArtDiagRoute = 0;
+	calAtArtPreArtVisitCount = 0;
+	calAtArtEverLostPreArtCare = false;
+	calAtArtEverReturnPreArtCare = false;
+	calAtArtEligibleAtReturnPreArtCare = false;
+	calArtAtEnrollment = false;
+	calEverReturnArt = false;
 }
 
 /////////////////////
