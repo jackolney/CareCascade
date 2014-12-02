@@ -2,8 +2,549 @@
 setwd("/Users/jack/git/CareCascade")
 source("./rScript/BaselineFigures.R")
 
+rm(list=ls())
 system("date")
-popSize = 10000
+popSize = 1000
 dyn.load("./source/main.so")
+Calibration <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
+Calibration
 
-Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+# Calibration Calculations
+# Calibration$sC1;
+# Calibration$sL21;
+# Calibration$sR3;
+Calibration$sR8;
+Calibration$sART1;
+Calibration$sART4;
+Calibration$sART5;
+Calibration$sART6;
+Calibration$sART9;
+Calibration$sART10;
+Calibration$sART11;
+Calibration$sART12;
+Calibration$sART13;
+Calibration$sART14;
+Calibration$sPre2010;
+Calibration$sHivArray;
+Calibration$sArtArray;
+Calibration$sR3_Counter;
+Calibration$sR8_Counter;
+Calibration$sART6_Counter;
+Calibration$sART10_Counter;
+Calibration$sART12_Counter;
+
+########################
+# CALIBRATION FUNCTION #
+########################
+
+require(beepr)
+results <- matrix(0,70,3)
+colnames(results) <- c("ONE","TWO","THREE")
+rownames(results) <- c("C1_HCT", "C1_VCT", "C1_PICT", "L2.1_HCT_m500", "L2.1_HCT_350500", "L2.1_HCT_200350", "L2.1_HCT_l200", "L2.1_VCT_m500", "L2.1_VCT_350500", "L2.1_VCT_200350", "L2.1_VCT_l200", "L2.1_PICT_m500", "L2.1_PICT_350500", "L2.1_PICT_200350", "L2.1_PICT_l200", "R3_HCT", "R3_VCT", "R3_PICT", "R8_HCT", "R8_VCT", "R8_PICT", "ART1_HCT_m500", "ART1_HCT_350500", "ART1_HCT_200350", "ART1_HCT_l200", "ART1_VCT_m500", "ART1_VCT_350500", "ART1_VCT_200350", "ART1_VCT_l200", "ART1_PICT_m500", "ART1_PICT_350500", "ART1_PICT_200350", "ART1_PICT_l200", "ART1_ALL_m500", "ART1_ALL_350500", "ART1_ALL_200350", "ART1_ALL_l200", "ART2_HCT", "ART2_VCT", "ART2_PICT", "ART4", "ART5_HCT", "ART5_VCT", "ART5_PITC", "ART6_HCT", "ART9_HCT", "ART9_VCT", "ART9_PITC", "ART10_ALL", "ART11_HCT", "ART11_VCT", "ART11_PITC", "ART12_ALL", "ART13_HCT", "ART13_VCT", "ART13_PICT", "ART14_HCT", "ART14_VCT", "ART14_PICT", "PLWHIV_2010", "PLWHIV_2010_VCT", "PLWHIV_2010_PICT", "%onART", "nonART,", "diag_count", "ART14_ALL", "ART5_ALL", "ART9_ALL", "ART11_ALL", "ART13_ALL")
+results
+
+##################################################
+#C1 - Proportion of individuals that ever enter care
+
+#Time points
+if(sum(Calibration$sC1) == 0) {beep(9); print("ERROR!")}
+#HCT
+results[1,1] <- Calibration$sC1[1] / sum(Calibration$sC1[1:3])
+results[1,2] <- Calibration$sC1[4] / sum(Calibration$sC1[4:6])
+results[1,3] <- Calibration$sC1[7] / sum(Calibration$sC1[7:9])
+
+#VCT
+results[2,1] <- Calibration$sC1[2] / sum(Calibration$sC1[1:3])
+results[2,2] <- Calibration$sC1[5] / sum(Calibration$sC1[4:6])
+results[2,3] <- Calibration$sC1[8] / sum(Calibration$sC1[7:9])
+
+#PICT
+results[3,1] <- Calibration$sC1[3] / sum(Calibration$sC1[1:3])
+results[3,2] <- Calibration$sC1[6] / sum(Calibration$sC1[4:6])
+results[3,3] <- Calibration$sC1[9] / sum(Calibration$sC1[7:9])
+
+#Use FIRST_test_route (not the ART variable). Where I wonder? EVERYWHERE!
+
+##################################################
+#L2.1 - Mean CD4 count at first CD4 measurement
+#HCT
+#Time point ONE
+results[4,1] <- Calibration$sL21[1] / sum(Calibration$sL21[1:4])
+results[5,1] <- Calibration$sL21[2] / sum(Calibration$sL21[1:4])
+results[6,1] <- Calibration$sL21[3] / sum(Calibration$sL21[1:4])
+results[7,1] <- Calibration$sL21[4] / sum(Calibration$sL21[1:4])
+#Time point TWO
+results[4,2] <- Calibration$sL21[13] / sum(Calibration$sL21[13:16])
+results[5,2] <- Calibration$sL21[14] / sum(Calibration$sL21[13:16])
+results[6,2] <- Calibration$sL21[15] / sum(Calibration$sL21[13:16])
+results[7,2] <- Calibration$sL21[16] / sum(Calibration$sL21[13:16])
+#Time point THREE
+results[4,3] <- Calibration$sL21[25] / sum(Calibration$sL21[25:28])
+results[5,3] <- Calibration$sL21[26] / sum(Calibration$sL21[25:28])
+results[6,3] <- Calibration$sL21[27] / sum(Calibration$sL21[25:28])
+results[7,3] <- Calibration$sL21[28] / sum(Calibration$sL21[25:28])
+
+####
+#VCT
+#Time point ONE
+results[8,1] <- Calibration$sL21[5] / sum(Calibration$sL21[5:8])
+results[9,1] <- Calibration$sL21[6] / sum(Calibration$sL21[5:8])
+results[10,1] <- Calibration$sL21[7] / sum(Calibration$sL21[5:8])
+results[11,1] <- Calibration$sL21[8] / sum(Calibration$sL21[5:8])
+#Time point TWO
+results[8,2] <- Calibration$sL21[17] / sum(Calibration$sL21[17:20])
+results[9,2] <- Calibration$sL21[18] / sum(Calibration$sL21[17:20])
+results[10,2] <- Calibration$sL21[19] / sum(Calibration$sL21[17:20])
+results[11,2] <- Calibration$sL21[20] / sum(Calibration$sL21[17:20])
+#Time point THREE
+results[8,3] <- Calibration$sL21[29] / sum(Calibration$sL21[29:32])
+results[9,3] <- Calibration$sL21[30] / sum(Calibration$sL21[29:32])
+results[10,3] <- Calibration$sL21[31] / sum(Calibration$sL21[29:32])
+results[11,3] <- Calibration$sL21[32] / sum(Calibration$sL21[29:32])
+
+####
+#PICT
+#Time point ONE
+results[12,1] <- Calibration$sL21[9] / sum(Calibration$sL21[9:12])
+results[13,1] <- Calibration$sL21[10] / sum(Calibration$sL21[9:12])
+results[14,1] <- Calibration$sL21[11] / sum(Calibration$sL21[9:12])
+results[15,1] <- Calibration$sL21[12] / sum(Calibration$sL21[9:12])
+#Time point TWO
+results[12,2] <- Calibration$sL21[21] / sum(Calibration$sL21[21:24])
+results[13,2] <- Calibration$sL21[22] / sum(Calibration$sL21[21:24])
+results[14,2] <- Calibration$sL21[23] / sum(Calibration$sL21[21:24])
+results[15,] <- Calibration$sL21[24] / sum(Calibration$sL21[21:24])
+#Time point THREE
+results[12,3] <- Calibration$sL21[33] / sum(Calibration$sL21[33:36])
+results[13,3] <- Calibration$sL21[34] / sum(Calibration$sL21[33:36])
+results[14,3] <- Calibration$sL21[35] / sum(Calibration$sL21[33:36])
+results[15,3] <- Calibration$sL21[36] / sum(Calibration$sL21[33:36])
+
+##################################################
+#R3 - Mean number of secondary CD4 appointment prior to becoming eligible for ART
+#HCT
+results[16,1] <- Calibration$sR3[1] / Calibration$sR3_Counter[1]
+results[16,2] <- Calibration$sR3[4] / Calibration$sR3_Counter[4]
+results[16,3] <- Calibration$sR3[7] / Calibration$sR3_Counter[7]
+
+#VCT
+results[17,1] <- Calibration$sR3[2] / Calibration$sR3_Counter[2]
+results[17,2] <- Calibration$sR3[5] / Calibration$sR3_Counter[5]
+results[17,3] <- Calibration$sR3[8] / Calibration$sR3_Counter[8]
+
+#PITC
+results[18,1] <- Calibration$sR3[3] / Calibration$sR3_Counter[3]
+results[18,2] <- Calibration$sR3[6] / Calibration$sR3_Counter[6]
+results[18,3] <- Calibration$sR3[9] / Calibration$sR3_Counter[9]
+
+#################################################
+#R8 - Mean CD4 count when receiving secondary CD4 results
+Calibration$sR8;
+Calibration$sR8_Counter;
+
+Calibration$sR8 / Calibration$sR8_Counter
+
+#Values calculated in C.
+#CD4 <200 = 1 = 100
+#CD4 200-350 = 2 = 275
+#CD4 350-500 = 3 = 425
+#CD4 >500 = 4 = 750
+
+#HCT
+results[19,1] <- Calibration$sR8[1] / Calibration$sR8_Counter[1]
+results[19,2] <- Calibration$sR8[4] / Calibration$sR8_Counter[4]
+results[19,3] <- Calibration$sR8[7] / Calibration$sR8_Counter[7]
+
+#VCT
+results[20,1] <- Calibration$sR8[2] / Calibration$sR8_Counter[2]
+results[20,2] <- Calibration$sR8[5] / Calibration$sR8_Counter[5]
+results[20,3] <- Calibration$sR8[8] / Calibration$sR8_Counter[8]
+
+#PICT
+results[21,1] <- Calibration$sR8[3] / Calibration$sR8_Counter[3]
+results[21,2] <- Calibration$sR8[6] / Calibration$sR8_Counter[6]
+results[21,3] <- Calibration$sR8[9] / Calibration$sR8_Counter[9]
+
+##################################################
+#ART1 - Mean CD4 count at ART initiation
+#I don't think this should be "everHbct" etc. but rather FIRST route into care.
+#ART STUFF
+art_1 <- subset(big_res,big_res[,372]==1)
+art_2 <- subset(big_res,big_res[,373]==1)
+art_3 <- subset(big_res,big_res[,374]==1)
+
+# #T1
+# hct_art_1 <- subset(art_1,art_1[,324]==1)
+# vct_art_1 <- subset(art_1,art_1[,327]==1)
+# pict_art_1 <- subset(art_1,art_1[,330]==1)
+
+# #T2
+# hct_art_2 <- subset(art_2,art_2[,325]==1)
+# vct_art_2 <- subset(art_2,art_2[,328]==1)
+# pict_art_2 <- subset(art_2,art_2[,331]==1)
+
+# #T3
+# hct_art_3 <- subset(art_3,art_3[,326]==1)
+# vct_art_3 <- subset(art_3,art_3[,329]==1)
+# pict_art_3 <- subset(art_3,art_3[,332]==1)
+
+#T1
+hct_art_1 <- subset(art_1,art_1[,399]==1)
+vct_art_1 <- subset(art_1,art_1[,399]==2)
+pict_art_1 <- subset(art_1,art_1[,399]==3)
+
+#T2
+hct_art_2 <- subset(art_2,art_2[,400]==1)
+vct_art_2 <- subset(art_2,art_2[,400]==2)
+pict_art_2 <- subset(art_2,art_2[,400]==3)
+
+#T3
+hct_art_3 <- subset(art_3,art_3[,401]==1)
+vct_art_3 <- subset(art_3,art_3[,401]==2)
+pict_art_3 <- subset(art_3,art_3[,401]==3)
+
+#HBCT
+#Time point ONE
+first_hbct_1 <- subset(big_res,big_res[,399] == 1)
+range(first_hbct_1[,363])
+
+results[22,1] <- sum(first_hbct_1[,363]==4) / dim(hct_art_1)[1]
+results[23,1] <- sum(first_hbct_1[,363]==3) / dim(hct_art_1)[1]
+results[24,1] <- sum(first_hbct_1[,363]==2) / dim(hct_art_1)[1]
+results[25,1] <- sum(first_hbct_1[,363]==1) / dim(hct_art_1)[1]
+
+#Time point TWO
+first_hbct_2 <- subset(big_res,big_res[,400] == 1)
+
+results[22,2] <- sum(first_hbct_2[,364]==4) / dim(hct_art_2)[1]
+results[23,2] <- sum(first_hbct_2[,364]==3) / dim(hct_art_2)[1]
+results[24,2] <- sum(first_hbct_2[,364]==2) / dim(hct_art_2)[1]
+results[25,2] <- sum(first_hbct_2[,364]==1) / dim(hct_art_2)[1]
+
+#Time point THREE
+first_hbct_3 <- subset(big_res,big_res[,401] == 1)
+
+results[22,3] <- sum(first_hbct_3[,365]==4) / dim(hct_art_3)[1]
+results[23,3] <- sum(first_hbct_3[,365]==3) / dim(hct_art_3)[1]
+results[24,3] <- sum(first_hbct_3[,365]==2) / dim(hct_art_3)[1]
+results[25,3] <- sum(first_hbct_3[,365]==1) / dim(hct_art_3)[1]
+
+
+#VCT
+#Time point ONE
+first_vct_1 <- subset(big_res,big_res[,399] == 2)
+
+results[26,1] <- sum(first_vct_1[,363] == 4) / dim(vct_art_1)[1]
+results[27,1] <- sum(first_vct_1[,363] == 3) / dim(vct_art_1)[1]
+results[28,1] <- sum(first_vct_1[,363] == 2) / dim(vct_art_1)[1]
+results[29,1] <- sum(first_vct_1[,363] == 1) / dim(vct_art_1)[1]
+
+#Time point TWO
+first_vct_2 <- subset(big_res,big_res[,400] == 2)
+
+results[26,2] <- sum(first_vct_2[,364] == 4) / dim(vct_art_2)[1]
+results[27,2] <- sum(first_vct_2[,364] == 3) / dim(vct_art_2)[1]
+results[28,2] <- sum(first_vct_2[,364] == 2) / dim(vct_art_2)[1]
+results[29,2] <- sum(first_vct_2[,364] == 1) / dim(vct_art_2)[1]
+
+#Time point THREE
+first_vct_3 <- subset(big_res,big_res[,401] == 2)
+
+results[26,3] <- sum(first_vct_3[,365] == 4) / dim(vct_art_3)[1]
+results[27,3] <- sum(first_vct_3[,365] == 3) / dim(vct_art_3)[1]
+results[28,3] <- sum(first_vct_3[,365] == 2) / dim(vct_art_3)[1]
+results[29,3] <- sum(first_vct_3[,365] == 1) / dim(vct_art_3)[1]
+
+
+#PICT
+#Time point ONE
+first_pict_1 <- subset(big_res,big_res[,399] == 3)
+results[30,1] <- sum(first_pict_1[,363] == 4) / dim(pict_art_1)[1]
+results[31,1] <- sum(first_pict_1[,363] == 3) / dim(pict_art_1)[1]
+results[32,1] <- sum(first_pict_1[,363] == 2) / dim(pict_art_1)[1]
+results[33,1] <- sum(first_pict_1[,363] == 1) / dim(pict_art_1)[1]
+
+#Time point TWO
+first_pict_2 <- subset(big_res,big_res[,400] == 3)
+results[30,2] <- sum(first_pict_2[,364] == 4) / dim(pict_art_2)[1]
+results[31,2] <- sum(first_pict_2[,364] == 3) / dim(pict_art_2)[1]
+results[32,2] <- sum(first_pict_2[,364] == 2) / dim(pict_art_2)[1]
+results[33,2] <- sum(first_pict_2[,364] == 1) / dim(pict_art_2)[1]
+
+#Time point THREE
+first_pict_3 <- subset(big_res,big_res[,401] == 3)
+results[30,3] <- sum(first_pict_3[,365] == 4) / dim(pict_art_3)[1]
+results[31,3] <- sum(first_pict_3[,365] == 3) / dim(pict_art_3)[1]
+results[32,3] <- sum(first_pict_3[,365] == 2) / dim(pict_art_3)[1]
+results[33,3] <- sum(first_pict_3[,365] == 1) / dim(pict_art_3)[1]
+
+
+#####
+#ART1 - ALL
+#T1
+results[34,1] <- sum(big_res[,363]==4) / dim(art_1)[1]
+results[35,1] <- sum(big_res[,363]==3) / dim(art_1)[1]
+results[36,1] <- sum(big_res[,363]==2) / dim(art_1)[1]
+results[37,1] <- sum(big_res[,363]==1) / dim(art_1)[1]
+
+#T2
+results[34,2] <- sum(big_res[,364]==4) / dim(art_2)[1]
+results[35,2] <- sum(big_res[,364]==3) / dim(art_2)[1]
+results[36,2] <- sum(big_res[,364]==2) / dim(art_2)[1]
+results[37,2] <- sum(big_res[,364]==1) / dim(art_2)[1]
+
+#T3
+results[34,3] <- sum(big_res[,365]==4) / dim(art_3)[1]
+results[35,3] <- sum(big_res[,365]==3) / dim(art_3)[1]
+results[36,3] <- sum(big_res[,365]==2) / dim(art_3)[1]
+results[37,3] <- sum(big_res[,365]==1) / dim(art_3)[1]
+
+##################################################
+#ART2 - Proportion of individuals initiating ART with CD4 <200.
+#Needs stratification by VCT / HCT
+#HCT
+results[38,1] <- sum(first_hbct_1[,363] == 1) / dim(hct_art_1)[1]
+results[38,2] <- sum(first_hbct_2[,364] == 1) / dim(hct_art_2)[1]
+results[38,3] <- sum(first_hbct_3[,365] == 1) / dim(hct_art_3)[1]
+
+#VCT
+results[39,1] <- sum(first_vct_1[,363] == 1) / dim(vct_art_1)[1]
+results[39,2] <- sum(first_vct_2[,364] == 1) / dim(vct_art_2)[1]
+results[39,3] <- sum(first_vct_3[,365] == 1) / dim(vct_art_3)[1]
+
+#PICT
+results[40,1] <- sum(first_pict_1[,363] == 1) / dim(pict_art_1)[1]
+results[40,2] <- sum(first_pict_2[,364] == 1) / dim(pict_art_2)[1]
+results[40,3] <- sum(first_pict_3[,365] == 1) / dim(pict_art_3)[1]
+
+##################################################
+#ART4 - Mean number of pre-ART visits prior to ART initiation
+#ALL
+results[41,1] <- sum(art_1[,354]) / dim(art_1)[1]
+results[41,2] <- sum(art_2[,355]) / dim(art_2)[1]
+results[41,3] <- sum(art_3[,356]) / dim(art_3)[1]
+
+##################################################
+#ART5 - Proportion of patients initiating ART after diagnosis and successful retention in care until becoming eligible for treatment (i.e. no gap in care)
+
+#HCT
+results[42,1] <- (sum(hct_art_1[,366]==0) - sum(hct_art_1[,409]==1)) / sum(hct_art_1[,372]==1)
+results[42,2] <- (sum(hct_art_2[,367]==0) - sum(hct_art_2[,410]==1)) / sum(hct_art_2[,373]==1)
+results[42,3] <- (sum(hct_art_3[,368]==0) - sum(hct_art_3[,411]==1)) / sum(hct_art_3[,374]==1)
+
+#VCT
+results[43,1] <- (sum(vct_art_1[,366]==0) - sum(vct_art_1[,409]==1)) / sum(vct_art_1[,372]==1)
+results[43,2] <- (sum(vct_art_2[,367]==0) - sum(vct_art_2[,410]==1)) / sum(vct_art_2[,373]==1)
+results[43,3] <- (sum(vct_art_3[,368]==0) - sum(vct_art_3[,411]==1)) / sum(vct_art_3[,374]==1)
+
+#PITC
+results[44,1] <- (sum(pict_art_1[,366]==0) - sum(pict_art_1[,409]==1)) / sum(pict_art_1[,372]==1)
+results[44,2] <- (sum(pict_art_2[,367]==0) - sum(pict_art_2[,410]==1)) / sum(pict_art_2[,373]==1)
+results[44,3] <- (sum(pict_art_3[,368]==0) - sum(pict_art_3[,411]==1)) / sum(pict_art_3[,374]==1)
+
+
+#ART6
+#ALL
+art_1_nlost <- subset(art_1,art_1[,366]==0)
+art_2_nlost <- subset(art_2,art_2[,367]==0)
+art_3_nlost <- subset(art_3,art_3[,368]==0)
+
+#HCT (only thing we have from AMPATH)
+hct_art_1_nlost <- subset(hct_art_1,hct_art_1[,366]==0)
+hct_art_2_nlost <- subset(hct_art_2,hct_art_2[,367]==0)
+hct_art_3_nlost <- subset(hct_art_3,hct_art_3[,368]==0)
+
+results[45,1] <- sum(hct_art_1_nlost[,375] - hct_art_1_nlost[,357]) / sum(hct_art_1_nlost[,372] == 1)
+results[45,2] <- sum(hct_art_2_nlost[,376] - hct_art_2_nlost[,358]) / sum(hct_art_2_nlost[,373] == 1)
+results[45,3] <- sum(hct_art_3_nlost[,377] - hct_art_3_nlost[,359]) / sum(hct_art_3_nlost[,374] == 1)
+
+#ART9 - Proportion of patients initiating ART after diagnosis, who were subsequently lost from pre-ART care (ie. HAD AT LEAST ONE CD4 CELL COUNT) but returning prior to becoming eligible for treatment
+#HCT
+hct_art_1_ever_lost <- subset(hct_art_1,hct_art_1[,366]==1)
+hct_art_2_ever_lost <- subset(hct_art_2,hct_art_2[,367]==1)
+hct_art_3_ever_lost <- subset(hct_art_3,hct_art_3[,368]==1)
+
+#VCT
+vct_art_1_ever_lost <- subset(vct_art_1,vct_art_1[,366]==1)
+vct_art_2_ever_lost <- subset(vct_art_2,vct_art_2[,367]==1)
+vct_art_3_ever_lost <- subset(vct_art_3,vct_art_3[,368]==1)
+
+#PICT
+pict_art_1_ever_lost <- subset(pict_art_1,pict_art_1[,366]==1)
+pict_art_2_ever_lost <- subset(pict_art_2,pict_art_2[,367]==1)
+pict_art_3_ever_lost <- subset(pict_art_3,pict_art_3[,368]==1)
+
+#LastTestRoute == 4 == inCareTest (i.e. patient returned prior to being eligible for ART.)
+#HCT
+results[46,1] <- sum(hct_art_1_ever_lost[,381] == 4) / sum(hct_art_1[,372]==1)
+results[46,2] <- sum(hct_art_2_ever_lost[,382] == 4) / sum(hct_art_2[,373]==1)
+results[46,3] <- sum(hct_art_3_ever_lost[,383] == 4) / sum(hct_art_3[,374]==1)
+
+#VCT
+results[47,1] <- sum(vct_art_1_ever_lost[,381] == 4) / sum(vct_art_1[,372]==1)
+results[47,2] <- sum(vct_art_2_ever_lost[,382] == 4) / sum(vct_art_2[,373]==1)
+results[47,3] <- sum(vct_art_3_ever_lost[,383] == 4) / sum(vct_art_3[,374]==1)
+
+#PICT
+results[48,1] <- sum(pict_art_1_ever_lost[,381] == 4) / sum(pict_art_1[,372]==1)
+results[48,2] <- sum(pict_art_2_ever_lost[,382] == 4) / sum(pict_art_2[,373]==1)
+results[48,3] <- sum(pict_art_3_ever_lost[,383] == 4) / sum(pict_art_3[,374]==1)
+
+#ART10
+#ALL (assumed)
+art_1_ever_lost <- subset(art_1,art_1[,366]==1)
+art_2_ever_lost <- subset(art_2,art_2[,367]==1)
+art_3_ever_lost <- subset(art_3,art_3[,368]==1)
+
+art_1_ever_lost_ret_nelig <- subset(art_1_ever_lost,art_1_ever_lost[,381]==4)
+art_2_ever_lost_ret_nelig <- subset(art_2_ever_lost,art_2_ever_lost[,382]==4)
+art_3_ever_lost_ret_nelig <- subset(art_3_ever_lost,art_3_ever_lost[,383]==4)
+
+results[49,1] <- sum(art_1_ever_lost_ret_nelig[,375] - art_1_ever_lost_ret_nelig[,357]) / dim(art_1_ever_lost_ret_nelig)[1]
+results[49,2] <- sum(art_2_ever_lost_ret_nelig[,376] - art_2_ever_lost_ret_nelig[,358]) / dim(art_2_ever_lost_ret_nelig)[1]
+results[49,3] <- sum(art_3_ever_lost_ret_nelig[,377] - art_3_ever_lost_ret_nelig[,359]) / dim(art_3_ever_lost_ret_nelig)[1]
+
+#ART11 - Proportion of patients initiating ART after diagnosis, subsequent loss from pre-ART care and returning when already eligible for treatment
+#last_test_route = 2 (VCT)
+#last_test_route = 3 (PICT)
+#CD4 at ART
+#big_res[,363]
+#big_res[,364]
+#big_res[,365]
+#obviously you have to be eligible to initiate ART, so we say that if your last test was INCARE you were not eligible at entry to care, ELSE you were.
+#HCT
+results[50,1] <- sum(hct_art_1_ever_lost[,381] %in% c(1,2,3)) / sum(hct_art_1[,372]==1)
+results[50,2] <- sum(hct_art_2_ever_lost[,382] %in% c(1,2,3)) / sum(hct_art_2[,373]==1)
+results[50,3] <- sum(hct_art_3_ever_lost[,383] %in% c(1,2,3)) / sum(hct_art_3[,374]==1)
+#VCT
+results[51,1] <- sum(vct_art_1_ever_lost[,381] %in% c(1,2,3)) / sum(vct_art_1[,372]==1)
+results[51,2] <- sum(vct_art_2_ever_lost[,382] %in% c(1,2,3)) / sum(vct_art_2[,373]==1)
+results[51,3] <- sum(vct_art_3_ever_lost[,383] %in% c(1,2,3)) / sum(vct_art_3[,374]==1)
+
+#PICT
+results[52,1] <- sum(pict_art_1_ever_lost[,381] %in% c(1,2,3)) / sum(pict_art_1[,372]==1)
+results[52,2] <- sum(pict_art_2_ever_lost[,382] %in% c(1,2,3)) / sum(pict_art_2[,373]==1)
+results[52,3] <- sum(pict_art_3_ever_lost[,383] %in% c(1,2,3)) / sum(pict_art_3[,374]==1)
+
+#ART12
+art_1_ever_lost_ret_elig <- subset(art_1_ever_lost,art_1_ever_lost[,360] %in% c(1,2,3))
+art_2_ever_lost_ret_elig <- subset(art_2_ever_lost,art_2_ever_lost[,361] %in% c(1,2,3))
+art_3_ever_lost_ret_elig <- subset(art_3_ever_lost,art_3_ever_lost[,362] %in% c(1,2,3))
+
+results[53,1] <- sum(art_1_ever_lost_ret_elig[,375] - art_1_ever_lost_ret_elig[,357]) / dim(art_1_ever_lost_ret_elig)[1]
+results[53,2] <- sum(art_2_ever_lost_ret_elig[,376] - art_2_ever_lost_ret_elig[,358]) / dim(art_2_ever_lost_ret_elig)[1]
+results[53,3] <- sum(art_3_ever_lost_ret_elig[,377] - art_3_ever_lost_ret_elig[,359]) / dim(art_3_ever_lost_ret_elig)[1]
+
+#ART13 - Proportion of patients initating ART who had previously been on ART
+#THESE VALUES ARE ZERO CURRENTLY AS NOBODY IS COMING BACK ONTO ART
+#HCT
+results[54,1] <- sum(hct_art_1[,369]==1) / sum(hct_art_1[,372]==1)
+results[54,2] <- sum(hct_art_2[,370]==1) / sum(hct_art_2[,373]==1)
+results[54,3] <- sum(hct_art_3[,371]==1) / sum(hct_art_3[,374]==1)
+
+#VCT
+results[55,1] <- sum(vct_art_1[,369]==1) / sum(vct_art_1[,372]==1)
+results[55,2] <- sum(vct_art_2[,370]==1) / sum(vct_art_2[,373]==1)
+results[55,3] <- sum(vct_art_3[,371]==1) / sum(vct_art_3[,374]==1)
+
+#PICT
+results[56,1] <- sum(pict_art_1[,369]==1) / sum(pict_art_1[,372]==1)
+results[56,2] <- sum(pict_art_2[,370]==1) / sum(pict_art_2[,373]==1)
+results[56,3] <- sum(pict_art_3[,371]==1) / sum(pict_art_3[,374]==1)
+
+######
+#ART14 - Proportion of patients initating who prior to that day had no experience of care
+#All
+sum(art_1[,409]==1) / sum(art_1[,372]==1)
+sum(art_2[,410]==1) / sum(art_2[,373]==1)
+sum(art_3[,411]==1) / sum(art_3[,374]==1)
+
+#HCT
+results[57,1] <- sum(hct_art_1[,409]==1) / sum(hct_art_1[,372]==1)
+results[57,2] <- sum(hct_art_2[,410]==1) / sum(hct_art_2[,373]==1)
+results[57,3] <- sum(hct_art_3[,411]==1) / sum(hct_art_3[,374]==1)
+
+#VCT
+results[58,1] <- sum(vct_art_1[,409]==1) / sum(vct_art_1[,372]==1)
+results[58,2] <- sum(vct_art_2[,410]==1) / sum(vct_art_2[,373]==1)
+results[58,3] <- sum(vct_art_3[,411]==1) / sum(vct_art_3[,374]==1)
+
+#PICT
+results[59,1] <- sum(pict_art_1[,409]==1) / sum(pict_art_1[,372]==1)
+results[59,2] <- sum(pict_art_2[,410]==1) / sum(pict_art_2[,373]==1)
+results[59,3] <- sum(pict_art_3[,411]==1) / sum(pict_art_3[,374]==1)
+
+######
+######
+
+#PLWHIV_2010_diag / PLWHIV_2010
+results[60,2] <- sum(big_res[,481] == 1) / sum(big_res[,480] == 1)
+
+#PLWHIV_2010_diag_vct / PLWHIV_2010_diag
+results[61,2] <- sum(big_res[,482] == 1) / sum(big_res[,481] == 1)
+
+#PLWHIV_2010_diag_pict / PLWHIV_2010_diag
+results[62,2] <- sum(big_res[,483] == 1) / sum(big_res[,481] == 1)
+
+#####
+#Percentage on ART
+#perhaps a bit crude at the moment but will do.
+results[63,1] <- (dim(art_1)[1] / sum(big_res[,487] == 1)) / 3
+results[63,2] <- (dim(art_2)[1] / sum(big_res[,488] == 1)) / 1
+results[63,3] <- (dim(art_3)[1] / sum(big_res[,489] == 1)) / 3.5
+
+#New ART initiators...
+results[64,1] <- sum(big_res[,372] == 1) / 3
+results[64,2] <- sum(big_res[,373] == 1 & big_res[,372] == 0) / 1
+results[64,3] <- sum(big_res[,374] == 1 & big_res[,372] == 0 & big_res[,373] == 0) / 3.5
+
+results[65,1] <- sum(art_1[,484] > 1) / dim(art_1)[1]
+results[65,2] <- sum(art_2[,485] > 1) / dim(art_2)[1]
+results[65,3] <- sum(art_3[,486] > 1) / dim(art_3)[1]
+
+#########################
+#########################
+#########################
+#Previous health care experience of those initiating ART (big table in "FinalDataRequest" document.)
+
+#ART14_ALL
+results[66,1] <- sum(art_1[,409]==1) / dim(art_1)[1]
+results[66,2] <- sum(art_2[,410]==1) / dim(art_2)[1]
+results[66,3] <- sum(art_3[,411]==1) / dim(art_3)[1]
+
+#ART5
+results[67,1] <- (sum(art_1[,366] == 0) -  sum(art_1[,409] == 1)) / dim(art_1)[1]
+results[67,2] <- (sum(art_2[,367] == 0) -  sum(art_2[,410] == 1)) / dim(art_2)[1]
+results[67,3] <- (sum(art_3[,368] == 0) -  sum(art_3[,411] == 1)) / dim(art_3)[1]
+
+#ART9
+art_1_ever_lost <- subset(art_1,art_1[,366]==1)
+art_2_ever_lost <- subset(art_2,art_2[,367]==1)
+art_3_ever_lost <- subset(art_3,art_3[,368]==1)
+
+#LastTestRoute == 4 == inCareTest (i.e. patient returned prior to being eligible for ART.)
+#ALL
+results[68,1] <- sum(art_1_ever_lost[,381] == 4) / dim(art_1)[1]
+results[68,2] <- sum(art_2_ever_lost[,382] == 4) / dim(art_2)[1]
+results[68,3] <- sum(art_3_ever_lost[,383] == 4) / dim(art_3)[1]
+
+#ART11
+#ALL
+results[69,1] <- sum(art_1_ever_lost[,381] %in% c(1,2,3)) / dim(art_1)[1]
+results[69,2] <- sum(art_2_ever_lost[,382] %in% c(1,2,3)) / dim(art_2)[1]
+results[69,3] <- sum(art_3_ever_lost[,383] %in% c(1,2,3)) / dim(art_3)[1]
+
+#ART13
+#ALL
+results[70,1] <- sum(art_1[,369]==1) / dim(art_1)[1]
+results[70,2] <- sum(art_2[,370]==1) / dim(art_2)[1]
+results[70,3] <- sum(art_3[,371]==1) / dim(art_3)[1]
+
+colSums(results)
+
+results
+result_output <- formatC(results,digits=4, format="f")
+result_output
+
+# write.table(results,file="results.csv",sep=',')
+
