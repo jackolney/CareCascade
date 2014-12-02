@@ -1,4 +1,4 @@
-#Calbiration Script for CareCascade
+# Calibration Script for CareCascade
 setwd("/Users/jack/git/CareCascade")
 source("./rScript/BaselineFigures.R")
 
@@ -24,9 +24,9 @@ Calibration
 # Calibration$sART12;
 # Calibration$sART13;
 # Calibration$sART14;
-Calibration$sPre2010;
-Calibration$sHivArray;
-Calibration$sArtArray;
+# Calibration$sPre2010;
+# Calibration$sHivArray;
+# Calibration$sArtArray;
 # Calibration$sR3_Counter;
 # Calibration$sR8_Counter;
 # Calibration$sART6_Counter;
@@ -428,45 +428,41 @@ results[65,3] <- NaN
 #########################
 
 #Previous health care experience of those initiating ART (big table in "FinalDataRequest" document.)
-
-#ART14_ALL
-results[66,1] <- sum(art_1[,409]==1) / dim(art_1)[1]
-results[66,2] <- sum(art_2[,410]==1) / dim(art_2)[1]
-results[66,3] <- sum(art_3[,411]==1) / dim(art_3)[1]
+Calibration$sART14
+#######
+# ALL #
+#######
+#ART14
+results[66,1] <- sum(Calibration$sART14[1:3]) / sum(Calibration$sART1[13:16])
+results[66,2] <- sum(Calibration$sART14[4:6]) / sum(Calibration$sART1[29:32])
+results[66,3] <- sum(Calibration$sART14[7:9]) / sum(Calibration$sART1[45:48])
 
 #ART5
-results[67,1] <- (sum(art_1[,366] == 0) -  sum(art_1[,409] == 1)) / dim(art_1)[1]
-results[67,2] <- (sum(art_2[,367] == 0) -  sum(art_2[,410] == 1)) / dim(art_2)[1]
-results[67,3] <- (sum(art_3[,368] == 0) -  sum(art_3[,411] == 1)) / dim(art_3)[1]
+results[67,1] <- sum(Calibration$sART5[1:3]) / sum(Calibration$sART1[13:16])
+results[67,2] <- sum(Calibration$sART5[4:6]) / sum(Calibration$sART1[29:32])
+results[67,3] <- sum(Calibration$sART5[7:9]) / sum(Calibration$sART1[45:48])
 
 #ART9
-art_1_ever_lost <- subset(art_1,art_1[,366]==1)
-art_2_ever_lost <- subset(art_2,art_2[,367]==1)
-art_3_ever_lost <- subset(art_3,art_3[,368]==1)
-
-#LastTestRoute == 4 == inCareTest (i.e. patient returned prior to being eligible for ART.)
-#ALL
-results[68,1] <- sum(art_1_ever_lost[,381] == 4) / dim(art_1)[1]
-results[68,2] <- sum(art_2_ever_lost[,382] == 4) / dim(art_2)[1]
-results[68,3] <- sum(art_3_ever_lost[,383] == 4) / dim(art_3)[1]
+results[68,1] <- sum(Calibration$sART9[1:3]) / sum(Calibration$sART1[13:16])
+results[68,2] <- sum(Calibration$sART9[4:6]) / sum(Calibration$sART1[29:32])
+results[68,3] <- sum(Calibration$sART9[7:9]) / sum(Calibration$sART1[45:48])
 
 #ART11
-#ALL
-results[69,1] <- sum(art_1_ever_lost[,381] %in% c(1,2,3)) / dim(art_1)[1]
-results[69,2] <- sum(art_2_ever_lost[,382] %in% c(1,2,3)) / dim(art_2)[1]
-results[69,3] <- sum(art_3_ever_lost[,383] %in% c(1,2,3)) / dim(art_3)[1]
+results[69,1] <- sum(Calibration$sART11[1:3]) / sum(Calibration$sART1[13:16])
+results[69,2] <- sum(Calibration$sART11[4:6]) / sum(Calibration$sART1[29:32])
+results[69,3] <- sum(Calibration$sART11[7:9]) / sum(Calibration$sART1[45:48])
 
 #ART13
-#ALL
-results[70,1] <- sum(art_1[,369]==1) / dim(art_1)[1]
-results[70,2] <- sum(art_2[,370]==1) / dim(art_2)[1]
-results[70,3] <- sum(art_3[,371]==1) / dim(art_3)[1]
+results[70,1] <- sum(Calibration$sART13[1:3]) / sum(Calibration$sART1[13:16])
+results[70,2] <- sum(Calibration$sART13[4:6]) / sum(Calibration$sART1[29:32])
+results[70,3] <- sum(Calibration$sART13[7:9]) / sum(Calibration$sART1[45:48])
 
-colSums(results)
+# CHECKSUM #
+colSums(results[66:70,])
+# CHECKSUM #
 
 results
 result_output <- formatC(results,digits=4, format="f")
 result_output
-
-# write.table(results,file="results.csv",sep=',')
+write.table(results,file="calibrationResults.csv",sep=',')
 
