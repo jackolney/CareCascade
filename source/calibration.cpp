@@ -15,25 +15,25 @@ using namespace std;
 double * C1;
 double * L21;
 double * R3;
-unsigned int * R3_Counter;
 double * R8;
-unsigned int * R8_Counter;
 double * ART1;
 double * ART4;
 double * ART5;
 double * ART6;
-unsigned int * ART6_Counter;
 double * ART9;
 double * ART10;
-unsigned int * ART10_Counter;
 double * ART11;
 double * ART12;
-unsigned int * ART12_Counter;
 double * ART13;
 double * ART14;
-double * pre2010;
+double * Pre2010;
 unsigned int * HivArray;
 unsigned int * ArtArray;
+unsigned int * R3_Counter;
+unsigned int * R8_Counter;
+unsigned int * ART6_Counter;
+unsigned int * ART10_Counter;
+unsigned int * ART12_Counter;
 
 void SeedCalibration(person * const thePerson, const double theTimeZero, const double theTimeOne, const double theTimeTwo, const double theTimeThree)
 {
@@ -145,50 +145,50 @@ void CreateCalibrationArray()
 	C1 = new double[9];
 	L21 = new double[36];
 	R3 = new double[9];
-	R3_Counter = new unsigned int[9];
 	R8 = new double[9];
-	R8_Counter = new unsigned int[9];
 	ART1 = new double[48];
 	ART4 = new double[3];
 	ART5 = new double[9];
 	ART6 = new double[3];
-	ART6_Counter = new unsigned int[3];
 	ART9 = new double[9];
 	ART10 = new double[3];
-	ART10_Counter = new unsigned int[3];
 	ART11 = new double[9];
 	ART12 = new double[3];
-	ART12_Counter = new unsigned int[3];
 	ART13 = new double[9];
 	ART14 = new double[9];
-	pre2010 = new double[3];
+	Pre2010 = new double[3];
 	HivArray = new unsigned int[3];
 	ArtArray = new unsigned int[3];
+	R3_Counter = new unsigned int[9];
+	R8_Counter = new unsigned int[9];
+	ART6_Counter = new unsigned int[3];
+	ART10_Counter = new unsigned int[3];
+	ART12_Counter = new unsigned int[3];
 	
 	for(size_t i=0;i<48;i++) {
 		if(i<3) {
 			ART4[i] = 0;
 			ART6[i] = 0;
-			ART6_Counter[i] = 0;
 			ART10[i] = 0;
-			ART10_Counter[i] = 0;
 			ART12[i] = 0;
-			ART12_Counter[i] = 0;
-			pre2010[i] = 0;
+			Pre2010[i] = 0;
 			HivArray[i] = 0;
 			ArtArray[i] = 0;
+			ART6_Counter[i] = 0;
+			ART10_Counter[i] = 0;
+			ART12_Counter[i] = 0;
 		}
 		if(i<9) {
 			C1[i] = 0;
 			R3[i] = 0;
-			R3_Counter[i] = 0;
 			R8[i] = 0;
-			R8_Counter[i] = 0;
 			ART5[i] = 0;
 			ART9[i] = 0;
 			ART11[i] = 0;
 			ART13[i] = 0;
 			ART14[i] = 0;
+			R3_Counter[i] = 0;
+			R8_Counter[i] = 0;
 		}
 		if(i<36)
 			L21[i] = 0;
@@ -294,13 +294,13 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 	if(thePerson->GetArtInitiationState())
 		ArtArray[0]++;
 	
-	// pre2010 - Dx levels pre-2010. (don't run this code after 2010)
+	// Pre2010 - Dx levels pre-2010. (don't run this code after 2010)
 	if(thePerson->GetCalEverCare()) {
-		pre2010[0]++;
+		Pre2010[0]++;
 		if(thePerson->GetCalDiagRoute() == 2)
-			pre2010[1]++;
+			Pre2010[1]++;
 		else if(thePerson->GetCalDiagRoute() == 3)
-			pre2010[2]++;
+			Pre2010[2]++;
 	}
 	
 }
