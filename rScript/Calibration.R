@@ -17,21 +17,21 @@ Calibration
 # Calibration$sART1;
 # Calibration$sART4;
 # Calibration$sART5;
-Calibration$sART6;
-Calibration$sART9;
-Calibration$sART10;
-Calibration$sART11;
-Calibration$sART12;
-Calibration$sART13;
+# Calibration$sART6;
+# Calibration$sART9;
+# Calibration$sART10;
+# Calibration$sART11;
+# Calibration$sART12;
+# Calibration$sART13;
 Calibration$sART14;
 Calibration$sPre2010;
 Calibration$sHivArray;
 Calibration$sArtArray;
 # Calibration$sR3_Counter;
 # Calibration$sR8_Counter;
-Calibration$sART6_Counter;
-Calibration$sART10_Counter;
-Calibration$sART12_Counter;
+# Calibration$sART6_Counter;
+# Calibration$sART10_Counter;
+# Calibration$sART12_Counter;
 
 ########################
 # CALIBRATION FUNCTION #
@@ -291,140 +291,102 @@ results[44,3] <- Calibration$sART5[9] / sum(Calibration$sART1[41:44])
 #ART6 - mean time for ppl successfully reatained (HCT only)
 Calibration$sART6;
 Calibration$sART6_Counter;
-#ALL
-art_1_nlost <- subset(art_1,art_1[,366]==0)
-art_2_nlost <- subset(art_2,art_2[,367]==0)
-art_3_nlost <- subset(art_3,art_3[,368]==0)
-
-#HCT (only thing we have from AMPATH)
-hct_art_1_nlost <- subset(hct_art_1,hct_art_1[,366]==0)
-hct_art_2_nlost <- subset(hct_art_2,hct_art_2[,367]==0)
-hct_art_3_nlost <- subset(hct_art_3,hct_art_3[,368]==0)
-
-results[45,1] <- sum(hct_art_1_nlost[,375] - hct_art_1_nlost[,357]) / sum(hct_art_1_nlost[,372] == 1)
-results[45,2] <- sum(hct_art_2_nlost[,376] - hct_art_2_nlost[,358]) / sum(hct_art_2_nlost[,373] == 1)
-results[45,3] <- sum(hct_art_3_nlost[,377] - hct_art_3_nlost[,359]) / sum(hct_art_3_nlost[,374] == 1)
+#HCT
+results[45,1] <- Calibration$sART6[1] / Calibration$sART6_Counter[1]
+results[45,2] <- Calibration$sART6[2] / Calibration$sART6_Counter[2]
+results[45,3] <- Calibration$sART6[3] / Calibration$sART6_Counter[3]
 
 ##################################################
 #ART9 - Proportion of patients initiating ART after diagnosis, who were subsequently lost from pre-ART care (ie. HAD AT LEAST ONE CD4 CELL COUNT) but returning prior to becoming eligible for treatment
+Calibration$sART9;
 #HCT
-hct_art_1_ever_lost <- subset(hct_art_1,hct_art_1[,366]==1)
-hct_art_2_ever_lost <- subset(hct_art_2,hct_art_2[,367]==1)
-hct_art_3_ever_lost <- subset(hct_art_3,hct_art_3[,368]==1)
+results[46,1] <- Calibration$sART9[1] / sum(Calibration$sART1[1:4]) 
+results[46,2] <- Calibration$sART9[4] / sum(Calibration$sART1[17:20]) 
+results[46,3] <- Calibration$sART9[7] / sum(Calibration$sART1[33:36]) 
 
 #VCT
-vct_art_1_ever_lost <- subset(vct_art_1,vct_art_1[,366]==1)
-vct_art_2_ever_lost <- subset(vct_art_2,vct_art_2[,367]==1)
-vct_art_3_ever_lost <- subset(vct_art_3,vct_art_3[,368]==1)
+results[47,1] <- Calibration$sART9[2] / sum(Calibration$sART1[5:8]) 
+results[47,2] <- Calibration$sART9[5] / sum(Calibration$sART1[21:24]) 
+results[47,3] <- Calibration$sART9[8] / sum(Calibration$sART1[37:40]) 
 
 #PICT
-pict_art_1_ever_lost <- subset(pict_art_1,pict_art_1[,366]==1)
-pict_art_2_ever_lost <- subset(pict_art_2,pict_art_2[,367]==1)
-pict_art_3_ever_lost <- subset(pict_art_3,pict_art_3[,368]==1)
-
-#LastTestRoute == 4 == inCareTest (i.e. patient returned prior to being eligible for ART.)
-#HCT
-results[46,1] <- sum(hct_art_1_ever_lost[,381] == 4) / sum(hct_art_1[,372]==1)
-results[46,2] <- sum(hct_art_2_ever_lost[,382] == 4) / sum(hct_art_2[,373]==1)
-results[46,3] <- sum(hct_art_3_ever_lost[,383] == 4) / sum(hct_art_3[,374]==1)
-
-#VCT
-results[47,1] <- sum(vct_art_1_ever_lost[,381] == 4) / sum(vct_art_1[,372]==1)
-results[47,2] <- sum(vct_art_2_ever_lost[,382] == 4) / sum(vct_art_2[,373]==1)
-results[47,3] <- sum(vct_art_3_ever_lost[,383] == 4) / sum(vct_art_3[,374]==1)
-
-#PICT
-results[48,1] <- sum(pict_art_1_ever_lost[,381] == 4) / sum(pict_art_1[,372]==1)
-results[48,2] <- sum(pict_art_2_ever_lost[,382] == 4) / sum(pict_art_2[,373]==1)
-results[48,3] <- sum(pict_art_3_ever_lost[,383] == 4) / sum(pict_art_3[,374]==1)
+results[48,1] <- Calibration$sART9[3] / sum(Calibration$sART1[9:12]) 
+results[48,2] <- Calibration$sART9[6] / sum(Calibration$sART1[25:28]) 
+results[48,3] <- Calibration$sART9[9] / sum(Calibration$sART1[41:44]) 
 
 ##################################################
-#ART10
+#ART10 - Mean time for ppl lost but return before eligible.
+Calibration$sART10;
+Calibration$sART10_Counter;
 #ALL (assumed)
-art_1_ever_lost <- subset(art_1,art_1[,366]==1)
-art_2_ever_lost <- subset(art_2,art_2[,367]==1)
-art_3_ever_lost <- subset(art_3,art_3[,368]==1)
-
-art_1_ever_lost_ret_nelig <- subset(art_1_ever_lost,art_1_ever_lost[,381]==4)
-art_2_ever_lost_ret_nelig <- subset(art_2_ever_lost,art_2_ever_lost[,382]==4)
-art_3_ever_lost_ret_nelig <- subset(art_3_ever_lost,art_3_ever_lost[,383]==4)
-
-results[49,1] <- sum(art_1_ever_lost_ret_nelig[,375] - art_1_ever_lost_ret_nelig[,357]) / dim(art_1_ever_lost_ret_nelig)[1]
-results[49,2] <- sum(art_2_ever_lost_ret_nelig[,376] - art_2_ever_lost_ret_nelig[,358]) / dim(art_2_ever_lost_ret_nelig)[1]
-results[49,3] <- sum(art_3_ever_lost_ret_nelig[,377] - art_3_ever_lost_ret_nelig[,359]) / dim(art_3_ever_lost_ret_nelig)[1]
+results[49,1] <- Calibration$sART10[1] / Calibration$sART10_Counter[1]
+results[49,2] <- Calibration$sART10[2] / Calibration$sART10_Counter[2]
+results[49,3] <- Calibration$sART10[3] / Calibration$sART10_Counter[3]
 
 ##################################################
 #ART11 - Proportion of patients initiating ART after diagnosis, subsequent loss from pre-ART care and returning when already eligible for treatment
-#last_test_route = 2 (VCT)
-#last_test_route = 3 (PICT)
-#CD4 at ART
-#big_res[,363]
-#big_res[,364]
-#big_res[,365]
-#obviously you have to be eligible to initiate ART, so we say that if your last test was INCARE you were not eligible at entry to care, ELSE you were.
+Calibration$sART11;
 #HCT
-results[50,1] <- sum(hct_art_1_ever_lost[,381] %in% c(1,2,3)) / sum(hct_art_1[,372]==1)
-results[50,2] <- sum(hct_art_2_ever_lost[,382] %in% c(1,2,3)) / sum(hct_art_2[,373]==1)
-results[50,3] <- sum(hct_art_3_ever_lost[,383] %in% c(1,2,3)) / sum(hct_art_3[,374]==1)
+results[50,1] <- Calibration$sART11[1] / sum(Calibration$sART1[1:4])
+results[50,2] <- Calibration$sART11[4] / sum(Calibration$sART1[17:20])
+results[50,3] <- Calibration$sART11[7] / sum(Calibration$sART1[33:36])
 #VCT
-results[51,1] <- sum(vct_art_1_ever_lost[,381] %in% c(1,2,3)) / sum(vct_art_1[,372]==1)
-results[51,2] <- sum(vct_art_2_ever_lost[,382] %in% c(1,2,3)) / sum(vct_art_2[,373]==1)
-results[51,3] <- sum(vct_art_3_ever_lost[,383] %in% c(1,2,3)) / sum(vct_art_3[,374]==1)
+results[51,1] <- Calibration$sART11[2] / sum(Calibration$sART1[5:8])
+results[51,2] <- Calibration$sART11[5] / sum(Calibration$sART1[21:24])
+results[51,3] <- Calibration$sART11[8] / sum(Calibration$sART1[37:40])
 
 #PICT
-results[52,1] <- sum(pict_art_1_ever_lost[,381] %in% c(1,2,3)) / sum(pict_art_1[,372]==1)
-results[52,2] <- sum(pict_art_2_ever_lost[,382] %in% c(1,2,3)) / sum(pict_art_2[,373]==1)
-results[52,3] <- sum(pict_art_3_ever_lost[,383] %in% c(1,2,3)) / sum(pict_art_3[,374]==1)
+results[52,1] <- Calibration$sART11[3] / sum(Calibration$sART1[9:12])
+results[52,2] <- Calibration$sART11[6] / sum(Calibration$sART1[25:28])
+results[52,3] <- Calibration$sART11[9] / sum(Calibration$sART1[41:44])
 
 ##################################################
-#ART12
-art_1_ever_lost_ret_elig <- subset(art_1_ever_lost,art_1_ever_lost[,360] %in% c(1,2,3))
-art_2_ever_lost_ret_elig <- subset(art_2_ever_lost,art_2_ever_lost[,361] %in% c(1,2,3))
-art_3_ever_lost_ret_elig <- subset(art_3_ever_lost,art_3_ever_lost[,362] %in% c(1,2,3))
+#ART12 - Mean time for ppl lost but returned when eligible
+Calibration$sART12;
+Calibration$sART12_Counter;
 
-results[53,1] <- sum(art_1_ever_lost_ret_elig[,375] - art_1_ever_lost_ret_elig[,357]) / dim(art_1_ever_lost_ret_elig)[1]
-results[53,2] <- sum(art_2_ever_lost_ret_elig[,376] - art_2_ever_lost_ret_elig[,358]) / dim(art_2_ever_lost_ret_elig)[1]
-results[53,3] <- sum(art_3_ever_lost_ret_elig[,377] - art_3_ever_lost_ret_elig[,359]) / dim(art_3_ever_lost_ret_elig)[1]
+results[53,1] <- Calibration$sART12[1] / Calibration$sART12_Counter[1]
+results[53,2] <- Calibration$sART12[2] / Calibration$sART12_Counter[2]
+results[53,3] <- Calibration$sART12[3] / Calibration$sART12_Counter[3]
 
 ##################################################
 #ART13 - Proportion of patients initating ART who had previously been on ART
-#THESE VALUES ARE ZERO CURRENTLY AS NOBODY IS COMING BACK ONTO ART
+Calibration$sART13;
+
+# THESE VALUES ARE ZERO CURRENTLY AS NOBODY IS COMING BACK ONTO ART #
+
 #HCT
-results[54,1] <- sum(hct_art_1[,369]==1) / sum(hct_art_1[,372]==1)
-results[54,2] <- sum(hct_art_2[,370]==1) / sum(hct_art_2[,373]==1)
-results[54,3] <- sum(hct_art_3[,371]==1) / sum(hct_art_3[,374]==1)
+results[54,1] <- Calibration$sART13[1] / sum(Calibration$sART1[1:4]) 
+results[54,2] <- Calibration$sART13[4] / sum(Calibration$sART1[17:20]) 
+results[54,3] <- Calibration$sART13[7] / sum(Calibration$sART1[33:36]) 
 
 #VCT
-results[55,1] <- sum(vct_art_1[,369]==1) / sum(vct_art_1[,372]==1)
-results[55,2] <- sum(vct_art_2[,370]==1) / sum(vct_art_2[,373]==1)
-results[55,3] <- sum(vct_art_3[,371]==1) / sum(vct_art_3[,374]==1)
+results[55,1] <- Calibration$sART13[2] / sum(Calibration$sART1[5:8]) 
+results[55,2] <- Calibration$sART13[5] / sum(Calibration$sART1[21:24]) 
+results[55,3] <- Calibration$sART13[8] / sum(Calibration$sART1[37:40]) 
 
 #PICT
-results[56,1] <- sum(pict_art_1[,369]==1) / sum(pict_art_1[,372]==1)
-results[56,2] <- sum(pict_art_2[,370]==1) / sum(pict_art_2[,373]==1)
-results[56,3] <- sum(pict_art_3[,371]==1) / sum(pict_art_3[,374]==1)
+results[56,1] <- Calibration$sART13[3] / sum(Calibration$sART1[9:12]) 
+results[56,2] <- Calibration$sART13[6] / sum(Calibration$sART1[25:28]) 
+results[56,3] <- Calibration$sART13[9] / sum(Calibration$sART1[41:44]) 
 
 ##################################################
 #ART14 - Proportion of patients initating who prior to that day had no experience of care
-#All
-sum(art_1[,409]==1) / sum(art_1[,372]==1)
-sum(art_2[,410]==1) / sum(art_2[,373]==1)
-sum(art_3[,411]==1) / sum(art_3[,374]==1)
-
+Calibration$sART14
 #HCT
-results[57,1] <- sum(hct_art_1[,409]==1) / sum(hct_art_1[,372]==1)
-results[57,2] <- sum(hct_art_2[,410]==1) / sum(hct_art_2[,373]==1)
-results[57,3] <- sum(hct_art_3[,411]==1) / sum(hct_art_3[,374]==1)
+results[57,1] <- Calibration$sART14[1] / sum(Calibration$sART1[1:4]) 
+results[57,2] <- Calibration$sART14[4] / sum(Calibration$sART1[17:20]) 
+results[57,3] <- Calibration$sART14[7] / sum(Calibration$sART1[33:36]) 
 
 #VCT
-results[58,1] <- sum(vct_art_1[,409]==1) / sum(vct_art_1[,372]==1)
-results[58,2] <- sum(vct_art_2[,410]==1) / sum(vct_art_2[,373]==1)
-results[58,3] <- sum(vct_art_3[,411]==1) / sum(vct_art_3[,374]==1)
+results[58,1] <- Calibration$sART14[2] / sum(Calibration$sART1[5:8]) 
+results[58,2] <- Calibration$sART14[5] / sum(Calibration$sART1[21:24]) 
+results[58,3] <- Calibration$sART14[8] / sum(Calibration$sART1[37:40]) 
 
 #PICT
-results[59,1] <- sum(pict_art_1[,409]==1) / sum(pict_art_1[,372]==1)
-results[59,2] <- sum(pict_art_2[,410]==1) / sum(pict_art_2[,373]==1)
-results[59,3] <- sum(pict_art_3[,411]==1) / sum(pict_art_3[,374]==1)
+results[59,1] <- Calibration$sART14[3] / sum(Calibration$sART1[9:12]) 
+results[59,2] <- Calibration$sART14[6] / sum(Calibration$sART1[25:28]) 
+results[59,3] <- Calibration$sART14[9] / sum(Calibration$sART1[41:44]) 
 
 ##################################################
 ##################################################
