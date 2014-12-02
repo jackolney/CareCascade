@@ -14,9 +14,9 @@ Calibration
 # Calibration$sL21;
 # Calibration$sR3;
 # Calibration$sR8;
-Calibration$sART1;
-Calibration$sART4;
-Calibration$sART5;
+# Calibration$sART1;
+# Calibration$sART4;
+# Calibration$sART5;
 Calibration$sART6;
 Calibration$sART9;
 Calibration$sART10;
@@ -247,47 +247,50 @@ results[37,3] <- Calibration$sART1[48] / sum(Calibration$sART1[45:48])
 #ART2 - Proportion of individuals initiating ART with CD4 <200.
 #Needs stratification by VCT / HCT
 #HCT
-results[38,1] <- sum(first_hbct_1[,363] == 1) / dim(hct_art_1)[1]
-results[38,2] <- sum(first_hbct_2[,364] == 1) / dim(hct_art_2)[1]
-results[38,3] <- sum(first_hbct_3[,365] == 1) / dim(hct_art_3)[1]
+results[38,1] <- Calibration$sART1[4] / sum(Calibration$sART1[1:4])
+results[38,2] <- Calibration$sART1[20] / sum(Calibration$sART1[17:20])
+results[38,3] <- Calibration$sART1[36] / sum(Calibration$sART1[33:36])
 
 #VCT
-results[39,1] <- sum(first_vct_1[,363] == 1) / dim(vct_art_1)[1]
-results[39,2] <- sum(first_vct_2[,364] == 1) / dim(vct_art_2)[1]
-results[39,3] <- sum(first_vct_3[,365] == 1) / dim(vct_art_3)[1]
+results[39,1] <- Calibration$sART1[8] / sum(Calibration$sART1[5:8])
+results[39,2] <- Calibration$sART1[24] / sum(Calibration$sART1[21:24])
+results[39,3] <- Calibration$sART1[40] / sum(Calibration$sART1[37:40])
 
 #PICT
-results[40,1] <- sum(first_pict_1[,363] == 1) / dim(pict_art_1)[1]
-results[40,2] <- sum(first_pict_2[,364] == 1) / dim(pict_art_2)[1]
-results[40,3] <- sum(first_pict_3[,365] == 1) / dim(pict_art_3)[1]
+results[40,1] <- Calibration$sART1[12] / sum(Calibration$sART1[9:12])
+results[40,2] <- Calibration$sART1[28] / sum(Calibration$sART1[25:28])
+results[40,3] <- Calibration$sART1[44] / sum(Calibration$sART1[41:44])
 
 ##################################################
 #ART4 - Mean number of pre-ART visits prior to ART initiation
+Calibration$sART4
 #ALL
-results[41,1] <- sum(art_1[,354]) / dim(art_1)[1]
-results[41,2] <- sum(art_2[,355]) / dim(art_2)[1]
-results[41,3] <- sum(art_3[,356]) / dim(art_3)[1]
+results[41,1] <- Calibration$sART4[1] / sum(Calibration$sART1[13:16])
+results[41,2] <- Calibration$sART4[2] / sum(Calibration$sART1[29:32])
+results[41,3] <- Calibration$sART4[3] / sum(Calibration$sART1[45:48])
 
 ##################################################
 #ART5 - Proportion of patients initiating ART after diagnosis and successful retention in care until becoming eligible for treatment (i.e. no gap in care)
-
+Calibration$sART5
 #HCT
-results[42,1] <- (sum(hct_art_1[,366]==0) - sum(hct_art_1[,409]==1)) / sum(hct_art_1[,372]==1)
-results[42,2] <- (sum(hct_art_2[,367]==0) - sum(hct_art_2[,410]==1)) / sum(hct_art_2[,373]==1)
-results[42,3] <- (sum(hct_art_3[,368]==0) - sum(hct_art_3[,411]==1)) / sum(hct_art_3[,374]==1)
+results[42,1] <- Calibration$sART5[1] / sum(Calibration$sART1[1:4])
+results[42,2] <- Calibration$sART5[4] / sum(Calibration$sART1[17:20])
+results[42,3] <- Calibration$sART5[7] / sum(Calibration$sART1[33:36])
 
 #VCT
-results[43,1] <- (sum(vct_art_1[,366]==0) - sum(vct_art_1[,409]==1)) / sum(vct_art_1[,372]==1)
-results[43,2] <- (sum(vct_art_2[,367]==0) - sum(vct_art_2[,410]==1)) / sum(vct_art_2[,373]==1)
-results[43,3] <- (sum(vct_art_3[,368]==0) - sum(vct_art_3[,411]==1)) / sum(vct_art_3[,374]==1)
+results[43,1] <- Calibration$sART5[2] / sum(Calibration$sART1[5:8])
+results[43,2] <- Calibration$sART5[5] / sum(Calibration$sART1[21:24])
+results[43,3] <- Calibration$sART5[8] / sum(Calibration$sART1[37:40])
 
 #PITC
-results[44,1] <- (sum(pict_art_1[,366]==0) - sum(pict_art_1[,409]==1)) / sum(pict_art_1[,372]==1)
-results[44,2] <- (sum(pict_art_2[,367]==0) - sum(pict_art_2[,410]==1)) / sum(pict_art_2[,373]==1)
-results[44,3] <- (sum(pict_art_3[,368]==0) - sum(pict_art_3[,411]==1)) / sum(pict_art_3[,374]==1)
+results[44,1] <- Calibration$sART5[3] / sum(Calibration$sART1[9:12])
+results[44,2] <- Calibration$sART5[6] / sum(Calibration$sART1[25:28])
+results[44,3] <- Calibration$sART5[9] / sum(Calibration$sART1[41:44])
 
-
-#ART6
+##################################################
+#ART6 - mean time for ppl successfully reatained (HCT only)
+Calibration$sART6;
+Calibration$sART6_Counter;
 #ALL
 art_1_nlost <- subset(art_1,art_1[,366]==0)
 art_2_nlost <- subset(art_2,art_2[,367]==0)
@@ -302,6 +305,7 @@ results[45,1] <- sum(hct_art_1_nlost[,375] - hct_art_1_nlost[,357]) / sum(hct_ar
 results[45,2] <- sum(hct_art_2_nlost[,376] - hct_art_2_nlost[,358]) / sum(hct_art_2_nlost[,373] == 1)
 results[45,3] <- sum(hct_art_3_nlost[,377] - hct_art_3_nlost[,359]) / sum(hct_art_3_nlost[,374] == 1)
 
+##################################################
 #ART9 - Proportion of patients initiating ART after diagnosis, who were subsequently lost from pre-ART care (ie. HAD AT LEAST ONE CD4 CELL COUNT) but returning prior to becoming eligible for treatment
 #HCT
 hct_art_1_ever_lost <- subset(hct_art_1,hct_art_1[,366]==1)
@@ -334,6 +338,7 @@ results[48,1] <- sum(pict_art_1_ever_lost[,381] == 4) / sum(pict_art_1[,372]==1)
 results[48,2] <- sum(pict_art_2_ever_lost[,382] == 4) / sum(pict_art_2[,373]==1)
 results[48,3] <- sum(pict_art_3_ever_lost[,383] == 4) / sum(pict_art_3[,374]==1)
 
+##################################################
 #ART10
 #ALL (assumed)
 art_1_ever_lost <- subset(art_1,art_1[,366]==1)
@@ -348,6 +353,7 @@ results[49,1] <- sum(art_1_ever_lost_ret_nelig[,375] - art_1_ever_lost_ret_nelig
 results[49,2] <- sum(art_2_ever_lost_ret_nelig[,376] - art_2_ever_lost_ret_nelig[,358]) / dim(art_2_ever_lost_ret_nelig)[1]
 results[49,3] <- sum(art_3_ever_lost_ret_nelig[,377] - art_3_ever_lost_ret_nelig[,359]) / dim(art_3_ever_lost_ret_nelig)[1]
 
+##################################################
 #ART11 - Proportion of patients initiating ART after diagnosis, subsequent loss from pre-ART care and returning when already eligible for treatment
 #last_test_route = 2 (VCT)
 #last_test_route = 3 (PICT)
@@ -370,6 +376,7 @@ results[52,1] <- sum(pict_art_1_ever_lost[,381] %in% c(1,2,3)) / sum(pict_art_1[
 results[52,2] <- sum(pict_art_2_ever_lost[,382] %in% c(1,2,3)) / sum(pict_art_2[,373]==1)
 results[52,3] <- sum(pict_art_3_ever_lost[,383] %in% c(1,2,3)) / sum(pict_art_3[,374]==1)
 
+##################################################
 #ART12
 art_1_ever_lost_ret_elig <- subset(art_1_ever_lost,art_1_ever_lost[,360] %in% c(1,2,3))
 art_2_ever_lost_ret_elig <- subset(art_2_ever_lost,art_2_ever_lost[,361] %in% c(1,2,3))
@@ -379,6 +386,7 @@ results[53,1] <- sum(art_1_ever_lost_ret_elig[,375] - art_1_ever_lost_ret_elig[,
 results[53,2] <- sum(art_2_ever_lost_ret_elig[,376] - art_2_ever_lost_ret_elig[,358]) / dim(art_2_ever_lost_ret_elig)[1]
 results[53,3] <- sum(art_3_ever_lost_ret_elig[,377] - art_3_ever_lost_ret_elig[,359]) / dim(art_3_ever_lost_ret_elig)[1]
 
+##################################################
 #ART13 - Proportion of patients initating ART who had previously been on ART
 #THESE VALUES ARE ZERO CURRENTLY AS NOBODY IS COMING BACK ONTO ART
 #HCT
@@ -396,7 +404,7 @@ results[56,1] <- sum(pict_art_1[,369]==1) / sum(pict_art_1[,372]==1)
 results[56,2] <- sum(pict_art_2[,370]==1) / sum(pict_art_2[,373]==1)
 results[56,3] <- sum(pict_art_3[,371]==1) / sum(pict_art_3[,374]==1)
 
-######
+##################################################
 #ART14 - Proportion of patients initating who prior to that day had no experience of care
 #All
 sum(art_1[,409]==1) / sum(art_1[,372]==1)
@@ -418,8 +426,8 @@ results[59,1] <- sum(pict_art_1[,409]==1) / sum(pict_art_1[,372]==1)
 results[59,2] <- sum(pict_art_2[,410]==1) / sum(pict_art_2[,373]==1)
 results[59,3] <- sum(pict_art_3[,411]==1) / sum(pict_art_3[,374]==1)
 
-######
-######
+##################################################
+##################################################
 
 #PLWHIV_2010_diag / PLWHIV_2010
 results[60,2] <- sum(big_res[,481] == 1) / sum(big_res[,480] == 1)

@@ -1,10 +1,10 @@
-	//
-	//  calibration.cpp
-	//  priorityQ
-	//
-	//  Created by Jack Olney on 01/12/2014.
-	//  Copyright (c) 2014 Jack Olney. All rights reserved.
-	//
+//
+//  calibration.cpp
+//  priorityQ
+//
+//  Created by Jack Olney on 01/12/2014.
+//  Copyright (c) 2014 Jack Olney. All rights reserved.
+//
 
 #include <iostream>
 #include "calibration.h"
@@ -50,8 +50,8 @@ void SeedCalibration(person * const thePerson, const double theTimeZero, const d
 		new TimeSplitThree(thePerson,theTimeThree);
 }
 
-	/////////////////////
-	/////////////////////
+/////////////////////
+/////////////////////
 
 TimeSplitZero::TimeSplitZero(person * const thePerson, const double Time) :
 event(Time),
@@ -71,8 +71,8 @@ void TimeSplitZero::Execute()
 	pPerson->ResetCalibration();
 }
 
-	/////////////////////
-	/////////////////////
+/////////////////////
+/////////////////////
 
 TimeSplitOne::TimeSplitOne(person * const thePerson, const double Time) :
 event(Time),
@@ -93,8 +93,8 @@ void TimeSplitOne::Execute()
 	pPerson->ResetCalibration();
 }
 
-	/////////////////////
-	/////////////////////
+/////////////////////
+/////////////////////
 
 TimeSplitTwo::TimeSplitTwo(person * const thePerson, const double Time) :
 event(Time),
@@ -115,8 +115,8 @@ void TimeSplitTwo::Execute()
 	pPerson->ResetCalibration();
 }
 
-	/////////////////////
-	/////////////////////
+/////////////////////
+/////////////////////
 
 TimeSplitThree::TimeSplitThree(person * const thePerson, const double Time) :
 event(Time),
@@ -137,8 +137,8 @@ void TimeSplitThree::Execute()
 	pPerson->ResetCalibration();
 }
 
-	/////////////////////
-	/////////////////////
+/////////////////////
+/////////////////////
 
 void CreateCalibrationArray()
 {
@@ -196,8 +196,8 @@ void CreateCalibrationArray()
 	}
 }
 
-	/////////////////////
-	/////////////////////
+/////////////////////
+/////////////////////
 
 void UpdateCalibrationArrayOne(person * const thePerson)
 {
@@ -241,7 +241,7 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 			case 4: i = 0; break;
 			default: break;
 		}
-		ART1[13 + i]++;
+		ART1[12 + i]++;
 		i += (thePerson->GetCalAtArtDiagRoute()-1) * 4;
 		ART1[i]++;
 	}
@@ -255,7 +255,7 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 		ART5[thePerson->GetCalAtArtDiagRoute()-1]++;
 	
 		// ART6 - Mean time from diagnosis to ART initiation for ppl successfully retained in care. (HCT ONLY)
-	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalCareRoute() == 1) {
 		ART6[0] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART6_Counter[0]++;
 	}
@@ -305,8 +305,8 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 	}
 }
 
-	/////////////////////
-	/////////////////////
+/////////////////////
+/////////////////////
 
 void UpdateCalibrationArrayTwo(person * const thePerson)
 {
@@ -350,7 +350,7 @@ void UpdateCalibrationArrayTwo(person * const thePerson)
 			case 4: i = 0; break;
 			default: break;
 		}
-		ART1[29 + i]++;
+		ART1[28 + i]++;
 		i += (thePerson->GetCalAtArtDiagRoute()-1) * 4;
 		ART1[16 + i]++;
 	}
@@ -364,7 +364,7 @@ void UpdateCalibrationArrayTwo(person * const thePerson)
 		ART5[3 + (thePerson->GetCalAtArtDiagRoute()-1)]++;
 	
 		// ART6 - Mean time from diagnosis to ART initiation for ppl successfully retained in care. (HCT ONLY)
-	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalCareRoute() == 1) {
 		ART6[1] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART6_Counter[1]++;
 	}
@@ -405,8 +405,8 @@ void UpdateCalibrationArrayTwo(person * const thePerson)
 		ArtArray[1]++;
 }
 
-	/////////////////////
-	/////////////////////
+/////////////////////
+/////////////////////
 
 void UpdateCalibrationArrayThree(person * const thePerson)
 {
@@ -450,7 +450,7 @@ void UpdateCalibrationArrayThree(person * const thePerson)
 			case 4: i = 0; break;
 			default: break;
 		}
-		ART1[45 + i]++;
+		ART1[44 + i]++;
 		i += (thePerson->GetCalAtArtDiagRoute()-1) * 4;
 		ART1[32 + i]++;
 	}
@@ -464,7 +464,7 @@ void UpdateCalibrationArrayThree(person * const thePerson)
 		ART5[6 + (thePerson->GetCalAtArtDiagRoute()-1)]++;
 	
 		// ART6 - Mean time from diagnosis to ART initiation for ppl successfully retained in care. (HCT ONLY)
-	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare()) {
+	if(thePerson->GetCalEverArt() && !thePerson->GetCalAtArtEverLostCare() && thePerson->GetCalCareRoute() == 1) {
 		ART6[2] += thePerson->GetCalArtDay() - thePerson->GetCalDiagDay();
 		ART6_Counter[2]++;
 	}
@@ -505,5 +505,5 @@ void UpdateCalibrationArrayThree(person * const thePerson)
 		ArtArray[2]++;
 }
 
-	/////////////////////
-	/////////////////////
+/////////////////////
+/////////////////////
