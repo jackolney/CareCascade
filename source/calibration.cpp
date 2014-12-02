@@ -296,11 +296,11 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 		ArtArray[0]++;
 	
 		// Pre2010 - Dx levels pre-2010. (don't run this code after 2010)
-	if(thePerson->GetCalEverCare()) {
+	if(thePerson->GetCalEverDiag()) {
 		Pre2010[0]++;
-		if(thePerson->GetCalCareRoute() == 2)
+		if(thePerson->GetCalDiagRoute() == 2)
 			Pre2010[1]++;
-		else if(thePerson->GetCalCareRoute() == 3)
+		else if(thePerson->GetCalDiagRoute() == 3)
 			Pre2010[2]++;
 	}
 }

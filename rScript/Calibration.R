@@ -23,7 +23,7 @@ Calibration
 # Calibration$sART11;
 # Calibration$sART12;
 # Calibration$sART13;
-Calibration$sART14;
+# Calibration$sART14;
 Calibration$sPre2010;
 Calibration$sHivArray;
 Calibration$sArtArray;
@@ -390,35 +390,43 @@ results[59,3] <- Calibration$sART14[9] / sum(Calibration$sART1[41:44])
 
 ##################################################
 ##################################################
+# Pre2010
+Calibration$sPre2010
+Calibration$sHivArray[1]
 
 #PLWHIV_2010_diag / PLWHIV_2010
-results[60,2] <- sum(big_res[,481] == 1) / sum(big_res[,480] == 1)
+results[60,2] <- Calibration$sPre2010[1] / Calibration$sHivArray[1]
 
 #PLWHIV_2010_diag_vct / PLWHIV_2010_diag
-results[61,2] <- sum(big_res[,482] == 1) / sum(big_res[,481] == 1)
+results[61,2] <- Calibration$sPre2010[2] / Calibration$sPre2010[1]
 
 #PLWHIV_2010_diag_pict / PLWHIV_2010_diag
-results[62,2] <- sum(big_res[,483] == 1) / sum(big_res[,481] == 1)
+results[62,2] <- Calibration$sPre2010[3] / Calibration$sPre2010[1]
 
 #####
 #Percentage on ART
+(Calibration$sArtArray[1] / 3) / (Calibration$sHivArray[1] / 3)
+(Calibration$sArtArray[2] / 1) / (Calibration$sHivArray[2] / 1)
+(Calibration$sArtArray[3] / 3.5) / (Calibration$sHivArray[3] / 3.5)
+
 #perhaps a bit crude at the moment but will do.
-results[63,1] <- (dim(art_1)[1] / sum(big_res[,487] == 1)) / 3
-results[63,2] <- (dim(art_2)[1] / sum(big_res[,488] == 1)) / 1
-results[63,3] <- (dim(art_3)[1] / sum(big_res[,489] == 1)) / 3.5
+results[63,1] <- (Calibration$sArtArray[1] / Calibration$sHivArray[1]) / 3
+results[63,2] <- (Calibration$sArtArray[2] / Calibration$sHivArray[2]) / 1
+results[63,3] <- (Calibration$sArtArray[3] / Calibration$sHivArray[3]) / 3.5
 
 #New ART initiators...
-results[64,1] <- sum(big_res[,372] == 1) / 3
-results[64,2] <- sum(big_res[,373] == 1 & big_res[,372] == 0) / 1
-results[64,3] <- sum(big_res[,374] == 1 & big_res[,372] == 0 & big_res[,373] == 0) / 3.5
+results[64,1] <- Calibration$sArtArray[1] / 3
+results[64,2] <- Calibration$sArtArray[2] / 1
+results[64,3] <- Calibration$sArtArray[3] / 3.5
 
-results[65,1] <- sum(art_1[,484] > 1) / dim(art_1)[1]
-results[65,2] <- sum(art_2[,485] > 1) / dim(art_2)[1]
-results[65,3] <- sum(art_3[,486] > 1) / dim(art_3)[1]
+results[65,1] <- NaN
+results[65,2] <- NaN
+results[65,3] <- NaN
 
 #########################
 #########################
 #########################
+
 #Previous health care experience of those initiating ART (big table in "FinalDataRequest" document.)
 
 #ART14_ALL
