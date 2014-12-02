@@ -209,11 +209,11 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 	if(thePerson->GetCalEverCare()) {
 		unsigned int i = 0;
 		switch(thePerson->GetCalCd4EntryCare()) {
-			case 1: i = 0; break;
-			case 2: i = 1; break;
-			case 3: i = 2; break;
-			case 4: i = 3; break;
-			default: i = 0;
+			case 1: i = 3; break;
+			case 2: i = 2; break;
+			case 3: i = 1; break;
+			case 4: i = 0; break;
+			default: break;
 		}
 		i += (thePerson->GetCalCareRoute()-1) * 4;
 		L21[i]++;
@@ -235,12 +235,13 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 	if(thePerson->GetCalEverArt()) {
 		unsigned int i = 0;
 		switch(thePerson->GetCalCd4AtArt()) {
-			case 1: i = 0; break;
-			case 2: i = 1; break;
-			case 3: i = 2; break;
-			case 4: i = 3; break;
-			default: i = 0;
+			case 1: i = 3; break;
+			case 2: i = 2; break;
+			case 3: i = 1; break;
+			case 4: i = 0; break;
+			default: break;
 		}
+		ART1[13 + i]++;
 		i += (thePerson->GetCalAtArtDiagRoute()-1) * 4;
 		ART1[i]++;
 	}
@@ -317,11 +318,11 @@ void UpdateCalibrationArrayTwo(person * const thePerson)
 	if(thePerson->GetCalEverCare()) {
 		unsigned int i = 0;
 		switch(thePerson->GetCalCd4EntryCare()) {
-			case 1: i = 0; break;
-			case 2: i = 1; break;
-			case 3: i = 2; break;
-			case 4: i = 3; break;
-			default: i = 0;
+			case 1: i = 3; break;
+			case 2: i = 2; break;
+			case 3: i = 1; break;
+			case 4: i = 0; break;
+			default: break;
 		}
 		i += (thePerson->GetCalCareRoute()-1) * 4;
 		L21[12 + i]++;
@@ -343,12 +344,13 @@ void UpdateCalibrationArrayTwo(person * const thePerson)
 	if(thePerson->GetCalEverArt()) {
 		unsigned int i = 0;
 		switch(thePerson->GetCalCd4AtArt()) {
-			case 1: i = 0; break;
-			case 2: i = 1; break;
-			case 3: i = 2; break;
-			case 4: i = 3; break;
-			default: i = 0;
+			case 1: i = 3; break;
+			case 2: i = 2; break;
+			case 3: i = 1; break;
+			case 4: i = 0; break;
+			default: break;
 		}
+		ART1[29 + i]++;
 		i += (thePerson->GetCalAtArtDiagRoute()-1) * 4;
 		ART1[16 + i]++;
 	}
@@ -416,11 +418,11 @@ void UpdateCalibrationArrayThree(person * const thePerson)
 	if(thePerson->GetCalEverCare()) {
 		unsigned int i = 0;
 		switch(thePerson->GetCalCd4EntryCare()) {
-			case 1: i = 0; break;
-			case 2: i = 1; break;
-			case 3: i = 2; break;
-			case 4: i = 3; break;
-			default: i = 0;
+			case 1: i = 3; break;
+			case 2: i = 2; break;
+			case 3: i = 1; break;
+			case 4: i = 0; break;
+			default: break;
 		}
 		i += (thePerson->GetCalCareRoute()-1) * 4;
 		L21[24 + i]++;
@@ -442,12 +444,13 @@ void UpdateCalibrationArrayThree(person * const thePerson)
 	if(thePerson->GetCalEverArt()) {
 		unsigned int i = 0;
 		switch(thePerson->GetCalCd4AtArt()) {
-			case 1: i = 0; break;
-			case 2: i = 1; break;
-			case 3: i = 2; break;
-			case 4: i = 3; break;
-			default: i = 0;
+			case 1: i = 3; break;
+			case 2: i = 2; break;
+			case 3: i = 1; break;
+			case 4: i = 0; break;
+			default: break;
 		}
+		ART1[45 + i]++;
 		i += (thePerson->GetCalAtArtDiagRoute()-1) * 4;
 		ART1[32 + i]++;
 	}

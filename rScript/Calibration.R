@@ -13,7 +13,7 @@ Calibration
 # Calibration$sC1;
 # Calibration$sL21;
 # Calibration$sR3;
-Calibration$sR8;
+# Calibration$sR8;
 Calibration$sART1;
 Calibration$sART4;
 Calibration$sART5;
@@ -27,8 +27,8 @@ Calibration$sART14;
 Calibration$sPre2010;
 Calibration$sHivArray;
 Calibration$sArtArray;
-Calibration$sR3_Counter;
-Calibration$sR8_Counter;
+# Calibration$sR3_Counter;
+# Calibration$sR8_Counter;
 Calibration$sART6_Counter;
 Calibration$sART10_Counter;
 Calibration$sART12_Counter;
@@ -139,12 +139,7 @@ results[18,3] <- Calibration$sR3[9] / Calibration$sR3_Counter[9]
 
 #################################################
 #R8 - Mean CD4 count when receiving secondary CD4 results
-Calibration$sR8;
-Calibration$sR8_Counter;
-
-Calibration$sR8 / Calibration$sR8_Counter
-
-#Values calculated in C.
+#Values calculated in C (roughly medians)
 #CD4 <200 = 1 = 100
 #CD4 200-350 = 2 = 275
 #CD4 350-500 = 3 = 425
@@ -168,136 +163,85 @@ results[21,3] <- Calibration$sR8[9] / Calibration$sR8_Counter[9]
 ##################################################
 #ART1 - Mean CD4 count at ART initiation
 #I don't think this should be "everHbct" etc. but rather FIRST route into care.
-#ART STUFF
-art_1 <- subset(big_res,big_res[,372]==1)
-art_2 <- subset(big_res,big_res[,373]==1)
-art_3 <- subset(big_res,big_res[,374]==1)
-
-# #T1
-# hct_art_1 <- subset(art_1,art_1[,324]==1)
-# vct_art_1 <- subset(art_1,art_1[,327]==1)
-# pict_art_1 <- subset(art_1,art_1[,330]==1)
-
-# #T2
-# hct_art_2 <- subset(art_2,art_2[,325]==1)
-# vct_art_2 <- subset(art_2,art_2[,328]==1)
-# pict_art_2 <- subset(art_2,art_2[,331]==1)
-
-# #T3
-# hct_art_3 <- subset(art_3,art_3[,326]==1)
-# vct_art_3 <- subset(art_3,art_3[,329]==1)
-# pict_art_3 <- subset(art_3,art_3[,332]==1)
-
-#T1
-hct_art_1 <- subset(art_1,art_1[,399]==1)
-vct_art_1 <- subset(art_1,art_1[,399]==2)
-pict_art_1 <- subset(art_1,art_1[,399]==3)
-
-#T2
-hct_art_2 <- subset(art_2,art_2[,400]==1)
-vct_art_2 <- subset(art_2,art_2[,400]==2)
-pict_art_2 <- subset(art_2,art_2[,400]==3)
-
-#T3
-hct_art_3 <- subset(art_3,art_3[,401]==1)
-vct_art_3 <- subset(art_3,art_3[,401]==2)
-pict_art_3 <- subset(art_3,art_3[,401]==3)
+#ArtStuff
+Calibration$sART1
 
 #HBCT
 #Time point ONE
-first_hbct_1 <- subset(big_res,big_res[,399] == 1)
-range(first_hbct_1[,363])
-
-results[22,1] <- sum(first_hbct_1[,363]==4) / dim(hct_art_1)[1]
-results[23,1] <- sum(first_hbct_1[,363]==3) / dim(hct_art_1)[1]
-results[24,1] <- sum(first_hbct_1[,363]==2) / dim(hct_art_1)[1]
-results[25,1] <- sum(first_hbct_1[,363]==1) / dim(hct_art_1)[1]
+results[22,1] <- Calibration$sART1[1] / sum(Calibration$sART1[1:4])
+results[23,1] <- Calibration$sART1[2] / sum(Calibration$sART1[1:4])
+results[24,1] <- Calibration$sART1[3] / sum(Calibration$sART1[1:4])
+results[25,1] <- Calibration$sART1[4] / sum(Calibration$sART1[1:4])
 
 #Time point TWO
-first_hbct_2 <- subset(big_res,big_res[,400] == 1)
-
-results[22,2] <- sum(first_hbct_2[,364]==4) / dim(hct_art_2)[1]
-results[23,2] <- sum(first_hbct_2[,364]==3) / dim(hct_art_2)[1]
-results[24,2] <- sum(first_hbct_2[,364]==2) / dim(hct_art_2)[1]
-results[25,2] <- sum(first_hbct_2[,364]==1) / dim(hct_art_2)[1]
+results[22,2] <- Calibration$sART1[17] / sum(Calibration$sART1[17:20])
+results[23,2] <- Calibration$sART1[18] / sum(Calibration$sART1[17:20])
+results[24,2] <- Calibration$sART1[19] / sum(Calibration$sART1[17:20])
+results[25,2] <- Calibration$sART1[20] / sum(Calibration$sART1[17:20])
 
 #Time point THREE
-first_hbct_3 <- subset(big_res,big_res[,401] == 1)
-
-results[22,3] <- sum(first_hbct_3[,365]==4) / dim(hct_art_3)[1]
-results[23,3] <- sum(first_hbct_3[,365]==3) / dim(hct_art_3)[1]
-results[24,3] <- sum(first_hbct_3[,365]==2) / dim(hct_art_3)[1]
-results[25,3] <- sum(first_hbct_3[,365]==1) / dim(hct_art_3)[1]
-
+results[22,3] <- Calibration$sART1[33] / sum(Calibration$sART1[33:36])
+results[23,3] <- Calibration$sART1[34] / sum(Calibration$sART1[33:36])
+results[24,3] <- Calibration$sART1[35] / sum(Calibration$sART1[33:36])
+results[25,3] <- Calibration$sART1[36] / sum(Calibration$sART1[33:36])
 
 #VCT
 #Time point ONE
-first_vct_1 <- subset(big_res,big_res[,399] == 2)
-
-results[26,1] <- sum(first_vct_1[,363] == 4) / dim(vct_art_1)[1]
-results[27,1] <- sum(first_vct_1[,363] == 3) / dim(vct_art_1)[1]
-results[28,1] <- sum(first_vct_1[,363] == 2) / dim(vct_art_1)[1]
-results[29,1] <- sum(first_vct_1[,363] == 1) / dim(vct_art_1)[1]
+results[26,1] <- Calibration$sART1[5] / sum(Calibration$sART1[5:8])
+results[27,1] <- Calibration$sART1[6] / sum(Calibration$sART1[5:8])
+results[28,1] <- Calibration$sART1[7] / sum(Calibration$sART1[5:8])
+results[29,1] <- Calibration$sART1[8] / sum(Calibration$sART1[5:8])
 
 #Time point TWO
-first_vct_2 <- subset(big_res,big_res[,400] == 2)
-
-results[26,2] <- sum(first_vct_2[,364] == 4) / dim(vct_art_2)[1]
-results[27,2] <- sum(first_vct_2[,364] == 3) / dim(vct_art_2)[1]
-results[28,2] <- sum(first_vct_2[,364] == 2) / dim(vct_art_2)[1]
-results[29,2] <- sum(first_vct_2[,364] == 1) / dim(vct_art_2)[1]
+results[26,2] <- Calibration$sART1[21] / sum(Calibration$sART1[21:24])
+results[27,2] <- Calibration$sART1[22] / sum(Calibration$sART1[21:24])
+results[28,2] <- Calibration$sART1[23] / sum(Calibration$sART1[21:24])
+results[29,2] <- Calibration$sART1[24] / sum(Calibration$sART1[21:24])
 
 #Time point THREE
-first_vct_3 <- subset(big_res,big_res[,401] == 2)
-
-results[26,3] <- sum(first_vct_3[,365] == 4) / dim(vct_art_3)[1]
-results[27,3] <- sum(first_vct_3[,365] == 3) / dim(vct_art_3)[1]
-results[28,3] <- sum(first_vct_3[,365] == 2) / dim(vct_art_3)[1]
-results[29,3] <- sum(first_vct_3[,365] == 1) / dim(vct_art_3)[1]
-
+results[26,3] <- Calibration$sART1[37] / sum(Calibration$sART1[37:40])
+results[27,3] <- Calibration$sART1[38] / sum(Calibration$sART1[37:40])
+results[28,3] <- Calibration$sART1[39] / sum(Calibration$sART1[37:40])
+results[29,3] <- Calibration$sART1[40] / sum(Calibration$sART1[37:40])
 
 #PICT
 #Time point ONE
-first_pict_1 <- subset(big_res,big_res[,399] == 3)
-results[30,1] <- sum(first_pict_1[,363] == 4) / dim(pict_art_1)[1]
-results[31,1] <- sum(first_pict_1[,363] == 3) / dim(pict_art_1)[1]
-results[32,1] <- sum(first_pict_1[,363] == 2) / dim(pict_art_1)[1]
-results[33,1] <- sum(first_pict_1[,363] == 1) / dim(pict_art_1)[1]
+results[30,1] <- Calibration$sART1[9] / sum(Calibration$sART1[9:12])
+results[31,1] <- Calibration$sART1[10] / sum(Calibration$sART1[9:12])
+results[32,1] <- Calibration$sART1[11] / sum(Calibration$sART1[9:12])
+results[33,1] <- Calibration$sART1[12] / sum(Calibration$sART1[9:12])
 
 #Time point TWO
-first_pict_2 <- subset(big_res,big_res[,400] == 3)
-results[30,2] <- sum(first_pict_2[,364] == 4) / dim(pict_art_2)[1]
-results[31,2] <- sum(first_pict_2[,364] == 3) / dim(pict_art_2)[1]
-results[32,2] <- sum(first_pict_2[,364] == 2) / dim(pict_art_2)[1]
-results[33,2] <- sum(first_pict_2[,364] == 1) / dim(pict_art_2)[1]
+results[30,2] <- Calibration$sART1[25] / sum(Calibration$sART1[25:28])
+results[31,2] <- Calibration$sART1[26] / sum(Calibration$sART1[25:28])
+results[32,2] <- Calibration$sART1[27] / sum(Calibration$sART1[25:28])
+results[33,2] <- Calibration$sART1[28] / sum(Calibration$sART1[25:28])
 
 #Time point THREE
-first_pict_3 <- subset(big_res,big_res[,401] == 3)
-results[30,3] <- sum(first_pict_3[,365] == 4) / dim(pict_art_3)[1]
-results[31,3] <- sum(first_pict_3[,365] == 3) / dim(pict_art_3)[1]
-results[32,3] <- sum(first_pict_3[,365] == 2) / dim(pict_art_3)[1]
-results[33,3] <- sum(first_pict_3[,365] == 1) / dim(pict_art_3)[1]
-
+results[30,3] <- Calibration$sART1[41] / sum(Calibration$sART1[41:44])
+results[31,3] <- Calibration$sART1[42] / sum(Calibration$sART1[41:44])
+results[32,3] <- Calibration$sART1[43] / sum(Calibration$sART1[41:44])
+results[33,3] <- Calibration$sART1[44] / sum(Calibration$sART1[41:44])
 
 #####
 #ART1 - ALL
 #T1
-results[34,1] <- sum(big_res[,363]==4) / dim(art_1)[1]
-results[35,1] <- sum(big_res[,363]==3) / dim(art_1)[1]
-results[36,1] <- sum(big_res[,363]==2) / dim(art_1)[1]
-results[37,1] <- sum(big_res[,363]==1) / dim(art_1)[1]
+results[34,1] <- Calibration$sART1[13] / sum(Calibration$sART1[13:16])
+results[35,1] <- Calibration$sART1[14] / sum(Calibration$sART1[13:16])
+results[36,1] <- Calibration$sART1[15] / sum(Calibration$sART1[13:16])
+results[37,1] <- Calibration$sART1[16] / sum(Calibration$sART1[13:16])
 
 #T2
-results[34,2] <- sum(big_res[,364]==4) / dim(art_2)[1]
-results[35,2] <- sum(big_res[,364]==3) / dim(art_2)[1]
-results[36,2] <- sum(big_res[,364]==2) / dim(art_2)[1]
-results[37,2] <- sum(big_res[,364]==1) / dim(art_2)[1]
+results[34,2] <- Calibration$sART1[29] / sum(Calibration$sART1[29:32])
+results[35,2] <- Calibration$sART1[30] / sum(Calibration$sART1[29:32])
+results[36,2] <- Calibration$sART1[31] / sum(Calibration$sART1[29:32])
+results[37,2] <- Calibration$sART1[32] / sum(Calibration$sART1[29:32])
 
 #T3
-results[34,3] <- sum(big_res[,365]==4) / dim(art_3)[1]
-results[35,3] <- sum(big_res[,365]==3) / dim(art_3)[1]
-results[36,3] <- sum(big_res[,365]==2) / dim(art_3)[1]
-results[37,3] <- sum(big_res[,365]==1) / dim(art_3)[1]
+results[34,3] <- Calibration$sART1[45] / sum(Calibration$sART1[45:48])
+results[35,3] <- Calibration$sART1[46] / sum(Calibration$sART1[45:48])
+results[36,3] <- Calibration$sART1[47] / sum(Calibration$sART1[45:48])
+results[37,3] <- Calibration$sART1[48] / sum(Calibration$sART1[45:48])
 
 ##################################################
 #ART2 - Proportion of individuals initiating ART with CD4 <200.
