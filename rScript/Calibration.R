@@ -1,4 +1,4 @@
-#Test Script for CareCascade
+#Calbiration Script for CareCascade
 setwd("/Users/jack/git/CareCascade")
 source("./rScript/BaselineFigures.R")
 

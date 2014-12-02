@@ -97,38 +97,41 @@ int const * p_ArtOutreach;
 int const * p_Adherence;
 int const * p_ImmediateArt;
 int const * p_UniversalTestAndTreat;
+int const * p_Calibration;
 
 extern "C" {
 
 /////////////////////
 
-SEXP CallCascade(SEXP s_pop, 
-				 SEXP s_Hbct, 
-				 SEXP s_Vct, 
-				 SEXP s_HbctPocCd4, 
+SEXP CallCascade(SEXP s_pop,
+				 SEXP s_Hbct,
+				 SEXP s_Vct,
+				 SEXP s_HbctPocCd4,
 				 SEXP s_Linkage,
 				 SEXP s_VctPocCd4,
-				 SEXP s_PreOutreach, 
-				 SEXP s_ImprovedCare, 
-				 SEXP s_PocCd4,  
+				 SEXP s_PreOutreach,
+				 SEXP s_ImprovedCare,
+				 SEXP s_PocCd4,
 				 SEXP s_ArtOutreach,
 				 SEXP s_Adherence,
-				 SEXP s_ImmediateArt, 
-				 SEXP s_UniversalTestAndTreat) {
+				 SEXP s_ImmediateArt,
+				 SEXP s_UniversalTestAndTreat,
+				 SEXP s_Calibration) {
 
 	PROTECT(s_pop = coerceVector(s_pop, REALSXP));
-	PROTECT(s_Hbct = coerceVector(s_Hbct, INTSXP)); 
-	PROTECT(s_Vct = coerceVector(s_Vct, INTSXP)); 
-	PROTECT(s_HbctPocCd4 = coerceVector(s_HbctPocCd4, INTSXP)); 
+	PROTECT(s_Hbct = coerceVector(s_Hbct, INTSXP));
+	PROTECT(s_Vct = coerceVector(s_Vct, INTSXP));
+	PROTECT(s_HbctPocCd4 = coerceVector(s_HbctPocCd4, INTSXP));
 	PROTECT(s_Linkage = coerceVector(s_Linkage, INTSXP));
 	PROTECT(s_VctPocCd4 = coerceVector(s_VctPocCd4, INTSXP));
-	PROTECT(s_PreOutreach = coerceVector(s_PreOutreach, INTSXP)); 
-	PROTECT(s_ImprovedCare = coerceVector(s_ImprovedCare, INTSXP)); 
-	PROTECT(s_PocCd4 = coerceVector(s_PocCd4, INTSXP));  
+	PROTECT(s_PreOutreach = coerceVector(s_PreOutreach, INTSXP));
+	PROTECT(s_ImprovedCare = coerceVector(s_ImprovedCare, INTSXP));
+	PROTECT(s_PocCd4 = coerceVector(s_PocCd4, INTSXP));
 	PROTECT(s_ArtOutreach = coerceVector(s_ArtOutreach, INTSXP));
-	PROTECT(s_Adherence = coerceVector(s_Adherence, INTSXP));	
-	PROTECT(s_ImmediateArt = coerceVector(s_ImmediateArt, INTSXP)); 
-	PROTECT(s_UniversalTestAndTreat = coerceVector(s_UniversalTestAndTreat, INTSXP)); 
+	PROTECT(s_Adherence = coerceVector(s_Adherence, INTSXP));
+	PROTECT(s_ImmediateArt = coerceVector(s_ImmediateArt, INTSXP));
+	PROTECT(s_UniversalTestAndTreat = coerceVector(s_UniversalTestAndTreat, INTSXP));
+	PROTECT(s_Calibration = coerceVector(s_Calibration, INTSXP));
 
 	/* Assigning Pointers */
 	p_Hbct = INTEGER(s_Hbct);
@@ -143,6 +146,7 @@ SEXP CallCascade(SEXP s_pop,
 	p_Adherence = INTEGER(s_Adherence);
 	p_ImmediateArt = INTEGER(s_ImmediateArt);
 	p_UniversalTestAndTreat = INTEGER(s_UniversalTestAndTreat);
+	p_Calibration = INTEGER(s_Calibration);
 
 	/* THE MODEL */
 	cout << "Hello, Jack - the model is running..." << endl;
@@ -155,9 +159,9 @@ SEXP CallCascade(SEXP s_pop,
 
 	/* OUTPUTS */
 	SEXP sOUT, sCARE, sDALY, sCOST, sPOP_15to49, sHIV_15to49, sART_15to49, sPOP_15plus, sAidsDeath_15plus,
-	sPOP_AgeSex_2007, sHIV_AgeSex_2007, sPOP_NoArtCd4_2007, sPOP_AgeSex_2012, sHIV_AgeSex_2012, sPOP_AgeSex_2014, 
-	sHIV_AgeSex_2014, sCD4_200, sCD4_200350, sCD4_350500, sCD4_500, sCD4_200_Art, sCD4_200350_Art, sCD4_350500_Art, 
-	sCD4_500_Art, sWHO_1, sWHO_2, sWHO_3, sWHO_4, sWHO_1_Art, sWHO_2_Art, sWHO_3_Art, sWHO_4_Art, sINCIDENCE, sPreArtCOST, 
+	sPOP_AgeSex_2007, sHIV_AgeSex_2007, sPOP_NoArtCd4_2007, sPOP_AgeSex_2012, sHIV_AgeSex_2012, sPOP_AgeSex_2014,
+	sHIV_AgeSex_2014, sCD4_200, sCD4_200350, sCD4_350500, sCD4_500, sCD4_200_Art, sCD4_200350_Art, sCD4_350500_Art,
+	sCD4_500_Art, sWHO_1, sWHO_2, sWHO_3, sWHO_4, sWHO_1_Art, sWHO_2_Art, sWHO_3_Art, sWHO_4_Art, sINCIDENCE, sPreArtCOST,
 	sArtCOST, sPreArtCOST_Hiv, sArtCOST_Hiv, sC1, sL21, sR3, sR8, sART1, sART4, sART5, sART6, sART9, sART10, sART11, sART12,
 	sART13, sART14, sPre2010, sHivArray, sArtArray, sR3_Counter, sR8_Counter, sART6_Counter, sART10_Counter, sART12_Counter, sOUTNAMES;
 
@@ -306,7 +310,7 @@ SEXP CallCascade(SEXP s_pop,
 			pART13[i] = ART13[i];
 			pART14[i] = ART14[i];
 			pR3_Counter[i] = R3_Counter[i];
-			pR8_Counter[i] = R8_Counter[i];	
+			pR8_Counter[i] = R8_Counter[i];
 		}
 		if(i<10) {
 			pPOP_AgeSex_2014[i] = thePOP_AgeSex_2014[i];
@@ -475,7 +479,7 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,57,mkChar("sART12_Counter"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(73);
+	UNPROTECT(74);
 	return(sOUT);
 	}
 
