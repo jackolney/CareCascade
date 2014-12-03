@@ -298,9 +298,9 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 		// Pre2010 - Dx levels pre-2010. (don't run this code after 2010)
 	if(thePerson->GetDiagnosedState()) {
 		Pre2010[0]++;
-		if(thePerson->GetLastDiagnosisRoute() == 2)
+		if(thePerson->GetDiagnosisRoute() == 2)
 			Pre2010[1]++;
-		else if(thePerson->GetLastDiagnosisRoute() == 3)
+		else if(thePerson->GetDiagnosisRoute() == 3)
 			Pre2010[2]++;
 	}
 }
