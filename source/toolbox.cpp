@@ -18,13 +18,14 @@ extern Rng * theRng;
 
 /* Hiv testing times */
 double hctHivTestTime = 0.4329004 * 365.25;
-double vctHivTestTime = 8 * 365.25;
+double vctHivTestTime = 5.8 * 365.25;
+double pictHivTestTime_AsymptomaticOblivious = 10 * 365.25;
 double pictHivTestTime_AsymptomaticNoCd4Result = 2 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultEligible = 30;
-double pictHivTestTime_SymptomaticOblivious = 14;
-double pictHivTestTime_SymptomaticNoCd4Result = 14;
-double pictHivTestTime_SymptomaticCd4Result = 7;
+double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 1 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultEligible = 0.5 * 365.25;
+double pictHivTestTime_SymptomaticOblivious = 1 * 365.25;
+double pictHivTestTime_SymptomaticNoCd4Result = 0.5 * 365.25;
+double pictHivTestTime_SymptomaticCd4Result = 0.5 * 365.25;
 
 
 /* Linkage probabilities */
@@ -119,10 +120,7 @@ double outreachCost = 19.55;
 	//Clinic visit = $28 (Result visit)
 	//Clinic visit + POC-CD4 test = 28 + 42 = $70
 
-	//////////////////////
-	// RANDOM FUNCTIONS //
-	//////////////////////
-
+/* Random */
 double Random(const int i)
 {
 	unsigned long long r = theRng->int64();

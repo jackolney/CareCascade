@@ -17,6 +17,7 @@
 /* Hiv testing times */
 extern double hctHivTestTime ;
 extern double vctHivTestTime;
+extern double pictHivTestTime_AsymptomaticOblivious;
 extern double pictHivTestTime_AsymptomaticNoCd4Result;
 extern double pictHivTestTime_AsymptomaticCd4ResultNotEligible;
 extern double pictHivTestTime_AsymptomaticCd4ResultEligible;
@@ -115,10 +116,7 @@ extern double outreachCost;
 	//Clinic visit = $28 (Result visit)
 	//Clinic visit + POC-CD4 test = 28 + 42 = $70
 
-	//////////////////////
-	// RANDOM FUNCTIONS //
-	//////////////////////
-
+/* Fun Functions */
 double Random(const int i);
 
 int Round(const double theDouble);
