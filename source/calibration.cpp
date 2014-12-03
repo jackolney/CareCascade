@@ -202,8 +202,8 @@ void CreateCalibrationArray()
 void UpdateCalibrationArrayOne(person * const thePerson)
 {
 		// C1 - Proportion of individuals that ever enter care.
-	if(thePerson->GetCalEverDiag())
-		C1[thePerson->GetCalDiagRoute()-1]++; //1 = Hct, 2 = Vct, 3 = Pict.
+	if(thePerson->GetCalEverCare())
+		C1[thePerson->GetCalCareRoute()-1]++; //1 = Hct, 2 = Vct, 3 = Pict.
 	
 		// L2.1 - CD4 count at first CD4 measurement.
 	if(thePerson->GetCalEverCare()) {
@@ -296,11 +296,11 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 		ArtArray[0]++;
 	
 		// Pre2010 - Dx levels pre-2010. (don't run this code after 2010)
-	if(thePerson->GetCalEverDiag()) {
+	if(thePerson->GetDiagnosedState()) {
 		Pre2010[0]++;
-		if(thePerson->GetCalDiagRoute() == 2)
+		if(thePerson->GetDiagnosisRoute() == 2)
 			Pre2010[1]++;
-		else if(thePerson->GetCalDiagRoute() == 3)
+		else if(thePerson->GetDiagnosisRoute() == 3)
 			Pre2010[2]++;
 	}
 }
@@ -311,8 +311,8 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 void UpdateCalibrationArrayTwo(person * const thePerson)
 {
 		// C1 - Proportion of individuals that ever enter care.
-	if(thePerson->GetCalEverDiag())
-		C1[3 + (thePerson->GetCalDiagRoute()-1)]++; //1 = Hct, 2 = Vct, 3 = Pict.
+	if(thePerson->GetCalEverCare())
+		C1[3 + (thePerson->GetCalCareRoute()-1)]++; //1 = Hct, 2 = Vct, 3 = Pict.
 	
 		// L2.1 - CD4 count at first CD4 measurement.
 	if(thePerson->GetCalEverCare()) {
@@ -405,15 +405,14 @@ void UpdateCalibrationArrayTwo(person * const thePerson)
 		ArtArray[1]++;
 }
 
-
 /////////////////////
 /////////////////////
 
 void UpdateCalibrationArrayThree(person * const thePerson)
 {
 		// C1 - Proportion of individuals that ever enter care.
-	if(thePerson->GetCalEverDiag())
-		C1[6 + (thePerson->GetCalDiagRoute()-1)]++; //1 = Hct, 2 = Vct, 3 = Pict.
+	if(thePerson->GetCalEverCare())
+		C1[6 + (thePerson->GetCalCareRoute()-1)]++; //1 = Hct, 2 = Vct, 3 = Pict.
 	
 		// L2.1 - CD4 count at first CD4 measurement.
 	if(thePerson->GetCalEverCare()) {
