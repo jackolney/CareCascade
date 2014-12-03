@@ -48,7 +48,7 @@ void ScheduleVctHivTest(person * const thePerson)
 
 void SchedulePictHivTest(person * const thePerson)
 {
-	if(thePerson->GetBirthDay() != 0 && theQ->GetTime() >= 12418 && thePerson->GetSeroStatus()) {
+	if(thePerson->GetBirthDay() != 0 && theQ->GetTime() >= 12418) {
 		D(cout << "Scheduling PictHivTest." << endl);
 		if(thePerson->GetCurrentWho() < 3) {
 			if(thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestResultState())
