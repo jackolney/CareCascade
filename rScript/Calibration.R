@@ -9,30 +9,6 @@ dyn.load("./source/main.so")
 Calibration <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
 Calibration
 
-# Calibration Calculations
-# Calibration$sC1;
-# Calibration$sL21;
-# Calibration$sR3;
-# Calibration$sR8;
-# Calibration$sART1;
-# Calibration$sART4;
-# Calibration$sART5;
-# Calibration$sART6;
-# Calibration$sART9;
-# Calibration$sART10;
-# Calibration$sART11;
-# Calibration$sART12;
-# Calibration$sART13;
-# Calibration$sART14;
-# Calibration$sPre2010;
-# Calibration$sHivArray;
-# Calibration$sArtArray;
-# Calibration$sR3_Counter;
-# Calibration$sR8_Counter;
-# Calibration$sART6_Counter;
-# Calibration$sART10_Counter;
-# Calibration$sART12_Counter;
-
 ########################
 # CALIBRATION FUNCTION #
 ########################
