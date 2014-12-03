@@ -171,6 +171,7 @@ public:
 	bool GetCalEverDiag() const { return calEverDiag; }
 	double GetCalDiagDay() const { return calDiagDay; }
 	unsigned int GetCalDiagRoute() const { return calDiagRoute; }
+	unsigned int GetLastDiagnosisRoute() const { return lastDiagnosisRoute; }
 	bool GetCalEverCare() const { return calEverCare; }
 	double GetCalCareDay() const { return calCareDay; }
 	unsigned int GetCalCareRoute() const { return calCareRoute; }

@@ -203,7 +203,7 @@ void UpdateCalibrationArrayOne(person * const thePerson)
 {
 		// C1 - Proportion of individuals that ever enter care.
 	if(thePerson->GetCalEverCare())
-		C1[thePerson->GetCalCareRoute()-1]++; //1 = Hct, 2 = Vct, 3 = Pict.
+		C1[thePerson->GetLastDiagnosisRoute()-1]++; //1 = Hct, 2 = Vct, 3 = Pict.
 	
 		// L2.1 - CD4 count at first CD4 measurement.
 	if(thePerson->GetCalEverCare()) {
@@ -312,7 +312,7 @@ void UpdateCalibrationArrayTwo(person * const thePerson)
 {
 		// C1 - Proportion of individuals that ever enter care.
 	if(thePerson->GetCalEverCare())
-		C1[3 + (thePerson->GetCalCareRoute()-1)]++; //1 = Hct, 2 = Vct, 3 = Pict.
+		C1[3 + (thePerson->GetLastDiagnosisRoute()-1)]++; //1 = Hct, 2 = Vct, 3 = Pict.
 	
 		// L2.1 - CD4 count at first CD4 measurement.
 	if(thePerson->GetCalEverCare()) {
@@ -412,7 +412,7 @@ void UpdateCalibrationArrayThree(person * const thePerson)
 {
 		// C1 - Proportion of individuals that ever enter care.
 	if(thePerson->GetCalEverCare())
-		C1[6 + (thePerson->GetCalCareRoute()-1)]++; //1 = Hct, 2 = Vct, 3 = Pict.
+		C1[6 + (thePerson->GetLastDiagnosisRoute()-1)]++; //1 = Hct, 2 = Vct, 3 = Pict.
 	
 		// L2.1 - CD4 count at first CD4 measurement.
 	if(thePerson->GetCalEverCare()) {
