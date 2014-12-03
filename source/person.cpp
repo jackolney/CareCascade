@@ -407,7 +407,6 @@ void person::SetDiagnosedState(const bool theState, unsigned int theRoute, const
 
 void person::SetInCareState(const bool theState, const double theTime)
 {
-	inCare = theState;
 	if(theState) {
 		if(everLostPreArtCare) {
 			everReturnPreArtCare = true;
@@ -422,6 +421,7 @@ void person::SetInCareState(const bool theState, const double theTime)
 		calCareRoute = lastDiagnosisRoute;
 		calCd4EntryCare = currentCd4;
 	}
+	inCare = theState;
 }
 
 /////////////////////
