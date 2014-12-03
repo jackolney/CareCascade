@@ -99,7 +99,7 @@ calCd4TestCount(0),
 calEverArt(false),
 calArtDay(0),
 calCd4AtArt(0),
-calAtArtDiagRoute(0),
+calAtArtCareRoute(0),
 calAtArtPreArtVisitCount(0),
 calAtArtEverReturnPreArtCare(false),
 calAtArtEligibleAtReturnPreArtCare(false),
@@ -458,7 +458,7 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		calEverArt = true;
 		calArtDay = theTime;
 		calCd4AtArt = currentCd4;
-		calAtArtDiagRoute = diagnosisRoute;
+		calAtArtCareRoute = lastDiagnosisRoute;
 		calAtArtPreArtVisitCount = cd4TestCount + cd4TestResultCount;
 		calAtArtEverReturnPreArtCare = everReturnPreArtCare;
 		calAtArtEligibleAtReturnPreArtCare = eligibleAtReturnPreArtCare;
@@ -504,7 +504,7 @@ void person::ResetCalibration()
 	calEverArt = false;
 	calArtDay = 0;
 	calCd4AtArt = 0;
-	calAtArtDiagRoute = 0;
+	calAtArtCareRoute = 0;
 	calAtArtPreArtVisitCount = 0;
 	calAtArtEverReturnPreArtCare = false;
 	calAtArtEligibleAtReturnPreArtCare = false;
