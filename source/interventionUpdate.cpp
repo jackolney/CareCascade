@@ -48,22 +48,15 @@ void SchedulePerpetualHctHivTest(person * const thePerson)
 bool HctLinkage(person * const thePerson)
 {
 	if(thePerson->GetDiagnosisCount() > 1) {
-		if(theRng->Sample(hctProbLinkPreviouslyDiagnosed)) {
-			D(cout << "Linked to care after Hct (previously diagnosed)." << endl);
+		if(theRng->Sample(hctProbLinkPreviouslyDiagnosed))
 			return true;
-		} else {
-			D(cout << "Failed to link to care after Hct (previously diagnosed)." << endl);
+		else
 			return false;
-		}
-	}
-	else {
-		if(theRng->Sample(hctProbLink)) {
-			D(cout << "Linked to care after Hct." << endl);
+	} else {
+		if(theRng->Sample(hctProbLink))
 			return true;
-		} else {
-			D(cout << "Failed to link to care after Hct." << endl);
+		else
 			return false;
-		}
 	}
 }
 
