@@ -6,5 +6,4 @@ system("date")
 popSize = 10000
 dyn.load("./source/main.so")
 
-Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-# Something
+Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)

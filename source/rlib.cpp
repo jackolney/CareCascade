@@ -59,6 +59,7 @@ extern double * thePreArtCOST;
 extern double * theArtCOST;
 extern double * thePreArtCOST_Hiv;
 extern double * theArtCOST_Hiv;
+extern double * theCLINIC;
 
 /* Calibration pointers */
 extern double * C1;
@@ -163,7 +164,7 @@ SEXP CallCascade(SEXP s_pop,
 	sHIV_AgeSex_2014, sCD4_200, sCD4_200350, sCD4_350500, sCD4_500, sCD4_200_Art, sCD4_200350_Art, sCD4_350500_Art,
 	sCD4_500_Art, sWHO_1, sWHO_2, sWHO_3, sWHO_4, sWHO_1_Art, sWHO_2_Art, sWHO_3_Art, sWHO_4_Art, sINCIDENCE, sPreArtCOST,
 	sArtCOST, sPreArtCOST_Hiv, sArtCOST_Hiv, sC1, sL21, sR3, sR8, sART1, sART4, sART5, sART6, sART9, sART10, sART11, sART12,
-	sART13, sART14, sPre2010, sHivArray, sArtArray, sR3_Counter, sR8_Counter, sART6_Counter, sART10_Counter, sART12_Counter, sOUTNAMES;
+	sART13, sART14, sPre2010, sHivArray, sArtArray, sR3_Counter, sR8_Counter, sART6_Counter, sART10_Counter, sART12_Counter, sCLINIC, sOUTNAMES;
 
 	PROTECT(sCARE = allocVector(REALSXP,5));
 	PROTECT(sDALY = allocVector(REALSXP,20));
@@ -223,6 +224,7 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sART6_Counter = allocVector(INTSXP,3));
 	PROTECT(sART10_Counter = allocVector(INTSXP,3));
 	PROTECT(sART12_Counter = allocVector(INTSXP,3));
+	PROTECT(sCLINIC = allocVector(REALSXP,4));
 
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
@@ -282,6 +284,7 @@ SEXP CallCascade(SEXP s_pop,
 	int * pART6_Counter = INTEGER(sART6_Counter);
 	int * pART10_Counter = INTEGER(sART10_Counter);
 	int * pART12_Counter = INTEGER(sART12_Counter);
+	double * pCLINIC = REAL(sCLINIC);
 
 	for(size_t i=0;i<60;i++) {
 		if(i<3) {
@@ -296,8 +299,10 @@ SEXP CallCascade(SEXP s_pop,
 			pART10_Counter[i] = ART10_Counter[i];
 			pART12_Counter[i] = ART12_Counter[i];
 		}
-		if(i<4)
+		if(i<4) {
 			pPOP_NoArtCd4_2007[i] = thePOP_NoArtCd4_2007[i];
+			pCLINIC[i] = theCLINIC[i];
+		}
 		if(i<5)
 			pCARE[i] = theCARE[i];
 		if(i<9) {
@@ -358,7 +363,7 @@ SEXP CallCascade(SEXP s_pop,
 		pINCIDENCE[i] = theINCIDENCE[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,58));
+	PROTECT(sOUT = allocVector(VECSXP,59));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
@@ -417,8 +422,9 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,55,sART6_Counter);
 	SET_VECTOR_ELT(sOUT,56,sART10_Counter);
 	SET_VECTOR_ELT(sOUT,57,sART12_Counter);
+	SET_VECTOR_ELT(sOUT,58,sCLINIC);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,58));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,59));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
@@ -477,9 +483,10 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,55,mkChar("sART6_Counter"));
 	SET_VECTOR_ELT(sOUTNAMES,56,mkChar("sART10_Counter"));
 	SET_VECTOR_ELT(sOUTNAMES,57,mkChar("sART12_Counter"));
+	SET_VECTOR_ELT(sOUTNAMES,58,mkChar("sCLINIC"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(74);
+	UNPROTECT(75);
 	return(sOUT);
 	}
 

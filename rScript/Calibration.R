@@ -459,7 +459,7 @@ results[73,2] <- sum(Calibration$sART1[25:28]) / TWO
 results[73,3] <- sum(Calibration$sART1[41:44]) / THREE
 
 results
-result_output <- formatC(results,digits=4, format="f")
+result_output <- formatC(results,digits=4,format="f")
 result_output
 date()
 write.table(results,file="calibrationResults.csv",sep=',')

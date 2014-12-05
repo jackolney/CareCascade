@@ -248,52 +248,13 @@ legend(c(0,7e+9),
 	cex=1.2)
 quartz.save("/Users/jack/git/CareCascade/interventionFigures/costImpact.pdf",type='pdf')
 
-##################
-# CARE PIE CHART #
-##################
-
-graphics.off()
-quartz.options(w=20,h=12)
-library(RColorBrewer)
-m <- brewer.pal(9,"Spectral")
-
-par(mfrow=c(1,3),family="Avenir Next Bold")
-pie(Baseline$sCARE,
-	labels=c("Never tested",
-		"Tested but never\n initiated ART",
-		"Initiated ART but\n died following late initiation (<200)",
-		"Initiated ART but\n died off ART",
-		"Initiatied ART but\n not late (>200)"),
-	col=c(m[1:5]),
-	border=NA,
-	cex=2)
-
-pie(Adherence_2$sCARE,
-	labels=c("Never tested",
-		"Tested but never\n initiated ART",
-		"Initiated ART but\n died following late initiation (<200)",
-		"Initiated ART but\n died off ART",
-		"Initiatied ART but\n not late (>200)"),
-	col=c(m[1:5]),
-	border=NA,
-	cex=2)
-
-pie(Adherence_1$sCARE,
-	labels=c("Never tested",
-		"Tested but never\n initiated ART",
-		"Initiated ART but\n died following late initiation (<200)",
-		"Initiated ART but\n died off ART",
-		"Initiatied ART but\n not late (>200)"),
-	col=c(m[1:5]),
-	border=NA,
-	cex=2)
-
 ###########
 # BIG PIE #
 ###########
 
 library(RColorBrewer)
 m <- brewer.pal(9,"Spectral")
+p <- brewer.pal(9,"Set1")
 graphics.off()
 quartz.options(w=20,h=12)
 system("mkdir ./interventionFigures/pie")
@@ -314,6 +275,19 @@ for(i in 1:length(Interventions)) {
 		border=NA,
 		cex=2)
 	quartz.save(gsub(" ","",paste("/Users/jack/git/CareCascade/interventionFigures/pie/",Interventions[i],".pdf")),type='pdf')
+
+	par(family="Avenir Next Bold")
+	pie(get(Interventions[i])$sCLINIC,
+		main="The View from the Clinic\n (At ART initiation between 2010 and 2030)",
+		labels=c("Successful retention in pre-ART care",
+			"Initiated ART at entry to care",
+			"Lost from pre-ART care\n but returned prior to becoming eligible",
+			"Lost from pre-ART\n and returned when eligible"),
+		col=c(p[3],m[3],m[2],m[1]),
+		border=NA,
+		cex=2)
+	quartz.save(gsub(" ","",paste("/Users/jack/git/CareCascade/interventionFigures/pie/",Interventions[i],"_Clinic.pdf")),type='pdf')
+
 }
 
 ################
