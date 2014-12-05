@@ -31,7 +31,7 @@ double pictHivTestTime_SymptomaticCd4Result = 0.5 * 365.25;
 /* Linkage probabilities */
 double hctProbLink = 0.054;
 double hctProbLinkPreviouslyDiagnosed = 0.45;
-double vctProbLink = 0.85;
+double vctProbLink = 0.825;
 double pictProbLink = 0.2;
 
 /* HCT time between Hiv test and Cd4 test [CD4-1] */
