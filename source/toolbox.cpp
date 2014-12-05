@@ -30,7 +30,7 @@ double pictHivTestTime_SymptomaticCd4Result = 0.5 * 365.25;
 
 /* Linkage probabilities */
 double hctProbLink = 0.054;
-double hctProbLinkPreviouslyDiagnosed = 0.2;
+double hctProbLinkPreviouslyDiagnosed = 0.4;
 double vctProbLink = 0.8;
 double pictProbLink = 0.25;
 
