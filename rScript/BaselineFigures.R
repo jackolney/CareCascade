@@ -7,8 +7,8 @@ p <- brewer.pal(9,"Set1")
 
 ####################
 #Hiv Prevalence
-Unaids_HivPrev <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_HivPrevalence_Kenya.csv",header=TRUE)
-Unaids_HivPrev$year
+# Unaids_HivPrev <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_HivPrevalence_Kenya.csv",header=TRUE)
+Unaids_HivPrev <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_HivPrevalence_Kenya_2013.csv",header=TRUE)
 
 par(family="Avenir Next Bold")
 plot(seq(0,59,1),result$sHIV_15to49 / result$sPOP_15to49,
@@ -20,7 +20,7 @@ plot(seq(0,59,1),result$sHIV_15to49 / result$sPOP_15to49,
 	xlab='Year',
 	ylab='Prevalence',
 	xaxt='n')
-lines(seq(20,42,1),Unaids_HivPrev$prev,
+lines(seq(20,43,1),Unaids_HivPrev$prev,
 	lwd=2,
 	lty=3,
 	col=p[1])
