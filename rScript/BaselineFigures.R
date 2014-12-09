@@ -63,13 +63,13 @@ quartz.save(gsub(" ","",paste(directory,"/PlwhivOnArt_Unaids.pdf")),type='pdf')
 Unaids_AidsDeaths <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_AidsRelatedDeaths.csv",header=TRUE)
 
 par(family="Avenir Next Bold")
-plot(seq(0,58,1),(result$sAidsDeath_15plus / result$sPOP_15plus)[1:59],
+plot(seq(0,59,1),(result$sAidsDeath_15plus / result$sPOP_15plus)[1:60],
 	type='l',
 	col=p[2],
 	lwd=2,
 	ylim=c(0,0.01),
 	xlim=c(0,60),
-	main='Proportion of AIDS-realted deaths in population',
+	main='Proportion of AIDS-related deaths in population',
 	xlab='Year',
 	ylab='Proportion',
 	xaxt='n')
@@ -92,7 +92,7 @@ Kais2007_PrevByAgeSex <- read.csv("/Users/jack/git/CareCascade/estimates/Kais200
 ######
 #MALE#
 ######
-
+result
 par(family="Avenir Next Bold")
 plot((result$sHIV_AgeSex_2007 / result$sPOP_AgeSex_2007)[11:20],
 	type='b',
