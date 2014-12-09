@@ -18,8 +18,8 @@ University, Providence, United States*
 
 *Word Count = Aim is 4,000 words*
 
-Abstract
-========
+Abstract 
+=========
 
 Background:
 -----------
@@ -50,9 +50,8 @@ potential failures in pre-ART care{Boulle:2014uj}. The consequences of
 late treatment initiation are suboptimal treatment outcomes for
 patients. This has recently caught the attention of donors
 organisations, as budget constraints have forced a shift in focus
-towards maximising the effectiveness of current ART-programmes[[*UNAIDS
-Gap Report
-2014*](http://www.unaids.org/en/media/unaids/contentassets/documents/unaidspublication/2014/UNAIDS_Gap_report_en.pdf)].
+towards maximising the effectiveness of current ART-programmes[*UNAIDS
+Gap Report 2014*].
 
 Accumulating evidence suggests that HIV care is suboptimal not at one
 particular point, but across all stages of ART-programmes, as “cascading
@@ -202,33 +201,33 @@ benefits for patients.
 *Potential things to include in introduction:*
 
 -   The interplay between patient behaviour, economic factors and the
-    > availability of health services plays an important role in
-    > determining a person's propensity to seek and be retained in
-    > care{Burns:2014jz}.
+    availability of health services plays an important role in
+    determining a person's propensity to seek and be retained in
+    care{Burns:2014jz}.
 
 -   This “cascade” of losses across all stages of HIV-care means that
-    > the benefits afforded by ART are not fully realised.
+    the benefits afforded by ART are not fully realised.
 
 -   The current state of care differs if you consider it from the
-    > clinic’s viewpoint or the community’s viewpoint. [introduce idea
-    > of looking down the pipe here?]
+    clinic’s viewpoint or the community’s viewpoint. [introduce idea of
+    looking down the pipe here?]
 
 -   The widespread scale-up of HIV-testing during the last decade
-    > together with the increased availability of treatment has shifted
-    > bottlenecks in care away from the availability of testing and
-    > treatment to the logistics and organisation of HIV care.
+    together with the increased availability of treatment has shifted
+    bottlenecks in care away from the availability of testing and
+    treatment to the logistics and organisation of HIV care.
 
 -   With renewed focus on cutting costs and funding constraints on large
-    > donors, existing HIV care programmes must be strengthened to
-    > improve the cost-effectiveness of treatment.
+    donors, existing HIV care programmes must be strengthened to improve
+    the cost-effectiveness of treatment.
 
 -   WHO Guide and Tools for programme managers to collect data on
-    > Cascade
-    > [[*link*](http://applications.emro.who.int/dsaf/EMROPUB_2014_EN_1639.pdf)]
+    Cascade
+    [[*link*](http://applications.emro.who.int/dsaf/EMROPUB_2014_EN_1639.pdf)]
 
 -   Inclusion of Jain et al. (2014) paper on ART delivery among
-    > asymptomatic people initiating with CD4 \>350 cells. [Not
-    > randomized and likely only treatment-KEEN people].
+    asymptomatic people initiating with CD4 \>350 cells. [Not randomized
+    and likely only treatment-KEEN people].
 
 *→ Clinic level programmatic measures of success (if the intervention is
 successful, what will the clinic see? Increase in throughput? More drug
@@ -294,12 +293,12 @@ individuals with an age distribution matching that of Kenya in the same
 year. We model population growth, by allowing new individuals to be born
 each year. Individuals are exposed to the annual hazard of acquiring HIV
 from 1975 onwards, with this hazard updating each year to drive HIV
-incidence[[*link*](http://www.unaids.org/en/dataanalysis/datatools/spectrumepp2013/)].
-We start testing HIV-positive and negative individuals in 2004 along
-with rolling out ART for eligible individuals. We used the 2004 WHO
-Treatment Eligibility Guidelines of a CD4 count \<200 or WHO Stage IV
-{WorldHealthOrganization:2005ws}. This is updated in 2011 to a CD4 count
-of \<350 or WHO Stage III/IV{WorldHealthOrganization:2010wj}.
+incidence[*link*]. We start testing HIV-positive and negative
+individuals in 2004 along with rolling out ART for eligible individuals.
+We used the 2004 WHO Treatment Eligibility Guidelines of a CD4 count
+\<200 or WHO Stage IV {WorldHealthOrganization:2005ws}. This is updated
+in 2011 to a CD4 count of \<350 or WHO Stage
+III/IV{WorldHealthOrganization:2010wj}.
 
 The Cascade Model, shown in figure 1, describes the events and pathways
 through care for HIV-positive individuals. Care seeking behaviour in
@@ -315,7 +314,7 @@ tested multiple times throughout their lives and care will only progress
 if they are found to be HIV-positive. The Cascade Model is described in
 detail in the appendix.
 
-![](media/image01.png)
+![](media/image1.png)
 
 <span id="h.iogg3anz8zdv" class="anchor"></span>Figure 1. Model
 Representation of the Cascade of Care
@@ -376,16 +375,14 @@ The cost of the individual components of care was included in the model.
 The majority of costs, including the cost of ART care, pre-ART clinic
 visits and CD4 lab-based tests, were derived from a multi-country
 analysis of 161 treatment facilities across five countries in
-sub-Saharan
-Africa[[*MATCH*](http://thedata.harvard.edu/dvn/dv/chaighf/faces/study/StudyPage.xhtml?studyId=85882&tab=catalog)].
-The remaining costs were sourced from the literature. All costs were
-adjusted for inflation and location by using the gross domestic product
-deflator from the International Monetary Fund. Including the cost of the
-individual components of care in the model allows us to understand how
-costs accrue in an ART-programme. Additionally, when interventions are
-applied, we can see the financial implications of improving care.
-Further details of the breakdown of cost in the model can be found in
-the appendix.
+sub-Saharan Africa[*MATCH*]. The remaining costs were sourced from the
+literature. All costs were adjusted for inflation and location by using
+the gross domestic product deflator from the International Monetary
+Fund. Including the cost of the individual components of care in the
+model allows us to understand how costs accrue in an ART-programme.
+Additionally, when interventions are applied, we can see the financial
+implications of improving care. Further details of the breakdown of cost
+in the model can be found in the appendix.
 
 Output Metrics
 --------------
@@ -452,12 +449,12 @@ implemented in the model from 2010 onwards and their impact on DALYs
 averted, costs accrued and the care experience of individuals dying from
 HIV-related deaths quantified.
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ----------------------- ------------------------------ ---------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------- ------------------------------
   **Intervention type**   **Intervention**               **Maximum Impact**                                                                                                     **Realistic Impact**                                                                                       **Cost **
                                                                                                                                                                                                                                                                                            
                                                                                                                                                                                                                                                                                            **(2013 USD)**
                                                                                                                                                                                                                                                                                            
-  ----------------------- ------------------------------ ---------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------- -------------------------------------
+
   *Testing*               ***HBCT***                     Every four years, 90% coverage of population. 100% linked to care.                                                     Every four years, 90% coverage. 5.4% linked if never diagnosed, else 20%.                                  \$18 per HBCT person tested
 
   *Testing*               ***Enhanced VCT***             The rate of HIV testing is twice that of baseline.                                                                     The rate of HIV testing is 125% that of baseline.                                                          \$50 per person tested.
@@ -468,20 +465,20 @@ HIV-related deaths quantified.
 
   *Linkage*               ***Facilitated Linkage***      The risk of failure-to-link is reduced to 0%                                                                           The risk of failure-to-link is reduced by 50%.                                                             No additional costs applied.
 
-  *Pre-ART Retention*     ***Pre-ART Outreach***         In the middle of each year, 100% of tested individuals lost from care are returned.                                    In the middle of each year, 20% of tested individuals lost from care are returned.                         \$469 per patient returned to care.
+  *Pre-ART Retention*     ***Pre-ART Outreach***         In the middle of each year, 100% of tested individuals lost from care are returned.                                    In the middle of each year, 20% of tested individuals lost from care are returned.                         \$19.55 per patient sought.
 
   *Pre-ART Retention*     ***Improved Care***            The risk of a patient missing an appointment is reduced to 0%.                                                         The risk of a patient missing an appointment is reduced by 50%.                                            No additional costs applied.
 
   *Pre-ART Retention*     ***POC***                      A POC CD4 test reduces loss from care between CD4 test and result by 100%, as bleeding and result are instantaneous.   -                                                                                                          \$70 per POC CD4 test.
 
-  *On-ART Retention*      ***On-ART Outreach***          In the middle of each year, 100% of patients who have initiated ART and been lost from care are returned.              In the middle of each year, 40% of patients who have initiated ART and been lost from care are returned.   \$469 per patient returned to care.
+  *On-ART Retention*      ***On-ART Outreach***          In the middle of each year, 100% of patients who have initiated ART and been lost from care are returned.              In the middle of each year, 40% of patients who have initiated ART and been lost from care are returned.   \$19.55 per patient sought.
 
   *On-ART Retention*      ***Adherence***                At ART initiation, all individuals adhere to ART and become virally suppressed.                                        At ART initiation, 87.5% of individuals adhere to ART and become virally suppressed.                       \$33.54 per person per year.
 
   *Sweeping Changes*      ***Immediate ART***            No pre-ART care, all individuals who enter care are treated immediately.                                               -                                                                                                          No additional costs applied.
 
   *Sweeping Changes*      ***Universal Test & Treat***   Immediate ART + HBCT                                                                                                   -                                                                                                          \$18 per HBCT person tested.
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ----------------------- ------------------------------ ---------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------- ------------------------------
 
 <span id="h.dos6ozntvgnl" class="anchor"></span>Table 1. Summary of
 interventions applied from 2010 to 2030.
@@ -489,76 +486,79 @@ interventions applied from 2010 to 2030.
 Results *(1000 words)*
 ======================
 
+-   ***What questions am I attempting to answer? Let this guide the
+    analysis.***
+
 -   After simulating individuals over time from 1970 onwards, we allowed
-    > HIV-testing and treatment to start in 2004 with the treatment
-    > guidelines \<200 or WHO stage IV. These guidelines changed in 2011
-    > to \<350 and WHO stage III or IV.
+    HIV-testing and treatment to start in 2004 with the treatment
+    guidelines \<200 or WHO stage IV. These guidelines changed in 2011
+    to \<350 and WHO stage III or IV.
 
 -   Illustrate current functioning of ART programme in western Kenya in
-    > the absence of interventions (i.e. without large scale HCT).
+    the absence of interventions (i.e. without large scale HCT).
 
 -   Discuss losses in care from clinic and community viewpoints. Discuss
-    > what the model shows us that just “eyeing the data” cannot - how
-    > losses accumulate across the cascade, ability to quantify impact
-    > of care through LYL due to HIV.
+    what the model shows us that just “eyeing the data” cannot - how
+    losses accumulate across the cascade, ability to quantify impact of
+    care through LYL due to HIV.
 
 -   Assess definitions of successful patient outcomes - use as baseline
-    > values to compare results of interventions with.
+    values to compare results of interventions with.
 
 -   Demonstrate impact of interventions when applied from 2010 onwards.
 
 -   The results of running the model without any interventions applied
-    > (baseline) was then compared to a model run with an individual
-    > intervention applied. The results are shown in figure 3.
+    (baseline) was then compared to a model run with an individual
+    intervention applied. The results are shown in figure 3.
 
 -   Discuss results…
 
 -   Figure 4, illustrates the impact of building up interventions to
-    > achieve maximum impact. Figure 4 illustrates this in three
-    > scenarios: (1) building up interventions from the start of pre-ART
-    > care towards ART care (for example, a testing intervention
-    > followed by a linkage intervention, a retention intervention and
-    > then an ART intervention), (2) the second scenario looks at
-    > building the interventions that show the greatest impact by
-    > averting the most DALY’s between 2010 and 2030. The third scenario
-    > (3) involves building up interventions by considering the cost of
-    > each intervention and applying in order, the interventions with
-    > the lowest cost per DALY averted.
+    achieve maximum impact. Figure 4 illustrates this in three
+    scenarios: (1) building up interventions from the start of pre-ART
+    care towards ART care (for example, a testing intervention followed
+    by a linkage intervention, a retention intervention and then an ART
+    intervention), (2) the second scenario looks at building the
+    interventions that show the greatest impact by averting the most
+    DALY’s between 2010 and 2030. The third scenario (3) involves
+    building up interventions by considering the cost of each
+    intervention and applying in order, the interventions with the
+    lowest cost per DALY averted.
 
 Discussion *(1500 words)*
 =========================
 
 -   Review existing interventions acting to strengthen care (from
-    > literature) focusing on individual interventions acting on care.
+    literature) focusing on individual interventions acting on care.
 
 -   Highlight how a combination of interventions will be crucial to
-    > maximising health benefits and being cost effective in doing so...
-    > strength of the approach shown in figure 4.
+    maximising health benefits and being cost effective in doing so...
+    strength of the approach shown in figure 4.
 
 -   Many current interventions only focus on one area of the cascade and
-    > don’t consider the downstream impacts.
+    don’t consider the downstream impacts.
 
 -   Future interventions could be designed to impact the cascade in its
-    > entirety - e.g. integration of HIV services, food incentives,
-    > patient navigators.
+    entirety - e.g. integration of HIV services, food incentives,
+    patient navigators.
 
 -   Lack of current studies testing interventions aimed at key
-    > populations
+    populations
 
 -   Discuss care cascade in other infections: TB, Malaria etc.
 
 -   Argue why modelling the cascade is much more important than simply
-    > “eyeing the data”.
+    “eyeing the data”.
 
 -   To mention: if you look at the relative time spent in each stage..
-    > perhaps indicative that ART care is more important to focus on as
-    > it is LT - However, this is not the case as so few individuals
-    > actually ever initiate ART (\~13%).
+    perhaps indicative that ART care is more important to focus on as it
+    is LT - However, this is not the case as so few individuals actually
+    ever initiate ART (\~13%).
 
 -   Illustrate how figure 4 shows the various pathways to improving
-    > health outcomes, improving patient survival, reducing HIV-related
-    > deaths in three scenarios, with the third being the most cost
-    > effective.
+    health outcomes, improving patient survival, reducing HIV-related
+    deaths in three scenarios, with the third being the most cost
+    effective.
 
 → Shift in HIV thinking… acquiring characteristics of LT chronic disease
 and non-lethal. {vanSighem:2010gw} [useful!?]
@@ -572,29 +572,29 @@ people spend many years in ART care?
     -   Model accurately describes natural history of HIV
 
     -   Cascade events are calibrated using unique dataset that enables
-        > us to track individual patients through time allowing us to
-        > understand the various pathways taken through care.
+        us to track individual patients through time allowing us to
+        understand the various pathways taken through care.
 
     -   Model replicates national HIV prevalence for Kenya from 1970
-        > onwards.
+        onwards.
 
     -   The model allows us to apply interventions to reduce the losses
-        > occurring in care and quantify the impact.
+        occurring in care and quantify the impact.
 
     -   Applying an intervention at one point may have considerable
-        > downstream effects, something that only a model can elude to.
+        downstream effects, something that only a model can elude to.
 
 -   **Limitations** of this work:
 
     -   Only focuses on one location (how generalisable is this to the
-        > whole of Kenya? / SSA?).
+        whole of Kenya? / SSA?).
 
     -   Could the structure / construction of the model biased in
-        > anyway?
+        anyway?
 
     -   Assumptions regarding care seeking behaviour? (major driver
-        > behind getting individuals into care) - mention that future
-        > work will focus on this.
+        behind getting individuals into care) - mention that future work
+        will focus on this.
 
 > → The hypothesis of treatment fatigue has been raised, in which
 > patients that feel “healthy” may discontinue treatment or fail to
@@ -606,58 +606,58 @@ people spend many years in ART care?
     -   Are these interventions feasible?
 
     -   If the funding were available, how can this be implemented by
-        > planners on the ground? (suggest implementation strategies /
-        > time frames)
+        planners on the ground? (suggest implementation strategies /
+        time frames)
 
         -   Could even look into a graded roll-out of interventions over
-            > time. Say, the addition of a new intervention each year?
+            time. Say, the addition of a new intervention each year?
 
 -   Key implications of this research:
 
     -   Weaknesses exist in this specific ART-programme in western
-        > Kenya.
+        Kenya.
 
     -   Current funding for ART could be more impactful if these
-        > weaknesses in care were addressed and resolved.
+        weaknesses in care were addressed and resolved.
 
     -   Multiple interventions acting on various aspects of care are
-        > likely to be more effective than a single intervention.
+        likely to be more effective than a single intervention.
 
 -   Generalisability:
 
     -   This research only focuses on one location so the results are
-        > not generalisable to the entirety of sub-Saharan Africa.
+        not generalisable to the entirety of sub-Saharan Africa.
 
     -   However, these results provide some insight into the likely
-        > situation of many ART-programmes.
+        situation of many ART-programmes.
 
     -   Future research in different locations will allow for
-        > interventions to be tailored for a specific site, and also to
-        > provide a more up to date picture of the state of
-        > ART-programmes in sub-Saharan Africa.
+        interventions to be tailored for a specific site, and also to
+        provide a more up to date picture of the state of ART-programmes
+        in sub-Saharan Africa.
 
 -   How can future research build on these observations:
 
     -   AMPATH are highly unique in having collected a large database
-        > from many sources that has the ability to link patients from
-        > various stages of care. This has allowed them to track an
-        > individual patient over time from initial diagnosis through
-        > the various events that make up HIV-care.
+        from many sources that has the ability to link patients from
+        various stages of care. This has allowed them to track an
+        individual patient over time from initial diagnosis through the
+        various events that make up HIV-care.
 
     -   The ability to track patients over time is key, more studies are
-        > required reporting this type of data.
+        required reporting this type of data.
 
     -   This will allow us to track population health over time, as well
-        > as assess the impact of interventions that may be being rolled
-        > out.
+        as assess the impact of interventions that may be being rolled
+        out.
 
     -   Future research can identify losses in care in other locations
-        > in SSA, together with identifying whether a different set of
-        > interventions may be more impactful in another location.
+        in SSA, together with identifying whether a different set of
+        interventions may be more impactful in another location.
 
     -   Future research may also test the impact of the interventions
-        > suggested in this location to further validate the model
-        > results.
+        suggested in this location to further validate the model
+        results.
 
 -   Future work:
 
@@ -666,10 +666,10 @@ people spend many years in ART care?
     -   Comparison between two or more locations.
 
     -   Detailed investigation into role of health care seeking
-        > behaviour.
+        behaviour.
 
     -   Assessing the value of the proposed WHO “monitoring and
-        > evaluation” indicators.
+        evaluation” indicators.
 
 Acknowledgements
 ================
