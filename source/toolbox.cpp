@@ -23,7 +23,7 @@ double pictHivTestTime_AsymptomaticOblivious = 16 * 365.25;
 double pictHivTestTime_AsymptomaticNoCd4Result = 13 * 365.25;
 double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 5 * 365.25;
 double pictHivTestTime_AsymptomaticCd4ResultEligible = 5 * 365.25;
-double pictHivTestTime_SymptomaticOblivious = 3 * 365.25;
+double pictHivTestTime_SymptomaticOblivious = 4 * 365.25;
 double pictHivTestTime_SymptomaticNoCd4Result = 1 * 365.25;
 double pictHivTestTime_SymptomaticCd4Result = 1 * 365.25;
 
