@@ -19,7 +19,7 @@ extern Rng * theRng;
 /* Hiv testing times */
 double hctHivTestTime = 0.4342945 * 365.25;
 double vctHivTestTime = 7.2 * 365.25;
-double pictHivTestTime_AsymptomaticOblivious = 15.8 * 365.25;
+double pictHivTestTime_AsymptomaticOblivious = 15.6 * 365.25;
 double pictHivTestTime_AsymptomaticNoCd4Result = 13 * 365.25;
 double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 6 * 365.25;
 double pictHivTestTime_AsymptomaticCd4ResultEligible = 6 * 365.25;
