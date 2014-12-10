@@ -486,10 +486,10 @@ Type 'q()' to quit R.
 + }
 > 
 > Calibrate()
-Wed 10 Dec 2014 11:12:25 GMT
+Wed 10 Dec 2014 11:30:19 GMT
 Hello, Jack - the model is running...
 Loading required package: beepr
 > 
 > proc.time()
    user  system elapsed 
-166.844   0.626 167.673 
+168.467   0.684 170.070 
