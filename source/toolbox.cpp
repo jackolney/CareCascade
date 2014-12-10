@@ -22,10 +22,10 @@ double vctHivTestTime = 7.4 * 365.25;
 double pictHivTestTime_AsymptomaticOblivious = 16 * 365.25;
 double pictHivTestTime_AsymptomaticNoCd4Result = 10 * 365.25;
 double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 2 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultEligible = 0.5 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultEligible = 2 * 365.25;
 double pictHivTestTime_SymptomaticOblivious = 2 * 365.25;
 double pictHivTestTime_SymptomaticNoCd4Result = 1 * 365.25;
-double pictHivTestTime_SymptomaticCd4Result = 0.5 * 365.25;
+double pictHivTestTime_SymptomaticCd4Result = 1 * 365.25;
 
 
 /* Linkage probabilities */
