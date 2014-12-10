@@ -21,8 +21,8 @@ double hctHivTestTime = 0.4342945 * 365.25;
 double vctHivTestTime = 7.2 * 365.25;
 double pictHivTestTime_AsymptomaticOblivious = 16 * 365.25;
 double pictHivTestTime_AsymptomaticNoCd4Result = 12 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 3 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultEligible = 3 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 5 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultEligible = 5 * 365.25;
 double pictHivTestTime_SymptomaticOblivious = 2 * 365.25;
 double pictHivTestTime_SymptomaticNoCd4Result = 1 * 365.25;
 double pictHivTestTime_SymptomaticCd4Result = 1 * 365.25;
@@ -32,7 +32,7 @@ double pictHivTestTime_SymptomaticCd4Result = 1 * 365.25;
 double hctProbLink = 0.054;
 double hctProbLinkPreviouslyDiagnosed = 0.45;
 double vctProbLink = 0.6;
-double pictProbLink = 0.6;
+double pictProbLink = 0.55;
 
 /* HCT time between Hiv test and Cd4 test [CD4-1] */
 double hctCd4TestTime [4] = {142,152.5,97,93};
