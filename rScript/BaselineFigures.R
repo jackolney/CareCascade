@@ -41,7 +41,7 @@ plot(seq(0,59,1),result$sART_15to49 / result$sHIV_15to49,
 	type='l',
 	col=p[2],
 	lwd=2,
-	ylim=c(0,0.7),
+	ylim=c(0,if(max((result$sART_15to49 / result$sHIV_15to49)[34:60]) < 0.4) {0.4} else {max((result$sART_15to49 / result$sHIV_15to49)[34:60])}),
 	main='Proportion of PLWHIV on ART',
 	xlab='Year',
 	ylab='Proportion',
@@ -63,7 +63,7 @@ quartz.save(gsub(" ","",paste(directory,"/PlwhivOnArt_Unaids.pdf")),type='pdf')
 Unaids_AidsDeaths <- read.csv("/Users/jack/git/CareCascade/estimates/UNAIDS_AidsRelatedDeaths.csv",header=TRUE)
 
 par(family="Avenir Next Bold")
-plot(seq(0,59,1),(result$sAidsDeath_15plus / result$sPOP_15plus)[1:60],
+plot(seq(1,60,1),(result$sAidsDeath_15plus / result$sPOP_15plus)[1:60],
 	type='l',
 	col=p[2],
 	lwd=2,
@@ -73,7 +73,7 @@ plot(seq(0,59,1),(result$sAidsDeath_15plus / result$sPOP_15plus)[1:60],
 	xlab='Year',
 	ylab='Proportion',
 	xaxt='n')
-lines(seq(20,42,1),Unaids_AidsDeaths$proportion,
+lines(seq(20,43,1),Unaids_AidsDeaths$proportion,
 	lwd=2,
 	lty=3,
 	col=p[1])
