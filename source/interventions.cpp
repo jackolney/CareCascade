@@ -89,9 +89,9 @@ void Interventions::Execute()
 	
 	if(*p_Vct) {
 		if(*p_Vct == 1)
-			vctHivTestTime = 3.7 * 365.25;
+			vctHivTestTime = 2.1 * 365.25;
 		else
-			vctHivTestTime = 5.92 * 365.25;
+			vctHivTestTime = 3.36 * 365.25;
 		D(cout << "VctHivTest Intervention. vctHivTestTime = " << vctHivTestTime << endl);
 		ScheduleVctHivTest(pPerson);
 	}
@@ -110,7 +110,7 @@ void Interventions::Execute()
 			hctProbLinkPreviouslyDiagnosed = 1;
 		} else {
 			hctProbLink = 0.527;
-			hctProbLinkPreviouslyDiagnosed = 0.725;
+			hctProbLinkPreviouslyDiagnosed = 0.625;
 		}
 	}
 
@@ -126,9 +126,9 @@ void Interventions::Execute()
 			pictProbLink = 1;
 		} else {
 			hctProbLink = 0.527;
-			hctProbLinkPreviouslyDiagnosed = 0.725;
-			vctProbLink = 0.9125;
-			pictProbLink = 0.6;
+			hctProbLinkPreviouslyDiagnosed = 0.625;
+			vctProbLink = 0.8;
+			pictProbLink = 0.8;
 		}
 	}
 	
