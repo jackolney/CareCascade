@@ -89,9 +89,9 @@ void Interventions::Execute()
 	
 	if(*p_Vct) {
 		if(*p_Vct == 1)
-			vctHivTestTime = 2.1 * 365.25;
+			vctHivTestTime = 3.6 * 365.25;
 		else
-			vctHivTestTime = 3.36 * 365.25;
+			vctHivTestTime = 5.76 * 365.25;
 		D(cout << "VctHivTest Intervention. vctHivTestTime = " << vctHivTestTime << endl);
 		ScheduleVctHivTest(pPerson);
 	}
