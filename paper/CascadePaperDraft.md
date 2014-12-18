@@ -85,19 +85,19 @@ conceptualisation of an ART-programme allows us to assess patient
 outcomes and assign blame to events in time{Kilmarx:2013iy,
 Hallett:2013ig}. The Cascade of Care begins with the identification of
 HIV-positive individuals through HIV-testing. This involves the patient
-either seeking care voluntarily at a voluntary counselling and testing
-clinic (VCT), or in a healthcare setting through provider-initiated
-counselling and testing (PICT). Alternatively, the patient may be sought
-by a home-based counselling and testing team (HBCT) and diagnosed in
-their home. Alerting individuals to their HIV-status is still a
-challenge in sub-Saharan Africa, with current estimates showing only 45%
-of people living with HIV are aware of their status{UNAIDS:2014ta}.
-Kenya has made progress towards its goal of 80% awareness of HIV status,
-with 72% achieved in 2007{NASCOP:2012tp}. However, the marginal
-opportunity cost of identifying individuals increases substantially as
-the pool of undiagnosed HIV-positive individuals decreases.
-Additionally, gaining insight into the drivers behind care-seeking
-behaviour may help inform future HIV-testing strategies{Moses:1994tg}.
+seeking care voluntarily at a voluntary counselling and testing clinic
+(VCT), or in a healthcare setting through provider-initiated counselling
+and testing (PICT). Alternatively, the patient may be sought by a
+home-based counselling and testing team (HBCT) and diagnosed in their
+home. Alerting individuals to their HIV-status is still a challenge in
+sub-Saharan Africa, with current estimates showing only 45% of people
+living with HIV are aware of their status{UNAIDS:2014ta}. Kenya has made
+progress towards its goal of 80% awareness of HIV status, with 72%
+achieved in 2007{NASCOP:2012tp}. However, the marginal opportunity cost
+of identifying individuals increases substantially as the pool of
+undiagnosed HIV-positive individuals decreases. Additionally, gaining
+insight into the drivers behind care-seeking behaviour may help inform
+future HIV-testing strategies{Moses:1994tg}.
 
 Once diagnosed, individuals need to be linked to pre-ART care; meaning
 they must attend a clinic to be bled for a CD4 test in order to
@@ -285,10 +285,8 @@ multiple times throughout their lives and care will only progress if
 they are found to be HIV-positive. The model is described in detail in
 the appendix.
 
-Figure 1. Model Representation of the Cascade of Care
-
-![](media/image1.png)<span id="h.iogg3anz8zdv" class="anchor"><span id="h.hslqb1xxus50" class="anchor"></span></span>Natural History Calibration
-------------------------------------------------------------------------------------------------------------------------------------------------
+<span id="h.iogg3anz8zdv" class="anchor"><span id="h.hslqb1xxus50" class="anchor"></span></span>Natural History Calibration
+---------------------------------------------------------------------------------------------------------------------------
 
 The Natural History Model was calibrated using surveillance data sourced
 from the literature. A review of the literature was conducted to
@@ -450,8 +448,7 @@ dying from HIV-related deaths quantified.
                           ***Universal Test & Treat***   Immediate ART & HBCT                                                                                                   Immediate ART & HBCT, but 20% fail to start ART and 20% fail to link to ART                                \$18 per HBCT person tested.
   ----------------------- ------------------------------ ---------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------- ------------------------------
 
-<span id="h.dos6ozntvgnl" class="anchor"></span>Table 1. Summary of
-interventions applied from 2010 to 2030.
+<span id="h.dos6ozntvgnl" class="anchor"></span>
 
 Results *(1000 words)*
 ======================
@@ -473,93 +470,127 @@ onto ART immediately. Among patients that engage with pre-ART care, are
 lost to follow-up but subsequently re-engage with care, only \<1% are
 not eligible for treatment at return to pre-ART care.
 
-![](media/image2.emf)Looking at the care history of all HIV-positive
-individuals who died from an HIV-related death between 2010 and 2030
-from the “community” perspective, we see that the majority of
-HIV-related deaths (57.11%) are from individuals who were diagnosed but
-failed to start treatment. Nearly 20% of individuals in the community
-were never even diagnosed as HIV-positive before suffering an
-HIV-related death. Among the \<24% of individuals that initiated ART,
-the majority died after disengaging from ART care, with the remainder
-dying as a result of the late initiation of ART (with a CD4 count at
-initiation of \<200 cells/µl) and only a very small proportion dying
-after initiating ART on-time.
-
-Figure 2. Comparison between the community view and the clinic view of
-HIV Care.
+Looking at the care history of all HIV-positive individuals who died
+from an HIV-related death between 2010 and 2030 from the “community”
+perspective, we see that the majority of HIV-related deaths (57.11%) are
+from individuals who were diagnosed but failed to start treatment.
+Nearly 20% of individuals in the community were never even diagnosed as
+HIV-positive before suffering an HIV-related death. Among the \<24% of
+individuals that initiated ART, the majority died after disengaging from
+ART care, with the remainder dying as a result of the late initiation of
+ART (with a CD4 count at initiation of \<200 cells/µl) and only a very
+small proportion dying after initiating ART on-time.
 
 To gain further insight into the state of current ART-programmes in
 western Kenya and understand where care is suboptimal, we applied each
 of our 12 interventions in turn and assessed the impact on DALYs
 averted, compared to baseline, and the additional cost of care, compared
-to baseline, between 2010 and 2030 (figure 3).
-
-From a univariate analysis of the interventions, if we consider only the
-impact of each intervention on averting DALYs between 2010 and 2030
-(x-axis figure 3), we see that Universal Test and Treat is by far the
-most impactful intervention (also the most expensive), as this
+to baseline, between 2010 and 2030 (figure 3). From a univariate
+analysis of the interventions, if we consider only the impact of each
+intervention on averting DALYs between 2010 and 2030 (x-axis, figure 3),
+we see that Universal Test and Treat is by far the most impactful
+intervention (5,587,234 DALYs averted between 2010 and 2030), as this
 intervention does away with pre-ART care completely initiating all
 HIV-positive individuals onto ART immediately and actively seeking
 infected individuals through HBCT. The second most impactful
-intervention is Immediate ART, followed by HBCT with POC CD4 testing.
-These three interventions are large scale hard hitting interventions
-that actively seek individuals and in the case of Immediate ART and
-Universal Test and Treat, remove pre-ART care completely. The remaining
-interventions are less impactful but highlight important issues in the
-dynamics of HIV care. For instance, the ART Outreach and Adherence
-interventions are not particularly impactful as due to weaknesses in
-care upstream, many individuals never initiate ART (\>75% of all
-HIV-related deaths between 2010 and 2030).
+intervention is Immediate ART (3,616,936 DALYs averted), followed by
+HBCT with POC CD4 testing (3,534,967 DALYs averted). These three
+interventions are large scale hard hitting interventions that actively
+seek individuals and in the case of Immediate ART and Universal Test and
+Treat, remove pre-ART care completely. The remaining interventions are
+less impactful but highlight important issues in the dynamics of HIV
+care. For instance, the ART Outreach and Adherence interventions are not
+particularly impactful (744,915 and 697,265 DALYs averted, respectively)
+due to weaknesses in care upstream, many individuals never initiate ART
+(\>75% of all HIV-related deaths between 2010 and 2030).
 
 Working through the interventions in groups, the maximum impact scenario
-of HBCT is much more impactful than the VCT intervention; however, the
-realistic scenario of the HBCT intervention (imperfect linkage to care)
-highlights the importance of linkage after HBCT as this is less
-impactful than the maximum impact VCT intervention. Yet, both scenarios
-of the HBCT intervention are more than twice as expensive to implement
-than the VCT intervention.
+of HBCT is much more impactful than the VCT intervention (1,882,403 and
+615,857 DALYs averted, respecitvely); however, the realistic scenario of
+the HBCT intervention (imperfect linkage to care) highlights the
+importance of linkage after HBCT as this is less impactful than the
+maximum impact VCT intervention (431,574 and 615,857 DALYs averted,
+respectively). Yet, both scenarios of the HBCT intervention are more
+than twice as expensive to implement than the VCT intervention (\$2.62b,
+\$2.06b and \$898.44m (2013 USD), respectively).
 
-Among the linkage interventions, HBCT is the most impactful as it
-combines HBCT with a POC CD4 test to alert HIV-positive individuals of
-their eligibility for treatment. This is the second most expensive
-intervention due to the cost of POC CD4 test kits and the cost of
-actively seeking individuals at home. Interestingly, the VCT POC CD4
-intervention averts more DALYs in the twenty-year period then the
-Linkage intervention. This is due to the VCT POC CD4 intervention
-providing perfect linkage to care with the addition of a POC CD4 test;
-this also explains the difference in cost between the two interventions.
+Among the linkage interventions, HBCT POC CD4 is the most impactful as
+it combines HBCT with a POC CD4 test to alert HIV-positive individuals
+of their eligibility for treatment (3,534,967 DALYs averted). This is
+the second most expensive intervention due to the cost of POC CD4 test
+kits and the cost of actively seeking individuals at home (\$3.13m
+between 2010 and 2030). Interestingly, the VCT POC CD4 intervention
+averts more DALYs in the twenty-year period than the Linkage
+intervention (1,434,508 vs. 815,994 DALYs averted). This is due to the
+VCT POC CD4 intervention providing perfect linkage to care with the
+addition of a POC CD4 test; this also explains the difference in cost
+between the two interventions (\$527.20m vs. \$294.73m).
 
-![](media/image3.emf)The pre-ART retention interventions each have quite
-an impact on averting DALYs, indicating that they are remedying a
-weakness in care. Of these interventions, the maximum impact scenario of
-Improved Care, the intervention preventing loss from pre-ART care was
-most impactful, followed closely by the maximum impact scenario of the
-Pre-ART Outreach intervention that re-engages anyone lost from pre-ART
-care. Interestingly, the maximum impact Improved Care intervention is
-only slightly more expensive than the maximum impact Pre-ART Outreach
-intervention; this is likely due to the cost of additional testing
-retaining individuals in pre-ART care incurs. If we compare the POC CD4
+The pre-ART retention interventions each have quite an impact on
+averting DALYs, indicating that they are remedying a weakness in care.
+Of these interventions, the maximum impact scenario of Improved Care,
+the intervention preventing loss from pre-ART care was most impactful
+(1,949,321 DALYs averted), followed closely by the maximum impact
+scenario of the Pre-ART Outreach intervention that re-engages anyone
+lost from pre-ART care (1,825,372 DALYs averted). Interestingly, the
+maximum impact Improved Care intervention is only slightly more
+expensive than the maximum impact Pre-ART Outreach intervention; this is
+likely due to the cost of additional testing retaining individuals in
+pre-ART care incurs (\$983.26m vs. \$689.03m). If we compare the POC CD4
 intervention against the VCT POC CD4 intervention, we see that the POC
 CD4 intervention is less impactful and also cheaper than the VCT POC CD4
-intervention. The reasoning behind this is that the VCT POC CD4
-intervention immediately links all individuals testing through VCT and
-provides them with a POC CD4 test; whereas, the POC CD4 intervention
-applies only to individuals who have entered pre-ART care. That is,
-patients that have successfully linked to care. Thus, without
-
-Figure 3. Cost-effectiveness of individual interventions impacting on
-HIV care.
-
-perfect linkage POC CD4 testing involves testing fewer individuals. As
-previously mentioned, the ART retention interventions are not quite so
-impactful as few individuals ever initiate ART. However, both scenarios
-of the ART Outreach intervention are more impactful and more expensive
-(by increasing the total life-years spent on ART) than the Adherence
-interventions.
+intervention (1,352,379 DALYs averted at a cost of \$498.27m vs.
+1,434,508 DALYs averted at a cost of \$527.20m). The reasoning behind
+this is that the VCT POC CD4 intervention immediately links all
+individuals testing through VCT and provides them with a POC CD4 test;
+whereas, the POC CD4 intervention applies only to individuals who have
+entered pre-ART care. That is, patients that have successfully linked to
+care. Thus, without perfect linkage POC CD4 testing involves testing
+fewer individuals. As previously mentioned, the ART retention
+interventions are not quite so impactful as few individuals ever
+initiate ART. However, both scenarios of the ART Outreach intervention
+are more impactful and more expensive (by increasing the total
+life-years spent on ART) than the Adherence interventions.
 
 ***Figure 4: Multivariate analysis***
 
-> HERE!
+After investigating the impact of individual interventions on reducing
+life-years lost to HIV, we looked at multiple combinations of
+interventions. Our results from the univariate analysis indicate that
+there is no single high-impact low-cost intervention, highlighting that
+there is no single point of weakness along the cascade of care but
+rather deficiencies throughout. Therefore, a combination of
+interventions improving care at multiple points may prove to be
+cost-effective.
+
+We began by assessing the results of the univariate analysis (figure 3)
+to find the most cost-effective intervention; that is to say the
+intervention with the lowest cost per DALY averted. For these analyses
+we only focused on the realistic scenario of interventions. The most
+cost-effective individual intervention was ART Outreach (\$310 per DALY
+averted). To understand how a combination of interventions could be
+utilised to improve care, we applied the ART Outreach intervention at
+baseline and simulated the effect running each of the remaining
+interventions in turn to assess the most cost-effective combination of
+two interventions. A combination of ART Outreach and POC CD4
+interventions was found to be most cost-effective (\$346 per DALY
+averted). We repeated this process multiple times to identify an
+expansion pathway of interventions improving care (figure 4). The most
+cost-effective combination of six interventions averts DALYs at a cost
+of \$353 per DALY averted (2013 USD). The interventions used are ART
+Outreach, POC CD4, VCT POC CD4, Linkage, Pre-ART Outreach and Adherence.
+These interventions, strengthening linkage, pre-ART retention and ART
+retention, improve greatly improve care and reduce the total DALYs
+accrued by HIV-positive individuals. If we compare the cost and impact
+of our combination of interventions (figure 4), with the results of our
+univariate analysis (figure 3), we see that our combination of
+interventions produces 88% of the impact of the realistic Universal Test
+and Treat intervention (4,450,326 vs. 5,078,370 DALYs averted) at 44% of
+the cost per DALY avereted (\$363 vs. \$803 per DALY averted), shown in
+figure 5.
+
+Discussion *(1500 words)*
+=========================
 
 -   ***What questions am I attempting to answer? Let this guide the
     analysis.***
@@ -571,59 +602,24 @@ interventions.
     -   ***Point illustrated by figure 4 (impact of combination of
         interventions vs. single intervention).***
 
--   After simulating individuals over time from 1970 onwards, we allowed
-    HIV-testing and treatment to start in 2004 with the treatment
-    guidelines \<200 or WHO stage IV. These guidelines changed in 2011
-    to \<350 and WHO stage III or IV.
-
--   Illustrate current functioning of ART programme in western Kenya in
-    the absence of interventions (i.e. without large scale HCT).
-
--   Discuss losses in care from clinic and community viewpoints. Discuss
-    what the model shows us that just “eyeing the data” cannot - how
-    losses accumulate across the cascade, ability to quantify impact of
-    care through LYL due to HIV.
-
--   Assess definitions of successful patient outcomes - use as baseline
-    values to compare results of interventions with.
-
--   Demonstrate impact of interventions when applied from 2010 onwards.
-
--   The results of running the model without any interventions applied
-    (baseline) was then compared to a model run with an individual
-    intervention applied. The results are shown in figure 3.
-
--   Discuss results…
-
--   Figure 4, illustrates the impact of building up interventions to
-    achieve maximum impact. Figure 4 illustrates this in three
-    scenarios: (1) building up interventions from the start of pre-ART
-    care towards ART care (for example, a testing intervention followed
-    by a linkage intervention, a retention intervention and then an ART
-    intervention), (2) the second scenario looks at building the
-    interventions that show the greatest impact by averting the most
-    DALY’s between 2010 and 2030. The third scenario (3) involves
-    building up interventions by considering the cost of each
-    intervention and applying in order, the interventions with the
-    lowest cost per DALY averted.
-
-Figure 3. Cost-effectiveness of individual interventions impacting on
-HIV care.
-
-Discussion *(1500 words)*
-=========================
-
 -   Review existing interventions acting to strengthen care (from
     literature) focusing on individual interventions acting on care.
     More impactful interventions are indicative of a weaknesss being
     patched…
+
+-   Why is one intervention better than another etc. Why POC CD4 not as
+    good as VCT POC CD4 etc.
 
 -   Highlight how a combination of interventions will be crucial to
     maximising health benefits and being cost effective in doing so...
     strength of the approach shown in figure 4.
 
 -   Many current interventions only focus on one area of the cascade and
-    don’t consider the downstream impacts.
+    don’t consider the downstream impacts. (upstream constraints limit
+    the potential of many interventions).
+
+-   Combination of interventions identified improve the entire spectrum
+    of care.
 
 -   Future interventions could be designed to impact the cascade in its
     entirety - e.g. integration of HIV services, food incentives,
@@ -637,10 +633,10 @@ Discussion *(1500 words)*
 -   Argue why modelling the cascade is much more important than simply
     “eyeing the data”.
 
--   To mention: if you look at the relative time spent in each stage..
-    perhaps indicative that ART care is more important to focus on as it
-    is LT - However, this is not the case as so few individuals actually
-    ever initiate ART (\~13%).
+-   To mention: if you look at the relative **time** spent in each
+    stage.. perhaps indicative that ART care is more important to focus
+    on as it is LT - However, this is not the case as so few individuals
+    actually ever initiate ART (\~13%).
 
 -   Illustrate how figure 4 shows the various pathways to improving
     health outcomes, improving patient survival, reducing HIV-related
@@ -820,3 +816,7 @@ Supporting Information
 successful, what will the clinic see? Increase in throughput? More drug
 stockouts? Higher CD4 at entry to care / ART initiation?) [this will be
 useful for the figure 2 narrative. [perhaps place this in results]*
+
+***Additional Figures***
+
+![](media/image11.emf)
