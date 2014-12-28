@@ -1,5 +1,5 @@
 
-R version 3.1.0 (2014-04-10) -- "Spring Dance"
+R version 3.1.1 (2014-07-10) -- "Sock it to Me"
 Copyright (C) 2014 The R Foundation for Statistical Computing
 Platform: x86_64-apple-darwin13.1.0 (64-bit)
 
@@ -486,10 +486,13 @@ Type 'q()' to quit R.
 + }
 > 
 > Calibrate()
-Wed 10 Dec 2014 16:23:59 GMT
+Sun 28 Dec 2014 20:47:12 GMT
 Hello, Jack - the model is running...
 Loading required package: beepr
+Warning message:
+In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+  there is no package called ‘beepr’
 > 
 > proc.time()
    user  system elapsed 
-170.049   0.708 172.317 
+248.657   1.913 252.035 
