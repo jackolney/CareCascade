@@ -1,3 +1,4 @@
+
 //
 //  rlib.cpp
 //  priorityQ
@@ -224,7 +225,7 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sART6_Counter = allocVector(INTSXP,3));
 	PROTECT(sART10_Counter = allocVector(INTSXP,3));
 	PROTECT(sART12_Counter = allocVector(INTSXP,3));
-	PROTECT(sCLINIC = allocVector(REALSXP,4));
+	PROTECT(sCLINIC = allocVector(REALSXP,5));
 
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
@@ -299,12 +300,12 @@ SEXP CallCascade(SEXP s_pop,
 			pART10_Counter[i] = ART10_Counter[i];
 			pART12_Counter[i] = ART12_Counter[i];
 		}
-		if(i<4) {
+		if(i<4)
 			pPOP_NoArtCd4_2007[i] = thePOP_NoArtCd4_2007[i];
+		if(i<5) {
 			pCLINIC[i] = theCLINIC[i];
-		}
-		if(i<5)
 			pCARE[i] = theCARE[i];
+		}
 		if(i<9) {
 			pC1[i] = C1[i];
 			pR3[i] = R3[i];

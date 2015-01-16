@@ -453,7 +453,6 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		artDay = theTime;
 		cd4AtArt = currentCd4;
 		artCount++;
-		WriteClinic(this,theTime);
 		if(everLostArt) { everReturnArt = true; calEverReturnArt = true; }
 
 		/* Calibration */

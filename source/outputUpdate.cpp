@@ -137,19 +137,17 @@ void WriteCare(person * const thePerson, const double theTime)
 
 void WriteClinic(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetArtInitiationState() && theTime >= 14610 && theTime < 21915) {
-			// FrontDoor - successful retention in care
-		if(!thePerson->GetEverReturnCare() && !thePerson->GetArtAtEnrollment())
-			theCLINIC[0]++;
-			// ArtAtEnrollment
-		if(thePerson->GetArtAtEnrollment())
-			theCLINIC[1]++;
-			// Lost from pre-ART care but returned prior to becoming eligible
-		if(thePerson->GetEverReturnCare() && !thePerson->GetEligibleAtReturnCare())
-			theCLINIC[2]++;
-			// Lost from pre-ART care but returned eligible
-		if(thePerson->GetEverReturnCare() && thePerson->GetEligibleAtReturnCare())
-			theCLINIC[3]++;
+	if(thePerson->GetEverCd4TestState() && thePerson->GetHivDeath() && theTime >= 14610 && theTime < 21915) {
+			// NeverDiagnosed
+		theCLINIC[0] += !thePerson->GetDiagnosedState();
+			// DiagnosedButNeverInitiatedArt
+		theCLINIC[1] += (thePerson->GetDiagnosedState() && !thePerson->GetEverArt());
+			// ArtLate
+		theCLINIC[2] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() == 1);
+			// ArtButDiedOffArt
+		theCLINIC[3] += (thePerson->GetEverArt() && !thePerson->GetArtDeath());
+			// ArtEarly
+		theCLINIC[4] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() > 1);
 	}
 }
 

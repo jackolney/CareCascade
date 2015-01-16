@@ -107,7 +107,7 @@ void Output::Execute()
 
 void CreateOutputArray()
 {
-	theCARE = new double[5]; //NeverDiagnosed, DiagnosedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly.
+	theCARE = new double[5]; // NeverDiagnosed, DiagnosedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly.
 	theDALY = new double[20];
 	theCOST = new double[20];
 	thePOP = new double[60];
@@ -145,15 +145,15 @@ void CreateOutputArray()
 	theArtCOST = new double[20];
 	thePreArtCOST_Hiv = new double[20];
 	theArtCOST_Hiv = new double[20];
-	theCLINIC = new double[4];
+	theCLINIC = new double[5]; // NeverDiagnosed, DiagnosedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly.
 	
 	for(size_t i=0;i<60;i++) {
-		if(i<4) {
+		if(i<4)
 			thePOP_NoArtCd4_2007[i] = 0;
+		if(i<5) {
 			theCLINIC[i] = 0;
-		}
-		if(i<5)
 			theCARE[i] = 0;
+		}
 		if(i<10) {
 			thePOP_AgeSex_2014[i] = 0;
 			theHIV_AgeSex_2014[i] = 0;
