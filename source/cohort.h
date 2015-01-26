@@ -24,15 +24,15 @@ public:
 	/* methods */
 	void GenerateCohort(); // Create cohort of desired size...
 	void ScheduleNewPerson(const double Time);
-	void GenerateNewPerson(); // Generates new person (called by GenerateCohort())
+	void SelfDestruct();
 	
 	/* accessor methods */
 	unsigned int GetCohortSize() const;
 	
 private:
 	population * const iPop;
-	unsigned int cohortSize; // Unsigned denotes type can only contain positive values.
-	unsigned int cohortStartTime; // Specifies the time that the cohort will enter the model.
+	unsigned int cohortSize; //Unsigned denotes type can only contain positive values.
+	unsigned int cohortStartTime; //Specifies the time that the cohort will enter the model.
 	
 };
 

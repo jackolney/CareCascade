@@ -99,7 +99,7 @@ private:
 
 class PersonStart : public event {
 public:
-	PersonStart(cohort * const iCohort, const double Time); //constructor
+	PersonStart(population * const iPop, const double Time); //constructor
 	~PersonStart(); //destructor
 	
 	/* Methods */
@@ -107,7 +107,7 @@ public:
 	void Execute();
 	
 private:
-	cohort * const pCohort;
+	population * const pPop;
 };
 
 /////////////////////

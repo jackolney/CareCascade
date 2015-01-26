@@ -139,9 +139,9 @@ void Infection::Execute()
 /////////////////////
 /////////////////////
 
-PersonStart::PersonStart(cohort * const iCohort, const double Time) :
+PersonStart::PersonStart(population * const iPop, const double Time) :
 event(Time),
-pCohort(iCohort)
+pPop(iPop)
 {}
 
 PersonStart::~PersonStart()
@@ -155,7 +155,7 @@ bool PersonStart::CheckValid()
 void PersonStart::Execute()
 {
 	D(cout << "PersonStart executed." << endl);
-	pCohort->GenerateNewPerson();
+	new person(pPop,GetTime());
 }
 
 /////////////////////
@@ -190,10 +190,10 @@ void Death::Execute()
 	WriteCost(pPerson);	
 	pPerson->Kill(GetTime(),hivRelated);
 	WriteCare(pPerson,GetTime());
-	WriteClinic(pPerson,GetTime());	
 	if(hivRelated) {
 		D(cout << "Death executed (HIV-related)." << endl);
 		WriteAidsDeath(pPerson);
+//		WriteClinic(pPerson,GetTime());
 	}
 	else
 		D(cout << "Death executed (Natural)." << endl);
