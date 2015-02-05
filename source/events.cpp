@@ -193,7 +193,7 @@ void Death::Execute()
 	if(hivRelated) {
 		D(cout << "Death executed (HIV-related)." << endl);
 		WriteAidsDeath(pPerson);
-//		WriteClinic(pPerson,GetTime());
+		WriteClinic(pPerson,GetTime());
 	}
 	else
 		D(cout << "Death executed (Natural)." << endl);
