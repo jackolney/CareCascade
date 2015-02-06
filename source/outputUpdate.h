@@ -22,6 +22,8 @@ void WriteCare(person * const thePerson, const double theTime);
 
 void WriteClinic(person * const thePerson, const double theTime);
 
+void WriteDeath(person * const thePerson);
+
 void WriteAidsDeath(person * const thePerson);
 
 void Write2007(person * const thePerson);

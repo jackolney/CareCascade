@@ -838,4 +838,39 @@ legend("topright",
 	cex=1.2)
 quartz.save(gsub(" ","",paste(directory,"/Incidence.pdf")),type='pdf')
 
+#####################################
+# PROPORTION OF AIDS-RELATED DEATHS #
+#####################################
+
+par(family="Avenir Next Bold")
+plot(seq(0,59,1),result$sAidsDeath / result$sDeath,
+	type='l',
+	col=p[2],
+	lwd=3,
+	ylim=c(0,0.5),
+	main='Proportion of HIV-related deaths over time (all ages)',
+	xlab='Year',
+	ylab='HIV-related deaths / all deaths',
+	xaxt='n')
+axis(1,seq(0,60,5),seq(1970,2030,5))
+abline(h=0.3,lty=3,lwd=1)
+abline(h=0.2,lty=3,lwd=1)
+abline(h=0.1,lty=3,lwd=1)
+quartz.save(gsub(" ","",paste(directory,"/ProportionAidsRelatedDeathsAllAges.pdf")),type='pdf')
+
+####################################################
+# PROPORTION OF AIDS-RELATED DEATHS BY AGE IN 2010 #
+####################################################
+
+par(family="Avenir Next Bold")
+barplot(result$sAidsDeath_2010_Age / result$sDeath_2010_Age,
+	names.arg=c("0-5","5-10","10-15","15-20","20-25","25-30","30-35","35-40","40-45","45-50","50-55","55-60","60-65","65-70","70-75","75-80","80-85","85-90","90-95","95-100"),
+	ylim=c(0,1),
+	col=p[2],
+	main="Proportion of HIV-related deaths in 2010 stratified by age category",
+	xlab="Age category",
+	ylab="Proportion of HIV-related deaths")
+axis(2,seq(0,1,0.1))
+quartz.save(gsub(" ","",paste(directory,"/ProportionAidsRelatedDeaths2010ByAge.pdf")),type='pdf')
+
 }

@@ -51,6 +51,10 @@ extern double * theArtCOST;
 extern double * thePreArtCOST_Hiv;
 extern double * theArtCOST_Hiv;
 extern double * theCLINIC;
+extern double * theDeath;
+extern double * theAidsDeath;
+extern double * theDeath_2010_Age;
+extern double * theAidsDeath_2010_Age;
 
 /////////////////////
 /////////////////////
@@ -154,6 +158,32 @@ void WriteClinic(person * const thePerson, const double theTime)
 /////////////////////
 /////////////////////
 
+void WriteDeath(person * const thePerson)
+{
+	double yr [60];
+	for(size_t i = 0; i<60; i++)
+		yr[i] = 365.25 + (i * 365.25);
+	
+	unsigned int i = 0;
+	while(theQ->GetTime() > yr[i] && i < 59)
+		i++;	
+
+	theDeath[i]++;
+
+	// Age stratification for 2010 only
+	if(theQ->GetTime() > 14610 && theQ->GetTime() <= (14610 + 365.25)) {
+		const int ageCatMax[20] = {5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,100};
+		unsigned int j = 0;
+		while(thePerson->GetAge() / 365.25 > ageCatMax[j] && j < 19)
+			j++;
+
+		theDeath_2010_Age[j]++;
+	}
+}
+
+/////////////////////
+/////////////////////
+
 void WriteAidsDeath(person * const thePerson)
 {
 	double yr [60];
@@ -164,8 +194,20 @@ void WriteAidsDeath(person * const thePerson)
 	while(theQ->GetTime() > yr[i] && i < 59)
 		i++;
 	
+	theAidsDeath[i] += thePerson->GetSeroStatus();
+
 	if(thePerson->GetAge() > 15 * 365.25)
 		theAidsDeath_15plus[i] += thePerson->GetSeroStatus();
+
+	// Age stratification for 2010 only
+	if(theQ->GetTime() > 14610 && theQ->GetTime() <= (14610 + 365.25)) {
+		const int ageCatMax[20] = {5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,100};
+		unsigned int j = 0;
+		while(thePerson->GetAge() / 365.25 > ageCatMax[j] && j < 19)
+			j++;
+
+		theAidsDeath_2010_Age[j]++;
+	}
 }
 
 /////////////////////
