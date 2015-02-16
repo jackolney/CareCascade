@@ -65,15 +65,7 @@ bool HctLinkage(person * const thePerson)
 
 void ScheduleImmediateArt(person * const thePerson)
 {
-	if(universalTestAndTreatFlag < 2)
-		new ArtInitiation(thePerson,theQ->GetTime());
-	else if(theRng->Sample(0.8)) //80% agree to start ART
-			if(theRng->Sample(0.8)) //80% are linked to ART
-				new ArtInitiation(thePerson,theQ->GetTime());
-			else
-				thePerson->SetInCareState(false,theQ->GetTime());
-	else
-		SchedulePreArtCd4Test(thePerson);
+	new ArtInitiation(thePerson,theQ->GetTime());
 }
 
 ////////////////////

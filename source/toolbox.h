@@ -76,7 +76,6 @@ extern bool pocFlag;
 extern bool vctPocFlag;
 extern bool immediateArtFlag;
 extern bool adherenceFlag;
-extern unsigned int universalTestAndTreatFlag;
 
 	////////////////
 

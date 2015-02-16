@@ -82,7 +82,6 @@ bool pocFlag = false;
 bool vctPocFlag = false;
 bool immediateArtFlag = false;
 bool adherenceFlag = false;
-unsigned int universalTestAndTreatFlag = 0;
 
 	////////////////
 	//DALY WEIGHTS//
