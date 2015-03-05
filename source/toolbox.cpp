@@ -54,13 +54,13 @@ double cd4ResultProbAttend = 0.8;
 
 /* Pre-Art retention probability (between test and result) */
 double hctShortTermRetention = 0.6192;
-double hctLongTermRetention = 0.6192;
+double hctLongTermRetention = 0.3290;
 
 double vctShortTermRetention = 0.5326;
-double vctLongTermRetention = 0.5326;
+double vctLongTermRetention = 0.3909;
 
 double pictShortTermRetention = 0.5407;
-double pictLongTermRetention = 0.5407;
+double pictLongTermRetention = 0.3780;
 
 /* Proportion returning for secondary Cd4 testing  */
 double hctProbSecondaryCd4Test = 0.4333;
