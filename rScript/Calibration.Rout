@@ -486,10 +486,21 @@ Type 'q()' to quit R.
 + }
 > 
 > Calibrate()
-Thu  5 Mar 2015 11:11:10 GMT
+Fri  6 Mar 2015 15:48:17 GMT
 Hello, Jack - the model is running...
 Loading required package: beepr
 > 
 > proc.time()
-   user  system elapsed 
-168.297   0.672 169.507 
+
+ *** caught segfault ***
+address 0x0, cause 'unknown'
+
+Traceback:
+ 1: gettext("user")
+ 2: summary.proc_time(x, ...)
+ 3: summary(x, ...)
+ 4: print(summary(x, ...))
+ 5: print.proc_time(proc.time())
+ 6: print(proc.time())
+ 7: .Last.sys()
+aborting ...
