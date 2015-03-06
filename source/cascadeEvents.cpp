@@ -194,6 +194,7 @@ void Cd4Test::Execute()
 	D(cout << "Entered care." << endl);
 	D(cout << "Cd4Test executed." << endl);
 	pPerson->SetEverCd4TestState(true);
+	FastTrackArt(pPerson);
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson);
 	else if(ReceiveCd4TestResult(pPerson)) {
@@ -225,7 +226,6 @@ void Cd4TestResult::Execute()
 	UpdateDaly(pPerson);
 	ChargePreArtClinicCd4ResultVisit(pPerson);
 	D(cout << "Cd4TestResult executed." << endl);
-	FastTrackArt(pPerson);
 	pPerson->SetEverCd4TestResultState(true);
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson);
