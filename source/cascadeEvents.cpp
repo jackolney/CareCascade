@@ -107,9 +107,7 @@ void VctHivTest::Execute()
 		pPerson->SetDiagnosedState(true,2,GetTime());
 		D(cout << "Diagnosed as HIV-positive." << endl);
 		SchedulePictHivTest(pPerson);
-		if(immediateArtFlag)
-			ScheduleImmediateArt(pPerson);
-		else if(pointOfCare)
+		if(pointOfCare)
 			new VctPocCd4Test(pPerson,GetTime());
 		else if(VctLinkage(pPerson))
 			new Cd4Test(pPerson,GetTime());
@@ -150,9 +148,7 @@ void PictHivTest::Execute()
 	if(pPerson->GetSeroStatus()) {
 		pPerson->SetDiagnosedState(true,3,GetTime());
 		D(cout << "Diagnosed as HIV-positive." << endl);
-		if(immediateArtFlag)
-			ScheduleImmediateArt(pPerson);
-		else if(PictLinkage(pPerson))
+		if(PictLinkage(pPerson))
 			new Cd4Test(pPerson,GetTime());
 		else
 			ChargePreArtClinicVisit(pPerson);

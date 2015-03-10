@@ -206,16 +206,17 @@ void VctPocCd4Test::Execute()
 	D(cout << "Entered care." << endl);
 	UpdateDaly(pPerson);
 	ChargePreArtClinicVisit(pPerson);
-	ChargePocCd4Test(pPerson);
 	pPerson->SetEverCd4TestState(true);
 	pPerson->SetEverCd4TestResultState(true);
 	pPerson->SetInCareState(true,GetTime());
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson);
 	else if(pPerson->GetEligible()) {
+		ChargePocCd4Test(pPerson);
 		D(cout << "Eligible for ART." << endl);
 		ScheduleArtInitiation(pPerson);
 	} else {
+		ChargePocCd4Test(pPerson);
 		D(cout << "Not eligible for ART." << endl);
 		if(SecondaryCd4Test(pPerson))
 			SchedulePreArtCd4Test(pPerson);
@@ -247,16 +248,17 @@ void PocCd4Test::Execute()
 	D(cout << "PocCd4Test executed." << endl);	
 	UpdateDaly(pPerson);
 	ChargePreArtClinicVisit(pPerson);
-	ChargePocCd4Test(pPerson);
 	pPerson->SetEverCd4TestState(true);
 	pPerson->SetEverCd4TestResultState(true);
 	pPerson->SetInCareState(true,GetTime());
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson);
 	else if(pPerson->GetEligible()) {
+		ChargePocCd4Test(pPerson);
 		D(cout << "Eligible for ART." << endl);
 		ScheduleArtInitiation(pPerson);
 	} else {
+		ChargePocCd4Test(pPerson);
 		D(cout << "Not eligible for ART." << endl);
 		if(SecondaryCd4Test(pPerson))
 			SchedulePreArtCd4Test(pPerson);
