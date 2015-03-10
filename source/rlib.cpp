@@ -172,7 +172,7 @@ SEXP CallCascade(SEXP s_pop,
 	sART13, sART14, sPre2010, sHivArray, sArtArray, sR3_Counter, sR8_Counter, sART6_Counter, sART10_Counter, sART12_Counter, 
 	sCLINIC, sDeath, sAidsDeath, sDeath_2010_Age, sAidsDeath_2010_Age, sOUTNAMES;
 
-	PROTECT(sCARE = allocVector(REALSXP,5));
+	PROTECT(sCARE = allocVector(REALSXP,6));
 	PROTECT(sDALY = allocVector(REALSXP,20));
 	PROTECT(sCOST = allocVector(REALSXP,20));
 	PROTECT(sPOP_15to49 = allocVector(REALSXP,60));
@@ -315,10 +315,10 @@ SEXP CallCascade(SEXP s_pop,
 		}
 		if(i<4)
 			pPOP_NoArtCd4_2007[i] = thePOP_NoArtCd4_2007[i];
-		if(i<5) {
+		if(i<5)
 			pCLINIC[i] = theCLINIC[i];
+		if(i<6)
 			pCARE[i] = theCARE[i];
-		}
 		if(i<9) {
 			pC1[i] = C1[i];
 			pR3[i] = R3[i];
