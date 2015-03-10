@@ -163,11 +163,11 @@ void Interventions::Execute()
 		} else {
 			cd4ResultProbAttend = 0.9;
 			hctShortTermRetention = 0.8096;
-			hctLongTermRetention = 0.8096;
+			hctLongTermRetention = 0.6645;
 			vctShortTermRetention = 0.7663;
-			vctLongTermRetention = 0.7663;
+			vctLongTermRetention = 0.69545;
 			pictShortTermRetention = 0.77035;
-			pictLongTermRetention = 0.77035;
+			pictLongTermRetention = 0.6890;
 			hctProbSecondaryCd4Test = 0.71665;
 			vctProbSecondaryCd4Test = 0.65525;
 			pictProbSecondaryCd4Test = 0.65645;
