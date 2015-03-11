@@ -63,6 +63,19 @@ bool HctLinkage(person * const thePerson)
 ////////////////////
 ////////////////////
 
+bool LostPreArtCareMoreThanYear(person * const thePerson)
+{
+	if(!thePerson->GetEverLostPreArtCareDay())
+		return true;
+	else if(thePerson->GetEverLostPreArtCareDay() < (theQ->GetTime() - 365.25))
+		return true;
+	else
+		return false;
+}
+
+////////////////////
+////////////////////
+
 void ScheduleImmediateArt(person * const thePerson)
 {
 	new ArtInitiation(thePerson,theQ->GetTime());

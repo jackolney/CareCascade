@@ -25,6 +25,11 @@ bool HctLinkage(person * const thePerson);
 /////////////////////
 /////////////////////
 
+bool LostPreArtCareMoreThanYear(person * const thePerson);
+
+/////////////////////
+/////////////////////
+
 void ScheduleImmediateArt(person * const thePerson);
 
 /////////////////////

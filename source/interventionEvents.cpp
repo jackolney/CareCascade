@@ -168,7 +168,7 @@ PreArtOutreach::~PreArtOutreach()
 
 bool PreArtOutreach::CheckValid()
 {
-	if(pPerson->GetDiagnosedState() && !pPerson->GetInCareState())
+	if(pPerson->GetDiagnosedState() && !pPerson->GetInCareState() && LostPreArtCareMoreThanYear(pPerson))
 		return pPerson->Alive();
 	else
 		return false;

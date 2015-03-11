@@ -125,6 +125,7 @@ public:
 	double GetArtTime() const { return artTime; }
 	bool GetEverReturnCare() const { return everReturnPreArtCare; }
 	bool GetEligibleAtReturnCare() const { return eligibleAtReturnPreArtCare; }
+	double GetEverLostPreArtCareDay() const { return everLostPreArtCareDay; }
 
 	/* Hiv Care Date Getting Functions */
 	double GetHivDate() const { return hivDate; }
@@ -211,6 +212,7 @@ private:
 	const double birthDay;
 	double artDay;
 	double artTime;
+	double everLostPreArtCareDay;
 
 	/* Date = time an event will occur */
 	double hivDate;

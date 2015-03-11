@@ -41,6 +41,7 @@ deathDay(0),
 birthDay(Time),
 artDay(0),
 artTime(0),
+everLostPreArtCareDay(0),
 hivDate(0),
 hivDeathDate(0),
 cd4DeclineDate(0),
@@ -414,8 +415,10 @@ void person::SetInCareState(const bool theState, const double theTime)
 			if(GetEligible())
 				eligibleAtReturnPreArtCare = true;
 		}
-	} else
+	} else {
 		everLostPreArtCare = true;
+		everLostPreArtCareDay = theTime;
+	}
 	if(theState && !GetInCareState()) {
 		calEverCare = theState;
 		calCareDay = theTime;
