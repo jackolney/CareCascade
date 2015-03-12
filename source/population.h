@@ -33,6 +33,7 @@ public:
 	void SwapOutVector(person * thePerson);
 	
 	/* Infectiousness Methods */
+	void InitialiseArray();
 	void UpdateArray(person * const thePerson);
 	void PushInArray(person * const thePerson);
 	void SwapOutArray(person * const thePerson);

@@ -156,8 +156,9 @@ SEXP CallCascade(SEXP s_pop,
 
 	/* THE MODEL */
 	cout << "Hello, Jack - the model is running..." << endl;
+	cout << "Caution: WP19 version. Runs until 2035." << endl;
 	theRng = new Rng(mach_absolute_time());
-	theQ = new eventQ(0,(60 * 365.25) + 1);
+	theQ = new eventQ(0,(65 * 365.25) + 1);
 	new population(*REAL(s_pop));
 	theQ->RunEvents();
 	delete theQ;
@@ -173,13 +174,13 @@ SEXP CallCascade(SEXP s_pop,
 	sCLINIC, sDeath, sAidsDeath, sDeath_2010_Age, sAidsDeath_2010_Age, sOUTNAMES;
 
 	PROTECT(sCARE = allocVector(REALSXP,6));
-	PROTECT(sDALY = allocVector(REALSXP,20));
-	PROTECT(sCOST = allocVector(REALSXP,20));
-	PROTECT(sPOP_15to49 = allocVector(REALSXP,60));
-	PROTECT(sHIV_15to49 = allocVector(REALSXP,60));
-	PROTECT(sART_15to49 = allocVector(REALSXP,60));
-	PROTECT(sPOP_15plus = allocVector(REALSXP,60));
-	PROTECT(sAidsDeath_15plus = allocVector(REALSXP,60));
+	PROTECT(sDALY = allocVector(REALSXP,25));
+	PROTECT(sCOST = allocVector(REALSXP,25));
+	PROTECT(sPOP_15to49 = allocVector(REALSXP,65));
+	PROTECT(sHIV_15to49 = allocVector(REALSXP,65));
+	PROTECT(sART_15to49 = allocVector(REALSXP,65));
+	PROTECT(sPOP_15plus = allocVector(REALSXP,65));
+	PROTECT(sAidsDeath_15plus = allocVector(REALSXP,65));
 	PROTECT(sPOP_AgeSex_2007 = allocVector(REALSXP,20));
 	PROTECT(sHIV_AgeSex_2007 = allocVector(REALSXP,20));
 	PROTECT(sPOP_NoArtCd4_2007 = allocVector(REALSXP,4));
@@ -187,27 +188,27 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sHIV_AgeSex_2012 = allocVector(REALSXP,16));
 	PROTECT(sPOP_AgeSex_2014 = allocVector(REALSXP,10));
 	PROTECT(sHIV_AgeSex_2014 = allocVector(REALSXP,10));
-	PROTECT(sCD4_200 = allocVector(REALSXP,60));
-	PROTECT(sCD4_200350 = allocVector(REALSXP,60));
-	PROTECT(sCD4_350500 = allocVector(REALSXP,60));
-	PROTECT(sCD4_500 = allocVector(REALSXP,60));
-	PROTECT(sCD4_200_Art = allocVector(REALSXP,60));
-	PROTECT(sCD4_200350_Art = allocVector(REALSXP,60));
-	PROTECT(sCD4_350500_Art = allocVector(REALSXP,60));
-	PROTECT(sCD4_500_Art = allocVector(REALSXP,60));
-	PROTECT(sWHO_1 = allocVector(REALSXP,60));
-	PROTECT(sWHO_2 = allocVector(REALSXP,60));
-	PROTECT(sWHO_3 = allocVector(REALSXP,60));
-	PROTECT(sWHO_4 = allocVector(REALSXP,60));
-	PROTECT(sWHO_1_Art = allocVector(REALSXP,60));
-	PROTECT(sWHO_2_Art = allocVector(REALSXP,60));
-	PROTECT(sWHO_3_Art = allocVector(REALSXP,60));
-	PROTECT(sWHO_4_Art = allocVector(REALSXP,60));
-	PROTECT(sINCIDENCE = allocVector(REALSXP,60));
-	PROTECT(sPreArtCOST = allocVector(REALSXP,20));
-	PROTECT(sArtCOST = allocVector(REALSXP,20));
-	PROTECT(sPreArtCOST_Hiv = allocVector(REALSXP,20));
-	PROTECT(sArtCOST_Hiv = allocVector(REALSXP,20));
+	PROTECT(sCD4_200 = allocVector(REALSXP,65));
+	PROTECT(sCD4_200350 = allocVector(REALSXP,65));
+	PROTECT(sCD4_350500 = allocVector(REALSXP,65));
+	PROTECT(sCD4_500 = allocVector(REALSXP,65));
+	PROTECT(sCD4_200_Art = allocVector(REALSXP,65));
+	PROTECT(sCD4_200350_Art = allocVector(REALSXP,65));
+	PROTECT(sCD4_350500_Art = allocVector(REALSXP,65));
+	PROTECT(sCD4_500_Art = allocVector(REALSXP,65));
+	PROTECT(sWHO_1 = allocVector(REALSXP,65));
+	PROTECT(sWHO_2 = allocVector(REALSXP,65));
+	PROTECT(sWHO_3 = allocVector(REALSXP,65));
+	PROTECT(sWHO_4 = allocVector(REALSXP,65));
+	PROTECT(sWHO_1_Art = allocVector(REALSXP,65));
+	PROTECT(sWHO_2_Art = allocVector(REALSXP,65));
+	PROTECT(sWHO_3_Art = allocVector(REALSXP,65));
+	PROTECT(sWHO_4_Art = allocVector(REALSXP,65));
+	PROTECT(sINCIDENCE = allocVector(REALSXP,65));
+	PROTECT(sPreArtCOST = allocVector(REALSXP,25));
+	PROTECT(sArtCOST = allocVector(REALSXP,25));
+	PROTECT(sPreArtCOST_Hiv = allocVector(REALSXP,25));
+	PROTECT(sArtCOST_Hiv = allocVector(REALSXP,25));
 	PROTECT(sC1 = allocVector(REALSXP,9));
 	PROTECT(sL21 = allocVector(REALSXP,36));
 	PROTECT(sR3 = allocVector(REALSXP,9));
@@ -231,8 +232,8 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sART10_Counter = allocVector(INTSXP,3));
 	PROTECT(sART12_Counter = allocVector(INTSXP,3));
 	PROTECT(sCLINIC = allocVector(REALSXP,5));
-	PROTECT(sDeath = allocVector(REALSXP,60));
-	PROTECT(sAidsDeath = allocVector(REALSXP,60));
+	PROTECT(sDeath = allocVector(REALSXP,65));
+	PROTECT(sAidsDeath = allocVector(REALSXP,65));
 	PROTECT(sDeath_2010_Age = allocVector(REALSXP,20));
 	PROTECT(sAidsDeath_2010_Age = allocVector(REALSXP,20));
 
@@ -300,7 +301,7 @@ SEXP CallCascade(SEXP s_pop,
 	double * pDeath_2010_Age = REAL(sDeath_2010_Age);
 	double * pAidsDeath_2010_Age = REAL(sAidsDeath_2010_Age);
 
-	for(size_t i=0;i<60;i++) {
+	for(size_t i=0;i<65;i++) {
 		if(i<3) {
 			pART4[i] = ART4[i];
 			pART6[i] = ART6[i];
@@ -340,16 +341,18 @@ SEXP CallCascade(SEXP s_pop,
 			pHIV_AgeSex_2012[i] = theHIV_AgeSex_2012[i];
 		}
 		if(i<20) {
-			pDALY[i] = theDALY[i];
-			pCOST[i] = theCOST[i];
 			pPOP_AgeSex_2007[i] = thePOP_AgeSex_2007[i];
 			pHIV_AgeSex_2007[i] = theHIV_AgeSex_2007[i];
+			pDeath_2010_Age[i] = theDeath_2010_Age[i];
+			pAidsDeath_2010_Age[i] = theAidsDeath_2010_Age[i];
+		}
+		if(i<25) {
+			pDALY[i] = theDALY[i];
+			pCOST[i] = theCOST[i];
 			pPreArtCOST[i] = thePreArtCOST[i];
 			pArtCOST[i] = theArtCOST[i];
 			pPreArtCOST_Hiv[i] = thePreArtCOST_Hiv[i];
 			pArtCOST_Hiv[i] = theArtCOST_Hiv[i];
-			pDeath_2010_Age[i] = theDeath_2010_Age[i];
-			pAidsDeath_2010_Age[i] = theAidsDeath_2010_Age[i];
 		}
 		if(i<36)
 			pL21[i] = L21[i];

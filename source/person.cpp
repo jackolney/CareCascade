@@ -291,14 +291,6 @@ void person::Hiv()
 	UpdatePopulation();
 	iPop->AddCase();
 	iPop->UpdateArray(this);
-	
-	//For development purposes.
-	//	D(cout << "HIV+" << endl);
-	//	SetSeroStatus(true);
-	//	SetSeroconversionDay(Time);
-	//	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
-	//	ScheduleHivIndicatorUpdate(); //ScheduleHivIndicatorUpdate
-	//	return true;
 }
 
 /////////////////////
@@ -467,11 +459,11 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 	} else if(theTime > 14610) {
 		everLostArt = true;
 		double yr [22];
-		for(size_t i = 0; i<22; i++)
+		for(size_t i = 0; i<27; i++)
 			yr[i] = 14610 + (i * 365.25);
 		
 		unsigned int i = 0;
-		while(theTime > yr[i] && i < 21)
+		while(theTime > yr[i] && i<26)
 			i++;
 		
 		if(artDay > yr[i-1])

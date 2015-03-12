@@ -76,12 +76,12 @@ void ChargePocCd4Test(person * const thePerson)
 void ChargeArtCare(person * const thePerson)
 {
 	if(thePerson->GetArtInitiationState()) {
-		double yr [22];
-		for(size_t i = 0; i<22; i++)
+		double yr [27];
+		for(size_t i=0; i<27; i++)
 			yr[i] = 14610 + (i * 365.25);
 		
 		unsigned int i = 0;
-		while(theQ->GetTime() > yr[i] && i < 21)
+		while(theQ->GetTime() > yr[i] && i<26)
 			i++;
 		
 		if(thePerson->GetArtDay() <= yr[i-1])
@@ -99,12 +99,12 @@ void ChargeArtCare(person * const thePerson)
 void ChargeAdherence(person * const thePerson)
 {
 	if(adherenceFlag && thePerson->GetArtInitiationState()) {
-		double yr [22];
-		for(size_t i = 0; i<22; i++)
+		double yr [27];
+		for(size_t i=0; i<27; i++)
 			yr[i] = 14610 + (i * 365.25);
 		
 		unsigned int i = 0;
-		while(theQ->GetTime() > yr[i] && i < 21)
+		while(theQ->GetTime() > yr[i] && i<26)
 			i++;
 		
 		if(thePerson->GetArtDay() <= yr[i-1])
@@ -139,12 +139,12 @@ void WriteCost(person * const thePerson)
 	if(thePerson->Alive()) {
 		
 		/* Create array with dates from 2011 to 2030 (to allow us to capture DALYs at year end between 2010 and 2030). */
-		double yr [20];
-		for(size_t i = 0; i<20; i++)
+		double yr [25];
+		for(size_t i=0; i<25; i++)
 			yr[i] = 14975.25 + (i * 365.25);
 		
 		unsigned int i = 0;
-		while(theQ->GetTime() > yr[i])
+		while(theQ->GetTime() > yr[i] && i<25)
 			i++;
 		
 		if(theQ->GetTime() > 14610) {

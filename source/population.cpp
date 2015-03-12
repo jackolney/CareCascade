@@ -39,8 +39,7 @@ beta(1)
 	ScheduleIncidence(this);
 	ScheduleBetaCalculation(this);
 	SeedDiscount();
-	for(size_t i=0;i<5;i++)
-		infectiousness[i] = 0;
+	InitialiseArray();
 }
 
 population::~population()
@@ -55,19 +54,10 @@ population::~population()
 void population::Generate()
 {	
 		/* Function to schedule cohorts over time (not being used until I scale everything up) */
-	const double popSize[60] = {11252466,400695,419630,440241,460305,481118,502226,523708,546673,570847,594209,619182,644442,667076,682797,695625,709410,722491,731131,734908,765901,776599,784373,783075,765226,722958,718529,708110,715455,729361,750663,775364,799972,814589,845603,856064,881087,915869,946729,983062,1028592,1055553,1080443,1096579,1106563,1112580,1117645,1126043,1136366,1148139,1163788,1191180,1219216,1247912,1277283,1307346,1338116,1369610,1401846,1434841};
+	const double popSize[65] = {11252466,400695,419630,440241,460305,481118,502226,523708,546673,570847,594209,619182,644442,667076,682797,695625,709410,722491,731131,734908,765901,776599,784373,783075,765226,722958,718529,708110,715455,729361,750663,775364,799972,814589,845603,856064,881087,915869,946729,983062,1028592,1055553,1080443,1096579,1106563,1112580,1117645,1126043,1136366,1148139,1163788,1191180,1219216,1247912,1277283,1307346,1338116,1369610,1401846,1434841,1468612,1503177,1538557,1574769,1611833};
 	
-	for(int i = 0; i < 60; i++)
+	for(int i=0; i<65; i++)
 		new cohort(this,popSize[i] / sizeAdjustment,i * 365.25);
-	
-		//TEMPORARY TESTING PLATFORM//
-//	double yr = 0; //specifiees startTime for individuals.
-//	int cohortArray [1] = {1};
-//	
-//	for(int i = 0; i < 1; i++) {
-//		new cohort(this,cohortArray[i],yr);
-//		yr += 365;
-//	}
 }
 
 ////////////////////
@@ -140,6 +130,12 @@ void population::SwapOutVector(person * thePerson)
 ////////////////////////////
 // INFECTIOUSNESS METHODS //
 ////////////////////////////
+
+void population::InitialiseArray()
+{
+	for(size_t i=0;i<5;i++)
+		infectiousness[i] = 0;
+}
 
 void population::UpdateArray(person * const thePerson)
 {
@@ -266,6 +262,7 @@ void population::CalculateIncidence()
 	/* Record incidence and reset */
 	WriteIncidence(incidentCases);
 	incidentCases = 0;
+	cout << "Year " << 1970 + (theQ->GetTime() / 365.25) << endl;
 }
 
 /////////////////////

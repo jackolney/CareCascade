@@ -74,7 +74,7 @@ void Interventions::Execute()
 	/* Hbct */
 	
 	if(*p_Hbct) {
-		for(size_t i=0;i<5;i++)
+		for(size_t i=0;i<7;i++)
 			if(GetTime() <= 14610 + (i * 1461))
 				new SeedHct(pPerson,14610 + (i * 1461),false);
 
@@ -101,7 +101,7 @@ void Interventions::Execute()
 	
 	if(*p_HbctPocCd4) {
 		D(cout << "HbctPocCd4 Intervention." << endl);
-		for(size_t i=0;i<5;i++)
+		for(size_t i=0;i<7;i++)
 			if(GetTime() <= 14610 + (i * 1461))
 				new SeedHct(pPerson,14610 + (i * 1461),true);
 		
@@ -139,7 +139,7 @@ void Interventions::Execute()
 		double k = 0;
 		if(*p_PreOutreach == 1) { k = 1; } else { k = 0.2; }
 		
-		for(size_t i=0;i<20;i++)
+		for(size_t i=0;i<25;i++)
 			if(GetTime() <= 14792.625 + (i * 365.25))
 				new PreArtOutreach(pPerson,14792.625 + (i * 365.25),k);
 	}
@@ -195,7 +195,7 @@ void Interventions::Execute()
 		double k = 0;
 		if(*p_ArtOutreach == 1) { k = 1; } else { k = 0.4; }
 		
-		for(size_t i=0;i<20;i++)
+		for(size_t i=0;i<25;i++)
 			if(GetTime() <= 14792.625 + (i * 365.25))
 				new ArtOutreach(pPerson,14792.625 + (i * 365.25),k);
 	}
@@ -217,7 +217,7 @@ void Interventions::Execute()
 		immediateArtFlag = true;
 		UpdateTreatmentGuidelines(pPerson,4,1);
 		
-		for(size_t i=0;i<5;i++)
+		for(size_t i=0;i<7;i++)
 			if(GetTime() <= 14610 + (i * 1461))
 				new SeedHct(pPerson,14610 + (i * 1461),false);
 
@@ -243,7 +243,7 @@ void Interventions::Execute()
 	/* Calibration */
 	
 	if(*p_Calibration) {
-		for(size_t i=0;i<20;i++)
+		for(size_t i=0;i<25;i++)
 			if(GetTime() <= 14610 + (i * 365.25))
 				new SeedPerpetualHct(pPerson, 14610 + (i * 365.25));
 	}
