@@ -16,4 +16,14 @@ void WriteGuidelinesPopDist(person * const thePerson, const int theIndex);
 
 void WriteGuidelinesDeath(person * const thePerson);
 
+void WriteGuidelinesArtInitiation(person * const thePerson);
+
+void WriteGuidelinesNewInfection(person * const thePerson);
+
+void WriteGuidelinesNewDiagnosis();
+
+void WriteGuidelinesPreArtDropout();
+
+void WriteGuidelinesArtDropout();
+
 #endif /* defined(__priorityQ__wp19Update__) */

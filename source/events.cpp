@@ -192,8 +192,7 @@ void Death::Execute()
 	pPerson->Kill(GetTime(),hivRelated);
 	WriteCare(pPerson,GetTime());
 	WriteDeath(pPerson);
-	if(GetTime() >= 10957.5)
-		WriteGuidelinesDeath(pPerson);
+	WriteGuidelinesDeath(pPerson);
 	if(hivRelated) {
 		D(cout << "Death executed (HIV-related)." << endl);
 		WriteAidsDeath(pPerson);

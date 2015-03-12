@@ -21,6 +21,7 @@
 #include "interventions.h"
 #include "calibration.h"
 #include "outputUpdate.h"
+#include "wp19Update.h"
 
 extern Rng * theRng;
 extern eventQ * theQ;
@@ -288,6 +289,7 @@ void person::Hiv()
 	SetSeroconversionDay(theQ->GetTime());
 	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
 	ScheduleHivIndicatorUpdate();
+	WriteGuidelinesNewInfection(this);
 	UpdatePopulation();
 	iPop->AddCase();
 	iPop->UpdateArray(this);
@@ -390,6 +392,7 @@ void person::SetDiagnosedState(const bool theState, unsigned int theRoute, const
 		calEverDiag = theState;
 		calDiagRoute = theRoute;
 		calDiagDay = theTime;
+		WriteGuidelinesNewDiagnosis();
 	}
 	diagnosisCount++;
 	lastDiagnosisRoute = theRoute;
@@ -406,8 +409,10 @@ void person::SetInCareState(const bool theState, const double theTime)
 			if(GetEligible())
 				eligibleAtReturnPreArtCare = true;
 		}
-	} else
+	} else {
 		everLostPreArtCare = true;
+		WriteGuidelinesPreArtDropout();
+	}
 	if(theState && !GetInCareState()) {
 		calEverCare = theState;
 		calCareDay = theTime;
