@@ -105,7 +105,7 @@ bool GuidelinesOutput::CheckValid()
 
 void GuidelinesOutput::Execute()
 {
-	WritePopDist(pPerson,index);
+	WriteGuidelinesPopDist(pPerson,index);
 }
 
 /////////////////////

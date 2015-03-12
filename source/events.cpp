@@ -17,6 +17,7 @@
 #include "impact.h"
 #include "outputUpdate.h"
 #include "cost.h"
+#include "wp19Update.h"
 
 using namespace std;
 
@@ -191,6 +192,8 @@ void Death::Execute()
 	pPerson->Kill(GetTime(),hivRelated);
 	WriteCare(pPerson,GetTime());
 	WriteDeath(pPerson);
+	if(GetTime() >= 10957.5)
+		WriteGuidelinesDeath(pPerson);
 	if(hivRelated) {
 		D(cout << "Death executed (HIV-related)." << endl);
 		WriteAidsDeath(pPerson);

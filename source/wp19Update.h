@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include "person.h"
 
-void WritePopDist(person * const thePerson, const int theIndex);
+void WriteGuidelinesPopDist(person * const thePerson, const int theIndex);
+
+void WriteGuidelinesDeath(person * const thePerson);
 
 #endif /* defined(__priorityQ__wp19Update__) */
