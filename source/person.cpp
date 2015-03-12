@@ -22,6 +22,7 @@
 #include "calibration.h"
 #include "outputUpdate.h"
 #include "wp19Update.h"
+#include "wp19.h"
 
 extern Rng * theRng;
 extern eventQ * theQ;
@@ -113,6 +114,7 @@ calEverReturnArt(false)
 	natDeathDate = AssignNatDeathDate(Time);
 	iPop->AddPerson(this);
 	SeedOutput(this);
+	SeedGuidelinesOutput(this);
 	SeedCalibration(this,13514.25,14609,14974,16225);
 	SeedInterventions(this);
 	if(Time > 12418) {
