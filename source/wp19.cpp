@@ -10,7 +10,7 @@
 #include "wp19.h"
 #include "impact.h"
 #include "cost.h"
-#include "outputUpdate.h"
+#include "wp19Update.h"
 
 using namespace std;
 
@@ -78,9 +78,9 @@ int * theGuidelines_ArtDropout;
 
 void SeedGuidelinesOutput(person * const thePerson)
 {
-	double yr [66];
-	for(size_t i=0; i<66; i++) {
-		yr[i] = 365.25 + (i * 365.25);
+	double yr [36];
+	for(size_t i=0; i<36; i++) {
+		yr[i] = 11140.12 + (i * 365.25);
 		if(thePerson->GetBirthDay() < yr[i])
 			new GuidelinesOutput(thePerson,yr[i]);
 	}
@@ -104,21 +104,7 @@ bool GuidelinesOutput::CheckValid()
 
 void GuidelinesOutput::Execute()
 {
-	// if(GetTime() >= 14610) {
-	// 	WriteDaly(pPerson);
-	// 	WriteCost(pPerson);
-	// }
-	// WritePop(pPerson);
-	// WriteHiv(pPerson);
-	// WriteArt(pPerson);
-	// WriteCd4(pPerson);
-	// WriteWho(pPerson);
-	// if(GetTime() == 13879.5)
-	// 	Write2007(pPerson);
-	// if(GetTime() == 15705.75)
-	// 	Write2012(pPerson);
-	// if(GetTime() == 16436.25)
-	// 	Write2014(pPerson);
+	WritePopDist(pPerson);
 }
 
 /////////////////////
