@@ -39,8 +39,7 @@ beta(1)
 	ScheduleIncidence(this);
 	ScheduleBetaCalculation(this);
 	SeedDiscount();
-	for(size_t i=0;i<5;i++)
-		infectiousness[i] = 0;
+	InitialiseArray();
 }
 
 population::~population()
@@ -140,6 +139,12 @@ void population::SwapOutVector(person * thePerson)
 ////////////////////////////
 // INFECTIOUSNESS METHODS //
 ////////////////////////////
+
+void population::InitialiseArray()
+{
+	for(size_t i=0;i<5;i++)
+		infectiousness[i] = 0;
+}
 
 void population::UpdateArray(person * const thePerson)
 {
