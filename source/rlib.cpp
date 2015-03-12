@@ -105,6 +105,69 @@ int const * p_ImmediateArt;
 int const * p_UniversalTestAndTreat;
 int const * p_Calibration;
 
+/* Guidelines Pointers */
+extern int * theGuidelines_PopDist_HivNegative;
+extern int * theGuidelines_PopDist_500_NeverDiag;
+extern int * theGuidelines_PopDist_500_DiagNotInCare;
+extern int * theGuidelines_PopDist_500_InCareNeverArt;
+extern int * theGuidelines_PopDist_500_ArtLessSixMonths;
+extern int * theGuidelines_PopDist_500_ArtMoreSixMonths;
+extern int * theGuidelines_PopDist_500_OffArt;
+extern int * theGuidelines_PopDist_350500_NeverDiag;
+extern int * theGuidelines_PopDist_350500_DiagNotInCare;
+extern int * theGuidelines_PopDist_350500_InCareNeverArt;
+extern int * theGuidelines_PopDist_350500_ArtLessSixMonths;
+extern int * theGuidelines_PopDist_350500_ArtMoreSixMonths;
+extern int * theGuidelines_PopDist_350500_OffArt;
+extern int * theGuidelines_PopDist_200350_NeverDiag;
+extern int * theGuidelines_PopDist_200350_DiagNotInCare;
+extern int * theGuidelines_PopDist_200350_InCareNeverArt;
+extern int * theGuidelines_PopDist_200350_ArtLessSixMonths;
+extern int * theGuidelines_PopDist_200350_ArtMoreSixMonths;
+extern int * theGuidelines_PopDist_200350_OffArt;
+extern int * theGuidelines_PopDist_200_NeverDiag;
+extern int * theGuidelines_PopDist_200_DiagNotInCare;
+extern int * theGuidelines_PopDist_200_InCareNeverArt;
+extern int * theGuidelines_PopDist_200_ArtLessSixMonths;
+extern int * theGuidelines_PopDist_200_ArtMoreSixMonths;
+extern int * theGuidelines_PopDist_200_OffArt;
+
+extern int * theGuidelines_Death_HivNegative;
+extern int * theGuidelines_Death_500_NeverDiag;
+extern int * theGuidelines_Death_500_DiagNotInCare;
+extern int * theGuidelines_Death_500_InCareNeverArt;
+extern int * theGuidelines_Death_500_ArtLessSixMonths;
+extern int * theGuidelines_Death_500_ArtMoreSixMonths;
+extern int * theGuidelines_Death_500_OffArt;
+extern int * theGuidelines_Death_350500_NeverDiag;
+extern int * theGuidelines_Death_350500_DiagNotInCare;
+extern int * theGuidelines_Death_350500_InCareNeverArt;
+extern int * theGuidelines_Death_350500_ArtLessSixMonths;
+extern int * theGuidelines_Death_350500_ArtMoreSixMonths;
+extern int * theGuidelines_Death_350500_OffArt;
+extern int * theGuidelines_Death_200350_NeverDiag;
+extern int * theGuidelines_Death_200350_DiagNotInCare;
+extern int * theGuidelines_Death_200350_InCareNeverArt;
+extern int * theGuidelines_Death_200350_ArtLessSixMonths;
+extern int * theGuidelines_Death_200350_ArtMoreSixMonths;
+extern int * theGuidelines_Death_200350_OffArt;
+extern int * theGuidelines_Death_200_NeverDiag;
+extern int * theGuidelines_Death_200_DiagNotInCare;
+extern int * theGuidelines_Death_200_InCareNeverArt;
+extern int * theGuidelines_Death_200_ArtLessSixMonths;
+extern int * theGuidelines_Death_200_ArtMoreSixMonths;
+extern int * theGuidelines_Death_200_OffArt;
+
+extern int * theGuidelines_Art_500;
+extern int * theGuidelines_Art_350500;
+extern int * theGuidelines_Art_200350;
+extern int * theGuidelines_Art_200;
+
+extern int * theGuidelines_NewInfectionsAdult;
+extern int * theGuidelines_NewDiagnoses;
+extern int * theGuidelines_PreArtDropout;
+extern int * theGuidelines_ArtDropout;
+
 extern "C" {
 
 /////////////////////
@@ -173,6 +236,19 @@ SEXP CallCascade(SEXP s_pop,
 	sART13, sART14, sPre2010, sHivArray, sArtArray, sR3_Counter, sR8_Counter, sART6_Counter, sART10_Counter, sART12_Counter, 
 	sCLINIC, sDeath, sAidsDeath, sDeath_2010_Age, sAidsDeath_2010_Age, sOUTNAMES;
 
+	/* Guidelines SEXPs */
+	SEXP sGuidelines_PopDist_HivNegative, sGuidelines_PopDist_500_NeverDiag, sGuidelines_PopDist_500_DiagNotInCare, 
+	sGuidelines_PopDist_500_InCareNeverArt, sGuidelines_PopDist_500_ArtLessSixMonths, sGuidelines_PopDist_500_ArtMoreSixMonths, 
+	sGuidelines_PopDist_500_OffArt, sGuidelines_PopDist_350500_NeverDiag, sGuidelines_PopDist_350500_DiagNotInCare, sGuidelines_PopDist_350500_InCareNeverArt, 
+	sGuidelines_PopDist_350500_ArtLessSixMonths, sGuidelines_PopDist_350500_ArtMoreSixMonths, sGuidelines_PopDist_350500_OffArt, sGuidelines_PopDist_200350_NeverDiag, 
+	sGuidelines_PopDist_200350_DiagNotInCare, sGuidelines_PopDist_200350_InCareNeverArt, sGuidelines_PopDist_200350_ArtLessSixMonths, sGuidelines_PopDist_200350_ArtMoreSixMonths, 
+	sGuidelines_PopDist_200350_OffArt, sGuidelines_PopDist_200_NeverDiag, sGuidelines_PopDist_200_DiagNotInCare, sGuidelines_PopDist_200_InCareNeverArt, sGuidelines_PopDist_200_ArtLessSixMonths, 
+	sGuidelines_PopDist_200_ArtMoreSixMonths, sGuidelines_PopDist_200_OffArt, sGuidelines_Death_HivNegative, sGuidelines_Death_500_NeverDiag, sGuidelines_Death_500_DiagNotInCare, sGuidelines_Death_500_InCareNeverArt, 
+	sGuidelines_Death_500_ArtLessSixMonths, sGuidelines_Death_500_ArtMoreSixMonths, sGuidelines_Death_500_OffArt, sGuidelines_Death_350500_NeverDiag, sGuidelines_Death_350500_DiagNotInCare, sGuidelines_Death_350500_InCareNeverArt, 
+	sGuidelines_Death_350500_ArtLessSixMonths, sGuidelines_Death_350500_ArtMoreSixMonths, sGuidelines_Death_350500_OffArt, sGuidelines_Death_200350_NeverDiag, sGuidelines_Death_200350_DiagNotInCare, sGuidelines_Death_200350_InCareNeverArt, 
+	sGuidelines_Death_200350_ArtLessSixMonths, sGuidelines_Death_200350_ArtMoreSixMonths, sGuidelines_Death_200350_OffArt, sGuidelines_Death_200_NeverDiag, sGuidelines_Death_200_DiagNotInCare, sGuidelines_Death_200_InCareNeverArt, sGuidelines_Death_200_ArtLessSixMonths, 
+	sGuidelines_Death_200_ArtMoreSixMonths, sGuidelines_Death_200_OffArt, sGuidelines_Art_500, sGuidelines_Art_350500, sGuidelines_Art_200350, sGuidelines_Art_200, sGuidelines_NewInfectionsAdult, sGuidelines_NewDiagnoses, sGuidelines_PreArtDropout, sGuidelines_ArtDropout;
+
 	PROTECT(sCARE = allocVector(REALSXP,6));
 	PROTECT(sDALY = allocVector(REALSXP,26));
 	PROTECT(sCOST = allocVector(REALSXP,26));
@@ -237,6 +313,65 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sDeath_2010_Age = allocVector(REALSXP,20));
 	PROTECT(sAidsDeath_2010_Age = allocVector(REALSXP,20));
 
+	PROTECT(sGuidelines_PopDist_HivNegative = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_500_NeverDiag = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_500_DiagNotInCare = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_500_InCareNeverArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_500_ArtLessSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_500_ArtMoreSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_500_OffArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_350500_NeverDiag = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_350500_DiagNotInCare = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_350500_InCareNeverArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_350500_ArtLessSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_350500_ArtMoreSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_350500_OffArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200350_NeverDiag = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200350_DiagNotInCare = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200350_InCareNeverArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200350_ArtLessSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200350_ArtMoreSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200350_OffArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200_NeverDiag = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200_DiagNotInCare = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200_InCareNeverArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200_ArtLessSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200_ArtMoreSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PopDist_200_OffArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_HivNegative = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_500_NeverDiag = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_500_DiagNotInCare = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_500_InCareNeverArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_500_ArtLessSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_500_ArtMoreSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_500_OffArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_350500_NeverDiag = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_350500_DiagNotInCare = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_350500_InCareNeverArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_350500_ArtLessSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_350500_ArtMoreSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_350500_OffArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200350_NeverDiag = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200350_DiagNotInCare = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200350_InCareNeverArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200350_ArtLessSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200350_ArtMoreSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200350_OffArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200_NeverDiag = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200_DiagNotInCare = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200_InCareNeverArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200_ArtLessSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200_ArtMoreSixMonths = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Death_200_OffArt = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Art_500 = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Art_350500 = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Art_200350 = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_Art_200 = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_NewInfectionsAdult = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_NewDiagnoses = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_PreArtDropout = allocVector(INTSXP,36);
+	PROTECT(sGuidelines_ArtDropout = allocVector(INTSXP,36);
+
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
 	double * pCOST = REAL(sCOST);
@@ -300,6 +435,65 @@ SEXP CallCascade(SEXP s_pop,
 	double * pAidsDeath = REAL(sAidsDeath);
 	double * pDeath_2010_Age = REAL(sDeath_2010_Age);
 	double * pAidsDeath_2010_Age = REAL(sAidsDeath_2010_Age);
+
+	int * pGuidelines_PopDist_HivNegative = INTEGER(sGuidelines_PopDist_HivNegative);
+	int * pGuidelines_PopDist_500_NeverDiag = INTEGER(sGuidelines_PopDist_500_NeverDiag);
+	int * pGuidelines_PopDist_500_DiagNotInCare = INTEGER(sGuidelines_PopDist_500_DiagNotInCare);
+	int * pGuidelines_PopDist_500_InCareNeverArt = INTEGER(sGuidelines_PopDist_500_InCareNeverArt);
+	int * pGuidelines_PopDist_500_ArtLessSixMonths = INTEGER(sGuidelines_PopDist_500_ArtLessSixMonths);
+	int * pGuidelines_PopDist_500_ArtMoreSixMonths = INTEGER(sGuidelines_PopDist_500_ArtMoreSixMonths);
+	int * pGuidelines_PopDist_500_OffArt = INTEGER(sGuidelines_PopDist_500_OffArt);
+	int * pGuidelines_PopDist_350500_NeverDiag = INTEGER(sGuidelines_PopDist_350500_NeverDiag);
+	int * pGuidelines_PopDist_350500_DiagNotInCare = INTEGER(sGuidelines_PopDist_350500_DiagNotInCare);
+	int * pGuidelines_PopDist_350500_InCareNeverArt = INTEGER(sGuidelines_PopDist_350500_InCareNeverArt);
+	int * pGuidelines_PopDist_350500_ArtLessSixMonths = INTEGER(sGuidelines_PopDist_350500_ArtLessSixMonths);
+	int * pGuidelines_PopDist_350500_ArtMoreSixMonths = INTEGER(sGuidelines_PopDist_350500_ArtMoreSixMonths);
+	int * pGuidelines_PopDist_350500_OffArt = INTEGER(sGuidelines_PopDist_350500_OffArt);
+	int * pGuidelines_PopDist_200350_NeverDiag = INTEGER(sGuidelines_PopDist_200350_NeverDiag);
+	int * pGuidelines_PopDist_200350_DiagNotInCare = INTEGER(sGuidelines_PopDist_200350_DiagNotInCare);
+	int * pGuidelines_PopDist_200350_InCareNeverArt = INTEGER(sGuidelines_PopDist_200350_InCareNeverArt);
+	int * pGuidelines_PopDist_200350_ArtLessSixMonths = INTEGER(sGuidelines_PopDist_200350_ArtLessSixMonths);
+	int * pGuidelines_PopDist_200350_ArtMoreSixMonths = INTEGER(sGuidelines_PopDist_200350_ArtMoreSixMonths);
+	int * pGuidelines_PopDist_200350_OffArt = INTEGER(sGuidelines_PopDist_200350_OffArt);
+	int * pGuidelines_PopDist_200_NeverDiag = INTEGER(sGuidelines_PopDist_200_NeverDiag);
+	int * pGuidelines_PopDist_200_DiagNotInCare = INTEGER(sGuidelines_PopDist_200_DiagNotInCare);
+	int * pGuidelines_PopDist_200_InCareNeverArt = INTEGER(sGuidelines_PopDist_200_InCareNeverArt);
+	int * pGuidelines_PopDist_200_ArtLessSixMonths = INTEGER(sGuidelines_PopDist_200_ArtLessSixMonths);
+	int * pGuidelines_PopDist_200_ArtMoreSixMonths = INTEGER(sGuidelines_PopDist_200_ArtMoreSixMonths);
+	int * pGuidelines_PopDist_200_OffArt = INTEGER(sGuidelines_PopDist_200_OffArt);
+	int * pGuidelines_Death_HivNegative = INTEGER(sGuidelines_Death_HivNegative);
+	int * pGuidelines_Death_500_NeverDiag = INTEGER(sGuidelines_Death_500_NeverDiag);
+	int * pGuidelines_Death_500_DiagNotInCare = INTEGER(sGuidelines_Death_500_DiagNotInCare);
+	int * pGuidelines_Death_500_InCareNeverArt = INTEGER(sGuidelines_Death_500_InCareNeverArt);
+	int * pGuidelines_Death_500_ArtLessSixMonths = INTEGER(sGuidelines_Death_500_ArtLessSixMonths);
+	int * pGuidelines_Death_500_ArtMoreSixMonths = INTEGER(sGuidelines_Death_500_ArtMoreSixMonths);
+	int * pGuidelines_Death_500_OffArt = INTEGER(sGuidelines_Death_500_OffArt);
+	int * pGuidelines_Death_350500_NeverDiag = INTEGER(sGuidelines_Death_350500_NeverDiag);
+	int * pGuidelines_Death_350500_DiagNotInCare = INTEGER(sGuidelines_Death_350500_DiagNotInCare);
+	int * pGuidelines_Death_350500_InCareNeverArt = INTEGER(sGuidelines_Death_350500_InCareNeverArt);
+	int * pGuidelines_Death_350500_ArtLessSixMonths = INTEGER(sGuidelines_Death_350500_ArtLessSixMonths);
+	int * pGuidelines_Death_350500_ArtMoreSixMonths = INTEGER(sGuidelines_Death_350500_ArtMoreSixMonths);
+	int * pGuidelines_Death_350500_OffArt = INTEGER(sGuidelines_Death_350500_OffArt);
+	int * pGuidelines_Death_200350_NeverDiag = INTEGER(sGuidelines_Death_200350_NeverDiag);
+	int * pGuidelines_Death_200350_DiagNotInCare = INTEGER(sGuidelines_Death_200350_DiagNotInCare);
+	int * pGuidelines_Death_200350_InCareNeverArt = INTEGER(sGuidelines_Death_200350_InCareNeverArt);
+	int * pGuidelines_Death_200350_ArtLessSixMonths = INTEGER(sGuidelines_Death_200350_ArtLessSixMonths);
+	int * pGuidelines_Death_200350_ArtMoreSixMonths = INTEGER(sGuidelines_Death_200350_ArtMoreSixMonths);
+	int * pGuidelines_Death_200350_OffArt = INTEGER(sGuidelines_Death_200350_OffArt);
+	int * pGuidelines_Death_200_NeverDiag = INTEGER(sGuidelines_Death_200_NeverDiag);
+	int * pGuidelines_Death_200_DiagNotInCare = INTEGER(sGuidelines_Death_200_DiagNotInCare);
+	int * pGuidelines_Death_200_InCareNeverArt = INTEGER(sGuidelines_Death_200_InCareNeverArt);
+	int * pGuidelines_Death_200_ArtLessSixMonths = INTEGER(sGuidelines_Death_200_ArtLessSixMonths);
+	int * pGuidelines_Death_200_ArtMoreSixMonths = INTEGER(sGuidelines_Death_200_ArtMoreSixMonths);
+	int * pGuidelines_Death_200_OffArt = INTEGER(sGuidelines_Death_200_OffArt);
+	int * pGuidelines_Art_500 = INTEGER(sGuidelines_Art_500);
+	int * pGuidelines_Art_350500 = INTEGER(sGuidelines_Art_350500);
+	int * pGuidelines_Art_200350 = INTEGER(sGuidelines_Art_200350);
+	int * pGuidelines_Art_200 = INTEGER(sGuidelines_Art_200);
+	int * pGuidelines_NewInfectionsAdult = INTEGER(sGuidelines_NewInfectionsAdult);
+	int * pGuidelines_NewDiagnoses = INTEGER(sGuidelines_NewDiagnoses);
+	int * pGuidelines_PreArtDropout = INTEGER(sGuidelines_PreArtDropout);
+	int * pGuidelines_ArtDropout = INTEGER(sGuidelines_ArtDropout);
 
 	for(size_t i=0;i<66;i++) {
 		if(i<3) {
@@ -384,7 +578,68 @@ SEXP CallCascade(SEXP s_pop,
 		pAidsDeath[i] = theAidsDeath[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,63));
+	for(size_t i=0;i<36;i++) {
+		pGuidelines_PopDist_HivNegative[i] = theGuidelines_PopDist_HivNegative[i];
+		pGuidelines_PopDist_500_NeverDiag[i] = theGuidelines_PopDist_500_NeverDiag[i];
+		pGuidelines_PopDist_500_DiagNotInCare[i] = theGuidelines_PopDist_500_DiagNotInCare[i];
+		pGuidelines_PopDist_500_InCareNeverArt[i] = theGuidelines_PopDist_500_InCareNeverArt[i];
+		pGuidelines_PopDist_500_ArtLessSixMonths[i] = theGuidelines_PopDist_500_ArtLessSixMonths[i];
+		pGuidelines_PopDist_500_ArtMoreSixMonths[i] = theGuidelines_PopDist_500_ArtMoreSixMonths[i];
+		pGuidelines_PopDist_500_OffArt[i] = theGuidelines_PopDist_500_OffArt[i];
+		pGuidelines_PopDist_350500_NeverDiag[i] = theGuidelines_PopDist_350500_NeverDiag[i];
+		pGuidelines_PopDist_350500_DiagNotInCare[i] = theGuidelines_PopDist_350500_DiagNotInCare[i];
+		pGuidelines_PopDist_350500_InCareNeverArt[i] = theGuidelines_PopDist_350500_InCareNeverArt[i];
+		pGuidelines_PopDist_350500_ArtLessSixMonths[i] = theGuidelines_PopDist_350500_ArtLessSixMonths[i];
+		pGuidelines_PopDist_350500_ArtMoreSixMonths[i] = theGuidelines_PopDist_350500_ArtMoreSixMonths[i];
+		pGuidelines_PopDist_350500_OffArt[i] = theGuidelines_PopDist_350500_OffArt[i];
+		pGuidelines_PopDist_200350_NeverDiag[i] = theGuidelines_PopDist_200350_NeverDiag[i];
+		pGuidelines_PopDist_200350_DiagNotInCare[i] = theGuidelines_PopDist_200350_DiagNotInCare[i];
+		pGuidelines_PopDist_200350_InCareNeverArt[i] = theGuidelines_PopDist_200350_InCareNeverArt[i];
+		pGuidelines_PopDist_200350_ArtLessSixMonths[i] = theGuidelines_PopDist_200350_ArtLessSixMonths[i];
+		pGuidelines_PopDist_200350_ArtMoreSixMonths[i] = theGuidelines_PopDist_200350_ArtMoreSixMonths[i];
+		pGuidelines_PopDist_200350_OffArt[i] = theGuidelines_PopDist_200350_OffArt[i];
+		pGuidelines_PopDist_200_NeverDiag[i] = theGuidelines_PopDist_200_NeverDiag[i];
+		pGuidelines_PopDist_200_DiagNotInCare[i] = theGuidelines_PopDist_200_DiagNotInCare[i];
+		pGuidelines_PopDist_200_InCareNeverArt[i] = theGuidelines_PopDist_200_InCareNeverArt[i];
+		pGuidelines_PopDist_200_ArtLessSixMonths[i] = theGuidelines_PopDist_200_ArtLessSixMonths[i];
+		pGuidelines_PopDist_200_ArtMoreSixMonths[i] = theGuidelines_PopDist_200_ArtMoreSixMonths[i];
+		pGuidelines_PopDist_200_OffArt[i] = theGuidelines_PopDist_200_OffArt[i];
+		pGuidelines_Death_HivNegative[i] = theGuidelines_Death_HivNegative[i];
+		pGuidelines_Death_500_NeverDiag[i] = theGuidelines_Death_500_NeverDiag[i];
+		pGuidelines_Death_500_DiagNotInCare[i] = theGuidelines_Death_500_DiagNotInCare[i];
+		pGuidelines_Death_500_InCareNeverArt[i] = theGuidelines_Death_500_InCareNeverArt[i];
+		pGuidelines_Death_500_ArtLessSixMonths[i] = theGuidelines_Death_500_ArtLessSixMonths[i];
+		pGuidelines_Death_500_ArtMoreSixMonths[i] = theGuidelines_Death_500_ArtMoreSixMonths[i];
+		pGuidelines_Death_500_OffArt[i] = theGuidelines_Death_500_OffArt[i];
+		pGuidelines_Death_350500_NeverDiag[i] = theGuidelines_Death_350500_NeverDiag[i];
+		pGuidelines_Death_350500_DiagNotInCare[i] = theGuidelines_Death_350500_DiagNotInCare[i];
+		pGuidelines_Death_350500_InCareNeverArt[i] = theGuidelines_Death_350500_InCareNeverArt[i];
+		pGuidelines_Death_350500_ArtLessSixMonths[i] = theGuidelines_Death_350500_ArtLessSixMonths[i];
+		pGuidelines_Death_350500_ArtMoreSixMonths[i] = theGuidelines_Death_350500_ArtMoreSixMonths[i];
+		pGuidelines_Death_350500_OffArt[i] = theGuidelines_Death_350500_OffArt[i];
+		pGuidelines_Death_200350_NeverDiag[i] = theGuidelines_Death_200350_NeverDiag[i];
+		pGuidelines_Death_200350_DiagNotInCare[i] = theGuidelines_Death_200350_DiagNotInCare[i];
+		pGuidelines_Death_200350_InCareNeverArt[i] = theGuidelines_Death_200350_InCareNeverArt[i];
+		pGuidelines_Death_200350_ArtLessSixMonths[i] = theGuidelines_Death_200350_ArtLessSixMonths[i];
+		pGuidelines_Death_200350_ArtMoreSixMonths[i] = theGuidelines_Death_200350_ArtMoreSixMonths[i];
+		pGuidelines_Death_200350_OffArt[i] = theGuidelines_Death_200350_OffArt[i];
+		pGuidelines_Death_200_NeverDiag[i] = theGuidelines_Death_200_NeverDiag[i];
+		pGuidelines_Death_200_DiagNotInCare[i] = theGuidelines_Death_200_DiagNotInCare[i];
+		pGuidelines_Death_200_InCareNeverArt[i] = theGuidelines_Death_200_InCareNeverArt[i];
+		pGuidelines_Death_200_ArtLessSixMonths[i] = theGuidelines_Death_200_ArtLessSixMonths[i];
+		pGuidelines_Death_200_ArtMoreSixMonths[i] = theGuidelines_Death_200_ArtMoreSixMonths[i];
+		pGuidelines_Death_200_OffArt[i] = theGuidelines_Death_200_OffArt[i];
+		pGuidelines_Art_500[i] = theGuidelines_Art_500[i];
+		pGuidelines_Art_350500[i] = theGuidelines_Art_350500[i];
+		pGuidelines_Art_200350[i] = theGuidelines_Art_200350[i];
+		pGuidelines_Art_200[i] = theGuidelines_Art_200[i];
+		pGuidelines_NewInfectionsAdult[i] = theGuidelines_NewInfectionsAdult[i];
+		pGuidelines_NewDiagnoses[i] = theGuidelines_NewDiagnoses[i];
+		pGuidelines_PreArtDropout[i] = theGuidelines_PreArtDropout[i];
+		pGuidelines_ArtDropout[i] = theGuidelines_ArtDropout[i];
+	}
+
+	PROTECT(sOUT = allocVector(VECSXP,121));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
@@ -448,8 +703,66 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,60,sAidsDeath);
 	SET_VECTOR_ELT(sOUT,61,sDeath_2010_Age);
 	SET_VECTOR_ELT(sOUT,62,sAidsDeath_2010_Age);
+	SET_VECTOR_ELT(sOUT,63,sGuidelines_PopDist_HivNegative);
+	SET_VECTOR_ELT(sOUT,64,sGuidelines_PopDist_500_NeverDiag);
+	SET_VECTOR_ELT(sOUT,65,sGuidelines_PopDist_500_DiagNotInCare);
+	SET_VECTOR_ELT(sOUT,66,sGuidelines_PopDist_500_InCareNeverArt);
+	SET_VECTOR_ELT(sOUT,67,sGuidelines_PopDist_500_ArtLessSixMonths);
+	SET_VECTOR_ELT(sOUT,68,sGuidelines_PopDist_500_ArtMoreSixMonths);
+	SET_VECTOR_ELT(sOUT,69,sGuidelines_PopDist_500_OffArt);
+	SET_VECTOR_ELT(sOUT,70,sGuidelines_PopDist_350500_NeverDiag);
+	SET_VECTOR_ELT(sOUT,71,sGuidelines_PopDist_350500_DiagNotInCare);
+	SET_VECTOR_ELT(sOUT,72,sGuidelines_PopDist_350500_InCareNeverArt);
+	SET_VECTOR_ELT(sOUT,73,sGuidelines_PopDist_350500_ArtLessSixMonths);
+	SET_VECTOR_ELT(sOUT,74,sGuidelines_PopDist_350500_ArtMoreSixMonths);
+	SET_VECTOR_ELT(sOUT,75,sGuidelines_PopDist_350500_OffArt);
+	SET_VECTOR_ELT(sOUT,76,sGuidelines_PopDist_200350_NeverDiag);
+	SET_VECTOR_ELT(sOUT,77,sGuidelines_PopDist_200350_DiagNotInCare);
+	SET_VECTOR_ELT(sOUT,78,sGuidelines_PopDist_200350_InCareNeverArt);
+	SET_VECTOR_ELT(sOUT,79,sGuidelines_PopDist_200350_ArtLessSixMonths);
+	SET_VECTOR_ELT(sOUT,80,sGuidelines_PopDist_200350_ArtMoreSixMonths);
+	SET_VECTOR_ELT(sOUT,81,sGuidelines_PopDist_200350_OffArt);
+	SET_VECTOR_ELT(sOUT,82,sGuidelines_PopDist_200_NeverDiag);
+	SET_VECTOR_ELT(sOUT,83,sGuidelines_PopDist_200_DiagNotInCare);
+	SET_VECTOR_ELT(sOUT,84,sGuidelines_PopDist_200_InCareNeverArt);
+	SET_VECTOR_ELT(sOUT,85,sGuidelines_PopDist_200_ArtLessSixMonths);
+	SET_VECTOR_ELT(sOUT,86,sGuidelines_PopDist_200_ArtMoreSixMonths);
+	SET_VECTOR_ELT(sOUT,87,sGuidelines_PopDist_200_OffArt);
+	SET_VECTOR_ELT(sOUT,88,sGuidelines_Death_HivNegative);
+	SET_VECTOR_ELT(sOUT,89,sGuidelines_Death_500_NeverDiag);
+	SET_VECTOR_ELT(sOUT,90,sGuidelines_Death_500_DiagNotInCare);
+	SET_VECTOR_ELT(sOUT,91,sGuidelines_Death_500_InCareNeverArt);
+	SET_VECTOR_ELT(sOUT,92,sGuidelines_Death_500_ArtLessSixMonths);
+	SET_VECTOR_ELT(sOUT,93,sGuidelines_Death_500_ArtMoreSixMonths);
+	SET_VECTOR_ELT(sOUT,94,sGuidelines_Death_500_OffArt);
+	SET_VECTOR_ELT(sOUT,95,sGuidelines_Death_350500_NeverDiag);
+	SET_VECTOR_ELT(sOUT,96,sGuidelines_Death_350500_DiagNotInCare);
+	SET_VECTOR_ELT(sOUT,97,sGuidelines_Death_350500_InCareNeverArt);
+	SET_VECTOR_ELT(sOUT,98,sGuidelines_Death_350500_ArtLessSixMonths);
+	SET_VECTOR_ELT(sOUT,99,sGuidelines_Death_350500_ArtMoreSixMonths);
+	SET_VECTOR_ELT(sOUT,100,sGuidelines_Death_350500_OffArt);
+	SET_VECTOR_ELT(sOUT,101,sGuidelines_Death_200350_NeverDiag);
+	SET_VECTOR_ELT(sOUT,102,sGuidelines_Death_200350_DiagNotInCare);
+	SET_VECTOR_ELT(sOUT,103,sGuidelines_Death_200350_InCareNeverArt);
+	SET_VECTOR_ELT(sOUT,104,sGuidelines_Death_200350_ArtLessSixMonths);
+	SET_VECTOR_ELT(sOUT,105,sGuidelines_Death_200350_ArtMoreSixMonths);
+	SET_VECTOR_ELT(sOUT,106,sGuidelines_Death_200350_OffArt);
+	SET_VECTOR_ELT(sOUT,107,sGuidelines_Death_200_NeverDiag);
+	SET_VECTOR_ELT(sOUT,108,sGuidelines_Death_200_DiagNotInCare);
+	SET_VECTOR_ELT(sOUT,109,sGuidelines_Death_200_InCareNeverArt);
+	SET_VECTOR_ELT(sOUT,110,sGuidelines_Death_200_ArtLessSixMonths);
+	SET_VECTOR_ELT(sOUT,111,sGuidelines_Death_200_ArtMoreSixMonths);
+	SET_VECTOR_ELT(sOUT,112,sGuidelines_Death_200_OffArt);
+	SET_VECTOR_ELT(sOUT,113,sGuidelines_Art_500);
+	SET_VECTOR_ELT(sOUT,114,sGuidelines_Art_350500);
+	SET_VECTOR_ELT(sOUT,115,sGuidelines_Art_200350);
+	SET_VECTOR_ELT(sOUT,116,sGuidelines_Art_200);
+	SET_VECTOR_ELT(sOUT,117,sGuidelines_NewInfectionsAdult);
+	SET_VECTOR_ELT(sOUT,118,sGuidelines_NewDiagnoses);
+	SET_VECTOR_ELT(sOUT,119,sGuidelines_PreArtDropout);
+	SET_VECTOR_ELT(sOUT,120,sGuidelines_ArtDropout);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,63));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,121));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
@@ -513,9 +826,67 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,60,mkChar("sAidsDeath"));
 	SET_VECTOR_ELT(sOUTNAMES,61,mkChar("sDeath_2010_Age"));
 	SET_VECTOR_ELT(sOUTNAMES,62,mkChar("sAidsDeath_2010_Age"));
+	SET_VECTOR_ELT(sOUTNAMES,63,mkdir("sGuidelines_PopDist_HivNegative"));
+	SET_VECTOR_ELT(sOUTNAMES,64,mkdir("sGuidelines_PopDist_500_NeverDiag"));
+	SET_VECTOR_ELT(sOUTNAMES,65,mkdir("sGuidelines_PopDist_500_DiagNotInCare"));
+	SET_VECTOR_ELT(sOUTNAMES,66,mkdir("sGuidelines_PopDist_500_InCareNeverArt"));
+	SET_VECTOR_ELT(sOUTNAMES,67,mkdir("sGuidelines_PopDist_500_ArtLessSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,68,mkdir("sGuidelines_PopDist_500_ArtMoreSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,69,mkdir("sGuidelines_PopDist_500_OffArt"));
+	SET_VECTOR_ELT(sOUTNAMES,70,mkdir("sGuidelines_PopDist_350500_NeverDiag"));
+	SET_VECTOR_ELT(sOUTNAMES,71,mkdir("sGuidelines_PopDist_350500_DiagNotInCare"));
+	SET_VECTOR_ELT(sOUTNAMES,72,mkdir("sGuidelines_PopDist_350500_InCareNeverArt"));
+	SET_VECTOR_ELT(sOUTNAMES,73,mkdir("sGuidelines_PopDist_350500_ArtLessSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,74,mkdir("sGuidelines_PopDist_350500_ArtMoreSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,75,mkdir("sGuidelines_PopDist_350500_OffArt"));
+	SET_VECTOR_ELT(sOUTNAMES,76,mkdir("sGuidelines_PopDist_200350_NeverDiag"));
+	SET_VECTOR_ELT(sOUTNAMES,77,mkdir("sGuidelines_PopDist_200350_DiagNotInCare"));
+	SET_VECTOR_ELT(sOUTNAMES,78,mkdir("sGuidelines_PopDist_200350_InCareNeverArt"));
+	SET_VECTOR_ELT(sOUTNAMES,79,mkdir("sGuidelines_PopDist_200350_ArtLessSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,80,mkdir("sGuidelines_PopDist_200350_ArtMoreSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,81,mkdir("sGuidelines_PopDist_200350_OffArt"));
+	SET_VECTOR_ELT(sOUTNAMES,82,mkdir("sGuidelines_PopDist_200_NeverDiag"));
+	SET_VECTOR_ELT(sOUTNAMES,83,mkdir("sGuidelines_PopDist_200_DiagNotInCare"));
+	SET_VECTOR_ELT(sOUTNAMES,84,mkdir("sGuidelines_PopDist_200_InCareNeverArt"));
+	SET_VECTOR_ELT(sOUTNAMES,85,mkdir("sGuidelines_PopDist_200_ArtLessSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,86,mkdir("sGuidelines_PopDist_200_ArtMoreSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,87,mkdir("sGuidelines_PopDist_200_OffArt"));
+	SET_VECTOR_ELT(sOUTNAMES,88,mkdir("sGuidelines_Death_HivNegative"));
+	SET_VECTOR_ELT(sOUTNAMES,89,mkdir("sGuidelines_Death_500_NeverDiag"));
+	SET_VECTOR_ELT(sOUTNAMES,90,mkdir("sGuidelines_Death_500_DiagNotInCare"));
+	SET_VECTOR_ELT(sOUTNAMES,91,mkdir("sGuidelines_Death_500_InCareNeverArt"));
+	SET_VECTOR_ELT(sOUTNAMES,92,mkdir("sGuidelines_Death_500_ArtLessSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,93,mkdir("sGuidelines_Death_500_ArtMoreSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,94,mkdir("sGuidelines_Death_500_OffArt"));
+	SET_VECTOR_ELT(sOUTNAMES,95,mkdir("sGuidelines_Death_350500_NeverDiag"));
+	SET_VECTOR_ELT(sOUTNAMES,96,mkdir("sGuidelines_Death_350500_DiagNotInCare"));
+	SET_VECTOR_ELT(sOUTNAMES,97,mkdir("sGuidelines_Death_350500_InCareNeverArt"));
+	SET_VECTOR_ELT(sOUTNAMES,98,mkdir("sGuidelines_Death_350500_ArtLessSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,99,mkdir("sGuidelines_Death_350500_ArtMoreSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,100,mkdir("sGuidelines_Death_350500_OffArt"));
+	SET_VECTOR_ELT(sOUTNAMES,101,mkdir("sGuidelines_Death_200350_NeverDiag"));
+	SET_VECTOR_ELT(sOUTNAMES,102,mkdir("sGuidelines_Death_200350_DiagNotInCare"));
+	SET_VECTOR_ELT(sOUTNAMES,103,mkdir("sGuidelines_Death_200350_InCareNeverArt"));
+	SET_VECTOR_ELT(sOUTNAMES,104,mkdir("sGuidelines_Death_200350_ArtLessSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,105,mkdir("sGuidelines_Death_200350_ArtMoreSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,106,mkdir("sGuidelines_Death_200350_OffArt"));
+	SET_VECTOR_ELT(sOUTNAMES,107,mkdir("sGuidelines_Death_200_NeverDiag"));
+	SET_VECTOR_ELT(sOUTNAMES,108,mkdir("sGuidelines_Death_200_DiagNotInCare"));
+	SET_VECTOR_ELT(sOUTNAMES,109,mkdir("sGuidelines_Death_200_InCareNeverArt"));
+	SET_VECTOR_ELT(sOUTNAMES,110,mkdir("sGuidelines_Death_200_ArtLessSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,111,mkdir("sGuidelines_Death_200_ArtMoreSixMonths"));
+	SET_VECTOR_ELT(sOUTNAMES,112,mkdir("sGuidelines_Death_200_OffArt"));
+	SET_VECTOR_ELT(sOUTNAMES,113,mkdir("sGuidelines_Art_500"));
+	SET_VECTOR_ELT(sOUTNAMES,114,mkdir("sGuidelines_Art_350500"));
+	SET_VECTOR_ELT(sOUTNAMES,115,mkdir("sGuidelines_Art_200350"));
+	SET_VECTOR_ELT(sOUTNAMES,116,mkdir("sGuidelines_Art_200"));
+	SET_VECTOR_ELT(sOUTNAMES,117,mkdir("sGuidelines_NewInfectionsAdult"));
+	SET_VECTOR_ELT(sOUTNAMES,118,mkdir("sGuidelines_NewDiagnoses"));
+	SET_VECTOR_ELT(sOUTNAMES,119,mkdir("sGuidelines_PreArtDropout"));
+	SET_VECTOR_ELT(sOUTNAMES,120,mkdir("sGuidelines_ArtDropout"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(79);
+	UNPROTECT(137);
 	return(sOUT);
 	}
 

@@ -39,6 +39,7 @@ int * theGuidelines_PopDist_200_InCareNeverArt;
 int * theGuidelines_PopDist_200_ArtLessSixMonths;
 int * theGuidelines_PopDist_200_ArtMoreSixMonths;
 int * theGuidelines_PopDist_200_OffArt;
+
 int * theGuidelines_Death_HivNegative;
 int * theGuidelines_Death_500_NeverDiag;
 int * theGuidelines_Death_500_DiagNotInCare;
@@ -64,10 +65,12 @@ int * theGuidelines_Death_200_InCareNeverArt;
 int * theGuidelines_Death_200_ArtLessSixMonths;
 int * theGuidelines_Death_200_ArtMoreSixMonths;
 int * theGuidelines_Death_200_OffArt;
+
 int * theGuidelines_Art_500;
 int * theGuidelines_Art_350500;
 int * theGuidelines_Art_200350;
 int * theGuidelines_Art_200;
+
 int * theGuidelines_NewInfectionsAdult;
 int * theGuidelines_NewDiagnoses;
 int * theGuidelines_PreArtDropout;
