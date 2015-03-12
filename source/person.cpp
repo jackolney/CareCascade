@@ -458,11 +458,11 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		
 	} else if(theTime > 14610) {
 		everLostArt = true;
-		double yr [22];
-		for(size_t i = 0; i<27; i++)
+		double yr [27];
+		for(size_t i=0; i<27; i++)
 			yr[i] = 14610 + (i * 365.25);
 		
-		unsigned int i = 0;
+		unsigned int i=0;
 		while(theTime > yr[i] && i<26)
 			i++;
 		
