@@ -463,7 +463,7 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 			yr[i] = 14610 + (i * 365.25);
 		
 		unsigned int i=0;
-		while(theTime > yr[i] && i<26)
+		while(theTime > yr[i] && i<27)
 			i++;
 		
 		if(artDay > yr[i-1])
