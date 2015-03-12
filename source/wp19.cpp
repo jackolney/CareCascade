@@ -82,16 +82,17 @@ void SeedGuidelinesOutput(person * const thePerson)
 	for(size_t i=0; i<36; i++) {
 		yr[i] = 11140.12 + (i * 365.25);
 		if(thePerson->GetBirthDay() < yr[i])
-			new GuidelinesOutput(thePerson,yr[i]);
+			new GuidelinesOutput(thePerson,yr[i],i);
 	}
 }
 
 /////////////////////
 /////////////////////
 
-GuidelinesOutput::GuidelinesOutput(person * const thePerson, const double Time) :
+GuidelinesOutput::GuidelinesOutput(person * const thePerson, const double Time, const int theIndex) :
 event(Time),
-pPerson(thePerson)
+pPerson(thePerson),
+index(theIndex)
 {}
 
 GuidelinesOutput::~GuidelinesOutput()
@@ -99,12 +100,12 @@ GuidelinesOutput::~GuidelinesOutput()
 
 bool GuidelinesOutput::CheckValid()
 {
-	return true;
+	return pPerson->Alive();
 }
 
 void GuidelinesOutput::Execute()
 {
-	WritePopDist(pPerson);
+	WritePopDist(pPerson,index);
 }
 
 /////////////////////

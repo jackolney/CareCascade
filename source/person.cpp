@@ -446,6 +446,7 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		cd4AtArt = currentCd4;
 		artCount++;
 		if(everLostArt) { everReturnArt = true; calEverReturnArt = true; }
+		if(!inCare) { SetInCareState(theState,theTime); }
 
 		/* Calibration */
 		calEverArt = true;

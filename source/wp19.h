@@ -20,7 +20,7 @@ void SeedGuidelinesOutput(person * const thePerson);
 
 class GuidelinesOutput : public event { //For reporting GuidelinesOutput from 2000 to 2035.
 public:
-	GuidelinesOutput(person * const thePerson, const double Time); //constructor
+	GuidelinesOutput(person * const thePerson, const double Time, const int theIndex); //constructor
 	~GuidelinesOutput(); //destructor
 	
 	/* Methods */
@@ -29,6 +29,7 @@ public:
 	
 private:
 	person * const pPerson;
+	const int index;
 };
 
 /////////////////////
