@@ -81,7 +81,7 @@ void ChargeArtCare(person * const thePerson)
 			yr[i] = 14610 + (i * 365.25);
 		
 		unsigned int i = 0;
-		while(theQ->GetTime() > yr[i] && i<27)
+		while(theQ->GetTime() >= yr[i] && i<27)
 			i++;
 		
 		if(thePerson->GetArtDay() <= yr[i-1])
@@ -104,7 +104,7 @@ void ChargeAdherence(person * const thePerson)
 			yr[i] = 14610 + (i * 365.25);
 		
 		unsigned int i = 0;
-		while(theQ->GetTime() > yr[i] && i<27)
+		while(theQ->GetTime() >= yr[i] && i<27)
 			i++;
 		
 		if(thePerson->GetArtDay() <= yr[i-1])
@@ -144,7 +144,7 @@ void WriteCost(person * const thePerson)
 			yr[i] = 14975.25 + (i * 365.25);
 		
 		unsigned int i = 0;
-		while(theQ->GetTime() > yr[i] && i<26)
+		while(theQ->GetTime() >= yr[i] && i<26)
 			i++;
 		
 		if(theQ->GetTime() > 14610) {

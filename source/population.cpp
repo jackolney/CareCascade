@@ -217,7 +217,7 @@ double population::CalculateLambda(const double * theIRR)
 			yr[i] = i * 365.25;
 		
 		unsigned int j = 0;
-		while(theQ->GetTime() > yr[j] && j < 32)
+		while(theQ->GetTime() >= yr[j] && j < 32)
 			j++;
 		
 		I = SpectrumIncidence[j] / sizeAdjustment;
