@@ -114,12 +114,12 @@ calEverReturnArt(false)
 	SeedOutput(this);
 	SeedCalibration(this,13514.25,14609,14974,16225);
 	SeedInterventions(this);
-	if(Time > 12418) {
+	if(Time > 12418.5) {
 		new SeedInitialHivTests(this,Time);
 		new SeedTreatmentGuidelinesUpdate(this,Time);
 	} else {
-		new SeedInitialHivTests(this,12418);
-		new SeedTreatmentGuidelinesUpdate(this,14975);
+		new SeedInitialHivTests(this,12418.5);
+		new SeedTreatmentGuidelinesUpdate(this,14975.25);
 	}
 }
 
