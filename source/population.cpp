@@ -58,15 +58,6 @@ void population::Generate()
 	
 	for(int i = 0; i < 60; i++)
 		new cohort(this,popSize[i] / sizeAdjustment,i * 365.25);
-	
-		//TEMPORARY TESTING PLATFORM//
-//	double yr = 0; //specifiees startTime for individuals.
-//	int cohortArray [1] = {1};
-//	
-//	for(int i = 0; i < 1; i++) {
-//		new cohort(this,cohortArray[i],yr);
-//		yr += 365;
-//	}
 }
 
 ////////////////////
@@ -224,7 +215,7 @@ double population::CalculateLambda(const double * theIRR)
 			yr[i] = i * 365.25;
 		
 		unsigned int j = 0;
-		while(theQ->GetTime() > yr[j] && j < 32)
+		while(theQ->GetTime() >= yr[j] && j < 32)
 			j++;
 		
 		I = SpectrumIncidence[j] / sizeAdjustment;

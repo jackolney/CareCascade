@@ -66,7 +66,7 @@ void WritePop(person * const thePerson)
 		yr[i] = 365.25 + (i * 365.25);
 	
 	unsigned int i = 0;
-	while(theQ->GetTime() > yr[i] && i < 59)
+	while(theQ->GetTime() >= yr[i] && i < 59)
 		i++;
 	
 	if(theQ->GetTime() > thePerson->GetBirthDay()) {
@@ -88,7 +88,7 @@ void WriteHiv(person * const thePerson)
 		yr[i] = 365.25 + (i * 365.25);
 	
 	unsigned int i = 0;
-	while(theQ->GetTime() > yr[i] && i < 59)
+	while(theQ->GetTime() >= yr[i] && i < 59)
 		i++;
 	
 	if(thePerson->Alive()) {
@@ -108,7 +108,7 @@ void WriteArt(person * const thePerson)
 		yr[i] = 365.25 + (i * 365.25);
 	
 	unsigned int i = 0;
-	while(theQ->GetTime() > yr[i] && i < 59)
+	while(theQ->GetTime() >= yr[i] && i < 59)
 		i++;
 	
 	if(thePerson->Alive()) {
@@ -167,7 +167,7 @@ void WriteDeath(person * const thePerson)
 		yr[i] = 365.25 + (i * 365.25);
 	
 	unsigned int i = 0;
-	while(theQ->GetTime() > yr[i] && i < 59)
+	while(theQ->GetTime() >= yr[i] && i < 59)
 		i++;	
 
 	theDeath[i]++;
@@ -193,7 +193,7 @@ void WriteAidsDeath(person * const thePerson)
 		yr[i] = 365.25 + (i * 365.25);
 	
 	unsigned int i = 0;
-	while(theQ->GetTime() > yr[i] && i < 59)
+	while(theQ->GetTime() >= yr[i] && i < 59)
 		i++;
 	
 	theAidsDeath[i] += thePerson->GetSeroStatus();
@@ -297,7 +297,7 @@ void WriteCd4(person * const thePerson)
 		yr[i] = 365.25 + (i * 365.25);
 	
 	unsigned int i = 0;
-	while(theQ->GetTime() > yr[i] && i < 59)
+	while(theQ->GetTime() >= yr[i] && i < 59)
 		i++;
 
 	if(theQ->GetTime() > thePerson->GetBirthDay()) {
@@ -334,7 +334,7 @@ void WriteWho(person * const thePerson)
 		yr[i] = 365.25 + (i * 365.25);
 	
 	unsigned int i = 0;
-	while(theQ->GetTime() > yr[i] && i < 59)
+	while(theQ->GetTime() >= yr[i] && i < 59)
 		i++;
 	
 	if(theQ->GetTime() > thePerson->GetBirthDay()) {
@@ -370,7 +370,7 @@ void WriteIncidence(unsigned int const &theIncidentCases)
 		yr[i] = 365.25 + (i * 365.25);
 	
 	unsigned int i = 0;
-	while(theQ->GetTime() > yr[i] && i < 59)
+	while(theQ->GetTime() >= yr[i] && i < 59)
 		i++;
 	
 	theINCIDENCE[i] = theIncidentCases;

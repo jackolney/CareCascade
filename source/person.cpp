@@ -291,14 +291,6 @@ void person::Hiv()
 	UpdatePopulation();
 	iPop->AddCase();
 	iPop->UpdateArray(this);
-	
-	//For development purposes.
-	//	D(cout << "HIV+" << endl);
-	//	SetSeroStatus(true);
-	//	SetSeroconversionDay(Time);
-	//	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
-	//	ScheduleHivIndicatorUpdate(); //ScheduleHivIndicatorUpdate
-	//	return true;
 }
 
 /////////////////////
@@ -352,7 +344,7 @@ void person::AssignHivDeathDate()
 /////////////////////
 /////////////////////
 
-double person::GenerateHivDeathDate() //Perhaps a way of cancelling the previous date in the line??
+double person::GenerateHivDeathDate()
 {
 	//HivMortalityTime [ART] [WHO-1] [CD4-1];
 	const double HivMortalityTime [2] [4] [4] =

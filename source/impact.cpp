@@ -55,7 +55,7 @@ void WriteDaly(person * const thePerson)
 		yr[i] = 14975.25 + (i * 365.25);
 	
 	unsigned int i = 0;
-	while(theQ->GetTime() > yr[i])
+	while(theQ->GetTime() >= yr[i])
 		i++;
 	
 	if(theQ->GetTime() > 14610)
