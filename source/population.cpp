@@ -263,7 +263,6 @@ void population::CalculateIncidence(const size_t theIndex, const double theTime)
 	/* Record incidence and reset */
 	WriteIncidence(incidentCases,theIndex);
 	incidentCases = 0;
-	cout << "Year " << 1970 + (theTime / 365.25) << endl;
 }
 
 /////////////////////
