@@ -12,11 +12,9 @@
 #include "person.h"
 #include "event.h"
 #include "events.h"
-#include "eventQ.h"
 #include "rng.h"
 
 extern Rng * theRng;
-extern eventQ * theQ;
 
 cohort::cohort(population * const thePop, const unsigned int Size, const unsigned int StartTime) :
 iPop(thePop),
@@ -35,11 +33,11 @@ unsigned int cohort::GetCohortSize() const
 	return cohortSize;
 }
 
-void cohort::GenerateCohort()
+void cohort::GenerateCohort(const double theTime)
 {
 	D(cout << "Individuals (n=" << cohortSize << ") being seeded into the model." << endl);
 	for(size_t i = 0; i < cohortSize; i++)
-		ScheduleNewPerson(theRng->doub() * 365.25 + theQ->GetTime()); //The arguement here specifies when an individual will enter the model.
+		ScheduleNewPerson(theRng->doub() * 365.25 + theTime); //The arguement here specifies when an individual will enter the model.
 	
 	SelfDestruct(); // This kills the cohort instance.
 }

@@ -17,12 +17,10 @@
 #include "rng.h"
 #include "cascadeEvents.h"
 #include "cascadeUpdate.h"
-#include "eventQ.h"
 
 using namespace std;
 
 extern Rng * theRng;
-extern eventQ * theQ;
 
 /////////////////////
 /////////////////////
@@ -33,6 +31,7 @@ pPerson(thePerson),
 pointOfCare(poc)
 {
 	D(cout << "Hct seeded for deployment on day = " << Time << endl);
+	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }
 }
 
 SeedHct::~SeedHct()
@@ -48,7 +47,7 @@ bool SeedHct::CheckValid()
 
 void SeedHct::Execute()
 {
-	ScheduleHctHivTest(pPerson,pointOfCare);
+	ScheduleHctHivTest(pPerson,GetTime(),pointOfCare);
 }
 
 /////////////////////
@@ -59,6 +58,7 @@ event(Time),
 pPerson(thePerson)
 {
 	D(cout << "PerpetualHct seeded for deployment on day = " << Time << endl);
+	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }
 }
 
 SeedPerpetualHct::~SeedPerpetualHct()
@@ -74,7 +74,7 @@ bool SeedPerpetualHct::CheckValid()
 
 void SeedPerpetualHct::Execute()
 {
-	SchedulePerpetualHctHivTest(pPerson);
+	SchedulePerpetualHctHivTest(pPerson,GetTime());
 }
 
 /////////////////////
@@ -87,6 +87,7 @@ pointOfCare(poc)
 {
 	thePerson->SetHctHivTestDate(Time);
 	D(cout << "HctHivTest scheduled for day = " << Time << endl);
+	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }
 }
 
 HctHivTest::~HctHivTest()
@@ -102,7 +103,7 @@ bool HctHivTest::CheckValid()
 
 void HctHivTest::Execute()
 {
-	UpdateDaly(pPerson);
+	UpdateDaly(pPerson,GetTime());
 	ChargeHctVisit(pPerson);
 	D(cout << "HctHivTest executed." << endl);
 	if(pPerson->GetSeroStatus()) {
@@ -111,8 +112,8 @@ void HctHivTest::Execute()
 		if(pointOfCare)
 			new HctPocCd4Test(pPerson,GetTime());
 		else if(HctLinkage(pPerson))
-			ScheduleInitialCd4TestAfterHct(pPerson);
-		SchedulePictHivTest(pPerson);
+			ScheduleInitialCd4TestAfterHct(pPerson,GetTime());
+		SchedulePictHivTest(pPerson,GetTime());
 	}
 }
 
@@ -124,6 +125,7 @@ event(Time),
 pPerson(thePerson)
 {
 	D(cout << "HctPocCd4Test scheduled for day = " << Time << endl);
+	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }
 }
 
 HctPocCd4Test::~HctPocCd4Test()
@@ -136,20 +138,20 @@ bool HctPocCd4Test::CheckValid()
 
 void HctPocCd4Test::Execute()
 {
-	UpdateDaly(pPerson);
+	UpdateDaly(pPerson,GetTime());
 	ChargePocCd4Test(pPerson);
 	D(cout << "HctPocCd4Test executed." << endl);
 	pPerson->SetEverCd4TestState(true);
 	pPerson->SetEverCd4TestResultState(true);
 	if(pPerson->GetEligible()) {
 		D(cout << "Eligible for ART." << endl);
-		ScheduleArtInitiation(pPerson);
+		ScheduleArtInitiation(pPerson,GetTime());
 	} else {
 		D(cout << "Not eligible for ART." << endl);
 		if(HctLinkage(pPerson))
-			ScheduleInitialCd4TestAfterHct(pPerson);
+			ScheduleInitialCd4TestAfterHct(pPerson,GetTime());
 	}
-	SchedulePictHivTest(pPerson);
+	SchedulePictHivTest(pPerson,GetTime());
 }
 
 /////////////////////
@@ -161,6 +163,7 @@ pPerson(thePerson),
 probReturn(theProb)
 {
 	D(cout << "PreArtOutreach scheduled for day = " << Time << endl);
+	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }
 }
 
 PreArtOutreach::~PreArtOutreach()
@@ -190,6 +193,7 @@ event(Time),
 pPerson(thePerson)
 {
 	D(cout << "VctPocCd4Test scheduled for day = " << Time << endl);
+	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }
 }
 
 VctPocCd4Test::~VctPocCd4Test()
@@ -204,24 +208,24 @@ void VctPocCd4Test::Execute()
 {
 	D(cout << "VctPocCd4Test executed." << endl);
 	D(cout << "Entered care." << endl);
-	UpdateDaly(pPerson);
+	UpdateDaly(pPerson,GetTime());
 	ChargePreArtClinicVisit(pPerson);
 	pPerson->SetEverCd4TestState(true);
 	pPerson->SetEverCd4TestResultState(true);
 	pPerson->SetInCareState(true,GetTime());
 	if(immediateArtFlag)
-		ScheduleImmediateArt(pPerson);
+		ScheduleImmediateArt(pPerson,GetTime());
 	else if(pPerson->GetEligible()) {
 		ChargePocCd4Test(pPerson);
 		D(cout << "Eligible for ART." << endl);
-		ScheduleArtInitiation(pPerson);
+		ScheduleArtInitiation(pPerson,GetTime());
 	} else {
 		ChargePocCd4Test(pPerson);
 		D(cout << "Not eligible for ART." << endl);
-		if(SecondaryCd4Test(pPerson))
-			SchedulePreArtCd4Test(pPerson);
+		if(SecondaryCd4Test(pPerson,GetTime()))
+			SchedulePreArtCd4Test(pPerson,GetTime());
 	}
-	SchedulePictHivTest(pPerson);
+	SchedulePictHivTest(pPerson,GetTime());
 }
 
 /////////////////////
@@ -232,6 +236,7 @@ event(Time),
 pPerson(thePerson)
 {
 	D(cout << "PocCd4Test scheduled for day = " << Time << endl);
+	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }
 }
 
 PocCd4Test::~PocCd4Test()
@@ -245,25 +250,25 @@ bool PocCd4Test::CheckValid()
 
 void PocCd4Test::Execute()
 {
-	D(cout << "PocCd4Test executed." << endl);	
-	UpdateDaly(pPerson);
+	D(cout << "PocCd4Test executed." << endl);
+	UpdateDaly(pPerson,GetTime());
 	ChargePreArtClinicVisit(pPerson);
 	pPerson->SetEverCd4TestState(true);
 	pPerson->SetEverCd4TestResultState(true);
 	pPerson->SetInCareState(true,GetTime());
 	if(immediateArtFlag)
-		ScheduleImmediateArt(pPerson);
+		ScheduleImmediateArt(pPerson,GetTime());
 	else if(pPerson->GetEligible()) {
 		ChargePocCd4Test(pPerson);
 		D(cout << "Eligible for ART." << endl);
-		ScheduleArtInitiation(pPerson);
+		ScheduleArtInitiation(pPerson,GetTime());
 	} else {
 		ChargePocCd4Test(pPerson);
 		D(cout << "Not eligible for ART." << endl);
-		if(SecondaryCd4Test(pPerson))
-			SchedulePreArtCd4Test(pPerson);
+		if(SecondaryCd4Test(pPerson,GetTime()))
+			SchedulePreArtCd4Test(pPerson,GetTime());
 	}
-	SchedulePictHivTest(pPerson);
+	SchedulePictHivTest(pPerson,GetTime());
 }
 
 /////////////////////
@@ -275,6 +280,7 @@ pPerson(thePerson),
 probReturn(theProb)
 {
 	D(cout << "ArtOutreach scheduled for day = " << Time << endl);
+	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }	
 }
 
 ArtOutreach::~ArtOutreach()
@@ -293,12 +299,12 @@ void ArtOutreach::Execute()
 	D(cout << "ArtOutreach executed." << endl);
 	ChargeArtOutreach(pPerson);
 	if(pPerson->GetArtCount() < 2 && theRng->Sample(probReturn)) {
-		UpdateDaly(pPerson);
+		UpdateDaly(pPerson,GetTime());
 		if(!pPerson->GetArtAdherenceState()) { D(cout << "NON-ADHERER to Art." << endl); }
 		pPerson->SetArtInitiationState(true,GetTime());
-		ScheduleCd4Update(pPerson);
-		ScheduleWhoUpdate(pPerson);
-		ScheduleArtDropout(pPerson);
+		ScheduleCd4Update(pPerson,GetTime());
+		ScheduleWhoUpdate(pPerson,GetTime());
+		ScheduleArtDropout(pPerson,GetTime());
 		pPerson->UpdateInfectiousnessArray();
 	}
 }
