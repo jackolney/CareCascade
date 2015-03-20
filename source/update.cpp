@@ -27,8 +27,6 @@ using namespace std;
 
 void ScheduleCd4Update(person * const thePerson, const double theTime)
 {
-	D(cout << "ScheduleCd4Update called." << endl);
-	
 	//Cd4Time [WHO-1] [CD4-2 (4,3,2)]
 	const double Cd4DeclineTime [4] [3] =
 	{
@@ -61,8 +59,6 @@ void ScheduleCd4Update(person * const thePerson, const double theTime)
 
 void ScheduleWhoUpdate(person * const thePerson, const double theTime)
 {
-	D(cout << "ScheduleWhoUpdate called." << endl);
-	
 	//WhoTime [WHO-1][CD4-1]
 	const double WhoDeclineTime [3][4] =
 	{

@@ -27,7 +27,6 @@ using namespace std;
 void UpdateTreatmentGuidelines(person * const thePerson, unsigned int theCd4, unsigned int theWho)
 {
 	thePerson->UpdateTxGuidelines(theCd4,theWho);
-	D(cout << "TxGuidelines Updated (Cd4 = " << theCd4 << ", Who = " << theWho << ")." << endl);
 }
 
 ////////////////////
@@ -35,10 +34,8 @@ void UpdateTreatmentGuidelines(person * const thePerson, unsigned int theCd4, un
 
 void ScheduleVctHivTest(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetBirthDay() != 0 && theTime >= 12418.5) {
-		D(cout << "Scheduling VctHivTest." << endl);
+	if(thePerson->GetBirthDay() != 0 && theTime >= 12418.5)
 		new VctHivTest(thePerson,theTime + theRng->SampleExpDist(vctHivTestTime),vctPocFlag);
-	}
 }
 
 ////////////////////
@@ -47,7 +44,6 @@ void ScheduleVctHivTest(person * const thePerson, const double theTime)
 void SchedulePictHivTest(person * const thePerson, const double theTime)
 {
 	if(thePerson->GetBirthDay() != 0 && theTime >= 12418.5) {
-		D(cout << "Scheduling PictHivTest." << endl);
 		if(thePerson->GetCurrentWho() < 3) {
 			if(!thePerson->GetDiagnosedState())
 				new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_AsymptomaticOblivious));
@@ -73,13 +69,10 @@ void SchedulePictHivTest(person * const thePerson, const double theTime)
 
 bool VctLinkage(person * const thePerson)
 {
-	if(theRng->Sample(vctProbLink)) {
-		D(cout << "Linked to care after Vct." << endl);
+	if(theRng->Sample(vctProbLink))
 		return true;
-	} else {
-		D(cout << "Failed to link to care after Vct." << endl);
+	else
 		return false;
-	}
 }
 
 ////////////////////
@@ -87,13 +80,10 @@ bool VctLinkage(person * const thePerson)
 
 bool PictLinkage(person * const thePerson)
 {
-	if(theRng->Sample(pictProbLink)) {
-		D(cout << "Linked to care after Pict." << endl);
+	if(theRng->Sample(pictProbLink))
 		return true;
-	} else {
-		D(cout << "Failed to link to care after Pict." << endl);
+	else
 		return false;
-	}
 }
 
 ////////////////////

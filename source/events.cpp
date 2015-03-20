@@ -38,7 +38,6 @@ bool CohortStart::CheckValid()
 
 void CohortStart::Execute()
 {
-	D(cout << "CohortStart executed." << endl);
 	pCohort->GenerateCohort(GetTime());
 }
 
@@ -49,7 +48,6 @@ VectorUpdate::VectorUpdate(person * const thePerson, const double Time) :
 event(Time),
 pPerson(thePerson)
 {
-	D(cout << "VectorUpdate on day = " << Time << endl);
 	pPerson->SetVectorUpdateDate(Time);
 	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }
 }
@@ -98,9 +96,7 @@ void Incidence::Execute()
 BetaCalculation::BetaCalculation(population * const thePopulation, const double Time) :
 event(Time),
 pPopulation(thePopulation)
-{
-	D(cout << "BetaCalculation scheduled for = " << Time << endl);
-}
+{}
 
 BetaCalculation::~BetaCalculation()
 {}
@@ -157,7 +153,6 @@ bool PersonStart::CheckValid()
 
 void PersonStart::Execute()
 {
-	D(cout << "PersonStart executed." << endl);
 	new person(pPop,GetTime());
 }
 
@@ -199,14 +194,10 @@ void Death::Execute()
 	WriteCare(pPerson,GetTime());
 	WriteDeath(pPerson,GetTime());
 	if(hivRelated) {
-		D(cout << "Death executed (HIV-related)." << endl);
 		WriteAidsDeath(pPerson,GetTime());
 		WriteClinic(pPerson,GetTime());
-	}
-	else {
-		D(cout << "Death executed (Natural)." << endl);
+	} else
 		delete pPerson;
-	}
 }
 
 /////////////////////
@@ -234,8 +225,6 @@ bool Cd4Decline::CheckValid()
 void Cd4Decline::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
-	D(cout << "Cd4Decline executed." << endl);
-	D(cout << "\tCd4Decline from " << pPerson->GetCurrentCd4() << " to ");
 	pPerson->SetCurrentCd4Count(pPerson->GetCurrentCd4()-1);
 	D(cout << pPerson->GetCurrentCd4() << endl);
 	ScheduleCd4Update(pPerson,GetTime());
@@ -268,8 +257,6 @@ bool Cd4Recover::CheckValid()
 void Cd4Recover::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
-	D(cout << "Cd4Recover executed." << endl);
-	D(cout << "\tCd4Recover from " << pPerson->GetCurrentCd4() << " to ");
 	pPerson->SetCurrentCd4Count(pPerson->GetCurrentCd4()+1);
 	D(cout << pPerson->GetCurrentCd4() << endl);
 	ScheduleCd4Update(pPerson,GetTime());
@@ -302,8 +289,6 @@ bool WhoDecline::CheckValid()
 void WhoDecline::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
-	D(cout << "WhoDecline executed." << endl);
-	D(cout << "\tWhoDecline from " << pPerson->GetCurrentWho() << " to ");
 	pPerson->SetCurrentWhoStage(pPerson->GetCurrentWho()+1);
 	D(cout << pPerson->GetCurrentWho() << endl);
 	ScheduleWhoUpdate(pPerson,GetTime());
@@ -337,8 +322,6 @@ bool WhoRecover::CheckValid()
 void WhoRecover::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
-	D(cout << "WhoRecover executed." << endl);
-	D(cout << "\tWhoRecover from " << pPerson->GetCurrentWho() << " to ");
 	pPerson->SetCurrentWhoStage(pPerson->GetCurrentWho()-1);
 	D(cout << pPerson->GetCurrentWho() << endl);
 	ScheduleWhoUpdate(pPerson,GetTime());

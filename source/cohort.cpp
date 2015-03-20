@@ -22,7 +22,6 @@ cohortSize(Size),
 cohortStartTime(StartTime)
 {
 	new CohortStart(this,cohortStartTime);
-	D(cout << "New cohort initialised. Cohort of " << Size << " people will be released into the wild on day = " << StartTime << endl);
 }
 
 cohort::~cohort()
@@ -35,7 +34,6 @@ unsigned int cohort::GetCohortSize() const
 
 void cohort::GenerateCohort(const double theTime)
 {
-	D(cout << "Individuals (n=" << cohortSize << ") being seeded into the model." << endl);
 	for(size_t i = 0; i < cohortSize; i++)
 		ScheduleNewPerson(theRng->doub() * 365.25 + theTime); //The arguement here specifies when an individual will enter the model.
 	
@@ -44,7 +42,6 @@ void cohort::GenerateCohort(const double theTime)
 
 void cohort::ScheduleNewPerson(const double Time)
 {
-	D(cout << "ScheduleNewPerson on " << Time << endl);
 	new PersonStart(iPop,Time);
 }
 
