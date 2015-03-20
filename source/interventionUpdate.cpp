@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include "macro.h"
 #include "interventionUpdate.h"
 #include "interventionEvents.h"
 #include "cascadeUpdate.h"

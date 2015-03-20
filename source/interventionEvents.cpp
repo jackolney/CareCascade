@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include "macro.h"
 #include "toolbox.h"
 #include "interventionEvents.h"
 #include "interventionUpdate.h"
@@ -217,7 +216,6 @@ PocCd4Test::PocCd4Test(person * const thePerson, const double Time) :
 event(Time),
 pPerson(thePerson)
 {
-	D(cout << "PocCd4Test scheduled for day = " << Time << endl);
 	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }
 }
 

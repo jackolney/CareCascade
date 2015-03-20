@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include "macro.h"
 #include "rng.h"
 #include "person.h"
 #include "event.h"
@@ -105,7 +104,6 @@ calAtArtEligibleAtReturnPreArtCare(false),
 calEverReturnArt(false)
 {
 	gender = AssignGender();
-	D(cout << "Gender is = " << gender << endl);
 	AssignInitialAge(Time);
 	natDeathDate = AssignNatDeathDate(Time);
 	iPop->AddPerson(this);
@@ -159,7 +157,6 @@ void person::AssignInitialAge(const double Time)
 	}
 	
 	currentAge = initialAge;
-	D(cout << "Initial age = " << initialAge << ". (year = " << initialAge / 365.25 << ")" << endl);
 }
 
 /////////////////////
@@ -239,8 +236,6 @@ double person::AssignNatDeathDate(const double Time)
 	
 	/* Create Natural Death Date Event & Add to eventQ */
 	new Death(this,Time + deathAge - initialAge,false);
-	D(cout << "NatDeathDate = " << Time + deathAge - initialAge << " (year = " << (Time + deathAge - initialAge) / 365.25 << ")" << endl);
-	
 	return Time + deathAge - initialAge;
 }
 
@@ -255,7 +250,6 @@ void person::Kill(const double theTime, const bool theCause)
 	iPop->RemovePerson(this);
 	if(GetHivDate() && !GetSeroStatus())
 		iPop->PassInfection(GetRowIndex(),theTime);
-	D(cout << "\tDeathDate = " << deathDay << endl);
 	return;
 }
 
@@ -281,7 +275,6 @@ void person::SetAge(const double theTime)
 
 void person::Hiv(const double theTime)
 {
-	D(cout << "HIV+" << endl);
 	SetSeroStatus(true);
 	SetSeroconversionDay(theTime);
 	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
@@ -317,7 +310,6 @@ void person::SetInitialCd4Count()
 	
 	currentCd4 = i;
 	initialCd4 = i;
-	D(cout << "\tInitialCd4 = " << i << endl);
 }
 
 /////////////////////
@@ -327,7 +319,6 @@ void person::SetInitialWhoStage()
 {
 	currentWho = 1;
 	initialWho = 1;
-	D(cout << "\tInitialWho = " << initialWho << endl);
 }
 
 /////////////////////

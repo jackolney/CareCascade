@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include "impact.h"
-#include "macro.h"
 #include "person.h"
 #include "toolbox.h"
 #include "eventQ.h"

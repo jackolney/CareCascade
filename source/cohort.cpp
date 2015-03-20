@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include "macro.h"
 #include "cohort.h"
 #include "person.h"
 #include "event.h"

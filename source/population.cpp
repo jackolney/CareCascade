@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include "macro.h"
 #include "rng.h"
 #include "population.h"
 #include "cohort.h"
@@ -195,7 +194,6 @@ double population::GetWeightedTotal() const
 
 void population::CalculateBeta()
 {
-	D(cout << "Beta calculation..." << endl);
 	beta = incidentCases / GetWeightedTotal();
 }
 

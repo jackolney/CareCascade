@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include "macro.h"
 #include "update.h"
 #include "cascadeUpdate.h"
 #include "person.h"

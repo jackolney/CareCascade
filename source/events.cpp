@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include "macro.h"
 #include "events.h"
 #include "event.h"
 #include "person.h"
@@ -226,7 +225,6 @@ void Cd4Decline::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
 	pPerson->SetCurrentCd4Count(pPerson->GetCurrentCd4()-1);
-	D(cout << pPerson->GetCurrentCd4() << endl);
 	ScheduleCd4Update(pPerson,GetTime());
 	pPerson->AssignHivDeathDate(GetTime());
 	pPerson->UpdateInfectiousnessArray();
@@ -258,7 +256,6 @@ void Cd4Recover::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
 	pPerson->SetCurrentCd4Count(pPerson->GetCurrentCd4()+1);
-	D(cout << pPerson->GetCurrentCd4() << endl);
 	ScheduleCd4Update(pPerson,GetTime());
 	pPerson->AssignHivDeathDate(GetTime());
 	pPerson->UpdateInfectiousnessArray();
@@ -290,7 +287,6 @@ void WhoDecline::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
 	pPerson->SetCurrentWhoStage(pPerson->GetCurrentWho()+1);
-	D(cout << pPerson->GetCurrentWho() << endl);
 	ScheduleWhoUpdate(pPerson,GetTime());
 	pPerson->AssignHivDeathDate(GetTime());
 	if(pPerson->GetCurrentWho() > 2)
@@ -323,7 +319,6 @@ void WhoRecover::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
 	pPerson->SetCurrentWhoStage(pPerson->GetCurrentWho()-1);
-	D(cout << pPerson->GetCurrentWho() << endl);
 	ScheduleWhoUpdate(pPerson,GetTime());
 	pPerson->AssignHivDeathDate(GetTime());
 }
