@@ -904,7 +904,7 @@ SpectrumIncidence <- read.csv("/Users/jack/git/CareCascade/estimates/SpectrumInc
 # SpectrumIncidenceLong <- read.csv("/Users/jack/git/CareCascade/estimates/SpectrumIncidenceLong.csv",header=TRUE)
 
 par(family="Avenir Next Bold")
-plot((result$sINCIDENCE * sizeAdjustment)[1:59],
+plot((result$sINCIDENCE * sizeAdjustment)[2:60],
 	type='l',
 	lwd=4,
 	col=p[2],

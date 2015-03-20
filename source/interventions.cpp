@@ -14,11 +14,8 @@
 #include "cascadeEvents.h"
 #include "cascadeUpdate.h"
 #include "toolbox.h"
-#include "eventQ.h"
 
 using namespace std;
-
-extern eventQ * theQ;
 
 /* Intervention Pointers */
 extern int const * p_Hbct;
@@ -56,6 +53,7 @@ event(Time),
 pPerson(thePerson)
 {
 	D(cout << "Interventions scheduled for " << Time << " (year = " << Time / 365.25 << ")" << endl);
+	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }	
 }
 
 Interventions::~Interventions()
@@ -68,23 +66,23 @@ bool Interventions::CheckValid()
 
 void Interventions::Execute()
 {
-
-/////////////////////
-/////////////////////
+	
+	/////////////////////
+	/////////////////////
 	/* Hbct */
 	
 	if(*p_Hbct) {
 		for(size_t i=0;i<5;i++)
 			if(GetTime() <= 14610 + (i * 1461))
 				new SeedHct(pPerson,14610 + (i * 1461),false);
-
+		
 		if(*p_Hbct == 1) {
 			hctProbLink = 1;
 			hctProbLinkPreviouslyDiagnosed = 1;
 		}
 	}
 	
-/////////////////////
+	/////////////////////
 	/* Vct */
 	
 	if(*p_Vct) {
@@ -93,10 +91,10 @@ void Interventions::Execute()
 		else
 			vctHivTestTime = vctHivTestTimeOriginal * (1/1.25);
 		D(cout << "VctHivTest Intervention. vctHivTestTime = " << vctHivTestTime << endl);
-		ScheduleVctHivTest(pPerson);
+		ScheduleVctHivTest(pPerson,GetTime());
 	}
 	
-/////////////////////
+	/////////////////////
 	/* HbctPocCd4 */
 	
 	if(*p_HbctPocCd4) {
@@ -113,8 +111,8 @@ void Interventions::Execute()
 			hctProbLinkPreviouslyDiagnosed = ((1-hctProbLinkPreviouslyDiagnosedOriginal) * 0.5) + hctProbLinkPreviouslyDiagnosedOriginal;
 		}
 	}
-
-/////////////////////
+	
+	/////////////////////
 	/* Linkage */
 	
 	if(*p_Linkage) {
@@ -132,7 +130,7 @@ void Interventions::Execute()
 		}
 	}
 	
-/////////////////////
+	/////////////////////
 	/* PreOutreach */
 	
 	if(*p_PreOutreach) {
@@ -143,8 +141,8 @@ void Interventions::Execute()
 			if(GetTime() <= 14792.625 + (i * 365.25))
 				new PreArtOutreach(pPerson,14792.625 + (i * 365.25),k);
 	}
-
-/////////////////////
+	
+	/////////////////////
 	/* ImprovedCare */
 	
 	if(*p_ImprovedCare) {
@@ -173,22 +171,22 @@ void Interventions::Execute()
 			pictProbSecondaryCd4Test = 0.65645;
 		}
 	}
-
-/////////////////////
+	
+	/////////////////////
 	/* PocCd4 */
 	
 	if(*p_PocCd4)
 		pocFlag = true;
 	
-/////////////////////
+	/////////////////////
 	/* VctPocCd4 */
 	
 	if(*p_VctPocCd4) {
 		vctPocFlag = true;
-		ScheduleVctHivTest(pPerson);
+		ScheduleVctHivTest(pPerson,GetTime());
 	}
 	
-/////////////////////
+	/////////////////////
 	/* ArtOutreach */
 	
 	if(*p_ArtOutreach) {
@@ -200,7 +198,7 @@ void Interventions::Execute()
 				new ArtOutreach(pPerson,14792.625 + (i * 365.25),k);
 	}
 	
-/////////////////////
+	/////////////////////
 	/* ImmediateArt */
 	
 	if(*p_ImmediateArt) {
@@ -209,7 +207,7 @@ void Interventions::Execute()
 		UpdateTreatmentGuidelines(pPerson,4,1);
 	}
 	
-/////////////////////
+	/////////////////////
 	/* UniversalTestAndTreat */
 	
 	if(*p_UniversalTestAndTreat) {
@@ -220,14 +218,14 @@ void Interventions::Execute()
 		for(size_t i=0;i<5;i++)
 			if(GetTime() <= 14610 + (i * 1461))
 				new SeedHct(pPerson,14610 + (i * 1461),false);
-
+		
 		if(*p_UniversalTestAndTreat == 1) {
 			hctProbLink = 1;
 			hctProbLinkPreviouslyDiagnosed = 1;
 		}
 	}
 	
-/////////////////////
+	/////////////////////
 	/* Adherence */
 	
 	if(*p_Adherence) {
@@ -239,7 +237,7 @@ void Interventions::Execute()
 			pPerson->SetArtAdherenceState(0.875);
 	}
 	
-/////////////////////
+	/////////////////////
 	/* Calibration */
 	
 	if(*p_Calibration) {
@@ -248,7 +246,7 @@ void Interventions::Execute()
 				new SeedPerpetualHct(pPerson, 14610 + (i * 365.25));
 	}
 	
-/////////////////////
+	/////////////////////
 	
 }
 

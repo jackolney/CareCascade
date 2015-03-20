@@ -21,7 +21,7 @@ extern double * theDALY;
 /////////////////////
 /////////////////////
 
-void UpdateDaly(person * const thePerson)
+void UpdateDaly(person * const thePerson, const double theTime)
 {
 	/* Daly calculation for within a year. */
 	if(thePerson->Alive()) {
@@ -34,9 +34,9 @@ void UpdateDaly(person * const thePerson)
 		else if(thePerson->GetCurrentCd4() == 1)
 			thePerson->SetDalys((theQ->GetIncrementalTime() / 365.25) * dalyWeight_Cd4_1);
 	}
-	else if(theQ->GetTime() <= thePerson->GetNatDeathDate()) {
-		if((theQ->GetTime() - thePerson->GetHivDeathDate()) <= 365.35)
-			thePerson->SetDalys((theQ->GetTime() - thePerson->GetHivDeathDate()) / 365.25);
+	else if(theTime <= thePerson->GetNatDeathDate()) {
+		if((theTime - thePerson->GetHivDeathDate()) <= 365.35)
+			thePerson->SetDalys((theTime - thePerson->GetHivDeathDate()) / 365.25);
 		else
 			thePerson->SetDalys(1);
 	}
@@ -45,21 +45,12 @@ void UpdateDaly(person * const thePerson)
 /////////////////////
 /////////////////////
 
-void WriteDaly(person * const thePerson)
+void WriteDaly(person * const thePerson, const size_t theIndex)
 {
-	UpdateDaly(thePerson);
+	UpdateDaly(thePerson,(theIndex + 1) * 365.25);
 	
-	/* Create array with dates from 2011 to 2030 (to allow us to capture DALYs at year end between 2010 and 2030). */
-	double yr [20];
-	for(size_t i = 0; i<20; i++)
-		yr[i] = 14975.25 + (i * 365.25);
-	
-	unsigned int i = 0;
-	while(theQ->GetTime() > yr[i])
-		i++;
-	
-	if(theQ->GetTime() > 14610)
-		theDALY[i] += thePerson->GetDalys(); //+= should specify that DALYs can accumulate.
+	if((theIndex + 1) * 365.25 > 14610)
+		theDALY[theIndex - 40] += thePerson->GetDalys();
 	
 	thePerson->ResetDalys();
 }
