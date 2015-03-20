@@ -12,7 +12,6 @@
 #include "person.h"
 #include "event.h"
 #include "events.h"
-#include "eventQ.h"
 #include "cohort.h"
 #include "update.h"
 #include "cascadeUpdate.h"
@@ -23,7 +22,6 @@
 #include "outputUpdate.h"
 
 extern Rng * theRng;
-extern eventQ * theQ;
 
 using namespace std;
 
