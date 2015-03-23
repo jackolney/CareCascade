@@ -281,8 +281,13 @@ void person::Hiv(const double theTime)
 	SetSeroStatus(true);
 	SetSeroconversionDay(theTime);
 	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
-	ScheduleHivIndicatorUpdate(theTime);
+<<<<<<< HEAD
+	ScheduleHivIndicatorUpdate();
 	WriteGuidelinesNewInfection(this);
+=======
+	ScheduleHivIndicatorUpdate(theTime);
+	AssignHivDeathDate(theTime);
+>>>>>>> master
 	UpdatePopulation();
 	iPop->AddCase();
 	iPop->UpdateArray(this);
@@ -440,8 +445,12 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		cd4AtArt = currentCd4;
 		artCount++;
 		if(everLostArt) { everReturnArt = true; calEverReturnArt = true; }
+<<<<<<< HEAD
 		if(!inCare) { SetInCareState(theState,theTime); }
 
+=======
+		
+>>>>>>> master
 		/* Calibration */
 		calEverArt = true;
 		calArtDay = theTime;

@@ -248,10 +248,16 @@ void ArtInitiation::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
 	pPerson->SetArtInitiationState(true,GetTime());
+<<<<<<< HEAD
 	WriteGuidelinesArtInitiation(pPerson);
+	ScheduleCd4Update(pPerson);
+	ScheduleWhoUpdate(pPerson);
+	ScheduleArtDropout(pPerson);
+=======
 	ScheduleCd4Update(pPerson,GetTime());
 	ScheduleWhoUpdate(pPerson,GetTime());
 	ScheduleArtDropout(pPerson,GetTime());
+>>>>>>> master
 	pPerson->UpdateInfectiousnessArray();
 }
 
@@ -277,9 +283,14 @@ void ArtDropout::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
 	pPerson->SetArtInitiationState(false,GetTime());
+<<<<<<< HEAD
 	WriteGuidelinesArtDropout();
+	ScheduleCd4Update(pPerson);
+	ScheduleWhoUpdate(pPerson);
+=======
 	ScheduleCd4Update(pPerson,GetTime());
 	ScheduleWhoUpdate(pPerson,GetTime());
+>>>>>>> master
 	pPerson->UpdateInfectiousnessArray();
 }
 

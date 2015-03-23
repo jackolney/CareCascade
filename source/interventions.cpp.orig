@@ -73,16 +73,22 @@ void Interventions::Execute()
 	
 	if(*p_Hbct) {
 		for(size_t i=0;i<5;i++)
+<<<<<<< HEAD
 			if(GetTime() <= 16801.5 + (i * 1461))
 				new SeedHct(pPerson,16801.5 + (i * 1461),false);
 
+=======
+			if(GetTime() <= 14610 + (i * 1461))
+				new SeedHct(pPerson,14610 + (i * 1461),false);
+		
+>>>>>>> master
 		if(*p_Hbct == 1) {
 			hctProbLink = 1;
 			hctProbLinkPreviouslyDiagnosed = 1;
 		}
 	}
 	
-/////////////////////
+	/////////////////////
 	/* Vct */
 	
 	if(*p_Vct) {
@@ -216,16 +222,22 @@ void Interventions::Execute()
 		UpdateTreatmentGuidelines(pPerson,4,1);
 		
 		for(size_t i=0;i<5;i++)
+<<<<<<< HEAD
 			if(GetTime() <= 16801.5 + (i * 1461))
 				new SeedHct(pPerson,16801.5 + (i * 1461),false);
 
+=======
+			if(GetTime() <= 14610 + (i * 1461))
+				new SeedHct(pPerson,14610 + (i * 1461),false);
+		
+>>>>>>> master
 		if(*p_UniversalTestAndTreat == 1) {
 			hctProbLink = 1;
 			hctProbLinkPreviouslyDiagnosed = 1;
 		}
 	}
 	
-/////////////////////
+	/////////////////////
 	/* Adherence */
 	
 	if(*p_Adherence) {

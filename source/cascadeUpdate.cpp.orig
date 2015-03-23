@@ -33,15 +33,28 @@ void UpdateTreatmentGuidelines(person * const thePerson, unsigned int theCd4, un
 
 void ScheduleVctHivTest(person * const thePerson, const double theTime)
 {
+<<<<<<< HEAD
+	if(thePerson->GetBirthDay() != 0 && theQ->GetTime() >= 12418.5) {
+		D(cout << "Scheduling VctHivTest." << endl);
+		new VctHivTest(thePerson,theQ->GetTime() + theRng->SampleExpDist(vctHivTestTime),vctPocFlag);
+	}
+=======
 	if(thePerson->GetBirthDay() != 0 && theTime >= 12418.5)
 		new VctHivTest(thePerson,theTime + theRng->SampleExpDist(vctHivTestTime),vctPocFlag);
+>>>>>>> master
 }
+
 ////////////////////
 ////////////////////
 
 void SchedulePictHivTest(person * const thePerson, const double theTime)
 {
+<<<<<<< HEAD
+	if(thePerson->GetBirthDay() != 0 && theQ->GetTime() >= 12418.5) {
+		D(cout << "Scheduling PictHivTest." << endl);
+=======
 	if(thePerson->GetBirthDay() != 0 && theTime >= 12418.5) {
+>>>>>>> master
 		if(thePerson->GetCurrentWho() < 3) {
 			if(!thePerson->GetDiagnosedState())
 				new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_AsymptomaticOblivious));

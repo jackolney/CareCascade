@@ -194,8 +194,13 @@ void Death::Execute()
 	WriteCare(pPerson,GetTime());
 	WriteDeath(pPerson,GetTime());
 	if(hivRelated) {
+<<<<<<< HEAD
+		D(cout << "Death executed (HIV-related)." << endl);
 		WriteGuidelinesDeath(pPerson);
+		WriteAidsDeath(pPerson);
+=======
 		WriteAidsDeath(pPerson,GetTime());
+>>>>>>> master
 		WriteClinic(pPerson,GetTime());
 	} else
 		delete pPerson;

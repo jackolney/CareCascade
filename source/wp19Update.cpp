@@ -249,7 +249,7 @@ void WriteGuidelinesNewInfection(person * const thePerson)
 		while(theQ->GetTime() >= yr[i] && i<36)
 			i++;
 
-		if(thePerson->GetAge() > 15 * 365.25)
+		if(thePerson->GetAge(theQ->GetTime()) > 15 * 365.25)
 			theGuidelines_NewInfectionsAdult[i]++;
 	}
 }

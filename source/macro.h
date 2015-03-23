@@ -9,7 +9,7 @@
 #ifndef priorityQ_macro_h
 #define priorityQ_macro_h
 
-	/* Macro header file */
+/* Macro header file */
 
 // #define DEBUG_MODE
 
