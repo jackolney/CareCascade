@@ -149,7 +149,7 @@ void WriteGuidelinesDeath(person * const thePerson)
 			yr[i] = 11322.75 + (i * 365.25);
 
 		unsigned int i=0;
-		while(theQ->GetTime() > yr[i] && i<36)
+		while(theQ->GetTime() >= yr[i] && i<36)
 			i++;
 
 		if(!thePerson->GetSeroStatus()) {
@@ -221,7 +221,7 @@ void WriteGuidelinesArtInitiation(person * const thePerson)
 			yr[i] = 11322.75 + (i * 365.25);
 
 		unsigned int i=0;
-		while(theQ->GetTime() > yr[i] && i<36)
+		while(theQ->GetTime() >= yr[i] && i<36)
 			i++;
 
 		if(thePerson->GetCurrentCd4() == 4)
@@ -246,7 +246,7 @@ void WriteGuidelinesNewInfection(person * const thePerson)
 			yr[i] = 11322.75 + (i * 365.25);
 
 		unsigned int i=0;
-		while(theQ->GetTime() > yr[i] && i<36)
+		while(theQ->GetTime() >= yr[i] && i<36)
 			i++;
 
 		if(thePerson->GetAge() > 15 * 365.25)
@@ -265,7 +265,7 @@ void WriteGuidelinesNewDiagnosis()
 			yr[i] = 11322.75 + (i * 365.25);
 
 		unsigned int i=0;
-		while(theQ->GetTime() > yr[i] && i<36)
+		while(theQ->GetTime() >= yr[i] && i<36)
 			i++;
 
 		theGuidelines_NewDiagnoses[i]++;
@@ -283,7 +283,7 @@ void WriteGuidelinesPreArtDropout()
 			yr[i] = 11322.75 + (i * 365.25);
 
 		unsigned int i=0;
-		while(theQ->GetTime() > yr[i] && i<36)
+		while(theQ->GetTime() >= yr[i] && i<36)
 			i++;
 
 		theGuidelines_PreArtDropout[i]++;
@@ -301,7 +301,7 @@ void WriteGuidelinesArtDropout()
 			yr[i] = 11322.75 + (i * 365.25);
 
 		unsigned int i=0;
-		while(theQ->GetTime() > yr[i] && i<36)
+		while(theQ->GetTime() >= yr[i] && i<36)
 			i++;
 
 		theGuidelines_ArtDropout[i]++;
