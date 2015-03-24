@@ -135,12 +135,12 @@ void WriteClinic(person * const thePerson, const double theTime)
 
 void WriteDeath(person * const thePerson, const double theTime)
 {
-	double yr [60];
-	for(size_t i = 0; i<60; i++)
+	double yr [66];
+	for(size_t i = 0; i<66; i++)
 		yr[i] = 365.25 + (i * 365.25);
-	
+
 	unsigned int i = 0;
-	while(theTime >= yr[i] && i < 59)
+	while(theTime > yr[i] && i<66)
 		i++;
 	
 	theDeath[i]++;
@@ -161,12 +161,12 @@ void WriteDeath(person * const thePerson, const double theTime)
 
 void WriteAidsDeath(person * const thePerson, const double theTime)
 {
-	double yr [60];
-	for(size_t i = 0; i<60; i++)
+	double yr [66];
+	for(size_t i = 0; i<66; i++)
 		yr[i] = 365.25 + (i * 365.25);
-	
+
 	unsigned int i = 0;
-	while(theTime >= yr[i] && i < 59)
+	while(theTime > yr[i] && i<66)
 		i++;
 	
 	theAidsDeath[i] += thePerson->GetSeroStatus();
