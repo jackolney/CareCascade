@@ -54,6 +54,7 @@ diagnosisCount(0),
 diagnosisRoute(0),
 lastDiagnosisRoute(0),
 inCare(false),
+everCare(false),
 everCd4Test(false),
 cd4TestCount(0),
 everCd4TestResult(false),
@@ -403,6 +404,7 @@ void person::SetInCareState(const bool theState, const double theTime)
 		WriteGuidelinesPreArtDropout();
 	}
 	if(theState && !GetInCareState()) {
+		everCare = theState;
 		calEverCare = theState;
 		calCareDay = theTime;
 		calCareRoute = lastDiagnosisRoute;
