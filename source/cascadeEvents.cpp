@@ -188,6 +188,8 @@ void Cd4Test::Execute()
 		ScheduleImmediateArt(pPerson,GetTime());
 	else if(ReceiveCd4TestResult(pPerson,GetTime()))
 		ScheduleCd4TestResult(pPerson,GetTime());
+	else
+		pPerson->SetInCareState(false,GetTime());
 };
 
 /////////////////////
@@ -219,6 +221,8 @@ void Cd4TestResult::Execute()
 		ScheduleArtInitiation(pPerson,GetTime());
 	else if(SecondaryCd4Test(pPerson,GetTime()))
 		SchedulePreArtCd4Test(pPerson,GetTime());
+	else
+		pPerson->SetInCareState(false,GetTime());
 	SchedulePictHivTest(pPerson,GetTime());
 }
 
