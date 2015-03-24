@@ -182,13 +182,12 @@ void Cd4Test::Execute()
 	ChargePreArtClinicVisit(pPerson);
 	ChargePreArtClinicCd4Test(pPerson);
 	pPerson->SetEverCd4TestState(true);
+	pPerson->SetInCareState(true,GetTime());
 	FastTrackArt(pPerson,GetTime());
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson,GetTime());
-	else if(ReceiveCd4TestResult(pPerson,GetTime())) {
+	else if(ReceiveCd4TestResult(pPerson,GetTime()))
 		ScheduleCd4TestResult(pPerson,GetTime());
-		pPerson->SetInCareState(true,GetTime());
-	}
 };
 
 /////////////////////
