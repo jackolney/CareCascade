@@ -122,21 +122,21 @@ void WriteGuidelinesPopDist(person * const thePerson, const size_t theIndex)
 			theGuidelines_PopDist_500_DiagNotInCareEverCare[theIndex]++;
 		else if(!thePerson->GetInCareState() && thePerson->GetEverCareState() && thePerson->GetEligible())
 			theGuidelines_PopDist_500_DiagNotInCareEverCareEligible[theIndex]++;
-		else if (!thePerson->GetEverArt() && !thePerson->GetEverCd4TestResultState())
+		else if(!thePerson->GetEverArt() && !thePerson->GetEverCd4TestResultState())
 			theGuidelines_PopDist_500_InCareNeverArtNeverCd4Result[theIndex]++;
-		else if (!thePerson->GetEverArt() && thePerson->GetCd4TestCount() <= 2)
+		else if(!thePerson->GetEverArt() && thePerson->GetCd4TestCount() <= 2)
 			theGuidelines_PopDist_500_InCareNeverArtLessTwoCd4Test[theIndex]++;
-		else if (!thePerson->GetEverArt() && thePerson->GetCd4TestCount() > 2)	
+		else if(!thePerson->GetEverArt() && thePerson->GetCd4TestCount() > 2)	
 			theGuidelines_PopDist_500_InCareNeverArtMoreTwoCd4Test[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))		
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))		
 			theGuidelines_PopDist_500_ArtAtEnrollmentLessSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_500_ArtAtEnrollmentMoreSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_500_ArtLessSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_500_ArtMoreSixMonths[theIndex]++;
-		else if (!thePerson->GetArtInitiationState())
+		else if(!thePerson->GetArtInitiationState())
 			theGuidelines_PopDist_500_OffArt[theIndex]++;
 	} else if(thePerson->GetCurrentCd4() == 3) {
 		if(!thePerson->GetDiagnosedState())
@@ -149,21 +149,21 @@ void WriteGuidelinesPopDist(person * const thePerson, const size_t theIndex)
 			theGuidelines_PopDist_350500_DiagNotInCareEverCare[theIndex]++;
 		else if(!thePerson->GetInCareState() && thePerson->GetEverCareState() && thePerson->GetEligible())
 			theGuidelines_PopDist_350500_DiagNotInCareEverCareEligible[theIndex]++;
-		else if (!thePerson->GetEverArt() && !thePerson->GetEverCd4TestResultState())
+		else if(!thePerson->GetEverArt() && !thePerson->GetEverCd4TestResultState())
 			theGuidelines_PopDist_350500_InCareNeverArtNeverCd4Result[theIndex]++;
-		else if (!thePerson->GetEverArt() && thePerson->GetCd4TestCount() <= 2)
+		else if(!thePerson->GetEverArt() && thePerson->GetCd4TestCount() <= 2)
 			theGuidelines_PopDist_350500_InCareNeverArtLessTwoCd4Test[theIndex]++;
-		else if (!thePerson->GetEverArt() && thePerson->GetCd4TestCount() > 2)	
+		else if(!thePerson->GetEverArt() && thePerson->GetCd4TestCount() > 2)	
 			theGuidelines_PopDist_350500_InCareNeverArtMoreTwoCd4Test[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))		
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))		
 			theGuidelines_PopDist_350500_ArtAtEnrollmentLessSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_350500_ArtAtEnrollmentMoreSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_350500_ArtLessSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_350500_ArtMoreSixMonths[theIndex]++;
-		else if (!thePerson->GetArtInitiationState())
+		else if(!thePerson->GetArtInitiationState())
 			theGuidelines_PopDist_350500_OffArt[theIndex]++;	
 	} else if(thePerson->GetCurrentCd4() == 2) {
 		if(!thePerson->GetDiagnosedState())
@@ -176,21 +176,21 @@ void WriteGuidelinesPopDist(person * const thePerson, const size_t theIndex)
 			theGuidelines_PopDist_200350_DiagNotInCareEverCare[theIndex]++;
 		else if(!thePerson->GetInCareState() && thePerson->GetEverCareState() && thePerson->GetEligible())
 			theGuidelines_PopDist_200350_DiagNotInCareEverCareEligible[theIndex]++;
-		else if (!thePerson->GetEverArt() && !thePerson->GetEverCd4TestResultState())
+		else if(!thePerson->GetEverArt() && !thePerson->GetEverCd4TestResultState())
 			theGuidelines_PopDist_200350_InCareNeverArtNeverCd4Result[theIndex]++;
-		else if (!thePerson->GetEverArt() && thePerson->GetCd4TestCount() <= 2)
+		else if(!thePerson->GetEverArt() && thePerson->GetCd4TestCount() <= 2)
 			theGuidelines_PopDist_200350_InCareNeverArtLessTwoCd4Test[theIndex]++;
-		else if (!thePerson->GetEverArt() && thePerson->GetCd4TestCount() > 2)	
+		else if(!thePerson->GetEverArt() && thePerson->GetCd4TestCount() > 2)	
 			theGuidelines_PopDist_200350_InCareNeverArtMoreTwoCd4Test[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))		
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))		
 			theGuidelines_PopDist_200350_ArtAtEnrollmentLessSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_200350_ArtAtEnrollmentMoreSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_200350_ArtLessSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_200350_ArtMoreSixMonths[theIndex]++;
-		else if (!thePerson->GetArtInitiationState())
+		else if(!thePerson->GetArtInitiationState())
 			theGuidelines_PopDist_200350_OffArt[theIndex]++;
 	} else if(thePerson->GetCurrentCd4() == 1) {
 		if(!thePerson->GetDiagnosedState())
@@ -203,21 +203,21 @@ void WriteGuidelinesPopDist(person * const thePerson, const size_t theIndex)
 			theGuidelines_PopDist_200_DiagNotInCareEverCare[theIndex]++;
 		else if(!thePerson->GetInCareState() && thePerson->GetEverCareState() && thePerson->GetEligible())
 			theGuidelines_PopDist_200_DiagNotInCareEverCareEligible[theIndex]++;
-		else if (!thePerson->GetEverArt() && !thePerson->GetEverCd4TestResultState())
+		else if(!thePerson->GetEverArt() && !thePerson->GetEverCd4TestResultState())
 			theGuidelines_PopDist_200_InCareNeverArtNeverCd4Result[theIndex]++;
-		else if (!thePerson->GetEverArt() && thePerson->GetCd4TestCount() <= 2)
+		else if(!thePerson->GetEverArt() && thePerson->GetCd4TestCount() <= 2)
 			theGuidelines_PopDist_200_InCareNeverArtLessTwoCd4Test[theIndex]++;
-		else if (!thePerson->GetEverArt() && thePerson->GetCd4TestCount() > 2)	
+		else if(!thePerson->GetEverArt() && thePerson->GetCd4TestCount() > 2)	
 			theGuidelines_PopDist_200_InCareNeverArtMoreTwoCd4Test[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))		
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))		
 			theGuidelines_PopDist_200_ArtAtEnrollmentLessSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtAtEnrollment() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_200_ArtAtEnrollmentMoreSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_200_ArtLessSixMonths[theIndex]++;
-		else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+		else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 			theGuidelines_PopDist_200_ArtMoreSixMonths[theIndex]++;
-		else if (!thePerson->GetArtInitiationState())
+		else if(!thePerson->GetArtInitiationState())
 			theGuidelines_PopDist_200_OffArt[theIndex]++;
 	}
 }
@@ -243,52 +243,52 @@ void WriteGuidelinesDeath(person * const thePerson)
 				theGuidelines_Death_500_NeverDiag[i]++;
 			else if(!thePerson->GetInCareState())
 				theGuidelines_Death_500_DiagNotInCare[i]++;
-			else if (!thePerson->GetEverArt())
+			else if(!thePerson->GetEverArt())
 				theGuidelines_Death_500_InCareNeverArt[i]++;
-			else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
+			else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
 				theGuidelines_Death_500_ArtLessSixMonths[i]++;
-			else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+			else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 				theGuidelines_Death_500_ArtMoreSixMonths[i]++;
-			else if (!thePerson->GetArtInitiationState())
+			else if(!thePerson->GetArtInitiationState())
 				theGuidelines_Death_500_OffArt[i]++;		
 		} else if(thePerson->GetCurrentCd4() == 3) {
 			if(!thePerson->GetDiagnosedState())
 				theGuidelines_Death_350500_NeverDiag[i]++;
 			else if(!thePerson->GetInCareState())
 				theGuidelines_Death_350500_DiagNotInCare[i]++;
-			else if (!thePerson->GetEverArt())
+			else if(!thePerson->GetEverArt())
 				theGuidelines_Death_350500_InCareNeverArt[i]++;
-			else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
+			else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
 				theGuidelines_Death_350500_ArtLessSixMonths[i]++;
-			else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+			else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 				theGuidelines_Death_350500_ArtMoreSixMonths[i]++;
-			else if (!thePerson->GetArtInitiationState())
+			else if(!thePerson->GetArtInitiationState())
 				theGuidelines_Death_350500_OffArt[i]++;
 		} else if(thePerson->GetCurrentCd4() == 2) {
 			if(!thePerson->GetDiagnosedState())
 				theGuidelines_Death_200350_NeverDiag[i]++;
 			else if(!thePerson->GetInCareState())
 				theGuidelines_Death_200350_DiagNotInCare[i]++;
-			else if (!thePerson->GetEverArt())
+			else if(!thePerson->GetEverArt())
 				theGuidelines_Death_200350_InCareNeverArt[i]++;
-			else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
+			else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
 				theGuidelines_Death_200350_ArtLessSixMonths[i]++;
-			else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+			else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 				theGuidelines_Death_200350_ArtMoreSixMonths[i]++;
-			else if (!thePerson->GetArtInitiationState())
+			else if(!thePerson->GetArtInitiationState())
 				theGuidelines_Death_200350_OffArt[i]++;
 		} else if(thePerson->GetCurrentCd4() == 1) {
 			if(!thePerson->GetDiagnosedState())
 				theGuidelines_Death_200_NeverDiag[i]++;
 			else if(!thePerson->GetInCareState())
 				theGuidelines_Death_200_DiagNotInCare[i]++;
-			else if (!thePerson->GetEverArt())
+			else if(!thePerson->GetEverArt())
 				theGuidelines_Death_200_InCareNeverArt[i]++;
-			else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
+			else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() >= (theQ->GetTime() - 182.625))
 				theGuidelines_Death_200_ArtLessSixMonths[i]++;
-			else if (thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
+			else if(thePerson->GetArtInitiationState() && thePerson->GetArtDay() < (theQ->GetTime() - 182.625))
 				theGuidelines_Death_200_ArtMoreSixMonths[i]++;
-			else if (!thePerson->GetArtInitiationState())
+			else if(!thePerson->GetArtInitiationState())
 				theGuidelines_Death_200_OffArt[i]++;
 		}
 	}
