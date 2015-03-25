@@ -57,7 +57,7 @@ lines(seq(0,59,1),result$sART_15to49[1:60] / result$sHIV_15to49[1:60],
 	lwd=4,
 	col=p[2])
 axis(1,seq(0,60,5),seq(1970,2030,5))
-legend("topright",c("UNAIDS","CareCascade"),
+legend("topleft",c("UNAIDS","CareCascade"),
 	fill=p[1:2],
 	box.lty=0,
 	border=NA,
@@ -84,7 +84,7 @@ lines(seq(0,59,1),result$sART_15to49[1:60] / result$sHIV_15to49[1:60],
 	lwd=4,
 	col=p[2])
 axis(1,seq(0,60,5),seq(1970,2030,5))
-legend("topright",c("UNAIDS","CareCascade"),
+legend("topleft",c("UNAIDS","CareCascade"),
 	fill=p[1:2],
 	box.lty=0,
 	border=NA,
