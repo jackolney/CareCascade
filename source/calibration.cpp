@@ -246,25 +246,6 @@ void UpdateCalibrationArray(person * const thePerson, const unsigned int theTime
 		DiagArray[theTimeIndex]++;
 	if(thePerson->GetEverArt())
 		ArtArray[theTimeIndex]++;
-
-	// if(theTimeIndex == 0) {
-	// 	if(thePerson->GetDiagnosedState())
-	// 		DiagArray[theTimeIndex]++;
-	// 	if(thePerson->GetEverArt())
-	// 		ArtArray[theTimeIndex]++;
-	// } else if(theTimeIndex == 1) {
-	// 	if(thePerson->GetCalEverDiag())
-	// 		DiagArray[theTimeIndex]++;
-	// 	if(thePerson->GetCalEverArt() && thePerson->GetCalArtDay() > 14609)
-	// 		ArtArray[theTimeIndex]++;
-	// } else if(theTimeIndex == 2) {
-	// 	if(thePerson->GetCalEverDiag())
-	// 		DiagArray[theTimeIndex]++;
-	// 	if(thePerson->GetCalEverArt() && thePerson->GetCalArtDay() > 14974)
-	// 		ArtArray[theTimeIndex]++;
-	// }
-	// if(thePerson->GetArtInitiationState())
-	// 	ArtArray[theTimeIndex]++;
 	
 	// Pre2010 - Dx levels pre-2010. (don't run this code after 2010)
 	if(theTimeIndex == 0 && thePerson->Alive()) {

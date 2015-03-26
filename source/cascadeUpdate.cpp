@@ -161,7 +161,7 @@ bool SecondaryCd4Test(person * const thePerson, const double theTime)
 
 void FastTrackArt(person * const thePerson, const double theTime)
 {
-	if(!thePerson->GetEverCd4TestResultState() && thePerson->GetCd4TestCount() == 1 && thePerson->GetDiagnosisRoute() > 1 && thePerson->GetWhoEligible()) {
+	if(thePerson->GetDiagnosisRoute() > 1 && thePerson->GetWhoEligible()) {
 		thePerson->SetArtAtEnrollment(true);
 		new ArtInitiation(thePerson,theTime);
 	}
