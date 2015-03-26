@@ -486,7 +486,7 @@ Type 'q()' to quit R.
 + }
 > 
 > Calibrate()
-Thu 26 Mar 2015 13:10:35 GMT
+Thu 26 Mar 2015 13:23:04 GMT
 Hello, Jack - the model is running...
 Caution: WP19 version. Runs until 2035.
 Year 1970
@@ -559,4 +559,4 @@ Loading required package: beepr
 > 
 > proc.time()
    user  system elapsed 
-219.235   1.747 222.258 
+217.200   1.441 219.525 

@@ -68,7 +68,7 @@ double vctProbSecondaryCd4Test = 0.75;
 double pictProbSecondaryCd4Test = 0.75;
 
 /* Time between eligiblity and Art initiation */
-double artInitiationTime = 217.07;
+double artInitiationTime = 155.67;
 
 /* Art dropout times */
 double artDropoutTimeOneYear = 21.72 * 365.25; //0.045/100py
