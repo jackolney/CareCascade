@@ -50,22 +50,22 @@ double cd4ResultTime = 30;
 double cd4TestTime = 335.25;
 
 /* Probability of attending Cd4 Test result visit */
-double cd4ResultProbAttend = 0.8;
+double cd4ResultProbAttend = 0.9486833;
 
 /* Pre-Art retention probability (between test and result) */
-double hctShortTermRetention = 0.6192;
-double hctLongTermRetention = 0.3290;
+double hctShortTermRetention = 0.9486833;
+double hctLongTermRetention = 0.9486833;
 
-double vctShortTermRetention = 0.5326;
-double vctLongTermRetention = 0.3909;
+double vctShortTermRetention = 0.9486833;
+double vctLongTermRetention = 0.9486833;
 
-double pictShortTermRetention = 0.5407;
-double pictLongTermRetention = 0.3780;
+double pictShortTermRetention = 0.9486833;
+double pictLongTermRetention = 0.9486833;
 
 /* Proportion returning for secondary Cd4 testing  */
-double hctProbSecondaryCd4Test = 0.4333;
-double vctProbSecondaryCd4Test = 0.3105;
-double pictProbSecondaryCd4Test = 0.3129;
+double hctProbSecondaryCd4Test = 0.75;
+double vctProbSecondaryCd4Test = 0.75;
+double pictProbSecondaryCd4Test = 0.75;
 
 /* Time between eligiblity and Art initiation */
 double artInitiationTime = 217.07;

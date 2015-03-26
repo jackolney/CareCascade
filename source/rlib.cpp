@@ -757,7 +757,7 @@ SEXP CallCascade(SEXP s_pop,
 		pGuidelines_ArtDropout[i] = theGuidelines_ArtDropout[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,147));
+	PROTECT(sOUT = allocVector(VECSXP,149));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
@@ -909,7 +909,7 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,147,sGuidelines_PreArtDropout);
 	SET_VECTOR_ELT(sOUT,148,sGuidelines_ArtDropout);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,147));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,149));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
