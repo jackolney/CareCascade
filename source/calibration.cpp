@@ -28,6 +28,7 @@ double * ART13;
 double * ART14;
 double * Pre2010;
 unsigned int * HivArray;
+unsigned int * DiagArray;
 unsigned int * ArtArray;
 unsigned int * R3_Counter;
 unsigned int * R8_Counter;
@@ -105,6 +106,7 @@ void CreateCalibrationArray()
 	ART14 = new double[9];
 	Pre2010 = new double[3];
 	HivArray = new unsigned int[3];
+	DiagArray = new unsigned int[3];
 	ArtArray = new unsigned int[3];
 	R3_Counter = new unsigned int[9];
 	R8_Counter = new unsigned int[9];
@@ -120,6 +122,7 @@ void CreateCalibrationArray()
 			ART12[i] = 0;
 			Pre2010[i] = 0;
 			HivArray[i] = 0;
+			DiagArray[i] = 0;
 			ArtArray[i] = 0;
 			ART6_Counter[i] = 0;
 			ART10_Counter[i] = 0;
@@ -240,13 +243,19 @@ void UpdateCalibrationArray(person * const thePerson, const unsigned int theTime
 	if(thePerson->GetSeroStatus())
 		HivArray[theTimeIndex]++;
 	if(theTimeIndex == 0) {
-		if(thePerson->GetArtInitiationState() && thePerson->GetCalArtDay() > 13514.25)
+		if(thePerson->GetDiagnosedState())
+			DiagArray[theTimeIndex]++;
+		if(thePerson->GetCalEverArt() && thePerson->GetCalArtDay() > 13514.25)
 			ArtArray[theTimeIndex]++;
 	} else if(theTimeIndex == 1) {
-		if(thePerson->GetArtInitiationState() && thePerson->GetCalArtDay() > 14609)
+		if(thePerson->GetDiagnosedState())
+			DiagArray[theTimeIndex]++;
+		if(thePerson->GetCalEverArt() && thePerson->GetCalArtDay() > 14609)
 			ArtArray[theTimeIndex]++;
 	} else if(theTimeIndex == 2) {
-		if(thePerson->GetArtInitiationState() && thePerson->GetCalArtDay() > 14974)
+		if(thePerson->GetDiagnosedState())
+			DiagArray[theTimeIndex]++;
+		if(thePerson->GetCalEverArt() && thePerson->GetCalArtDay() > 14974)
 			ArtArray[theTimeIndex]++;
 	}
 
