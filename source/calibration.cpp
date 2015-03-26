@@ -66,7 +66,7 @@ TimeSplit::~TimeSplit()
 
 bool TimeSplit::CheckValid()
 {
-	return pPerson->Alive();
+	return true;
 }
 
 void TimeSplit::Execute()
@@ -240,30 +240,34 @@ void UpdateCalibrationArray(person * const thePerson, const unsigned int theTime
 		ART14[(theTimeIndex * 3) + (thePerson->GetCalAtArtCareRoute()-1)]++;
 	
 	// HIV-positive individuals initiating ART per year;
-	if(thePerson->GetSeroStatus())
+	if(thePerson->GetSeroStatus() && thePerson->Alive())
 		HivArray[theTimeIndex]++;
-	if(theTimeIndex == 0) {
-		if(thePerson->GetDiagnosedState())
-			DiagArray[theTimeIndex]++;
-		if(thePerson->GetCalEverArt() && thePerson->GetCalArtDay() > 13514.25)
-			ArtArray[theTimeIndex]++;
-	} else if(theTimeIndex == 1) {
-		if(thePerson->GetDiagnosedState())
-			DiagArray[theTimeIndex]++;
-		if(thePerson->GetCalEverArt() && thePerson->GetCalArtDay() > 14609)
-			ArtArray[theTimeIndex]++;
-	} else if(theTimeIndex == 2) {
-		if(thePerson->GetDiagnosedState())
-			DiagArray[theTimeIndex]++;
-		if(thePerson->GetCalEverArt() && thePerson->GetCalArtDay() > 14974)
-			ArtArray[theTimeIndex]++;
-	}
-
-	if(thePerson->GetArtInitiationState())
+	if(thePerson->GetDiagnosedState())
+		DiagArray[theTimeIndex]++;
+	if(thePerson->GetEverArt())
 		ArtArray[theTimeIndex]++;
+
+	// if(theTimeIndex == 0) {
+	// 	if(thePerson->GetDiagnosedState())
+	// 		DiagArray[theTimeIndex]++;
+	// 	if(thePerson->GetEverArt())
+	// 		ArtArray[theTimeIndex]++;
+	// } else if(theTimeIndex == 1) {
+	// 	if(thePerson->GetCalEverDiag())
+	// 		DiagArray[theTimeIndex]++;
+	// 	if(thePerson->GetCalEverArt() && thePerson->GetCalArtDay() > 14609)
+	// 		ArtArray[theTimeIndex]++;
+	// } else if(theTimeIndex == 2) {
+	// 	if(thePerson->GetCalEverDiag())
+	// 		DiagArray[theTimeIndex]++;
+	// 	if(thePerson->GetCalEverArt() && thePerson->GetCalArtDay() > 14974)
+	// 		ArtArray[theTimeIndex]++;
+	// }
+	// if(thePerson->GetArtInitiationState())
+	// 	ArtArray[theTimeIndex]++;
 	
 	// Pre2010 - Dx levels pre-2010. (don't run this code after 2010)
-	if(theTimeIndex == 0) {
+	if(theTimeIndex == 0 && thePerson->Alive()) {
 		if(thePerson->GetDiagnosedState()) {
 			Pre2010[0]++;
 			if(thePerson->GetDiagnosisRoute() == 2)
