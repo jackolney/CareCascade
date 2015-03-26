@@ -386,10 +386,15 @@ Calibrate <- function() {
 	(Calibration$sArtArray[2] / 1) / (Calibration$sHivArray[2] / 1)
 	(Calibration$sArtArray[3] / 3.5) / (Calibration$sHivArray[3] / 3.5)
 
+	# % of diagnosed individuals on ART
+	results[63,1] <- Calibration$sArtArray[1] / Calibration$sDiagArray[1]
+	results[63,2] <- Calibration$sArtArray[2] / Calibration$sDiagArray[2]
+	results[63,3] <- Calibration$sArtArray[3] / Calibration$sDiagArray[3]
+
 	#perhaps a bit crude at the moment but will do.
-	results[63,1] <- (Calibration$sArtArray[1] / Calibration$sHivArray[1]) / 3
-	results[63,2] <- (Calibration$sArtArray[2] / Calibration$sHivArray[2]) / 1
-	results[63,3] <- (Calibration$sArtArray[3] / Calibration$sHivArray[3]) / 3.5
+	(Calibration$sArtArray[1] / Calibration$sHivArray[1]) / 3
+	(Calibration$sArtArray[2] / Calibration$sHivArray[2]) / 1
+	(Calibration$sArtArray[3] / Calibration$sHivArray[3]) / 3.5
 
 	#New ART initiators...
 	results[64,1] <- Calibration$sArtArray[1] / 3
