@@ -99,6 +99,7 @@ bool HctHivTest::CheckValid()
 
 void HctHivTest::Execute()
 {
+	cout << "HCT. Time = " << GetTime() << endl;
 	UpdateDaly(pPerson,GetTime());
 	ChargeHctVisit(pPerson);
 	if(pPerson->GetSeroStatus()) {

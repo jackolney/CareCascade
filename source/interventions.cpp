@@ -241,7 +241,7 @@ void Interventions::Execute()
 	/* Calibration */
 	
 	if(*p_Calibration) {
-		for(size_t i=0;i<20;i++)
+		for(size_t i=0;i<35;i++)
 			if(GetTime() <= 14610 + (i * 365.25))
 				new SeedPerpetualHct(pPerson, 14610 + (i * 365.25));
 	}

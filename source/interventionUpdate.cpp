@@ -35,7 +35,7 @@ void ScheduleHctHivTest(person * const thePerson, const double theTime, const bo
 
 void SchedulePerpetualHctHivTest(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetBirthDay() != 0 && theTime >= 14610 && theTime < 21915)
+	if(thePerson->GetBirthDay() != 0 && theTime >= 14610 && theTime < 24106.5)
 		new HctHivTest(thePerson,theTime + (theRng->doub() * 365.25),0);
 }
 

@@ -390,7 +390,7 @@ Calibrate <- function() {
 	results[63,1] <- Calibration$sArtArray[1] / Calibration$sDiagArray[1]
 	results[63,2] <- Calibration$sArtArray[2] / Calibration$sDiagArray[2]
 	results[63,3] <- Calibration$sArtArray[3] / Calibration$sDiagArray[3]
-
+	
 	#perhaps a bit crude at the moment but will do.
 	(Calibration$sArtArray[1] / Calibration$sHivArray[1]) / 3
 	(Calibration$sArtArray[2] / Calibration$sHivArray[2]) / 1
