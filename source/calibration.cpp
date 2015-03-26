@@ -239,6 +239,17 @@ void UpdateCalibrationArray(person * const thePerson, const unsigned int theTime
 	// HIV-positive individuals initiating ART per year;
 	if(thePerson->GetSeroStatus())
 		HivArray[theTimeIndex]++;
+	if(theTimeIndex == 0) {
+		if(thePerson->GetArtInitiationState() && thePerson->GetCalArtDay() > 13514.25)
+			ArtArray[theTimeIndex]++;
+	} else if(theTimeIndex == 1) {
+		if(thePerson->GetArtInitiationState() && thePerson->GetCalArtDay() > 14609)
+			ArtArray[theTimeIndex]++;
+	} else if(theTimeIndex == 2) {
+		if(thePerson->GetArtInitiationState() && thePerson->GetCalArtDay() > 14974)
+			ArtArray[theTimeIndex]++;
+	}
+
 	if(thePerson->GetArtInitiationState())
 		ArtArray[theTimeIndex]++;
 	
