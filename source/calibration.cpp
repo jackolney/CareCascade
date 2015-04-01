@@ -27,6 +27,7 @@ double * ART12;
 double * ART13;
 double * ART14;
 double * Pre2010;
+unsigned int * In2014;
 unsigned int * HivArray;
 unsigned int * DiagArray;
 unsigned int * ArtArray;
@@ -105,6 +106,7 @@ void CreateCalibrationArray()
 	ART13 = new double[9];
 	ART14 = new double[9];
 	Pre2010 = new double[3];
+	In2014 = new unsigned int[2];
 	HivArray = new unsigned int[3];
 	DiagArray = new unsigned int[3];
 	ArtArray = new unsigned int[3];
@@ -115,6 +117,8 @@ void CreateCalibrationArray()
 	ART12_Counter = new unsigned int[3];
 	
 	for(size_t i=0;i<48;i++) {
+		if(i<2)
+			In2014[i] = 0;
 		if(i<3) {
 			ART4[i] = 0;
 			ART6[i] = 0;
@@ -256,6 +260,12 @@ void UpdateCalibrationArray(person * const thePerson, const unsigned int theTime
 			else if(thePerson->GetDiagnosisRoute() == 3)
 				Pre2010[2]++;
 		}
+	}
+	if(theTimeIndex == 2 && thePerson->Alive()) {
+		if(thePerson->GetInCareState())
+			In2014[0]++;
+		if(thePerson->GetArtInitiationState())
+			In2014[1]++;
 	}
 }
 
