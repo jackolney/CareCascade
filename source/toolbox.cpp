@@ -41,7 +41,7 @@ double vctProbLink = vctProbLinkOriginal;
 double pictProbLink = pictProbLinkOriginal;
 
 /* HCT time between Hiv test and Cd4 test [CD4-1] */
-double hctCd4TestTime [4] = {142,152.5,97,93};
+double hctCd4TestTime [4] = {252.04,175.78,174.59,116.34};
 
 /* Time between Cd4 test and receiving results */
 double cd4ResultTime = 30;
@@ -50,25 +50,25 @@ double cd4ResultTime = 30;
 double cd4TestTime = 335.25;
 
 /* Probability of attending Cd4 Test result visit */
-double cd4ResultProbAttend = 0.9486833;
+double cd4ResultProbAttend = 0.80;
 
 /* Pre-Art retention probability (between test and result) */
-double hctShortTermRetention = 0.9486833;
-double hctLongTermRetention = 0.9486833;
+double hctShortTermRetention = 0.54;
+double hctLongTermRetention = 0.27;
 
-double vctShortTermRetention = 0.9486833;
-double vctLongTermRetention = 0.9486833;
+double vctShortTermRetention = 0.62;
+double vctLongTermRetention = 0.47;
 
-double pictShortTermRetention = 0.9486833;
-double pictLongTermRetention = 0.9486833;
+double pictShortTermRetention = 0.58;
+double pictLongTermRetention = 0.46;
 
 /* Proportion returning for secondary Cd4 testing  */
-double hctProbSecondaryCd4Test = 0.75;
-double vctProbSecondaryCd4Test = 0.75;
-double pictProbSecondaryCd4Test = 0.75;
+double hctProbSecondaryCd4Test = 0.77;
+double vctProbSecondaryCd4Test = 0.71;
+double pictProbSecondaryCd4Test = 0.70;
 
 /* Time between eligiblity and Art initiation */
-double artInitiationTime = 155.67;
+double artInitiationTime = 145.12;
 
 /* Art dropout times */
 double artDropoutTimeOneYear = 21.72 * 365.25; //0.045/100py
