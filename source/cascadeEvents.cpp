@@ -43,7 +43,7 @@ bool SeedInitialHivTests::CheckValid()
 void SeedInitialHivTests::Execute()
 {
 	if(!immediateArtFlag)
-		UpdateTreatmentGuidelines(pPerson,1,3);
+		UpdateTreatmentGuidelines(pPerson,1,4);
 	ScheduleVctHivTest(pPerson,GetTime());
 	SchedulePictHivTest(pPerson,GetTime());
 }

@@ -105,7 +105,7 @@ void HctHivTest::Execute()
 		pPerson->SetDiagnosedState(true,1,GetTime());
 		if(pointOfCare)
 			new HctPocCd4Test(pPerson,GetTime());
-		else if(HctLinkage(pPerson))
+		else if(HctLinkage(pPerson,GetTime()))
 			ScheduleInitialCd4TestAfterHct(pPerson,GetTime());
 		SchedulePictHivTest(pPerson,GetTime());
 	}
@@ -137,7 +137,7 @@ void HctPocCd4Test::Execute()
 	pPerson->SetEverCd4TestResultState(true);
 	if(pPerson->GetEligible())
 		ScheduleArtInitiation(pPerson,GetTime());
-	else if(HctLinkage(pPerson))
+	else if(HctLinkage(pPerson,GetTime()))
 		ScheduleInitialCd4TestAfterHct(pPerson,GetTime());
 	SchedulePictHivTest(pPerson,GetTime());
 }

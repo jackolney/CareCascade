@@ -42,18 +42,32 @@ void SchedulePerpetualHctHivTest(person * const thePerson, const double theTime)
 ////////////////////
 ////////////////////
 
-bool HctLinkage(person * const thePerson)
+bool HctLinkage(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetDiagnosisCount() > 1) {
-		if(theRng->Sample(hctProbLinkPreviouslyDiagnosed))
-			return true;
-		else
-			return false;
+	if(theTime < 14975.25) {
+		if(thePerson->GetDiagnosisCount() > 1) {
+			if(theRng->Sample(hctProbLinkPreviouslyDiagnosedRollOut))
+				return true;
+			else
+				return false;
+		} else {
+			if(theRng->Sample(hctProbLinkRollOut))
+				return true;
+			else
+				return false;
+		}
 	} else {
-		if(theRng->Sample(hctProbLink))
-			return true;
-		else
-			return false;
+		if(thePerson->GetDiagnosisCount() > 1) {
+			if(theRng->Sample(hctProbLinkPreviouslyDiagnosed))
+				return true;
+			else
+				return false;
+		} else {
+			if(theRng->Sample(hctProbLink))
+				return true;
+			else
+				return false;
+		}
 	}
 }
 

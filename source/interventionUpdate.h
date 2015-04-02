@@ -20,7 +20,7 @@ void ScheduleHctHivTest(person * const thePerson, const double theTime, const bo
 
 void SchedulePerpetualHctHivTest(person * const thePerson, const double theTime);
 
-bool HctLinkage(person * const thePerson);
+bool HctLinkage(person * const thePerson, const double theTime);
 
 /////////////////////
 /////////////////////

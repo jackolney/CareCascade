@@ -30,11 +30,16 @@ double pictHivTestTime_SymptomaticCd4Result = 1.5 * 365.25;
 
 
 /* Linkage probabilities */
+double hctProbLinkRollOutOriginal = 0.054;
+double hctProbLinkPreviouslyDiagnosedRollOutOriginal = 0.25;
 double hctProbLinkOriginal = 0.054;
 double hctProbLinkPreviouslyDiagnosedOriginal = 0.25;
+
 double vctProbLinkOriginal = 0.6;
 double pictProbLinkOriginal = 0.6;
 
+double hctProbLinkRollOut = hctProbLinkRollOutOriginal;
+double hctProbLinkPreviouslyDiagnosedRollOut = hctProbLinkPreviouslyDiagnosedRollOutOriginal;
 double hctProbLink = hctProbLinkOriginal;
 double hctProbLinkPreviouslyDiagnosed = hctProbLinkPreviouslyDiagnosedOriginal;
 double vctProbLink = vctProbLinkOriginal;
@@ -50,17 +55,17 @@ double cd4ResultTime = 30;
 double cd4TestTime = 335.25;
 
 /* Probability of attending Cd4 Test result visit */
-double cd4ResultProbAttend = 0.9486833;
+double cd4ResultProbAttend = 0.80;
 
 /* Pre-Art retention probability (between test and result) */
-double hctShortTermRetention = 0.9486833;
-double hctLongTermRetention = 0.9486833;
+double hctShortTermRetention = 0.54;
+double hctLongTermRetention = 0.27;
 
-double vctShortTermRetention = 0.9486833;
-double vctLongTermRetention = 0.9486833;
+double vctShortTermRetention = 0.62;
+double vctLongTermRetention = 0.47;
 
-double pictShortTermRetention = 0.9486833;
-double pictLongTermRetention = 0.9486833;
+double pictShortTermRetention = 0.58;
+double pictLongTermRetention = 0.46;
 
 /* Proportion returning for secondary Cd4 testing  */
 double hctProbSecondaryCd4Test = 0.77;
