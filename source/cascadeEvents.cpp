@@ -189,7 +189,7 @@ void Cd4Test::Execute()
 	else if(ReceiveCd4TestResult(pPerson,GetTime()))
 		ScheduleCd4TestResult(pPerson,GetTime());
 	else
-		pPerson->SetInCareState(false,GetTime());
+		SchedulePreArtResultDropout(pPerson,GetTime());
 };
 
 /////////////////////
@@ -222,8 +222,35 @@ void Cd4TestResult::Execute()
 	else if(SecondaryCd4Test(pPerson,GetTime()))
 		SchedulePreArtCd4Test(pPerson,GetTime());
 	else
-		pPerson->SetInCareState(false,GetTime());
+		SchedulePreArtTestDropout(pPerson,GetTime());
 	SchedulePictHivTest(pPerson,GetTime());
+}
+
+/////////////////////
+/////////////////////
+
+PreArtDropout::PreArtDropout(person * const thePerson, const double Time) :
+event(Time),
+pPerson(thePerson)
+{
+	if(Time >= thePerson->GetNatDeathDate()) { Cancel(); }
+}
+
+PreArtDropout::~PreArtDropout()
+{}
+
+bool PreArtDropout::CheckValid()
+{
+	if(pPerson->GetInCareState())
+		return pPerson->Alive();
+	else
+		return false;
+}
+
+void PreArtDropout::Execute()
+{
+	cout << "PreArtDropout Executed." << endl;
+	pPerson->SetInCareState(false,GetTime());
 }
 
 /////////////////////

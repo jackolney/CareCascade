@@ -111,6 +111,22 @@ void ScheduleCd4TestResult(person * const thePerson, const double theTime)
 ////////////////////
 ////////////////////
 
+void SchedulePreArtResultDropout(person * const thePerson, const double theTime)
+{
+	new PreArtDropout(thePerson,theTime + theRng->SampleExpDist(cd4ResultTime));
+}
+
+////////////////////
+////////////////////
+
+void SchedulePreArtTestDropout(person * const thePerson, const double theTime)
+{	
+	new PreArtDropout(thePerson,theTime + theRng->SampleExpDist(cd4TestTime));
+}
+
+////////////////////
+////////////////////
+
 bool ReceiveCd4TestResult(person * const thePerson, const double theTime)
 {
 	if(thePerson->GetCd4TestCount() <= 1) {
