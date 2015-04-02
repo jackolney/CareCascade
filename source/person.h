@@ -116,6 +116,7 @@ public:
 	bool GetEligible() const { if(currentCd4 <= cd4Tx || currentWho >= whoTx) return true; else return false; }
 	bool GetWhoEligible() const { if(currentWho >= whoTx) return true; else return false; }
 	bool GetInCareState() const { return inCare; }
+	bool GetEverCareState() const { return everCare; }
 	bool GetArtInitiationState() const { return art; }
 	bool GetArtAdherenceState() const { return adherence; }
 	bool GetEverArt() const { return everArt; }
@@ -232,6 +233,7 @@ private:
 	unsigned int diagnosisRoute; //1 = Hct, 2 = Vct, 3 = Pict.
 	unsigned int lastDiagnosisRoute;
 	bool inCare;
+	bool everCare;
 	bool everCd4Test;
 	unsigned int cd4TestCount;
 	bool everCd4TestResult;

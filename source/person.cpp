@@ -52,6 +52,7 @@ diagnosisCount(0),
 diagnosisRoute(0),
 lastDiagnosisRoute(0),
 inCare(false),
+everCare(false),
 everCd4Test(false),
 cd4TestCount(0),
 everCd4TestResult(false),
@@ -279,7 +280,6 @@ void person::Hiv(const double theTime)
 	SetSeroconversionDay(theTime);
 	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
 	ScheduleHivIndicatorUpdate(theTime);
-	AssignHivDeathDate(theTime);
 	UpdatePopulation();
 	iPop->AddCase();
 	iPop->UpdateArray(this);
@@ -397,6 +397,7 @@ void person::SetInCareState(const bool theState, const double theTime)
 	} else
 		everLostPreArtCare = true;
 	if(theState && !GetInCareState()) {
+		everCare = theState;
 		calEverCare = theState;
 		calCareDay = theTime;
 		calCareRoute = lastDiagnosisRoute;
@@ -434,7 +435,8 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		cd4AtArt = currentCd4;
 		artCount++;
 		if(everLostArt) { everReturnArt = true; calEverReturnArt = true; }
-		
+		if(!inCare) { SetInCareState(theState,theTime); }
+
 		/* Calibration */
 		calEverArt = true;
 		calArtDay = theTime;

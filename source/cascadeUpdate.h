@@ -24,14 +24,16 @@ bool VctLinkage(person * const thePerson);
 
 bool PictLinkage(person * const thePerson);
 
-/* Initial Cd4 test */
+/* Pre-ART Care */
 void ScheduleInitialCd4TestAfterHct(person * const thePerson, const double theTime);
 
-/* Pre-Art Cd4 Test */
 void SchedulePreArtCd4Test(person * const thePerson, const double theTime);
 
-/* Cd4 Test Result */
 void ScheduleCd4TestResult(person * const thePerson, const double theTime);
+
+void SchedulePreArtResultDropout(person * const thePerson, const double theTime);
+
+void SchedulePreArtTestDropout(person * const thePerson, const double theTime);
 
 bool ReceiveCd4TestResult(person * const thePerson, const double theTime);
 
