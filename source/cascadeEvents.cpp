@@ -249,7 +249,6 @@ bool PreArtDropout::CheckValid()
 
 void PreArtDropout::Execute()
 {
-	cout << "PreArtDropout Executed." << endl;
 	pPerson->SetInCareState(false,GetTime());
 }
 
