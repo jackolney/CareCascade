@@ -31,12 +31,12 @@ double pictHivTestTime_SymptomaticCd4Result = 1.5 * 365.25;
 
 /* Linkage probabilities */
 double hctProbLinkRollOutOriginal = 0.054;
-double hctProbLinkPreviouslyDiagnosedRollOutOriginal = 0.25;
-double hctProbLinkOriginal = 0.054;
-double hctProbLinkPreviouslyDiagnosedOriginal = 0.25;
+double hctProbLinkPreviouslyDiagnosedRollOutOriginal = 0.054;
+double hctProbLinkOriginal = 0.6;
+double hctProbLinkPreviouslyDiagnosedOriginal = 0.6;
 
-double vctProbLinkOriginal = 0.6;
-double pictProbLinkOriginal = 0.6;
+double vctProbLinkOriginal = 0.95;
+double pictProbLinkOriginal = 0.7;
 
 double hctProbLinkRollOut = hctProbLinkRollOutOriginal;
 double hctProbLinkPreviouslyDiagnosedRollOut = hctProbLinkPreviouslyDiagnosedRollOutOriginal;
@@ -57,20 +57,28 @@ double cd4TestTime = 335.25;
 /* Probability of attending Cd4 Test result visit */
 double cd4ResultProbAttend = 0.80;
 
-/* Pre-Art retention probability (between test and result) */
-double hctShortTermRetention = 0.54;
-double hctLongTermRetention = 0.27;
+/* Pre-Art retention probability (between test and result) [values scaled by / 0.8] */
+// double hctShortTermRetention = 0.675;
+// double hctLongTermRetention = 0.3375;
 
-double vctShortTermRetention = 0.62;
-double vctLongTermRetention = 0.47;
+// double vctShortTermRetention = 0.775;
+// double vctLongTermRetention = 0.5875;
 
-double pictShortTermRetention = 0.58;
-double pictLongTermRetention = 0.46;
+// double pictShortTermRetention = 0.725;
+// double pictLongTermRetention = 0.575;
+double hctShortTermRetention = 0.8;
+double hctLongTermRetention = 0.8;
+
+double vctShortTermRetention = 0.8;
+double vctLongTermRetention = 0.8;
+
+double pictShortTermRetention = 0.8;
+double pictLongTermRetention = 0.8;
 
 /* Proportion returning for secondary Cd4 testing  */
-double hctProbSecondaryCd4Test = 0.77;
-double vctProbSecondaryCd4Test = 0.71;
-double pictProbSecondaryCd4Test = 0.70;
+double hctProbSecondaryCd4Test = 0.9;
+double vctProbSecondaryCd4Test = 0.9;
+double pictProbSecondaryCd4Test = 0.9;
 
 /* Time between eligiblity and Art initiation */
 double artInitiationTime = 145.12;
