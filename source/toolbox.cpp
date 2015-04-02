@@ -33,10 +33,10 @@ double pictHivTestTime_SymptomaticCd4Result = 1.5 * 365.25;
 double hctProbLinkRollOutOriginal = 0.054;
 double hctProbLinkPreviouslyDiagnosedRollOutOriginal = 0.054;
 double hctProbLinkOriginal = 0.6;
-double hctProbLinkPreviouslyDiagnosedOriginal = 0.6;
+double hctProbLinkPreviouslyDiagnosedOriginal = 0.7;
 
 double vctProbLinkOriginal = 0.95;
-double pictProbLinkOriginal = 0.7;
+double pictProbLinkOriginal = 0.9;
 
 double hctProbLinkRollOut = hctProbLinkRollOutOriginal;
 double hctProbLinkPreviouslyDiagnosedRollOut = hctProbLinkPreviouslyDiagnosedRollOutOriginal;
@@ -57,28 +57,20 @@ double cd4TestTime = 335.25;
 /* Probability of attending Cd4 Test result visit */
 double cd4ResultProbAttend = 0.80;
 
-/* Pre-Art retention probability (between test and result) [values scaled by / 0.8] */
-// double hctShortTermRetention = 0.675;
-// double hctLongTermRetention = 0.3375;
+/* Pre-Art retention probability (between test and result) [values scaled by / 0.8 to account for ProbAttend] */
+double hctShortTermRetention = 0.675;
+double hctLongTermRetention = 0.3375;
 
-// double vctShortTermRetention = 0.775;
-// double vctLongTermRetention = 0.5875;
+double vctShortTermRetention = 0.775;
+double vctLongTermRetention = 0.5875;
 
-// double pictShortTermRetention = 0.725;
-// double pictLongTermRetention = 0.575;
-double hctShortTermRetention = 0.8;
-double hctLongTermRetention = 0.8;
-
-double vctShortTermRetention = 0.8;
-double vctLongTermRetention = 0.8;
-
-double pictShortTermRetention = 0.8;
-double pictLongTermRetention = 0.8;
+double pictShortTermRetention = 0.725;
+double pictLongTermRetention = 0.575;
 
 /* Proportion returning for secondary Cd4 testing  */
-double hctProbSecondaryCd4Test = 0.9;
-double vctProbSecondaryCd4Test = 0.9;
-double pictProbSecondaryCd4Test = 0.9;
+double hctProbSecondaryCd4Test = 0.9625; // 0.77 / 0.8 (assuming values are 80% of true value.)
+double vctProbSecondaryCd4Test = 0.8875; // 0.71 / 0.8 (given that 20% of people are eligible at first CD4, then denominator is overestimated by 20%)
+double pictProbSecondaryCd4Test = 0.875; // 0.70 / 0.8
 
 /* Time between eligiblity and Art initiation */
 double artInitiationTime = 145.12;
