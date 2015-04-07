@@ -43,14 +43,23 @@ void SchedulePictHivTest(person * const thePerson, const double theTime)
 {
 	if(thePerson->GetBirthDay() != 0 && theTime >= 12418.5) {
 		if(thePerson->GetCurrentWho() < 3) {
-			if(!thePerson->GetDiagnosedState())
-				new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_AsymptomaticOblivious));
-			else if(thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestResultState())
-				new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_AsymptomaticNoCd4Result));
-			else if(thePerson->GetEverCd4TestResultState() && (thePerson->GetCurrentCd4() > thePerson->GetCd4TxGuideline() || thePerson->GetCurrentWho() < thePerson->GetWhoTxGuideline()))
-				new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_AsymptomaticCd4ResultNotEligible));
-			else if(thePerson->GetEverCd4TestResultState() && (thePerson->GetCurrentCd4() <= thePerson->GetCd4TxGuideline() || thePerson->GetCurrentWho() >= thePerson->GetWhoTxGuideline()))
-				new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_AsymptomaticCd4ResultEligible));
+			if(thePerson->GetCurrentCd4() > 1) {
+				if(!thePerson->GetDiagnosedState())
+					new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_AsymptomaticOblivious));
+				else if(thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestResultState())
+					new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_AsymptomaticNoCd4Result));
+				else if(thePerson->GetEverCd4TestResultState() && (thePerson->GetCurrentCd4() > thePerson->GetCd4TxGuideline() || thePerson->GetCurrentWho() < thePerson->GetWhoTxGuideline()))
+					new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_AsymptomaticCd4ResultNotEligible));
+				else if(thePerson->GetEverCd4TestResultState() && (thePerson->GetCurrentCd4() <= thePerson->GetCd4TxGuideline() || thePerson->GetCurrentWho() >= thePerson->GetWhoTxGuideline()))
+					new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_AsymptomaticCd4ResultEligible));
+			} else {
+				if(!thePerson->GetDiagnosedState())
+					new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_Cd4_200_Oblivious));
+				else if(thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestResultState())
+					new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_Cd4_200_NoCd4Result));
+				else if(thePerson->GetEverCd4TestResultState())
+					new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_Cd4_200_Cd4Result));
+			}
 		} else {
 			if(!thePerson->GetDiagnosedState())
 				new PictHivTest(thePerson,theTime + theRng->SampleExpDist(pictHivTestTime_SymptomaticOblivious));
@@ -78,7 +87,9 @@ bool VctLinkage(person * const thePerson)
 
 bool PictLinkage(person * const thePerson)
 {
-	if(theRng->Sample(pictProbLink))
+	if(thePerson->GetCurrentCd4() == 1)
+		return true;
+	else if(theRng->Sample(pictProbLink))
 		return true;
 	else
 		return false;
@@ -129,20 +140,23 @@ void SchedulePreArtTestDropout(person * const thePerson, const double theTime)
 
 bool ReceiveCd4TestResult(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetCd4TestCount() <= 1) {
-	 switch(thePerson->GetDiagnosisRoute()) {
-		 case 1: return theRng->Sample(hctShortTermRetention);  break;
-		 case 2: return theRng->Sample(vctShortTermRetention);  break;
-		 case 3: return theRng->Sample(pictShortTermRetention); break;
-		 default: thePerson->SetInCareState(false,theTime); return false;
-	 }
-	} else
+	if(thePerson->GetCurrentCd4() == 1) {
+		return true;
+	} else if(thePerson->GetCd4TestCount() <= 1) {
+	 	switch(thePerson->GetDiagnosisRoute()) {
+			case 1: return theRng->Sample(hctShortTermRetention);  break;
+		 	case 2: return theRng->Sample(vctShortTermRetention);  break;
+		 	case 3: return theRng->Sample(pictShortTermRetention); break;
+		 	default: thePerson->SetInCareState(false,theTime); return false;
+	 	}
+	} else {
 		switch(thePerson->GetDiagnosisRoute()) {
-		 case 1: return theRng->Sample(hctLongTermRetention);  break;
-		 case 2: return theRng->Sample(vctLongTermRetention);  break;
-		 case 3: return theRng->Sample(pictLongTermRetention); break;
-		 default: thePerson->SetInCareState(false,theTime); return false;
-	 }
+			case 1: return theRng->Sample(hctLongTermRetention);  break;
+		 	case 2: return theRng->Sample(vctLongTermRetention);  break;
+		 	case 3: return theRng->Sample(pictLongTermRetention); break;
+		 	default: thePerson->SetInCareState(false,theTime); return false;
+	 	}
+	}
 }
 
 ////////////////////
@@ -150,7 +164,9 @@ bool ReceiveCd4TestResult(person * const thePerson, const double theTime)
 
 bool AttendCd4TestResult(person * const thePerson, const double theTime)
 {
-	if(theRng->Sample(cd4ResultProbAttend) && !thePerson->GetEverArt())
+	if(thePerson->GetCurrentCd4() == 1)
+		return true;
+	else if(theRng->Sample(cd4ResultProbAttend) && !thePerson->GetEverArt())
 		return thePerson->Alive();
 	else {
 		thePerson->SetInCareState(false,theTime);
@@ -177,7 +193,7 @@ bool SecondaryCd4Test(person * const thePerson, const double theTime)
 
 void FastTrackArt(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetDiagnosisRoute() > 1 && thePerson->GetWhoEligible()) {
+	if(thePerson->GetDiagnosisRoute() > 1 && thePerson->GetCurrentWho() > 2) {
 		thePerson->SetArtAtEnrollment(true);
 		new ArtInitiation(thePerson,theTime);
 	}
@@ -188,7 +204,10 @@ void FastTrackArt(person * const thePerson, const double theTime)
 
 void ScheduleArtInitiation(person * const thePerson, const double theTime)
 {
-	new ArtInitiation(thePerson,theTime + theRng->SampleExpDist(artInitiationTime));
+	if(thePerson->GetCurrentCd4() == 1)
+		new ArtInitiation(thePerson,theTime);
+	else
+		new ArtInitiation(thePerson,theTime + theRng->SampleExpDist(artInitiationTime));
 }
 
 ////////////////////

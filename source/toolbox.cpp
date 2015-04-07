@@ -18,16 +18,19 @@ extern Rng * theRng;
 
 /* Hiv testing times */
 double hctHivTestTime = 0.4342945 * 365.25;
-double vctHivTestTimeOriginal = 7.2 * 365.25;
+double vctHivTestTimeOriginal = 7 * 365.25;
 double vctHivTestTime = vctHivTestTimeOriginal;
-double pictHivTestTime_AsymptomaticOblivious = 15.6 * 365.25;
-double pictHivTestTime_AsymptomaticNoCd4Result = 11 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 5 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultEligible = 5 * 365.25;
-double pictHivTestTime_SymptomaticOblivious = 1.5 * 365.25;
-double pictHivTestTime_SymptomaticNoCd4Result = 1.5 * 365.25;
-double pictHivTestTime_SymptomaticCd4Result = 1.5 * 365.25;
+double pictHivTestTime_AsymptomaticOblivious = 20 * 365.25;
+double pictHivTestTime_AsymptomaticNoCd4Result = 10 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 3 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultEligible = 3 * 365.25;
+double pictHivTestTime_SymptomaticOblivious = 3 * 365.25;
+double pictHivTestTime_SymptomaticNoCd4Result = 0.1 * 365.25;
+double pictHivTestTime_SymptomaticCd4Result = 0.1 * 365.25;
 
+double pictHivTestTime_Cd4_200_Oblivious = 15 * 365.25;
+double pictHivTestTime_Cd4_200_NoCd4Result = 0.5 * 365.25;
+double pictHivTestTime_Cd4_200_Cd4Result = 0.5 * 365.25;
 
 /* Linkage probabilities */
 double hctProbLinkRollOutOriginal = 0.054;
@@ -35,7 +38,7 @@ double hctProbLinkPreviouslyDiagnosedRollOutOriginal = 0.054;
 double hctProbLinkOriginal = 0.6;
 double hctProbLinkPreviouslyDiagnosedOriginal = 0.7;
 
-double vctProbLinkOriginal = 0.95;
+double vctProbLinkOriginal = 0.9;
 double pictProbLinkOriginal = 0.9;
 
 double hctProbLinkRollOut = hctProbLinkRollOutOriginal;

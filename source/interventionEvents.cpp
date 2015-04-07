@@ -91,7 +91,7 @@ HctHivTest::~HctHivTest()
 
 bool HctHivTest::CheckValid()
 {
-	if(pPerson->GetHctHivTestDate() == GetTime() && !pPerson->GetEverArt())
+	if(pPerson->GetHctHivTestDate() == GetTime()) //&& !pPerson->GetEverArt()
 		return pPerson->Alive();
 	else
 		return false;
@@ -99,6 +99,14 @@ bool HctHivTest::CheckValid()
 
 void HctHivTest::Execute()
 {
+	// STUFF //
+	if(GetTime() > 14579 && GetTime() <= 15006.25) {
+		if(pPerson->EverHbctFlag == 0 && pPerson->GetDiagnosedState()) {
+			pPerson->EverHbctFlag = GetTime();
+			cout << "HbctTest." << endl;
+		}
+	}
+
 	UpdateDaly(pPerson,GetTime());
 	ChargeHctVisit(pPerson);
 	if(pPerson->GetSeroStatus()) {

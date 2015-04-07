@@ -230,6 +230,8 @@ void Cd4Decline::Execute()
 	ScheduleCd4Update(pPerson,GetTime());
 	pPerson->AssignHivDeathDate(GetTime());
 	pPerson->UpdateInfectiousnessArray();
+	if(pPerson->GetCurrentCd4() == 1)
+		SchedulePictHivTest(pPerson,GetTime());
 }
 
 /////////////////////

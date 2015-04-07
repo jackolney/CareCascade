@@ -84,6 +84,8 @@ int * theGuidelines_NewDiagnoses;
 int * theGuidelines_PreArtDropout;
 int * theGuidelines_ArtDropout;
 
+int * mid2010;
+
 /////////////////////
 /////////////////////
 
@@ -190,8 +192,12 @@ void CreateGuidelinesArray()
 	theGuidelines_NewDiagnoses = new int[36];
 	theGuidelines_PreArtDropout = new int[36];
 	theGuidelines_ArtDropout = new int[36];
+
+	mid2010 = new int[2];
 	
 	for(size_t i=0;i<36;i++) {
+		if(i<2)
+			mid2010[i] = 0;
 		theGuidelines_PopDist_HivNegative[i] = 0;
 		theGuidelines_PopDist_500_NeverDiag[i] = 0;
 		theGuidelines_PopDist_500_DiagNotInCareNeverCare[i] = 0;

@@ -84,11 +84,20 @@ extern int * theGuidelines_NewDiagnoses;
 extern int * theGuidelines_PreArtDropout;
 extern int * theGuidelines_ArtDropout;
 
+extern int * mid2010;
+
 /////////////////////
 /////////////////////
 
 void WriteGuidelinesPopDist(person * const thePerson, const size_t theIndex)
 {
+	if(theIndex == 10) {
+		if(thePerson->GetSeroStatus())
+			mid2010[0]++;
+		if(thePerson->GetArtInitiationState())
+			mid2010[1]++;
+	}
+
 	if(!thePerson->GetSeroStatus()) {
 		theGuidelines_PopDist_HivNegative[theIndex]++;
 	} else if(thePerson->GetCurrentCd4() == 4) {

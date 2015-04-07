@@ -104,7 +104,8 @@ calAtArtCareRoute(0),
 calAtArtPreArtVisitCount(0),
 calAtArtEverReturnPreArtCare(false),
 calAtArtEligibleAtReturnPreArtCare(false),
-calEverReturnArt(false)
+calEverReturnArt(false),
+EverHbctFlag(0)
 {
 	gender = AssignGender();
 	AssignInitialAge(Time);
@@ -443,6 +444,14 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		artCount++;
 		if(everLostArt) { everReturnArt = true; calEverReturnArt = true; }
 		if(!inCare) { SetInCareState(theState,theTime); }
+
+		//STUFF//
+		if(theTime > 14579 && theTime <= 16222.62) {
+			if(EverHbctFlag > 0) {
+				cout << "Initiated Art." << endl;
+			}
+
+		}
 
 		/* Calibration */
 		calEverArt = true;
