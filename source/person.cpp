@@ -104,8 +104,7 @@ calAtArtCareRoute(0),
 calAtArtPreArtVisitCount(0),
 calAtArtEverReturnPreArtCare(false),
 calAtArtEligibleAtReturnPreArtCare(false),
-calEverReturnArt(false),
-EverHbctFlag(0)
+calEverReturnArt(false)
 {
 	gender = AssignGender();
 	AssignInitialAge(Time);
@@ -400,7 +399,7 @@ void person::SetInCareState(const bool theState, const double theTime)
 			if(GetEligible())
 				eligibleAtReturnPreArtCare = true;
 		}
-	} else {
+	} else if(!GetEverArt()) {
 		everLostPreArtCare = true;
 		WriteGuidelinesPreArtDropout();
 	}
@@ -445,14 +444,6 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		if(everLostArt) { everReturnArt = true; calEverReturnArt = true; }
 		if(!inCare) { SetInCareState(theState,theTime); }
 
-		//STUFF//
-		if(theTime > 14579 && theTime <= 16222.62) {
-			if(EverHbctFlag > 0) {
-				cout << "Initiated Art." << endl;
-			}
-
-		}
-
 		/* Calibration */
 		calEverArt = true;
 		calArtDay = theTime;
@@ -477,6 +468,8 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		else
 			artTime += theTime - yr[i-1];
 	}
+	if(!theState)
+		SetInCareState(theState,theTime);
 }
 
 /////////////////////

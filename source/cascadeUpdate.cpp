@@ -87,9 +87,7 @@ bool VctLinkage(person * const thePerson)
 
 bool PictLinkage(person * const thePerson)
 {
-	if(thePerson->GetCurrentCd4() == 1)
-		return true;
-	else if(theRng->Sample(pictProbLink))
+	if(theRng->Sample(pictProbLink))
 		return true;
 	else
 		return false;
@@ -140,9 +138,7 @@ void SchedulePreArtTestDropout(person * const thePerson, const double theTime)
 
 bool ReceiveCd4TestResult(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetCurrentCd4() == 1) {
-		return true;
-	} else if(thePerson->GetCd4TestCount() <= 1) {
+	if(thePerson->GetCd4TestCount() <= 1) {
 	 	switch(thePerson->GetDiagnosisRoute()) {
 			case 1: return theRng->Sample(hctShortTermRetention);  break;
 		 	case 2: return theRng->Sample(vctShortTermRetention);  break;
@@ -164,9 +160,7 @@ bool ReceiveCd4TestResult(person * const thePerson, const double theTime)
 
 bool AttendCd4TestResult(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetCurrentCd4() == 1)
-		return true;
-	else if(theRng->Sample(cd4ResultProbAttend) && !thePerson->GetEverArt())
+	if(theRng->Sample(cd4ResultProbAttend) && !thePerson->GetEverArt())
 		return thePerson->Alive();
 	else {
 		thePerson->SetInCareState(false,theTime);
@@ -204,10 +198,7 @@ void FastTrackArt(person * const thePerson, const double theTime)
 
 void ScheduleArtInitiation(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetCurrentCd4() == 1)
-		new ArtInitiation(thePerson,theTime);
-	else
-		new ArtInitiation(thePerson,theTime + theRng->SampleExpDist(artInitiationTime));
+	new ArtInitiation(thePerson,theTime + theRng->SampleExpDist(artInitiationTime));
 }
 
 ////////////////////

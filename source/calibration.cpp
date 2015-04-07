@@ -262,10 +262,11 @@ void UpdateCalibrationArray(person * const thePerson, const unsigned int theTime
 		}
 	}
 	if(theTimeIndex == 2 && thePerson->Alive()) {
-		if(thePerson->GetInCareState())
+		if(thePerson->GetInCareState()) {
 			In2014[0]++;
 		if(thePerson->GetArtInitiationState())
 			In2014[1]++;
+		}
 	}
 }
 

@@ -20,15 +20,15 @@ extern Rng * theRng;
 double hctHivTestTime = 0.4342945 * 365.25;
 double vctHivTestTimeOriginal = 7 * 365.25;
 double vctHivTestTime = vctHivTestTimeOriginal;
-double pictHivTestTime_AsymptomaticOblivious = 20 * 365.25;
+double pictHivTestTime_AsymptomaticOblivious = 30 * 365.25;
 double pictHivTestTime_AsymptomaticNoCd4Result = 10 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 3 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultEligible = 3 * 365.25;
-double pictHivTestTime_SymptomaticOblivious = 3 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 4 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultEligible = 4 * 365.25;
+double pictHivTestTime_SymptomaticOblivious = 0.2 * 365.25;
 double pictHivTestTime_SymptomaticNoCd4Result = 0.1 * 365.25;
 double pictHivTestTime_SymptomaticCd4Result = 0.1 * 365.25;
 
-double pictHivTestTime_Cd4_200_Oblivious = 15 * 365.25;
+double pictHivTestTime_Cd4_200_Oblivious = 12 * 365.25;
 double pictHivTestTime_Cd4_200_NoCd4Result = 0.5 * 365.25;
 double pictHivTestTime_Cd4_200_Cd4Result = 0.5 * 365.25;
 

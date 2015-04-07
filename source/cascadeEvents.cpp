@@ -241,7 +241,7 @@ PreArtDropout::~PreArtDropout()
 
 bool PreArtDropout::CheckValid()
 {
-	if(pPerson->GetInCareState())
+	if(pPerson->GetInCareState() && !pPerson->GetArtInitiationState())
 		return pPerson->Alive();
 	else
 		return false;

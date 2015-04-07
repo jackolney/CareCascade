@@ -191,8 +191,6 @@ public:
 	bool GetCalAtArtEligibleAtReturnCare() const { return calAtArtEligibleAtReturnPreArtCare; }
 	bool GetArtAtEnrollment() const { return artAtEnrollment; }
 	bool GetCalEverReturnArt() const { return calEverReturnArt; }
-
-	double EverHbctFlag;
 	
 private:
 	/* Basic characteristics */
