@@ -18,17 +18,17 @@ extern Rng * theRng;
 
 /* Hiv testing times */
 double hctHivTestTime = 0.4342945 * 365.25;
-double vctHivTestTimeOriginal = 7 * 365.25;
+double vctHivTestTimeOriginal = 7.5 * 365.25;
 double vctHivTestTime = vctHivTestTimeOriginal;
-double pictHivTestTime_AsymptomaticOblivious = 30 * 365.25;
-double pictHivTestTime_AsymptomaticNoCd4Result = 10 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 4 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultEligible = 4 * 365.25;
+double pictHivTestTime_AsymptomaticOblivious = 120 * 365.25;
+double pictHivTestTime_AsymptomaticNoCd4Result = 80 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 50 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultEligible = 50 * 365.25;
 double pictHivTestTime_SymptomaticOblivious = 0.2 * 365.25;
 double pictHivTestTime_SymptomaticNoCd4Result = 0.1 * 365.25;
 double pictHivTestTime_SymptomaticCd4Result = 0.1 * 365.25;
 
-double pictHivTestTime_Cd4_200_Oblivious = 12 * 365.25;
+double pictHivTestTime_Cd4_200_Oblivious = 10 * 365.25;
 double pictHivTestTime_Cd4_200_NoCd4Result = 0.5 * 365.25;
 double pictHivTestTime_Cd4_200_Cd4Result = 0.5 * 365.25;
 
@@ -58,22 +58,22 @@ double cd4ResultTime = 30;
 double cd4TestTime = 335.25;
 
 /* Probability of attending Cd4 Test result visit */
-double cd4ResultProbAttend = 0.80;
+double cd4ResultProbAttend = 0.9486833;
 
-/* Pre-Art retention probability (between test and result) [values scaled by / 0.8 to account for ProbAttend] */
-double hctShortTermRetention = 0.675;
-double hctLongTermRetention = 0.3375;
+/* Pre-Art retention probability (between test and result) */
+double hctShortTermRetention = 0.9486833;
+double hctLongTermRetention = 0.9486833;
 
-double vctShortTermRetention = 0.775;
-double vctLongTermRetention = 0.5875;
+double vctShortTermRetention = 0.9486833;
+double vctLongTermRetention = 0.9486833;
 
-double pictShortTermRetention = 0.725;
-double pictLongTermRetention = 0.575;
+double pictShortTermRetention = 0.9486833;
+double pictLongTermRetention = 0.9486833;
 
 /* Proportion returning for secondary Cd4 testing  */
-double hctProbSecondaryCd4Test = 0.9625; // 0.77 / 0.8 (assuming values are 80% of true value.)
-double vctProbSecondaryCd4Test = 0.8875; // 0.71 / 0.8 (given that 20% of people are eligible at first CD4, then denominator is overestimated by 20%)
-double pictProbSecondaryCd4Test = 0.875; // 0.70 / 0.8
+double hctProbSecondaryCd4Test = 0.75;
+double vctProbSecondaryCd4Test = 0.75;
+double pictProbSecondaryCd4Test = 0.75;
 
 /* Time between eligiblity and Art initiation */
 double artInitiationTime = 145.12;
