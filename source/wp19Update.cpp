@@ -105,7 +105,7 @@ void WriteGuidelinesPopDist(person * const thePerson, const size_t theIndex)
 			theGuidelines_PopDist_500_NeverDiag[theIndex]++;
 		else if(!thePerson->GetInCareState() && !thePerson->GetEverCareState())
 			theGuidelines_PopDist_500_DiagNotInCareNeverCare[theIndex]++;
-		else if(!thePerson->GetInCareState() && thePerson->GetEverCareState())
+		else if(!thePerson->GetInCareState() && !thePerson->GetEverArt() && thePerson->GetEverCareState())
 			theGuidelines_PopDist_500_DiagNotInCareEverCare[theIndex]++;
 		else if(!thePerson->GetEverArt())
 			theGuidelines_PopDist_500_InCareNeverArt[theIndex]++;
@@ -120,7 +120,7 @@ void WriteGuidelinesPopDist(person * const thePerson, const size_t theIndex)
 			theGuidelines_PopDist_350500_NeverDiag[theIndex]++;
 		else if(!thePerson->GetInCareState() && !thePerson->GetEverCareState())
 			theGuidelines_PopDist_350500_DiagNotInCareNeverCare[theIndex]++;
-		else if(!thePerson->GetInCareState() && thePerson->GetEverCareState())
+		else if(!thePerson->GetInCareState() && !thePerson->GetEverArt() && thePerson->GetEverCareState())
 			theGuidelines_PopDist_350500_DiagNotInCareEverCare[theIndex]++;
 		else if(!thePerson->GetEverArt())
 			theGuidelines_PopDist_350500_InCareNeverArt[theIndex]++;
@@ -135,7 +135,7 @@ void WriteGuidelinesPopDist(person * const thePerson, const size_t theIndex)
 			theGuidelines_PopDist_200350_NeverDiag[theIndex]++;
 		else if(!thePerson->GetInCareState() && !thePerson->GetEverCareState())
 			theGuidelines_PopDist_200350_DiagNotInCareNeverCare[theIndex]++;
-		else if(!thePerson->GetInCareState() && thePerson->GetEverCareState())
+		else if(!thePerson->GetInCareState() && !thePerson->GetEverArt() && thePerson->GetEverCareState())
 			theGuidelines_PopDist_200350_DiagNotInCareEverCare[theIndex]++;
 		else if(!thePerson->GetEverArt())
 			theGuidelines_PopDist_200350_InCareNeverArt[theIndex]++;
@@ -150,7 +150,7 @@ void WriteGuidelinesPopDist(person * const thePerson, const size_t theIndex)
 			theGuidelines_PopDist_200_NeverDiag[theIndex]++;
 		else if(!thePerson->GetInCareState() && !thePerson->GetEverCareState())
 			theGuidelines_PopDist_200_DiagNotInCareNeverCare[theIndex]++;
-		else if(!thePerson->GetInCareState() && thePerson->GetEverCareState())
+		else if(!thePerson->GetInCareState() && !thePerson->GetEverArt() && thePerson->GetEverCareState())
 			theGuidelines_PopDist_200_DiagNotInCareEverCare[theIndex]++;
 		else if(!thePerson->GetEverArt())
 			theGuidelines_PopDist_200_InCareNeverArt[theIndex]++;
@@ -184,7 +184,7 @@ void WriteGuidelinesDeath(person * const thePerson)
 				theGuidelines_Death_500_NeverDiag[i]++;
 			else if(!thePerson->GetInCareState() && !thePerson->GetEverCareState())
 				theGuidelines_Death_500_DiagNotInCareNeverCare[i]++;
-			else if(!thePerson->GetInCareState() && thePerson->GetEverCareState())
+			else if(!thePerson->GetInCareState() && !thePerson->GetEverArt() && thePerson->GetEverCareState())
 				theGuidelines_Death_500_DiagNotInCareEverCare[i]++;
 			else if(!thePerson->GetEverArt())
 				theGuidelines_Death_500_InCareNeverArt[i]++;
@@ -199,7 +199,7 @@ void WriteGuidelinesDeath(person * const thePerson)
 				theGuidelines_Death_350500_NeverDiag[i]++;
 			else if(!thePerson->GetInCareState() && !thePerson->GetEverCareState())
 				theGuidelines_Death_350500_DiagNotInCareNeverCare[i]++;
-			else if(!thePerson->GetInCareState() && thePerson->GetEverCareState())
+			else if(!thePerson->GetInCareState() && !thePerson->GetEverArt() && thePerson->GetEverCareState())
 				theGuidelines_Death_350500_DiagNotInCareEverCare[i]++;
 			else if(!thePerson->GetEverArt())
 				theGuidelines_Death_350500_InCareNeverArt[i]++;
@@ -214,7 +214,7 @@ void WriteGuidelinesDeath(person * const thePerson)
 				theGuidelines_Death_200350_NeverDiag[i]++;
 			else if(!thePerson->GetInCareState() && !thePerson->GetEverCareState())
 				theGuidelines_Death_200350_DiagNotInCareNeverCare[i]++;
-			else if(!thePerson->GetInCareState() && thePerson->GetEverCareState())
+			else if(!thePerson->GetInCareState() && !thePerson->GetEverArt() && thePerson->GetEverCareState())
 				theGuidelines_Death_200350_DiagNotInCareEverCare[i]++;
 			else if(!thePerson->GetEverArt())
 				theGuidelines_Death_200350_InCareNeverArt[i]++;
@@ -229,7 +229,7 @@ void WriteGuidelinesDeath(person * const thePerson)
 				theGuidelines_Death_200_NeverDiag[i]++;
 			else if(!thePerson->GetInCareState() && !thePerson->GetEverCareState())
 				theGuidelines_Death_200_DiagNotInCareNeverCare[i]++;
-			else if(!thePerson->GetInCareState() && thePerson->GetEverCareState())
+			else if(!thePerson->GetInCareState() && !thePerson->GetEverArt() && thePerson->GetEverCareState())
 				theGuidelines_Death_200_DiagNotInCareEverCare[i]++;
 			else if(!thePerson->GetEverArt())
 				theGuidelines_Death_200_InCareNeverArt[i]++;
