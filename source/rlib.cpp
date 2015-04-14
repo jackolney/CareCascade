@@ -178,6 +178,10 @@ extern int * theGuidelines_NewDiagnoses;
 extern int * theGuidelines_PreArtDropout;
 extern int * theGuidelines_ArtDropout;
 
+extern int * the2007output;
+extern int * the2011output;
+extern int * the2015output;
+
 extern int * mid2010;
 
 extern "C" {
@@ -240,6 +244,15 @@ SEXP CallCascade(SEXP s_pop,
 	delete thePop;
 	delete theRng;
 
+	for(size_t i=0;i<7;i++) {
+		cout << "the2007output[" << i << "] = " << the2007output[i] << endl;
+	}
+	for(size_t i=0;i<7;i++) {
+			cout << "the2011output[" << i << "] = " << the2011output[i] << endl;
+		}
+	for(size_t i=0;i<7;i++) {
+		cout << "the2015output[" << i << "] = " << the2015output[i] << endl;
+	}
 	/* OUTPUTS */
 	SEXP sOUT, sCARE, sDALY, sCOST, sPOP_15to49, sHIV_15to49, sART_15to49, sPOP_15plus, sAidsDeath_15plus,
 	sPOP_AgeSex_2007, sHIV_AgeSex_2007, sPOP_NoArtCd4_2007, sPOP_AgeSex_2012, sHIV_AgeSex_2012, sPOP_AgeSex_2014,
@@ -263,7 +276,7 @@ SEXP CallCascade(SEXP s_pop,
 	sGuidelines_Death_200350_ArtLessSixMonths, sGuidelines_Death_200350_ArtMoreSixMonths, sGuidelines_Death_200350_OffArt, sGuidelines_Death_200_NeverDiag, sGuidelines_Death_200_DiagNotInCareNeverCare, sGuidelines_Death_200_DiagNotInCareEverCare, sGuidelines_Death_200_InCareNeverArt, sGuidelines_Death_200_ArtLessSixMonths,
 	sGuidelines_Death_200_ArtMoreSixMonths, sGuidelines_Death_200_OffArt, sGuidelines_Art_500, sGuidelines_Art_350500, sGuidelines_Art_200350, sGuidelines_Art_200, sGuidelines_NewInfectionsAdult, sGuidelines_NewDiagnoses, sGuidelines_PreArtDropout, sGuidelines_ArtDropout;
 
-	SEXP sMid2010;
+	SEXP sMid2010, s2007output, s2011output, s2015output;
 
 	PROTECT(sCARE = allocVector(REALSXP,6));
 	PROTECT(sDALY = allocVector(REALSXP,26));
@@ -398,6 +411,9 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sGuidelines_ArtDropout = allocVector(INTSXP,36));
 
 	PROTECT(sMid2010 = allocVector(INTSXP,2));
+	PROTECT(s2007output = allocVector(INTSXP,7));
+	PROTECT(s2011output = allocVector(INTSXP,7));
+	PROTECT(s2015output = allocVector(INTSXP,7));
 
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
@@ -533,6 +549,9 @@ SEXP CallCascade(SEXP s_pop,
 	int * pGuidelines_ArtDropout = INTEGER(sGuidelines_ArtDropout);
 
 	int * pMid2010 = INTEGER(sMid2010);
+	int * p2007output = INTEGER(s2007output);
+	int * p2011output = INTEGER(s2011output);
+	int * p2015output = INTEGER(s2015output);
 
 	for(size_t i=0;i<66;i++) {
 		if(i<2)
@@ -558,6 +577,11 @@ SEXP CallCascade(SEXP s_pop,
 			pCLINIC[i] = theCLINIC[i];
 		if(i<6)
 			pCARE[i] = theCARE[i];
+		if(i<7) {
+			p2007output[i] = the2007output[i];
+			p2011output[i] = the2011output[i];
+			p2015output[i] = the2015output[i];
+		}
 		if(i<9) {
 			pC1[i] = C1[i];
 			pR3[i] = R3[i];
@@ -691,7 +715,7 @@ SEXP CallCascade(SEXP s_pop,
 		pGuidelines_ArtDropout[i] = theGuidelines_ArtDropout[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,132));
+	PROTECT(sOUT = allocVector(VECSXP,135));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
@@ -824,8 +848,12 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,129,sGuidelines_ArtDropout);
 	SET_VECTOR_ELT(sOUT,130,sIn2014);
 	SET_VECTOR_ELT(sOUT,131,sMid2010);
+	SET_VECTOR_ELT(sOUT,132,s2007output);
+	SET_VECTOR_ELT(sOUT,133,s2011output);
+	SET_VECTOR_ELT(sOUT,134,s2015output);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,132));
+
+	PROTECT(sOUTNAMES = allocVector(VECSXP,135));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
@@ -958,9 +986,12 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,129,mkChar("sGuidelines_ArtDropout"));
 	SET_VECTOR_ELT(sOUTNAMES,130,mkChar("sIn2014"));
 	SET_VECTOR_ELT(sOUTNAMES,131,mkChar("sMid2010"));
+	SET_VECTOR_ELT(sOUTNAMES,132,mkChar("s2007output"));
+	SET_VECTOR_ELT(sOUTNAMES,133,mkChar("s2011output"));
+	SET_VECTOR_ELT(sOUTNAMES,134,mkChar("s2015output"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(148);
+	UNPROTECT(151);
 	return(sOUT);
 	}
 

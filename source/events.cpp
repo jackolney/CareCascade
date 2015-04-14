@@ -181,7 +181,7 @@ bool Death::CheckValid()
 	} else if(pPerson->Alive()) {
 		return true;
 	} else {
-		delete pPerson;
+		// delete pPerson;
 		return false;
 	}
 }
@@ -197,8 +197,8 @@ void Death::Execute()
 		WriteGuidelinesDeath(pPerson);
 		WriteAidsDeath(pPerson,GetTime());
 		WriteClinic(pPerson,GetTime());
-	} else
-		delete pPerson;
+	}
+		// delete pPerson;
 }
 
 /////////////////////
@@ -325,6 +325,29 @@ void WhoRecover::Execute()
 	pPerson->SetCurrentWhoStage(pPerson->GetCurrentWho()-1);
 	ScheduleWhoUpdate(pPerson,GetTime());
 	pPerson->AssignHivDeathDate(GetTime());
+}
+
+/////////////////////
+/////////////////////
+
+CohortReport::CohortReport(person * const thePerson, const double Time, const int timeSinceInitiation, const int theCohort) :
+event(Time),
+pPerson(thePerson),
+iCohort(theCohort),
+timeSince(timeSinceInitiation)
+{}
+
+CohortReport::~CohortReport()
+{}
+
+bool CohortReport::CheckValid()
+{
+	return true;
+}
+
+void CohortReport::Execute()
+{
+	WriteCohortOutput(pPerson,iCohort,timeSince + 1);
 }
 
 /////////////////////

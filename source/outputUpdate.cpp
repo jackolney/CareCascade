@@ -53,6 +53,10 @@ extern double * theAidsDeath;
 extern double * theDeath_2010_Age;
 extern double * theAidsDeath_2010_Age;
 
+extern int * the2007output;
+extern int * the2011output;
+extern int * the2015output;
+
 /////////////////////
 /////////////////////
 
@@ -324,5 +328,20 @@ void WriteIncidence(unsigned int const &theIncidentCases, const size_t theIndex)
 {
 	theINCIDENCE[theIndex] = theIncidentCases;
 }
+
+/////////////////////
+/////////////////////
+
+void WriteCohortOutput(person * const thePerson, const int theCohort, const int timeSinceInitiation)
+{
+	if(theCohort == 1) {
+		the2007output[timeSinceInitiation] += thePerson->Alive();
+	} else if(theCohort == 2) {
+		the2011output[timeSinceInitiation] += thePerson->Alive();
+	} else if(theCohort == 3) {
+		the2015output[timeSinceInitiation] += thePerson->Alive();
+	}
+}
+
 /////////////////////
 /////////////////////

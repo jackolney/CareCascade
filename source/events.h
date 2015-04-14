@@ -195,4 +195,21 @@ private:
 ///////////////////////
 ///////////////////////
 
+class CohortReport : public event {
+public:
+	CohortReport(person * const thePerson, const double Time, const int timeSinceInitiation, const int theCohort);
+	~CohortReport();
+
+	bool CheckValid();
+	void Execute();
+
+private:
+	person * const pPerson;
+	double const iCohort;
+	int const timeSince;
+};
+
+///////////////////////
+///////////////////////
+
 #endif /* defined(__priorityQ__events__) */

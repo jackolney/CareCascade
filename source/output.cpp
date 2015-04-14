@@ -58,6 +58,10 @@ double * theAidsDeath;
 double * theDeath_2010_Age;
 double * theAidsDeath_2010_Age;
 
+int * the2007output;
+int * the2011output;
+int * the2015output;
+
 /////////////////////
 /////////////////////
 
@@ -157,6 +161,10 @@ void CreateOutputArray()
 	theAidsDeath = new double[66];
 	theDeath_2010_Age = new double[20];
 	theAidsDeath_2010_Age = new double[20];
+
+	the2007output = new int[7];
+	the2011output = new int[7];
+	the2015output = new int[7];
 	
 	for(size_t i=0;i<66;i++) {
 		if(i<4)
@@ -165,6 +173,11 @@ void CreateOutputArray()
 			theCLINIC[i] = 0;
 		if(i<6)
 			theCARE[i] = 0;
+		if(i<7) {
+			the2007output[i] = 0;
+			the2011output[i] = 0;
+			the2015output[i] = 0;	
+		}
 		if(i<10) {
 			thePOP_AgeSex_2014[i] = 0;
 			theHIV_AgeSex_2014[i] = 0;

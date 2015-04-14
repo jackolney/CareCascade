@@ -120,3 +120,14 @@ void ScheduleBetaCalculation(population * thePopulation)
 
 ////////////////////
 ////////////////////
+
+void ScheduleCohortReport(person * const thePerson, const double theTime, const int theCohort)
+{
+	// 6mths, 1 yr, 2 yr, 3 yr, 4 yr, 5 yr.
+	double timeDelay[6] = {0.5,1,2,3,4,5};
+	for(size_t i=0;i<6;i++)
+		new CohortReport(thePerson, theTime + (timeDelay[i] * 365.25), i, theCohort);
+}
+
+////////////////////
+////////////////////

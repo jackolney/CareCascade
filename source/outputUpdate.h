@@ -38,4 +38,6 @@ void WriteWho(person * const thePerson, const size_t theIndex);
 
 void WriteIncidence(unsigned int const &theIncidentCases, const size_t theIndex);
 
+void WriteCohortOutput(person * const thePerson, const int theCohort, const int timeSinceInitiation);
+
 #endif /* defined(__priorityQ__outputUpdate__) */

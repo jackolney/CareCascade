@@ -23,4 +23,6 @@ void ScheduleIncidence(population * thePopulation);
 
 void ScheduleBetaCalculation(population * thePopulation);
 
+void ScheduleCohortReport(person * const thePerson, const double theTime, const int theCohort);
+
 #endif /* defined(__priorityQ__update__) */

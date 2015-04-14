@@ -69,7 +69,7 @@ artAtEnrollment(false),
 artCount(0),
 everLostArt(false),
 everReturnArt(false),
-adherence(theRng->Sample(0.75)),
+adherence(theRng->Sample(0.95)),
 cd4AtArt(0),
 hivDeath(false),
 artDeath(false),
@@ -104,7 +104,10 @@ calAtArtCareRoute(0),
 calAtArtPreArtVisitCount(0),
 calAtArtEverReturnPreArtCare(false),
 calAtArtEligibleAtReturnPreArtCare(false),
-calEverReturnArt(false)
+calEverReturnArt(false),
+the2007cohort(false),
+the2011cohort(false),
+the2015cohort(false)
 {
 	gender = AssignGender();
 	AssignInitialAge(Time);
@@ -443,6 +446,21 @@ void person::SetArtInitiationState(const bool theState, const double theTime)
 		artCount++;
 		if(everLostArt) { everReturnArt = true; calEverReturnArt = true; }
 		if(!inCare) { SetInCareState(theState,theTime); }
+
+		//STUFF//
+		if(theTime > 37 * 365.25 && theTime <= 38 * 365.25) {
+			the2007cohort = true;
+			ScheduleCohortReport(this,theTime,1);
+			WriteCohortOutput(this,1,0);
+		} else if(theTime > 41 * 365.25 && theTime <= 42 * 365.25) {
+			the2011cohort = true;
+			ScheduleCohortReport(this,theTime,2);
+			WriteCohortOutput(this,2,0);
+		} else if(theTime > 45 * 365.25 && theTime <= 46 * 365.25) {
+			the2015cohort = true;
+			ScheduleCohortReport(this,theTime,3);
+			WriteCohortOutput(this,3,0);
+		}
 
 		/* Calibration */
 		calEverArt = true;

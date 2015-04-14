@@ -191,6 +191,10 @@ public:
 	bool GetCalAtArtEligibleAtReturnCare() const { return calAtArtEligibleAtReturnPreArtCare; }
 	bool GetArtAtEnrollment() const { return artAtEnrollment; }
 	bool GetCalEverReturnArt() const { return calEverReturnArt; }
+
+	bool the2007cohort;
+	bool the2011cohort;
+	bool the2015cohort;
 	
 private:
 	/* Basic characteristics */
