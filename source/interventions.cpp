@@ -234,7 +234,7 @@ void Interventions::Execute()
 		if(*p_Adherence == 1)
 			pPerson->SetArtAdherenceState(1);
 		else
-			pPerson->SetArtAdherenceState(0.875);
+			pPerson->SetArtAdherenceState(0.975);
 	}
 	
 	/////////////////////
