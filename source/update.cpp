@@ -24,6 +24,27 @@ using namespace std;
 ////////////////////
 ////////////////////
 
+void SeedTreatmentUpdate(person * const thePerson, const double theTime)
+{
+	if(theTime > 12418.5)
+	    new SeedInitialHivTests(thePerson,theTime);
+	else
+	    new SeedInitialHivTests(thePerson,12418.5);
+	 
+	if(theTime > 14975.25)
+	    new SeedTreatmentGuidelinesUpdate(thePerson,theTime);
+	else
+	    new SeedTreatmentGuidelinesUpdate(thePerson,14975.25);
+	 
+	// if(theTime > 16436.25)
+	//     new SeedTreatmentGuidelinesUpdate(thePerson,theTime);
+	// else
+	//     new SeedTreatmentGuidelinesUpdate(thePerson,16436.25);
+}
+
+////////////////////
+////////////////////
+
 void ScheduleCd4Update(person * const thePerson, const double theTime)
 {
 	//Cd4Time [WHO-1] [CD4-2 (4,3,2)]

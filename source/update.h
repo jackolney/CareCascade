@@ -13,6 +13,8 @@
 #include "person.h"
 #include "population.h"
 
+void SeedTreatmentUpdate(person * const thePerson, const double theTime);
+
 void ScheduleCd4Update(person * const thePerson, const double theTime);
 
 void ScheduleWhoUpdate(person * const thePerson, const double theTime);
