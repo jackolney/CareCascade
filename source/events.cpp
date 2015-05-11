@@ -313,7 +313,7 @@ WhoRecover::~WhoRecover()
 
 bool WhoRecover::CheckValid()
 {
-	if(pPerson->GetArtInitiationState() && pPerson->GetArtAdherenceState() && pPerson->GetWhoRecoverDate() == GetTime())
+	if(pPerson->GetWhoRecoverDate() == GetTime())
 		return pPerson->Alive();
 	else
 		return false;

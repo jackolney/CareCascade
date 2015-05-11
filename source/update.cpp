@@ -95,18 +95,21 @@ void ScheduleWhoUpdate(person * const thePerson, const double theTime)
 		{0.31177111,2.71022940,2.71022940,2.71022940}
 	};
 	
-	//WhoRecoverTimeArt [WHO from->to] = {2->1,3->2,4->3}
+	//WhoRecoverTime [WHO from->to] = {2->1,3->2,4->3}
 	const double WhoRecoverTime [3] = {0.32760300,14.38530000,3.36363000};
 	const double WhoRecoverTimeArt [3] = {0.65476400,0.32730800,0.04945540};
-	
-	if((!thePerson->GetArtInitiationState() || (thePerson->GetArtInitiationState() && !thePerson->GetArtAdherenceState())) && thePerson->GetCurrentWho() < 4) {
-		new WhoDecline(thePerson, theTime + theRng->SampleExpDist(WhoDeclineTime [thePerson->GetCurrentWho()-1] [thePerson->GetCurrentCd4()-1] * 365.25));
-	}
-	else if(thePerson->GetArtInitiationState() && thePerson->GetArtAdherenceState()) {
+
+	if((!thePerson->GetArtInitiationState() || (thePerson->GetArtInitiationState() && !thePerson->GetArtAdherenceState()))) {
+		if(thePerson->GetCurrentWho() < 4) {
+			new WhoDecline(thePerson, theTime + theRng->SampleExpDist(WhoDeclineTime [thePerson->GetCurrentWho()-1] [thePerson->GetCurrentCd4()-1] * 365.25));	
+		}
+		if(thePerson->GetCurrentWho() > 1) {
+			new WhoRecover(thePerson, theTime + theRng->SampleExpDist(WhoRecoverTime [thePerson->GetCurrentWho()-2] * 365.25));
+		}
+	} else if(thePerson->GetArtInitiationState() && thePerson->GetArtAdherenceState()) {
 		if(thePerson->GetCurrentWho() < 4) {
 			new WhoDecline(thePerson, theTime + theRng->SampleExpDist(WhoDeclineTimeArt [thePerson->GetCurrentWho()-1] [thePerson->GetCurrentCd4()-1] * 365.25));
-		}
-		
+		}	
 		if(thePerson->GetCurrentWho() > 1) {
 			new WhoRecover(thePerson, theTime + theRng->SampleExpDist(WhoRecoverTimeArt [thePerson->GetCurrentWho()-2] * 365.25));
 		}
