@@ -50,19 +50,19 @@ void ScheduleCd4Update(person * const thePerson, const double theTime)
 	//Cd4Time [WHO-1] [CD4-2 (4,3,2)]
 	const double Cd4DeclineTime [4] [3] =
 	{
-		{2.79458000,2.69187000,7.98158000},
-		{2.79458000,2.69187000,7.98158000},
-		{1.97615529,1.90352509,5.64408302},
-		{0.83767622,0.80688886,2.39248106}
+		{5.13562000,4.16995000,6.58904000},
+		{5.13562000,4.16995000,6.58904000},
+		{3.78948223,3.07693159,4.86193487},
+		{0.51460820,0.41784448,0.66024628}
 	};
 	
 	//Cd4TimeArt [WHO-1] [CD4-1 (1,2)]
 	const double Cd4RecoverTimeArt [4] [2] =
 	{
-		{0.17366500,0.44638000},
-		{0.17366500,0.44638000},
-		{0.27560405,0.70839913},
-		{1.41480920,3.63655620}
+		{0.20215333,0.44804333},
+		{0.20215333,0.44804333},
+		{0.34424606,0.76297110},
+		{0.82203553,1.82192167}
 	};
 	
 	if((!thePerson->GetArtInitiationState() || (thePerson->GetArtInitiationState() && !thePerson->GetArtAdherenceState())) && thePerson->GetCurrentCd4() > 1) {
@@ -82,22 +82,22 @@ void ScheduleWhoUpdate(person * const thePerson, const double theTime)
 	//WhoTime [WHO-1][CD4-1]
 	const double WhoDeclineTime [3][4] =
 	{
-		{3.60827175,3.60838000,3.60838000,111.84994839},
-		{4.50168495,4.50182000,4.50182000,139.54415407},
-		{2.46547204,2.46554600,2.46554600,76.42520822}
+		{0.37411092,3.25215000,3.25215000,3.25215000},
+		{0.52457204,4.56011000,4.56011000,4.56011000},
+		{0.27840069,2.42014000,2.42014000,2.42014000}
 	};
 	
 	//WhoTimeArt [WHO-1][CD4-1]
 	const double WhoDeclineTimeArt [3][4] =
 	{
-		{3.85125925,3.85137479,3.85137479,119.38212479},
-		{4.80483650,4.80498064,4.80498064,148.94130802},
-		{2.63140956,2.63148850,2.63148850,81.56897372}
+		{0.41895362,3.64196805,3.64196805,3.64196805},
+		{0.58744972,5.10670631,5.10670631,5.10670631},
+		{0.31177111,2.71022940,2.71022940,2.71022940}
 	};
 	
 	//WhoRecoverTimeArt [WHO from->to] = {2->1,3->2,4->3}
-	const double WhoRecoverTimeArt [3] = {0.47176100,0.32243400,0.03783180};
-	
+	const double WhoRecoverTime [3] = {0.32760300,14.38530000,3.36363000};
+	const double WhoRecoverTimeArt [3] = {0.65476400,0.32730800,0.04945540};
 	
 	if((!thePerson->GetArtInitiationState() || (thePerson->GetArtInitiationState() && !thePerson->GetArtAdherenceState())) && thePerson->GetCurrentWho() < 4) {
 		new WhoDecline(thePerson, theTime + theRng->SampleExpDist(WhoDeclineTime [thePerson->GetCurrentWho()-1] [thePerson->GetCurrentCd4()-1] * 365.25));
