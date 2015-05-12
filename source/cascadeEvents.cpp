@@ -43,7 +43,7 @@ bool SeedInitialHivTests::CheckValid()
 void SeedInitialHivTests::Execute()
 {
 	if(!immediateArtFlag)
-		UpdateTreatmentGuidelines(pPerson,1,4);
+		UpdateTreatmentGuidelines(pPerson,1,3);
 	ScheduleVctHivTest(pPerson,GetTime());
 	SchedulePictHivTest(pPerson,GetTime());
 }
@@ -71,9 +71,9 @@ bool SeedTreatmentGuidelinesUpdate::CheckValid()
 
 void SeedTreatmentGuidelinesUpdate::Execute()
 {
-	if(GetTime() > 14975.25)
+	if(GetTime() >= 14975.25)
 		UpdateTreatmentGuidelines(pPerson,2,3);
-	// if(GetTime() > 16436.25)
+	// if(GetTime() >= 16436.25)
 	// 	UpdateTreatmentGuidelines(pPerson,3,3);
 }
 
@@ -169,9 +169,9 @@ Cd4Test::~Cd4Test()
 bool Cd4Test::CheckValid()
 {
 	if(!pPerson->GetEverArt() && pPerson->Alive()) {
-		if(!pocFlag)
+		if(!pocFlag) {
 			return true;
-		else {
+		} else {
 			new PocCd4Test(pPerson,GetTime());
 			return false;
 		}
