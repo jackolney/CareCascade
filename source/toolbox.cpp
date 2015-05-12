@@ -38,7 +38,7 @@ double hctProbLinkPreviouslyDiagnosedRollOutOriginal = 0.054;
 double hctProbLinkOriginal = 0.3;
 double hctProbLinkPreviouslyDiagnosedOriginal = 0.4;
 
-double vctProbLinkOriginal = 1;
+double vctProbLinkOriginal = 0.95;
 double pictProbLinkOriginal = 0.7;
 
 double hctProbLinkRollOut = hctProbLinkRollOutOriginal;
@@ -55,7 +55,7 @@ double hctCd4TestTime [4] = {252.04,175.78,174.59,116.34};
 double cd4ResultTime = 30;
 
 /* Time between receiving result Cd4 test and subsequent Cd4 test */
-double cd4TestTime = 335.25;
+double cd4TestTime = 278.88;
 
 /* Probability of attending Cd4 Test result visit */
 double cd4ResultProbAttend = 0.9486833;

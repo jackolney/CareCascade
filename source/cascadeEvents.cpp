@@ -254,6 +254,8 @@ bool PreArtDropout::CheckValid()
 void PreArtDropout::Execute()
 {
 	pPerson->SetInCareState(false,GetTime());
+	ScheduleVctHivTest(pPerson,GetTime());
+	SchedulePictHivTest(pPerson,GetTime());
 }
 
 /////////////////////
