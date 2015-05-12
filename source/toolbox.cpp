@@ -18,13 +18,13 @@ extern Rng * theRng;
 
 /* Hiv testing times */
 double hctHivTestTime = 0.4342945 * 365.25;
-double vctHivTestTimeOriginal = 8 * 365.25;
+double vctHivTestTimeOriginal = 7.8 * 365.25;
 double vctHivTestTime = vctHivTestTimeOriginal;
 double pictHivTestTime_AsymptomaticOblivious = 40 * 365.25;
 double pictHivTestTime_AsymptomaticNoCd4Result = 30 * 365.25;
 double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 10 * 365.25;
 double pictHivTestTime_AsymptomaticCd4ResultEligible = 10 * 365.25;
-double pictHivTestTime_SymptomaticOblivious = 2 * 365.25;
+double pictHivTestTime_SymptomaticOblivious = 1.525 * 365.25;
 double pictHivTestTime_SymptomaticNoCd4Result = 0.1 * 365.25;
 double pictHivTestTime_SymptomaticCd4Result = 0.1 * 365.25;
 
@@ -38,7 +38,7 @@ double hctProbLinkPreviouslyDiagnosedRollOutOriginal = 0.054;
 double hctProbLinkOriginal = 0.3;
 double hctProbLinkPreviouslyDiagnosedOriginal = 0.4;
 
-double vctProbLinkOriginal = 0.95;
+double vctProbLinkOriginal = 1;
 double pictProbLinkOriginal = 0.7;
 
 double hctProbLinkRollOut = hctProbLinkRollOutOriginal;

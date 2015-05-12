@@ -5,7 +5,7 @@ Calibrate <- function() {
 
 	rm(list=ls())
 	system("date")
-	popSize = 250
+	popSize = 100
 	dyn.load("./source/main.so")
 	Calibration <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
 	Calibration
