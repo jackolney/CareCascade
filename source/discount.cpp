@@ -17,7 +17,7 @@ using namespace std;
 
 void SeedDiscount()
 {
-	for(size_t i=0;i<19;i++)
+	for(size_t i=0;i<25;i++)
 		new AnnualDiscount(14975.25 + (i * 365.25));
 }
 

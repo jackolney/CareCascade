@@ -27,7 +27,9 @@ double * ART12;
 double * ART13;
 double * ART14;
 double * Pre2010;
+unsigned int * In2014;
 unsigned int * HivArray;
+unsigned int * DiagArray;
 unsigned int * ArtArray;
 unsigned int * R3_Counter;
 unsigned int * R8_Counter;
@@ -65,7 +67,7 @@ TimeSplit::~TimeSplit()
 
 bool TimeSplit::CheckValid()
 {
-	return pPerson->Alive();
+	return true;
 }
 
 void TimeSplit::Execute()
@@ -104,7 +106,9 @@ void CreateCalibrationArray()
 	ART13 = new double[9];
 	ART14 = new double[9];
 	Pre2010 = new double[3];
+	In2014 = new unsigned int[2];
 	HivArray = new unsigned int[3];
+	DiagArray = new unsigned int[3];
 	ArtArray = new unsigned int[3];
 	R3_Counter = new unsigned int[9];
 	R8_Counter = new unsigned int[9];
@@ -113,6 +117,8 @@ void CreateCalibrationArray()
 	ART12_Counter = new unsigned int[3];
 	
 	for(size_t i=0;i<48;i++) {
+		if(i<2)
+			In2014[i] = 0;
 		if(i<3) {
 			ART4[i] = 0;
 			ART6[i] = 0;
@@ -120,6 +126,7 @@ void CreateCalibrationArray()
 			ART12[i] = 0;
 			Pre2010[i] = 0;
 			HivArray[i] = 0;
+			DiagArray[i] = 0;
 			ArtArray[i] = 0;
 			ART6_Counter[i] = 0;
 			ART10_Counter[i] = 0;
@@ -237,19 +244,28 @@ void UpdateCalibrationArray(person * const thePerson, const unsigned int theTime
 		ART14[(theTimeIndex * 3) + (thePerson->GetCalAtArtCareRoute()-1)]++;
 	
 	// HIV-positive individuals initiating ART per year;
-	if(thePerson->GetSeroStatus())
+	if(thePerson->GetSeroStatus() && thePerson->Alive())
 		HivArray[theTimeIndex]++;
-	if(thePerson->GetArtInitiationState())
+	if(thePerson->GetDiagnosedState())
+		DiagArray[theTimeIndex]++;
+	if(thePerson->GetEverArt())
 		ArtArray[theTimeIndex]++;
 	
 	// Pre2010 - Dx levels pre-2010. (don't run this code after 2010)
-	if(theTimeIndex == 0) {
+	if(theTimeIndex == 0 && thePerson->Alive()) {
 		if(thePerson->GetDiagnosedState()) {
 			Pre2010[0]++;
 			if(thePerson->GetDiagnosisRoute() == 2)
 				Pre2010[1]++;
 			else if(thePerson->GetDiagnosisRoute() == 3)
 				Pre2010[2]++;
+		}
+	}
+	if(theTimeIndex == 2 && thePerson->Alive()) {
+		if(thePerson->GetInCareState()) {
+			In2014[0]++;
+		if(thePerson->GetArtInitiationState())
+			In2014[1]++;
 		}
 	}
 }

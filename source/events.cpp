@@ -16,6 +16,7 @@
 #include "impact.h"
 #include "outputUpdate.h"
 #include "cost.h"
+#include "wp19Update.h"
 
 using namespace std;
 
@@ -193,6 +194,7 @@ void Death::Execute()
 	WriteCare(pPerson,GetTime());
 	WriteDeath(pPerson,GetTime());
 	if(hivRelated) {
+		WriteGuidelinesDeath(pPerson);
 		WriteAidsDeath(pPerson,GetTime());
 		WriteClinic(pPerson,GetTime());
 	} else
@@ -228,6 +230,8 @@ void Cd4Decline::Execute()
 	ScheduleCd4Update(pPerson,GetTime());
 	pPerson->AssignHivDeathDate(GetTime());
 	pPerson->UpdateInfectiousnessArray();
+	// if(pPerson->GetCurrentCd4() == 1)
+	// 	SchedulePictHivTest(pPerson,GetTime());
 }
 
 /////////////////////
@@ -309,7 +313,7 @@ WhoRecover::~WhoRecover()
 
 bool WhoRecover::CheckValid()
 {
-	if(pPerson->GetArtInitiationState() && pPerson->GetArtAdherenceState() && pPerson->GetWhoRecoverDate() == GetTime())
+	if(pPerson->GetWhoRecoverDate() == GetTime())
 		return pPerson->Alive();
 	else
 		return false;
@@ -321,6 +325,8 @@ void WhoRecover::Execute()
 	pPerson->SetCurrentWhoStage(pPerson->GetCurrentWho()-1);
 	ScheduleWhoUpdate(pPerson,GetTime());
 	pPerson->AssignHivDeathDate(GetTime());
+	if(pPerson->GetCurrentWho() > 2)
+		SchedulePictHivTest(pPerson,GetTime());
 }
 
 /////////////////////

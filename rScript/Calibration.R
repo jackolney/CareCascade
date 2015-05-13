@@ -15,9 +15,9 @@ Calibrate <- function() {
 	########################
 
 	require(beepr)
-	results <- matrix(0,73,3)
+	results <- matrix(0,75,3)
 	colnames(results) <- c("ONE","TWO","THREE")
-	rownames(results) <- c("C1_HCT", "C1_VCT", "C1_PICT", "L2.1_HCT_m500", "L2.1_HCT_350500", "L2.1_HCT_200350", "L2.1_HCT_l200", "L2.1_VCT_m500", "L2.1_VCT_350500", "L2.1_VCT_200350", "L2.1_VCT_l200", "L2.1_PICT_m500", "L2.1_PICT_350500", "L2.1_PICT_200350", "L2.1_PICT_l200", "R3_HCT", "R3_VCT", "R3_PICT", "R8_HCT", "R8_VCT", "R8_PICT", "ART1_HCT_m500", "ART1_HCT_350500", "ART1_HCT_200350", "ART1_HCT_l200", "ART1_VCT_m500", "ART1_VCT_350500", "ART1_VCT_200350", "ART1_VCT_l200", "ART1_PICT_m500", "ART1_PICT_350500", "ART1_PICT_200350", "ART1_PICT_l200", "ART1_ALL_m500", "ART1_ALL_350500", "ART1_ALL_200350", "ART1_ALL_l200", "ART2_HCT", "ART2_VCT", "ART2_PICT", "ART4", "ART5_HCT", "ART5_VCT", "ART5_PITC", "ART6_HCT", "ART9_HCT", "ART9_VCT", "ART9_PITC", "ART10_ALL", "ART11_HCT", "ART11_VCT", "ART11_PITC", "ART12_ALL", "ART13_HCT", "ART13_VCT", "ART13_PICT", "ART14_HCT", "ART14_VCT", "ART14_PICT", "PLWHIV_2010", "PLWHIV_2010_VCT", "PLWHIV_2010_PICT", "%onART", "nonART,", "diag_count", "ART14_ALL", "ART5_ALL", "ART9_ALL", "ART11_ALL", "ART13_ALL","ArtRoute_Hct","ArtRoute_Vct","ArtRoute_Pict")
+	rownames(results) <- c("C1_HCT", "C1_VCT", "C1_PICT", "L2.1_HCT_m500", "L2.1_HCT_350500", "L2.1_HCT_200350", "L2.1_HCT_l200", "L2.1_VCT_m500", "L2.1_VCT_350500", "L2.1_VCT_200350", "L2.1_VCT_l200", "L2.1_PICT_m500", "L2.1_PICT_350500", "L2.1_PICT_200350", "L2.1_PICT_l200", "R3_HCT", "R3_VCT", "R3_PICT", "R8_HCT", "R8_VCT", "R8_PICT", "ART1_HCT_m500", "ART1_HCT_350500", "ART1_HCT_200350", "ART1_HCT_l200", "ART1_VCT_m500", "ART1_VCT_350500", "ART1_VCT_200350", "ART1_VCT_l200", "ART1_PICT_m500", "ART1_PICT_350500", "ART1_PICT_200350", "ART1_PICT_l200", "ART1_ALL_m500", "ART1_ALL_350500", "ART1_ALL_200350", "ART1_ALL_l200", "ART2_HCT", "ART2_VCT", "ART2_PICT", "ART4", "ART5_HCT", "ART5_VCT", "ART5_PITC", "ART6_HCT", "ART9_HCT", "ART9_VCT", "ART9_PITC", "ART10_ALL", "ART11_HCT", "ART11_VCT", "ART11_PITC", "ART12_ALL", "ART13_HCT", "ART13_VCT", "ART13_PICT", "ART14_HCT", "ART14_VCT", "ART14_PICT", "PLWHIV_2010", "PLWHIV_2010_VCT", "PLWHIV_2010_PICT", "%onART", "nonART,", "diag_count", "ART14_ALL", "ART5_ALL", "ART9_ALL", "ART11_ALL", "ART13_ALL","ArtRoute_Hct","ArtRoute_Vct","ArtRoute_Pict","In2014","Mid2010")
 	results
 
 	##################################################
@@ -386,10 +386,19 @@ Calibrate <- function() {
 	(Calibration$sArtArray[2] / 1) / (Calibration$sHivArray[2] / 1)
 	(Calibration$sArtArray[3] / 3.5) / (Calibration$sHivArray[3] / 3.5)
 
+	Calibration$sArtArray[1] / Calibration$sDiagArray[1]
+	Calibration$sArtArray[2] / Calibration$sDiagArray[2]
+	Calibration$sArtArray[3] / Calibration$sDiagArray[3]
+
+	# % of diagnosed individuals on ART
+	results[63,1] <- Calibration$sArtArray[1] / Calibration$sDiagArray[1]
+	results[63,2] <- Calibration$sArtArray[2] / Calibration$sDiagArray[2]
+	results[63,3] <- Calibration$sArtArray[3] / Calibration$sDiagArray[3]
+
 	#perhaps a bit crude at the moment but will do.
-	results[63,1] <- (Calibration$sArtArray[1] / Calibration$sHivArray[1]) / 3
-	results[63,2] <- (Calibration$sArtArray[2] / Calibration$sHivArray[2]) / 1
-	results[63,3] <- (Calibration$sArtArray[3] / Calibration$sHivArray[3]) / 3.5
+	(Calibration$sArtArray[1] / Calibration$sHivArray[1]) / 3
+	(Calibration$sArtArray[2] / Calibration$sHivArray[2]) / 1
+	(Calibration$sArtArray[3] / Calibration$sHivArray[3]) / 3.5
 
 	#New ART initiators...
 	results[64,1] <- Calibration$sArtArray[1] / 3
@@ -459,11 +468,20 @@ Calibrate <- function() {
 	results[73,2] <- sum(Calibration$sART1[25:28]) / TWO
 	results[73,3] <- sum(Calibration$sART1[41:44]) / THREE
 
+	#######
+	# In 2014, 91% of people in care were on ART.
+	results[74,3] <- Calibration$sIn2014[2] / Calibration$sIn2014[1]
+
+	#######
+	# Mid 2010, 34% of people were on ART.
+	results[75,2] <- Calibration$sMid2010[2] / Calibration$sMid2010[1]
+
 	results
 	result_output <- formatC(results,digits=4,format="f")
 	result_output
 	date()
 	write.table(results,file="calibrationResults.csv",sep=',')
+
 }
 
 Calibrate()

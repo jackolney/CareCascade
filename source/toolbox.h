@@ -25,8 +25,15 @@ extern double pictHivTestTime_AsymptomaticCd4ResultEligible;
 extern double pictHivTestTime_SymptomaticOblivious;
 extern double pictHivTestTime_SymptomaticNoCd4Result;
 extern double pictHivTestTime_SymptomaticCd4Result;
+extern double pictHivTestTime_Cd4_200_Oblivious;
+extern double pictHivTestTime_Cd4_200_NoCd4Result;
+extern double pictHivTestTime_Cd4_200_Cd4Result;
 
 /* Linkage probabilities */
+extern double hctProbLinkRollOutOriginal;
+extern double hctProbLinkRollOut;
+extern double hctProbLinkPreviouslyDiagnosedRollOutOriginal;
+extern double hctProbLinkPreviouslyDiagnosedRollOut;
 extern double hctProbLinkOriginal;
 extern double hctProbLink;
 extern double hctProbLinkPreviouslyDiagnosedOriginal;

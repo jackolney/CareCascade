@@ -18,6 +18,7 @@
 #include "cost.h"
 #include "interventionEvents.h"
 #include "interventionUpdate.h"
+#include "wp19Update.h"
 
 using namespace std;
 
@@ -42,7 +43,7 @@ bool SeedInitialHivTests::CheckValid()
 void SeedInitialHivTests::Execute()
 {
 	if(!immediateArtFlag)
-		UpdateTreatmentGuidelines(pPerson,1,4);
+		UpdateTreatmentGuidelines(pPerson,1,3);
 	ScheduleVctHivTest(pPerson,GetTime());
 	SchedulePictHivTest(pPerson,GetTime());
 }
@@ -70,7 +71,10 @@ bool SeedTreatmentGuidelinesUpdate::CheckValid()
 
 void SeedTreatmentGuidelinesUpdate::Execute()
 {
-	UpdateTreatmentGuidelines(pPerson,2,3);
+	if(GetTime() >= 14975.25)
+		UpdateTreatmentGuidelines(pPerson,2,3);
+	// if(GetTime() >= 16436.25)
+	// 	UpdateTreatmentGuidelines(pPerson,3,3);
 }
 
 /////////////////////
@@ -165,9 +169,9 @@ Cd4Test::~Cd4Test()
 bool Cd4Test::CheckValid()
 {
 	if(!pPerson->GetEverArt() && pPerson->Alive()) {
-		if(!pocFlag)
+		if(!pocFlag) {
 			return true;
-		else {
+		} else {
 			new PocCd4Test(pPerson,GetTime());
 			return false;
 		}
@@ -182,9 +186,10 @@ void Cd4Test::Execute()
 	ChargePreArtClinicCd4Test(pPerson);
 	pPerson->SetEverCd4TestState(true);
 	pPerson->SetInCareState(true,GetTime());
-	FastTrackArt(pPerson,GetTime());
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson,GetTime());
+	else if(pPerson->GetCurrentWho() > 2)
+		FastTrackArt(pPerson,GetTime());
 	else if(ReceiveCd4TestResult(pPerson,GetTime()))
 		ScheduleCd4TestResult(pPerson,GetTime());
 	else
@@ -240,7 +245,7 @@ PreArtDropout::~PreArtDropout()
 
 bool PreArtDropout::CheckValid()
 {
-	if(pPerson->GetInCareState())
+	if(pPerson->GetInCareState() && !pPerson->GetArtInitiationState())
 		return pPerson->Alive();
 	else
 		return false;
@@ -249,6 +254,8 @@ bool PreArtDropout::CheckValid()
 void PreArtDropout::Execute()
 {
 	pPerson->SetInCareState(false,GetTime());
+	ScheduleVctHivTest(pPerson,GetTime());
+	SchedulePictHivTest(pPerson,GetTime());
 }
 
 /////////////////////

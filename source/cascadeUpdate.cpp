@@ -131,19 +131,20 @@ void SchedulePreArtTestDropout(person * const thePerson, const double theTime)
 bool ReceiveCd4TestResult(person * const thePerson, const double theTime)
 {
 	if(thePerson->GetCd4TestCount() <= 1) {
-	 switch(thePerson->GetDiagnosisRoute()) {
-		 case 1: return theRng->Sample(hctShortTermRetention);  break;
-		 case 2: return theRng->Sample(vctShortTermRetention);  break;
-		 case 3: return theRng->Sample(pictShortTermRetention); break;
-		 default: thePerson->SetInCareState(false,theTime); return false;
-	 }
-	} else
+	 	switch(thePerson->GetDiagnosisRoute()) {
+			case 1: return theRng->Sample(hctShortTermRetention);  break;
+		 	case 2: return theRng->Sample(vctShortTermRetention);  break;
+		 	case 3: return theRng->Sample(pictShortTermRetention); break;
+		 	default: thePerson->SetInCareState(false,theTime); return false;
+	 	}
+	} else {
 		switch(thePerson->GetDiagnosisRoute()) {
-		 case 1: return theRng->Sample(hctLongTermRetention);  break;
-		 case 2: return theRng->Sample(vctLongTermRetention);  break;
-		 case 3: return theRng->Sample(pictLongTermRetention); break;
-		 default: thePerson->SetInCareState(false,theTime); return false;
-	 }
+			case 1: return theRng->Sample(hctLongTermRetention);  break;
+		 	case 2: return theRng->Sample(vctLongTermRetention);  break;
+		 	case 3: return theRng->Sample(pictLongTermRetention); break;
+		 	default: thePerson->SetInCareState(false,theTime); return false;
+	 	}
+	}
 }
 
 ////////////////////
@@ -178,10 +179,8 @@ bool SecondaryCd4Test(person * const thePerson, const double theTime)
 
 void FastTrackArt(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetDiagnosisRoute() > 1 && thePerson->GetWhoEligible()) {
-		thePerson->SetArtAtEnrollment(true);
-		new ArtInitiation(thePerson,theTime);
-	}
+	thePerson->SetArtAtEnrollment(true);
+	new ArtInitiation(thePerson,theTime);
 }
 
 ////////////////////

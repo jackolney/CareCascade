@@ -67,7 +67,7 @@ artAtEnrollment(false),
 artCount(0),
 everLostArt(false),
 everReturnArt(false),
-adherence(theRng->Sample(0.75)),
+adherence(theRng->Sample(0.95)),
 cd4AtArt(0),
 hivDeath(false),
 artDeath(false),
@@ -111,13 +111,7 @@ calEverReturnArt(false)
 	SeedOutput(this);
 	SeedCalibration(this,13514.25,14609,14974,16225);
 	SeedInterventions(this);
-	if(Time > 12418.5) {
-		new SeedInitialHivTests(this,Time);
-		new SeedTreatmentGuidelinesUpdate(this,Time);
-	} else {
-		new SeedInitialHivTests(this,12418.5);
-		new SeedTreatmentGuidelinesUpdate(this,14975.25);
-	}
+	SeedTreatmentUpdate(this,Time);
 }
 
 person::~person()
@@ -280,6 +274,7 @@ void person::Hiv(const double theTime)
 	SetSeroconversionDay(theTime);
 	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
 	ScheduleHivIndicatorUpdate(theTime);
+	AssignHivDeathDate(theTime);
 	UpdatePopulation();
 	iPop->AddCase();
 	iPop->UpdateArray(this);
@@ -338,17 +333,17 @@ double person::GenerateHivDeathDate(const double theTime)
 	const double HivMortalityTime [2] [4] [4] =
 	{
 		{
-			{10.89670749,18.89537630,145.12237880,4100.20238599},
-			{5.55555556,16.45278052,30.19225219,80.73449010},
-			{3.33333333,8.81927541,11.24427329,23.00614908},
-			{0.80895939,2.76601300,3.92628016,7.96693404}
+			{17.18386669,26.93036884,163.91486393,833.52754525},
+			{8.23354279,23.80904763,35.03608717,46.80780155},
+			{3.81526196,7.21250938,15.90774020,22.92211067},
+			{1.78259220,2.25749941,7.62232304,9.72800877}
 		},
 		
 		{
-			{12.18473104,21.12886652,162.27627978,4584.85862111},
-			{6.21223891,18.39754859,33.76106706,90.27754928},
-			{3.72734334,9.86174025,12.57338016,25.72554499},
-			{0.90458082,3.09296405,4.39037827,8.90864957}
+			{18.08856633,28.34820428,172.54468642,877.41126992},
+			{8.66702400,25.06255112,36.88067408,49.27214803},
+			{4.01612864,7.59223501,16.74525408,24.12891853},
+			{1.87644247,2.37635269,8.02362463,10.24017091}
 		}
 	};
 	
@@ -394,7 +389,7 @@ void person::SetInCareState(const bool theState, const double theTime)
 			if(GetEligible())
 				eligibleAtReturnPreArtCare = true;
 		}
-	} else
+	} else if(!GetEverArt())
 		everLostPreArtCare = true;
 	if(theState && !GetInCareState()) {
 		everCare = theState;
