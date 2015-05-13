@@ -188,7 +188,7 @@ void Cd4Test::Execute()
 	pPerson->SetInCareState(true,GetTime());
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson,GetTime());
-	else if(pPerson->GetCurrentWho() > 2)
+	else if(pPerson->GetCurrentWho() > 3)
 		FastTrackArt(pPerson,GetTime());
 	else if(ReceiveCd4TestResult(pPerson,GetTime()))
 		ScheduleCd4TestResult(pPerson,GetTime());
