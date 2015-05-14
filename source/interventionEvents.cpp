@@ -198,6 +198,8 @@ void VctPocCd4Test::Execute()
 	pPerson->SetInCareState(true,GetTime());
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson,GetTime());
+	else if(pPerson->GetCurrentWho() > 2)
+		FastTrackArt(pPerson,GetTime());
 	else if(pPerson->GetEligible()) {
 		ChargePocCd4Test(pPerson);
 		ScheduleArtInitiation(pPerson,GetTime());
@@ -237,6 +239,8 @@ void PocCd4Test::Execute()
 	pPerson->SetInCareState(true,GetTime());
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson,GetTime());
+	else if(pPerson->GetCurrentWho() > 2)
+		FastTrackArt(pPerson,GetTime());
 	else if(pPerson->GetEligible()) {
 		ChargePocCd4Test(pPerson);
 		ScheduleArtInitiation(pPerson,GetTime());
