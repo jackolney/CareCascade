@@ -38,5 +38,6 @@ Thumbs.db
 
 # R files #
 ###########
+.RData
 *.RData
 *.Rout
