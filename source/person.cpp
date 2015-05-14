@@ -275,7 +275,8 @@ void person::Hiv(const double theTime)
 {
 	SetSeroStatus(true);
 	SetSeroconversionDay(theTime);
-	SetHivIndicators(); //Function to determine initial CD4 count / WHO stage / HIV-related mortality etc.
+	SetHivIndicators();
+	AssignHivDeathDate(theTime);
 	ScheduleHivIndicatorUpdate(theTime);
 	WriteGuidelinesNewInfection(this);
 	UpdatePopulation();
