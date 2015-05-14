@@ -266,8 +266,8 @@ SEXP CallCascade(SEXP s_pop,
 	SEXP sMid2010;
 
 	PROTECT(sCARE = allocVector(REALSXP,6));
-	PROTECT(sDALY = allocVector(REALSXP,26));
-	PROTECT(sCOST = allocVector(REALSXP,26));
+	PROTECT(sDALY = allocVector(REALSXP,20));
+	PROTECT(sCOST = allocVector(REALSXP,20));
 	PROTECT(sPOP_15to49 = allocVector(REALSXP,66));
 	PROTECT(sHIV_15to49 = allocVector(REALSXP,66));
 	PROTECT(sART_15to49 = allocVector(REALSXP,66));
@@ -297,10 +297,10 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sWHO_3_Art = allocVector(REALSXP,66));
 	PROTECT(sWHO_4_Art = allocVector(REALSXP,66));
 	PROTECT(sINCIDENCE = allocVector(REALSXP,66));
-	PROTECT(sPreArtCOST = allocVector(REALSXP,26));
-	PROTECT(sArtCOST = allocVector(REALSXP,26));
-	PROTECT(sPreArtCOST_Hiv = allocVector(REALSXP,26));
-	PROTECT(sArtCOST_Hiv = allocVector(REALSXP,26));
+	PROTECT(sPreArtCOST = allocVector(REALSXP,20));
+	PROTECT(sArtCOST = allocVector(REALSXP,20));
+	PROTECT(sPreArtCOST_Hiv = allocVector(REALSXP,20));
+	PROTECT(sArtCOST_Hiv = allocVector(REALSXP,20));
 	PROTECT(sC1 = allocVector(REALSXP,9));
 	PROTECT(sL21 = allocVector(REALSXP,36));
 	PROTECT(sR3 = allocVector(REALSXP,9));
@@ -583,8 +583,6 @@ SEXP CallCascade(SEXP s_pop,
 			pHIV_AgeSex_2007[i] = theHIV_AgeSex_2007[i];
 			pDeath_2010_Age[i] = theDeath_2010_Age[i];
 			pAidsDeath_2010_Age[i] = theAidsDeath_2010_Age[i];
-		}
-		if(i<26) {
 			pDALY[i] = theDALY[i];
 			pCOST[i] = theCOST[i];
 			pPreArtCOST[i] = thePreArtCOST[i];
