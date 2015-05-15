@@ -132,15 +132,15 @@ double outreachCost = 19.55;
 /* Random */
 double Random(const int i)
 {
-	unsigned long long r = theRng->int64();
-	return r % i;
+    unsigned long long r = theRng->int64();
+    return r % i;
 }
 
 
 int Round(const double theDouble)
 {
-	if((theDouble + 0.5) >= (int(theDouble) + 1))
-		return int(theDouble) + 1;
-	else
-		return int(theDouble);
+    if((theDouble + 0.5) >= (int(theDouble) + 1))
+        return int(theDouble) + 1;
+    else
+        return int(theDouble);
 }

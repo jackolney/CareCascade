@@ -92,7 +92,7 @@ bool Output::CheckValid()
 
 void Output::Execute()
 {
-	if(GetTime() >= 14610) {
+	if(GetTime() >= 14610 && GetTime() < 21916) {
 		WriteDaly(pPerson,index);
 		WriteCost(pPerson,GetTime());
 	}
@@ -115,8 +115,8 @@ void Output::Execute()
 void CreateOutputArray()
 {
 	theCARE = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly.
-	theDALY = new double[26];
-	theCOST = new double[26];
+	theDALY = new double[20];
+	theCOST = new double[20];
 	thePOP = new double[66];
 	theHIV = new double[66];
 	thePOP_15to49 = new double[66];
@@ -148,10 +148,10 @@ void CreateOutputArray()
 	theWHO_3_Art = new double[66];
 	theWHO_4_Art = new double[66];
 	theINCIDENCE = new double[66];
-	thePreArtCOST = new double[26];
-	theArtCOST = new double[26];
-	thePreArtCOST_Hiv = new double[26];
-	theArtCOST_Hiv = new double[26];
+	thePreArtCOST = new double[20];
+	theArtCOST = new double[20];
+	thePreArtCOST_Hiv = new double[20];
+	theArtCOST_Hiv = new double[20];
 	theCLINIC = new double[5]; // NeverDiagnosed, DiagnosedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly.
 	theDeath = new double[66];
 	theAidsDeath = new double[66];
@@ -178,14 +178,12 @@ void CreateOutputArray()
 			theHIV_AgeSex_2007[i] = 0;
 			theDeath_2010_Age[i] = 0;
 			theAidsDeath_2010_Age[i] = 0;
-		}
-		if(i<26) {
 			theDALY[i] = 0;
 			theCOST[i] = 0;
 			thePreArtCOST[i] = 0;
 			theArtCOST[i] = 0;
 			thePreArtCOST_Hiv[i] = 0;
-			theArtCOST_Hiv[i] = 0;
+			theArtCOST_Hiv[i] = 0;			
 		}
 		thePOP[i] = 0;
 		thePOP_15to49[i] = 0;

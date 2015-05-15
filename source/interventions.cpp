@@ -73,16 +73,16 @@ void Interventions::Execute()
 	
 	if(*p_Hbct) {
 		for(size_t i=0;i<5;i++)
-			if(GetTime() <= 16801.5 + (i * 1461))
-				new SeedHct(pPerson,16801.5 + (i * 1461),false);
-
+			if(GetTime() <= 14610 + (i * 1461))
+				new SeedHct(pPerson,14610 + (i * 1461),false);
+		
 		if(*p_Hbct == 1) {
 			hctProbLink = 1;
 			hctProbLinkPreviouslyDiagnosed = 1;
 		}
 	}
 	
-/////////////////////
+	/////////////////////
 	/* Vct */
 	
 	if(*p_Vct) {
@@ -100,8 +100,8 @@ void Interventions::Execute()
 	if(*p_HbctPocCd4) {
 		D(cout << "HbctPocCd4 Intervention." << endl);
 		for(size_t i=0;i<5;i++)
-			if(GetTime() <= 16801.5 + (i * 1461))
-				new SeedHct(pPerson,16801.5 + (i * 1461),true);
+			if(GetTime() <= 14610 + (i * 1461))
+				new SeedHct(pPerson,14610 + (i * 1461),true);
 		
 		if(*p_HbctPocCd4 == 1) {
 			hctProbLink = 1;
@@ -137,9 +137,9 @@ void Interventions::Execute()
 		double k = 0;
 		if(*p_PreOutreach == 1) { k = 1; } else { k = 0.2; }
 		
-		for(size_t i=0;i<19;i++)
-			if(GetTime() <= 16984.125 + (i * 365.25))
-				new PreArtOutreach(pPerson,16984.125 + (i * 365.25),k);
+		for(size_t i=0;i<20;i++)
+			if(GetTime() <= 14792.625 + (i * 365.25))
+				new PreArtOutreach(pPerson,14792.625 + (i * 365.25),k);
 	}
 	
 	/////////////////////
@@ -193,9 +193,9 @@ void Interventions::Execute()
 		double k = 0;
 		if(*p_ArtOutreach == 1) { k = 1; } else { k = 0.4; }
 		
-		for(size_t i=0;i<19;i++)
-			if(GetTime() <= 16984.125 + (i * 365.25))
-				new ArtOutreach(pPerson,16984.125 + (i * 365.25),k);
+		for(size_t i=0;i<20;i++)
+			if(GetTime() <= 14792.625 + (i * 365.25))
+				new ArtOutreach(pPerson,14792.625 + (i * 365.25),k);
 	}
 	
 	/////////////////////
@@ -216,16 +216,16 @@ void Interventions::Execute()
 		UpdateTreatmentGuidelines(pPerson,4,1);
 		
 		for(size_t i=0;i<5;i++)
-			if(GetTime() <= 16801.5 + (i * 1461))
-				new SeedHct(pPerson,16801.5 + (i * 1461),false);
-
+			if(GetTime() <= 14610 + (i * 1461))
+				new SeedHct(pPerson,14610 + (i * 1461),false);
+		
 		if(*p_UniversalTestAndTreat == 1) {
 			hctProbLink = 1;
 			hctProbLinkPreviouslyDiagnosed = 1;
 		}
 	}
 	
-/////////////////////
+	/////////////////////
 	/* Adherence */
 	
 	if(*p_Adherence) {
@@ -241,7 +241,7 @@ void Interventions::Execute()
 	/* Calibration */
 	
 	if(*p_Calibration) {
-		for(size_t i=0;i<35;i++)
+		for(size_t i=0;i<20;i++)
 			if(GetTime() <= 14610 + (i * 365.25))
 				new SeedPerpetualHct(pPerson, 14610 + (i * 365.25));
 	}
