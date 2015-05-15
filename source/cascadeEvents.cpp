@@ -19,6 +19,9 @@
 #include "interventionEvents.h"
 #include "interventionUpdate.h"
 #include "wp19Update.h"
+#include "rng.h"
+
+extern Rng * theRng;
 
 using namespace std;
 
@@ -190,6 +193,8 @@ void Cd4Test::Execute()
 		ScheduleImmediateArt(pPerson,GetTime());
 	else if(pPerson->GetCurrentWho() > 3)
 		FastTrackArt(pPerson,GetTime());
+	else if(theRng->Sample(0.02))
+		new ArtInitiation(pPerson,GetTime());
 	else if(ReceiveCd4TestResult(pPerson,GetTime()))
 		ScheduleCd4TestResult(pPerson,GetTime());
 	else
