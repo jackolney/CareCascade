@@ -28,10 +28,6 @@ double pictHivTestTime_SymptomaticOblivious = 1.525 * 365.25;
 double pictHivTestTime_SymptomaticNoCd4Result = 0.1 * 365.25;
 double pictHivTestTime_SymptomaticCd4Result = 0.1 * 365.25;
 
-double pictHivTestTime_Cd4_200_Oblivious = 10 * 365.25;
-double pictHivTestTime_Cd4_200_NoCd4Result = 5 * 365.25;
-double pictHivTestTime_Cd4_200_Cd4Result = 5 * 365.25;
-
 /* Linkage probabilities */
 double hctProbLinkRollOutOriginal = 0.054;
 double hctProbLinkPreviouslyDiagnosedRollOutOriginal = 0.054;
