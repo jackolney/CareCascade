@@ -198,9 +198,10 @@ void VctPocCd4Test::Execute()
 	pPerson->SetInCareState(true,GetTime());
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson,GetTime());
-	else if(pPerson->GetCurrentWho() > 2)
+	else if(pPerson->GetCurrentWho() > 2 || theRng->Sample(0.05)) {
+		ChargePocCd4Test(pPerson);
 		FastTrackArt(pPerson,GetTime());
-	else if(pPerson->GetEligible()) {
+	} else if(pPerson->GetEligible()) {
 		ChargePocCd4Test(pPerson);
 		ScheduleArtInitiation(pPerson,GetTime());
 	} else {
@@ -230,7 +231,7 @@ bool PocCd4Test::CheckValid()
 	
 }
 
-void PocCd4Test::Execute()
+void PocCd4Test::Execute() // Update.
 {
 	UpdateDaly(pPerson,GetTime());
 	ChargePreArtClinicVisit(pPerson);
@@ -239,9 +240,10 @@ void PocCd4Test::Execute()
 	pPerson->SetInCareState(true,GetTime());
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson,GetTime());
-	else if(pPerson->GetCurrentWho() > 2)
+	else if(pPerson->GetCurrentWho() > 2 || theRng->Sample(0.05)) {
+		ChargePocCd4Test(pPerson);
 		FastTrackArt(pPerson,GetTime());
-	else if(pPerson->GetEligible()) {
+	} else if(pPerson->GetEligible()) {
 		ChargePocCd4Test(pPerson);
 		ScheduleArtInitiation(pPerson,GetTime());
 	} else {
