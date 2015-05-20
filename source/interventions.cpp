@@ -189,14 +189,18 @@ void Interventions::Execute()
 	/////////////////////
 	/* ArtOutreach */
 	
-	if(*p_ArtOutreach) {
-		double k = 0;
-		if(*p_ArtOutreach == 1) { k = 1; } else { k = 0.4; }
+	// if(*p_ArtOutreach) {
+	// 	double k = 0;
+	// 	if(*p_ArtOutreach == 1) { k = 1; } else { k = 0.4; }
 		
-		for(size_t i=0;i<20;i++)
-			if(GetTime() <= 14792.625 + (i * 365.25))
-				new ArtOutreach(pPerson,14792.625 + (i * 365.25),k);
-	}
+	// 	for(size_t i=0;i<20;i++)
+	// 		if(GetTime() <= 14792.625 + (i * 365.25))
+	// 			new ArtOutreach(pPerson,14792.625 + (i * 365.25),k);
+	// }
+
+	if(*p_ArtOutreach)
+		artDropoutFlag = true;
+
 	
 	/////////////////////
 	/* ImmediateArt */

@@ -313,12 +313,14 @@ bool ArtDropout::CheckValid()
 
 void ArtDropout::Execute()
 {
-	UpdateDaly(pPerson,GetTime());
-	pPerson->SetArtInitiationState(false,GetTime());
-	WriteGuidelinesArtDropout();
-	ScheduleCd4Update(pPerson,GetTime());
-	ScheduleWhoUpdate(pPerson,GetTime());
-	pPerson->UpdateInfectiousnessArray();
+	if(artDropoutFlag == false) {
+		UpdateDaly(pPerson,GetTime());
+		pPerson->SetArtInitiationState(false,GetTime());
+		WriteGuidelinesArtDropout();
+		ScheduleCd4Update(pPerson,GetTime());
+		ScheduleWhoUpdate(pPerson,GetTime());
+		pPerson->UpdateInfectiousnessArray();
+	}
 }
 
 /////////////////////
