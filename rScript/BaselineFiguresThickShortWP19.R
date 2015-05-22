@@ -145,7 +145,7 @@ plot((result$sHIV_AgeSex_2007 / result$sPOP_AgeSex_2007)[11:20],
 	cex.lab=1.2,
 	yaxt='n',
 	col=p[1],
-	ylim=c(0,0.16))
+	ylim=c(0,0.2))
 lines(Kais2007_PrevByAgeSex$male,
 	type='b',
 	col=p[2],
@@ -164,7 +164,7 @@ axis(1,seq(1,10,1),
 		"55-59",
 		"60-64"),
 	cex.axis=1.2)
-axis(2,seq(0,0.16,0.02),seq(0,16,2),las=1,cex.axis=1.2)
+axis(2,seq(0,0.2,0.02),seq(0,20,2),las=1,cex.axis=1.2)
 legend("topleft",
 	c("Model 2007 - Males","KAIS 2007 - Males"),
 	fill=p[1:2],
@@ -190,7 +190,7 @@ plot((result$sHIV_AgeSex_2007 / result$sPOP_AgeSex_2007)[1:10],
 	cex.lab=1.2,
 	yaxt='n',
 	col=p[1],
-	ylim=c(0,0.15))
+	ylim=c(0,0.20))
 lines(Kais2007_PrevByAgeSex$female,
 	type='b',
 	col=p[2],
@@ -209,7 +209,7 @@ axis(1,seq(1,10,1),
 		"55-59",
 		"60-64"),
 	cex.axis=1.2)
-axis(2,seq(0,0.15,0.02),seq(0,15,2),las=1,cex.axis=1.2)
+axis(2,seq(0,0.20,0.02),seq(0,20,2),las=1,cex.axis=1.2)
 legend("topleft",
 	c("Model 2007 - Females","KAIS 2007 - Females"),
 	fill=p[1:2],
@@ -242,7 +242,7 @@ plot((result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[9:16],
 	cex.lab=1.5,
 	yaxt='n',
 	col=p[1],
-	ylim=c(0,0.16),
+	ylim=c(0,0.20),
 	)
 
 lines(Kais2012_PrevByAgeSex$confLower.1,
@@ -283,7 +283,7 @@ axis(1,seq(1,8,1),
 		"45-49",
 		"50-64"),
 	cex.axis=1.5)
-axis(2,seq(0,0.16,0.02),seq(0,16,2),las=1,cex.axis=1.5)
+axis(2,seq(0,0.20,0.02),seq(0,20,2),las=1,cex.axis=1.5)
 legend("topleft",
 	c("Model 2012 - Males","KAIS 2012 - Males"),
 	fill=p[1:2],
@@ -309,7 +309,7 @@ plot((result$sHIV_AgeSex_2012 / result$sPOP_AgeSex_2012)[1:8],
 	cex.lab=1.5,
 	yaxt='n',
 	col=p[1],
-	ylim=c(0,0.16),
+	ylim=c(0,0.20),
 	)
 
 lines(Kais2012_PrevByAgeSex$women,
@@ -350,7 +350,7 @@ axis(1,seq(1,8,1),
 		"45-49",
 		"50-64"),
 	cex.axis=1.5)
-axis(2,seq(0,0.16,0.02),seq(0,16,2),las=1,cex.axis=1.5)
+axis(2,seq(0,0.20,0.02),seq(0,20,2),las=1,cex.axis=1.5)
 legend("topleft",
 	c("Model 2012 - Females","KAIS 2012 - Females"),
 	fill=p[1:2],
@@ -769,7 +769,7 @@ plot((result$sHIV_AgeSex_2014 / result$sPOP_AgeSex_2014)[6:10],
 	cex.lab=1.5,
 	yaxt='n',
 	col=p[1],
-	ylim=c(0,0.24))
+	ylim=c(0,0.30))
 lines(Ampath2014$male,
 	type='b',
 	col=p[2],
@@ -783,7 +783,7 @@ axis(1,seq(1,5,1),
 		"29-46",
 		">46"),
 	cex.axis=1.5)
-axis(2,seq(0,0.24,0.02),seq(0,24,2),las=1,cex.axis=1.5)
+axis(2,seq(0,0.3,0.05),seq(0,30,5),las=1,cex.axis=1.5)
 legend("topleft",
 	c("Model 22/05/2014 - Males","AMPATH 22/05/2014 - Males"),
 	fill=p[1:2],
@@ -816,7 +816,7 @@ plot((result$sHIV_AgeSex_2014 / result$sPOP_AgeSex_2014)[1:5],
 	cex.lab=1.5,
 	yaxt='n',
 	col=p[1],
-	ylim=c(0,0.24))
+	ylim=c(0,0.3))
 lines(Ampath2014$female,
 	type='b',
 	col=p[2],
@@ -831,7 +831,7 @@ axis(1,seq(1,5,1),
 		"29-46",
 		">46"),
 	cex.axis=1.5)
-axis(2,seq(0,0.24,0.02),seq(0,24,2),las=1,cex.axis=1.5)
+axis(2,seq(0,0.3,0.05),seq(0,30,5),las=1,cex.axis=1.5)
 legend("topleft",
 	c("Model 22/05/2014 - Females","AMPATH 22/05/2014 - Females"),
 	fill=p[1:2],
