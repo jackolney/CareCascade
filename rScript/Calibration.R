@@ -15,9 +15,9 @@ Calibrate <- function() {
 	########################
 
 	require(beepr)
-	results <- matrix(0,75,3)
+	results <- matrix(0,84,3)
 	colnames(results) <- c("ONE","TWO","THREE")
-	rownames(results) <- c("C1_HCT", "C1_VCT", "C1_PICT", "L2.1_HCT_m500", "L2.1_HCT_350500", "L2.1_HCT_200350", "L2.1_HCT_l200", "L2.1_VCT_m500", "L2.1_VCT_350500", "L2.1_VCT_200350", "L2.1_VCT_l200", "L2.1_PICT_m500", "L2.1_PICT_350500", "L2.1_PICT_200350", "L2.1_PICT_l200", "R3_HCT", "R3_VCT", "R3_PICT", "R8_HCT", "R8_VCT", "R8_PICT", "ART1_HCT_m500", "ART1_HCT_350500", "ART1_HCT_200350", "ART1_HCT_l200", "ART1_VCT_m500", "ART1_VCT_350500", "ART1_VCT_200350", "ART1_VCT_l200", "ART1_PICT_m500", "ART1_PICT_350500", "ART1_PICT_200350", "ART1_PICT_l200", "ART1_ALL_m500", "ART1_ALL_350500", "ART1_ALL_200350", "ART1_ALL_l200", "ART2_HCT", "ART2_VCT", "ART2_PICT", "ART4", "ART5_HCT", "ART5_VCT", "ART5_PITC", "ART6_HCT", "ART9_HCT", "ART9_VCT", "ART9_PITC", "ART10_ALL", "ART11_HCT", "ART11_VCT", "ART11_PITC", "ART12_ALL", "ART13_HCT", "ART13_VCT", "ART13_PICT", "ART14_HCT", "ART14_VCT", "ART14_PICT", "PLWHIV_2010", "PLWHIV_2010_VCT", "PLWHIV_2010_PICT", "%onART", "nonART,", "diag_count", "ART14_ALL", "ART5_ALL", "ART9_ALL", "ART11_ALL", "ART13_ALL","ArtRoute_Hct","ArtRoute_Vct","ArtRoute_Pict","In2014","Mid2010")
+	rownames(results) <- c("C1_HCT", "C1_VCT", "C1_PICT", "L2.1_HCT_m500", "L2.1_HCT_350500", "L2.1_HCT_200350", "L2.1_HCT_l200", "L2.1_VCT_m500", "L2.1_VCT_350500", "L2.1_VCT_200350", "L2.1_VCT_l200", "L2.1_PICT_m500", "L2.1_PICT_350500", "L2.1_PICT_200350", "L2.1_PICT_l200", "R3_HCT", "R3_VCT", "R3_PICT", "R8_HCT", "R8_VCT", "R8_PICT", "ART1_HCT_m500", "ART1_HCT_350500", "ART1_HCT_200350", "ART1_HCT_l200", "ART1_VCT_m500", "ART1_VCT_350500", "ART1_VCT_200350", "ART1_VCT_l200", "ART1_PICT_m500", "ART1_PICT_350500", "ART1_PICT_200350", "ART1_PICT_l200", "ART1_ALL_m500", "ART1_ALL_350500", "ART1_ALL_200350", "ART1_ALL_l200", "ART2_HCT", "ART2_VCT", "ART2_PICT", "ART4", "ART5_HCT", "ART5_VCT", "ART5_PITC", "ART6_HCT", "ART9_HCT", "ART9_VCT", "ART9_PITC", "ART10_ALL", "ART11_HCT", "ART11_VCT", "ART11_PITC", "ART12_ALL", "ART13_HCT", "ART13_VCT", "ART13_PICT", "ART14_HCT", "ART14_VCT", "ART14_PICT", "PLWHIV_2010", "PLWHIV_2010_VCT", "PLWHIV_2010_PICT", "%onART", "nonART,", "diag_count", "ART14_ALL", "ART5_ALL", "ART9_ALL", "ART11_ALL", "ART13_ALL","ArtRoute_Hct","ArtRoute_Vct","ArtRoute_Pict","In2014","Mid2010","T12_ArtAtEnrollment", "T12_NotArtAtEnrollment", "T12_Reinitiating", "T3_ArtAtEnrollment_Recent", "T3_ArtAtEnrollment_NotRecent", "T3_Retained", "T3_LostReturnNotEligible", "T3_LostReturnEligible", "T3_Reinitiating")
 	results
 
 	##################################################
@@ -475,6 +475,28 @@ Calibrate <- function() {
 	#######
 	# Mid 2010, 34% of people were on ART.
 	results[75,2] <- Calibration$sMid2010[2] / Calibration$sMid2010[1]
+
+	### PIE CHARTS ###
+
+	# SafetyCheck
+	sum(Calibration$sPie_1) / ONE
+	sum(Calibration$sPie_2) / TWO
+	sum(Calibration$sPie_3) / THREE
+
+	results[76,1] <- Calibration$sPie_1[1] / ONE
+	results[77,1] <- Calibration$sPie_1[2] / ONE
+	results[78,1] <- Calibration$sPie_1[3] / ONE
+
+	results[76,2] <- Calibration$sPie_2[1] / TWO
+	results[77,2] <- Calibration$sPie_2[2] / TWO
+	results[78,2] <- Calibration$sPie_2[3] / TWO
+
+	results[79,3] <- Calibration$sPie_3[1] / THREE
+	results[80,3] <- Calibration$sPie_3[2] / THREE
+	results[81,3] <- Calibration$sPie_3[3] / THREE
+	results[82,3] <- Calibration$sPie_3[4] / THREE
+	results[83,3] <- Calibration$sPie_3[5] / THREE
+	results[84,3] <- Calibration$sPie_3[6] / THREE
 
 	results
 	result_output <- formatC(results,digits=4,format="f")

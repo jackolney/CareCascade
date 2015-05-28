@@ -37,6 +37,10 @@ unsigned int * ART6_Counter;
 unsigned int * ART10_Counter;
 unsigned int * ART12_Counter;
 
+unsigned int * Pie_1;
+unsigned int * Pie_2;
+unsigned int * Pie_3;
+
 void SeedCalibration(person * const thePerson, const double theTimeZero, const double theTimeOne, const double theTimeTwo, const double theTimeThree)
 {
 	if(thePerson->GetBirthDay() < theTimeZero)
@@ -115,6 +119,10 @@ void CreateCalibrationArray()
 	ART6_Counter = new unsigned int[3];
 	ART10_Counter = new unsigned int[3];
 	ART12_Counter = new unsigned int[3];
+
+	Pie_1 = new unsigned int[3];
+	Pie_2 = new unsigned int[3];
+	Pie_3 = new unsigned int[6];
 	
 	for(size_t i=0;i<48;i++) {
 		if(i<2)
@@ -131,7 +139,11 @@ void CreateCalibrationArray()
 			ART6_Counter[i] = 0;
 			ART10_Counter[i] = 0;
 			ART12_Counter[i] = 0;
+			Pie_1[i] = 0;
+			Pie_2[i] = 0;
 		}
+		if(i<6)
+			Pie_3[i] = 0;
 		if(i<9) {
 			C1[i] = 0;
 			R3[i] = 0;
@@ -268,6 +280,43 @@ void UpdateCalibrationArray(person * const thePerson, const unsigned int theTime
 			In2014[1]++;
 		}
 	}
+
+	/* Pie Charts */
+	// Previously thePerson->GetCalEligibleAtEnrollment();
+
+	if(theTimeIndex == 0) {
+		if(thePerson->GetCalEverArt() && thePerson->GetArtAtEnrollment())
+			Pie_1[0]++;
+		else if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment())
+			Pie_1[1]++;
+		else if(thePerson->GetCalEverArt() && thePerson->GetCalEverReturnArt())
+			Pie_1[2]++;
+	}
+
+	if(theTimeIndex == 1) {
+		if(thePerson->GetCalEverArt() && thePerson->GetArtAtEnrollment())
+			Pie_2[0]++;
+		else if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment())
+			Pie_2[1]++;
+		else if(thePerson->GetCalEverArt() && thePerson->GetCalEverReturnArt())
+			Pie_2[2]++;
+	}
+
+	if(theTimeIndex == 2) { // not discrete.
+		if(thePerson->GetCalEverArt() && thePerson->GetArtAtEnrollment() && ((thePerson->GetCalArtDay() - thePerson->GetCalDiagDay()) <= 90))
+			Pie_3[0]++;
+		else if(thePerson->GetCalEverArt() && thePerson->GetArtAtEnrollment() && ((thePerson->GetCalArtDay() - thePerson->GetCalDiagDay()) > 90))
+			Pie_3[1]++;
+		else if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && !thePerson->GetCalAtArtEverReturnCare())
+			Pie_3[2]++;
+		else if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && !thePerson->GetCalAtArtEligibleAtReturnCare())
+			Pie_3[3]++;
+		else if(thePerson->GetCalEverArt() && !thePerson->GetArtAtEnrollment() && thePerson->GetCalAtArtEverReturnCare() && thePerson->GetCalAtArtEligibleAtReturnCare())
+			Pie_3[4]++;
+		else if(thePerson->GetCalEverArt() && thePerson->GetCalEverReturnArt())
+			Pie_3[5]++;
+	}
+
 }
 
 /////////////////////

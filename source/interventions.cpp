@@ -159,16 +159,16 @@ void Interventions::Execute()
 			vctProbSecondaryCd4Test = 1;
 			pictProbSecondaryCd4Test = 1;
 		} else {
-			cd4ResultProbAttend = 0.9743416;
-			hctShortTermRetention = 0.9743416;
-			hctLongTermRetention = 0.9743416;
-			vctShortTermRetention = 0.9743416;
-			vctLongTermRetention = 0.9743416;
-			pictShortTermRetention = 0.9743416;
-			pictLongTermRetention = 0.9743416;
-			hctProbSecondaryCd4Test = 0.875;
-			vctProbSecondaryCd4Test = 0.875;
-			pictProbSecondaryCd4Test = 0.875;
+			cd4ResultProbAttend = 0.9949748;
+			hctShortTermRetention = 0.9949748;
+			hctLongTermRetention = 0.9949748;
+			vctShortTermRetention = 0.9949748;
+			vctLongTermRetention = 0.9949748;
+			pictShortTermRetention = 0.9949748;
+			pictLongTermRetention = 0.9949748;
+			hctProbSecondaryCd4Test = 0.99;
+			vctProbSecondaryCd4Test = 0.99;
+			pictProbSecondaryCd4Test = 0.99;
 		}
 	}
 	
