@@ -191,6 +191,7 @@ public:
 	bool GetCalAtArtEligibleAtReturnCare() const { return calAtArtEligibleAtReturnPreArtCare; }
 	bool GetArtAtEnrollment() const { return artAtEnrollment; }
 	bool GetCalEverReturnArt() const { return calEverReturnArt; }
+	bool GetCalEligibleAtEnrollment() const { return calEligibleAtEnrollment; }
 	
 private:
 	/* Basic characteristics */
@@ -296,6 +297,7 @@ private:
 	bool calAtArtEverReturnPreArtCare;
 	bool calAtArtEligibleAtReturnPreArtCare;
 	bool calEverReturnArt;
+	bool calEligibleAtEnrollment;
 };
 
 #endif /* defined(__priorityQ__person__) */
