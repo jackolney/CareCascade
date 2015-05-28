@@ -201,9 +201,6 @@ void VctPocCd4Test::Execute()
 	else if(pPerson->GetCurrentWho() > 3) {
 		ChargePocCd4Test(pPerson);
 		FastTrackArt(pPerson,GetTime());
-	} else if(theRng->Sample(0.02)) {
-		ChargePocCd4Test(pPerson);
-		new ArtInitiation(pPerson,GetTime());
 	} else if(pPerson->GetEligible()) {
 		ChargePocCd4Test(pPerson);
 		ScheduleArtInitiation(pPerson,GetTime());
@@ -246,9 +243,6 @@ void PocCd4Test::Execute()
 	else if(pPerson->GetCurrentWho() > 3) {
 		ChargePocCd4Test(pPerson);
 		FastTrackArt(pPerson,GetTime());
-	} else if(theRng->Sample(0.02)) {
-		ChargePocCd4Test(pPerson);
-		new ArtInitiation(pPerson,GetTime());
 	} else if(pPerson->GetEligible()) {
 		ChargePocCd4Test(pPerson);
 		ScheduleArtInitiation(pPerson,GetTime());

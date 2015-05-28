@@ -18,15 +18,15 @@ extern Rng * theRng;
 //EDIT EDIT EDIT
 /* Hiv testing times */
 double hctHivTestTime = 0.4342945 * 365.25;
-double vctHivTestTimeOriginal = 5.5 * 365.25;
+double vctHivTestTimeOriginal = 3.5 * 365.25;
 double vctHivTestTime = vctHivTestTimeOriginal;
-double pictHivTestTime_AsymptomaticOblivious = 8 * 365.25;
-double pictHivTestTime_AsymptomaticNoCd4Result = 8 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 8 * 365.25;
-double pictHivTestTime_AsymptomaticCd4ResultEligible = 8 * 365.25;
-double pictHivTestTime_SymptomaticOblivious = 8 * 365.25;
-double pictHivTestTime_SymptomaticNoCd4Result = 8 * 365.25;
-double pictHivTestTime_SymptomaticCd4Result = 8 * 365.25;
+double pictHivTestTime_AsymptomaticOblivious = 5.5 * 365.25;
+double pictHivTestTime_AsymptomaticNoCd4Result = 5.5 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultNotEligible = 5.5 * 365.25;
+double pictHivTestTime_AsymptomaticCd4ResultEligible = 5.5 * 365.25;
+double pictHivTestTime_SymptomaticOblivious = 5.5 * 365.25;
+double pictHivTestTime_SymptomaticNoCd4Result = 5.5 * 365.25;
+double pictHivTestTime_SymptomaticCd4Result = 5.5 * 365.25;
 
 /* Linkage probabilities */
 double hctProbLinkRollOutOriginal = 0.054;
