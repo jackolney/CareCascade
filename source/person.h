@@ -71,7 +71,10 @@ public:
 	
 	/* Daly Functions */
 	void SetDalys(const double theValue) { iDALY += theValue; }
-	void ResetDalys() { iDALY = 0; }
+	void SetDalys_OffArt(const double theValue) { iDALY_OffArt += theValue; }
+	void SetDalys_OnArt(const double theValue) { iDALY_OnArt += theValue; }
+	void SetDalys_LYL(const double theValue) { iDALY_LYL += theValue; }
+	void ResetDalys() { iDALY = 0; iDALY_OffArt = 0; iDALY_OnArt = 0; iDALY_LYL = 0; }
 	
 	/* Cost Functions */
 	void SetHctVisitCost(const double theCost) { iHctVisitCost += theCost; }
@@ -146,6 +149,9 @@ public:
 	
 	/* Daly Functions */
 	double GetDalys() const { return iDALY; }
+	double GetDalys_OffArt() const { return iDALY_OffArt; }
+	double GetDalys_OnArt() const { return iDALY_OnArt; }
+	double GetDalys_LYL() const { return iDALY_LYL; }
 	
 	/* Cost Functions */
 	double GetHctVisitCost() const { return iHctVisitCost; }
@@ -262,6 +268,9 @@ private:
 	
 	/* DALY */
 	double iDALY;
+	double iDALY_OffArt;
+	double iDALY_OnArt;
+	double iDALY_LYL;
 	
 	/* COST */
 	double iHctVisitCost;

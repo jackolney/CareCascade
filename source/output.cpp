@@ -57,6 +57,9 @@ double * theDeath;
 double * theAidsDeath;
 double * theDeath_2010_Age;
 double * theAidsDeath_2010_Age;
+double * theDALY_OffArt;
+double * theDALY_OnArt;
+double * theDALY_LYL;
 
 /////////////////////
 /////////////////////
@@ -157,6 +160,9 @@ void CreateOutputArray()
 	theAidsDeath = new double[66];
 	theDeath_2010_Age = new double[20];
 	theAidsDeath_2010_Age = new double[20];
+	theDALY_OffArt = new double[20];
+	theDALY_OnArt = new double[20];
+	theDALY_LYL = new double[20];
 	
 	for(size_t i=0;i<66;i++) {
 		if(i<4)
@@ -183,7 +189,10 @@ void CreateOutputArray()
 			thePreArtCOST[i] = 0;
 			theArtCOST[i] = 0;
 			thePreArtCOST_Hiv[i] = 0;
-			theArtCOST_Hiv[i] = 0;			
+			theArtCOST_Hiv[i] = 0;
+			theDALY_OffArt[i] = 0;
+			theDALY_OnArt[i] = 0;
+			theDALY_LYL[i] = 0;		
 		}
 		thePOP[i] = 0;
 		thePOP_15to49[i] = 0;

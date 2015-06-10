@@ -65,6 +65,9 @@ extern double * theDeath;
 extern double * theAidsDeath;
 extern double * theDeath_2010_Age;
 extern double * theAidsDeath_2010_Age;
+extern double * theDALY_OffArt;
+extern double * theDALY_OnArt;
+extern double * theDALY_LYL;
 
 /* Calibration pointers */
 extern double * C1;
@@ -250,7 +253,7 @@ SEXP CallCascade(SEXP s_pop,
 	sCD4_500_Art, sWHO_1, sWHO_2, sWHO_3, sWHO_4, sWHO_1_Art, sWHO_2_Art, sWHO_3_Art, sWHO_4_Art, sINCIDENCE, sPreArtCOST,
 	sArtCOST, sPreArtCOST_Hiv, sArtCOST_Hiv, sC1, sL21, sR3, sR8, sART1, sART4, sART5, sART6, sART9, sART10, sART11, sART12,
 	sART13, sART14, sPre2010, sIn2014, sHivArray, sDiagArray, sArtArray, sR3_Counter, sR8_Counter, sART6_Counter, sART10_Counter, sART12_Counter, sPie_1, sPie_2, sPie_3,
-	sCLINIC, sDeath, sAidsDeath, sDeath_2010_Age, sAidsDeath_2010_Age, sOUTNAMES;
+	sCLINIC, sDeath, sAidsDeath, sDeath_2010_Age, sAidsDeath_2010_Age, sDALY_OffArt, sDALY_OnArt, sDALY_LYL, sOUTNAMES;
 
 	/* Guidelines SEXPs */
 	SEXP sGuidelines_PopDist_HivNegative, sGuidelines_PopDist_500_NeverDiag,
@@ -403,6 +406,9 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sPie_1 = allocVector(INTSXP,3));
 	PROTECT(sPie_2 = allocVector(INTSXP,3));
 	PROTECT(sPie_3 = allocVector(INTSXP,6));
+	PROTECT(sDALY_OffArt = allocVector(REALSXP,20));
+	PROTECT(sDALY_OnArt = allocVector(REALSXP,20));
+	PROTECT(sDALY_LYL = allocVector(REALSXP,20));
 
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
@@ -469,6 +475,9 @@ SEXP CallCascade(SEXP s_pop,
 	double * pAidsDeath = REAL(sAidsDeath);
 	double * pDeath_2010_Age = REAL(sDeath_2010_Age);
 	double * pAidsDeath_2010_Age = REAL(sAidsDeath_2010_Age);
+	double * pDALY_OffArt = REAL(sDALY_OffArt);
+	double * pDALY_OnArt = REAL(sDALY_OnArt);
+	double * pDALY_LYL = REAL(sDALY_LYL);
 
 	int * pGuidelines_PopDist_HivNegative = INTEGER(sGuidelines_PopDist_HivNegative);
 	int * pGuidelines_PopDist_500_NeverDiag = INTEGER(sGuidelines_PopDist_500_NeverDiag);
@@ -600,6 +609,9 @@ SEXP CallCascade(SEXP s_pop,
 			pArtCOST[i] = theArtCOST[i];
 			pPreArtCOST_Hiv[i] = thePreArtCOST_Hiv[i];
 			pArtCOST_Hiv[i] = theArtCOST_Hiv[i];
+			pDALY_OffArt[i] = theDALY_OffArt[i];
+			pDALY_OnArt[i] = theDALY_OnArt[i];
+			pDALY_LYL[i] = theDALY_LYL[i];
 		}
 		if(i<36)
 			pL21[i] = L21[i];
@@ -700,7 +712,7 @@ SEXP CallCascade(SEXP s_pop,
 		pGuidelines_ArtDropout[i] = theGuidelines_ArtDropout[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,135));
+	PROTECT(sOUT = allocVector(VECSXP,138));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
@@ -836,8 +848,11 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,132,sPie_1);
 	SET_VECTOR_ELT(sOUT,133,sPie_2);
 	SET_VECTOR_ELT(sOUT,134,sPie_3);
+	SET_VECTOR_ELT(sOUT,135,sDALY_OffArt);
+	SET_VECTOR_ELT(sOUT,136,sDALY_OnArt);
+	SET_VECTOR_ELT(sOUT,137,sDALY_LYL);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,135));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,138));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
@@ -973,9 +988,12 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,132,mkChar("sPie_1"));
 	SET_VECTOR_ELT(sOUTNAMES,133,mkChar("sPie_2"));
 	SET_VECTOR_ELT(sOUTNAMES,134,mkChar("sPie_3"));
+	SET_VECTOR_ELT(sOUTNAMES,135,mkChar("sDALY_OffArt"));
+	SET_VECTOR_ELT(sOUTNAMES,136,mkChar("sDALY_OnArt"));
+	SET_VECTOR_ELT(sOUTNAMES,137,mkChar("sDALY_LYL"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(151);
+	UNPROTECT(154);
 	return(sOUT);
 	}
 
