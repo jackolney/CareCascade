@@ -9,6 +9,12 @@ dyn.load("./source/main.so")
 Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 Baseline
 
+system("date")
+popSize = 100
+dyn.load("./source/main.so")
+
+ImmArt <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0)
+ImmArt
 
 system("date")
 popSize = 100
@@ -65,3 +71,18 @@ require(RColorBrewer)
 Color <- brewer.pal(9,"Set1")
 
 barplot(as.matrix(Out),col=Color)
+
+
+plot(Baseline$sDALY,type='l',lwd=2)
+lines(ImmArt$sDALY,type='l',lwd=2,col="red")
+
+(sum(Baseline$sDALY) - sum(ImmArt$sDALY)) / sum(Baseline$sDALY)
+(sum(Baseline$sCARE) - sum(ImmArt$sCARE)) / sum(Baseline$sCARE)
+
+
+sum(ImmArt$sDALY)
+
+
+sum(Baseline$sDALY_OffArt)
+sum(Baseline$sDALY_OnArt)
+sum(Baseline$sDALY_LYL)
