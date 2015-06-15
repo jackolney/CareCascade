@@ -80,4 +80,5 @@ sum(Baseline$sDALY_OnArt)
 sum(Baseline$sDALY_LYL)
 
 
-plot(Baseline$sHIV_15to49,type='b',lwd=2)
+plot(Baseline$sHIV_15to49/Baseline$sPOP_15to49,type='b',lwd=2)
+plot(Baseline$sPOP_15to49,type='b',lwd=2)
