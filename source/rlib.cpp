@@ -406,9 +406,9 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sPie_1 = allocVector(INTSXP,3));
 	PROTECT(sPie_2 = allocVector(INTSXP,3));
 	PROTECT(sPie_3 = allocVector(INTSXP,6));
-	PROTECT(sDALY_OffArt = allocVector(REALSXP,20));
-	PROTECT(sDALY_OnArt = allocVector(REALSXP,20));
-	PROTECT(sDALY_LYL = allocVector(REALSXP,20));
+	PROTECT(sDALY_OffArt = allocVector(REALSXP,100));
+	PROTECT(sDALY_OnArt = allocVector(REALSXP,100));
+	PROTECT(sDALY_LYL = allocVector(REALSXP,100));
 
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
@@ -550,98 +550,100 @@ SEXP CallCascade(SEXP s_pop,
 	int * pPie_2 = INTEGER(sPie_2);
 	int * pPie_3 = INTEGER(sPie_3);
 
-	for(size_t i=0;i<66;i++) {
-		if(i<2)
-			pMid2010[i] = mid2010[i];
-		if(i<2)
-			pIn2014[i] = In2014[i];
-		if(i<3) {
-			pART4[i] = ART4[i];
-			pART6[i] = ART6[i];
-			pART10[i] = ART10[i];
-			pART12[i] = ART12[i];
-			pPre2010[i] = Pre2010[i];
-			pHivArray[i] = HivArray[i];
-			pDiagArray[i] = DiagArray[i];
-			pArtArray[i] = ArtArray[i];
-			pART6_Counter[i] = ART6_Counter[i];
-			pART10_Counter[i] = ART10_Counter[i];
-			pART12_Counter[i] = ART12_Counter[i];
-			pPie_1[i] = Pie_1[i];
-			pPie_2[i] = Pie_2[i];
-		}
-		if(i<4)
-			pPOP_NoArtCd4_2007[i] = thePOP_NoArtCd4_2007[i];
-		if(i<5)
-			pCLINIC[i] = theCLINIC[i];
-		if(i<6) {
-			pCARE[i] = theCARE[i];
-			pPie_3[i] = Pie_3[i];	
-		}
-		if(i<9) {
-			pC1[i] = C1[i];
-			pR3[i] = R3[i];
-			pR8[i] = R8[i];
-			pART5[i] = ART5[i];
-			pART9[i] = ART9[i];
-			pART11[i] = ART11[i];
-			pART13[i] = ART13[i];
-			pART14[i] = ART14[i];
-			pR3_Counter[i] = R3_Counter[i];
-			pR8_Counter[i] = R8_Counter[i];
-		}
-		if(i<10) {
-			pPOP_AgeSex_2014[i] = thePOP_AgeSex_2014[i];
-			pHIV_AgeSex_2014[i] = theHIV_AgeSex_2014[i];
-		}
-		if(i<16) {
-			pPOP_AgeSex_2012[i] = thePOP_AgeSex_2012[i];
-			pHIV_AgeSex_2012[i] = theHIV_AgeSex_2012[i];
-		}
-		if(i<20) {
-			pPOP_AgeSex_2007[i] = thePOP_AgeSex_2007[i];
-			pHIV_AgeSex_2007[i] = theHIV_AgeSex_2007[i];
-			pDeath_2010_Age[i] = theDeath_2010_Age[i];
-			pAidsDeath_2010_Age[i] = theAidsDeath_2010_Age[i];
-			pDALY[i] = theDALY[i];
-			pCOST[i] = theCOST[i];
-			pPreArtCOST[i] = thePreArtCOST[i];
-			pArtCOST[i] = theArtCOST[i];
-			pPreArtCOST_Hiv[i] = thePreArtCOST_Hiv[i];
-			pArtCOST_Hiv[i] = theArtCOST_Hiv[i];
-			pDALY_OffArt[i] = theDALY_OffArt[i];
-			pDALY_OnArt[i] = theDALY_OnArt[i];
-			pDALY_LYL[i] = theDALY_LYL[i];
-		}
-		if(i<36)
-			pL21[i] = L21[i];
-		if(i<48)
-			pART1[i] = ART1[i];
-		pPOP_15to49[i] = thePOP_15to49[i];
-		pHIV_15to49[i] = theHIV_15to49[i];
-		pART_15to49[i] = theART_15to49[i];
-		pPOP_15plus[i] = thePOP_15plus[i];
-		pAidsDeath_15plus[i] = theAidsDeath_15plus[i];
-		pCd4_200[i] = theCD4_200[i];
-		pCd4_200350[i] = theCD4_200350[i];
-		pCd4_350500[i] = theCD4_350500[i];
-		pCd4_500[i] = theCD4_500[i];
-		pCd4_200_Art[i] = theCD4_200_Art[i];
-		pCd4_200350_Art[i] = theCD4_200350_Art[i];
-		pCd4_350500_Art[i] = theCD4_350500_Art[i];
-		pCd4_500_Art[i] = theCD4_500_Art[i];
-		pWHO_1[i] = theWHO_1[i];
-		pWHO_2[i] = theWHO_2[i];
-		pWHO_3[i] = theWHO_3[i];
-		pWHO_4[i] = theWHO_4[i];
-		pWHO_1_Art[i] = theWHO_1_Art[i];
-		pWHO_2_Art[i] = theWHO_2_Art[i];
-		pWHO_3_Art[i] = theWHO_3_Art[i];
-		pWHO_4_Art[i] = theWHO_4_Art[i];
-		pINCIDENCE[i] = theINCIDENCE[i];
-		pDeath[i] = theDeath[i];
-		pAidsDeath[i] = theAidsDeath[i];
-	}
+	// for(size_t i=0;i<140;i++) {
+	// 	if(i<2)
+	// 		pMid2010[i] = mid2010[i];
+	// 	if(i<2)
+	// 		pIn2014[i] = In2014[i];
+	// 	if(i<3) {
+	// 		pART4[i] = ART4[i];
+	// 		pART6[i] = ART6[i];
+	// 		pART10[i] = ART10[i];
+	// 		pART12[i] = ART12[i];
+	// 		pPre2010[i] = Pre2010[i];
+	// 		pHivArray[i] = HivArray[i];
+	// 		pDiagArray[i] = DiagArray[i];
+	// 		pArtArray[i] = ArtArray[i];
+	// 		pART6_Counter[i] = ART6_Counter[i];
+	// 		pART10_Counter[i] = ART10_Counter[i];
+	// 		pART12_Counter[i] = ART12_Counter[i];
+	// 		pPie_1[i] = Pie_1[i];
+	// 		pPie_2[i] = Pie_2[i];
+	// 	}
+	// 	if(i<4)
+	// 		pPOP_NoArtCd4_2007[i] = thePOP_NoArtCd4_2007[i];
+	// 	if(i<5)
+	// 		pCLINIC[i] = theCLINIC[i];
+	// 	if(i<6) {
+	// 		pCARE[i] = theCARE[i];
+	// 		pPie_3[i] = Pie_3[i];	
+	// 	}
+	// 	if(i<9) {
+	// 		pC1[i] = C1[i];
+	// 		pR3[i] = R3[i];
+	// 		pR8[i] = R8[i];
+	// 		pART5[i] = ART5[i];
+	// 		pART9[i] = ART9[i];
+	// 		pART11[i] = ART11[i];
+	// 		pART13[i] = ART13[i];
+	// 		pART14[i] = ART14[i];
+	// 		pR3_Counter[i] = R3_Counter[i];
+	// 		pR8_Counter[i] = R8_Counter[i];
+	// 	}
+	// 	if(i<10) {
+	// 		pPOP_AgeSex_2014[i] = thePOP_AgeSex_2014[i];
+	// 		pHIV_AgeSex_2014[i] = theHIV_AgeSex_2014[i];
+	// 	}
+	// 	if(i<16) {
+	// 		pPOP_AgeSex_2012[i] = thePOP_AgeSex_2012[i];
+	// 		pHIV_AgeSex_2012[i] = theHIV_AgeSex_2012[i];
+	// 	}
+	// 	if(i<20) {
+	// 		pPOP_AgeSex_2007[i] = thePOP_AgeSex_2007[i];
+	// 		pHIV_AgeSex_2007[i] = theHIV_AgeSex_2007[i];
+	// 		pDeath_2010_Age[i] = theDeath_2010_Age[i];
+	// 		pAidsDeath_2010_Age[i] = theAidsDeath_2010_Age[i];
+	// 	}
+	// 	if(i<36)
+	// 		pL21[i] = L21[i];
+	// 	if(i<48)
+	// 		pART1[i] = ART1[i];
+	// 	if(i<100) {
+	// 		pDALY[i] = theDALY[i];
+	// 		pCOST[i] = theCOST[i];
+	// 		pPreArtCOST[i] = thePreArtCOST[i];
+	// 		pArtCOST[i] = theArtCOST[i];
+	// 		pPreArtCOST_Hiv[i] = thePreArtCOST_Hiv[i];
+	// 		pArtCOST_Hiv[i] = theArtCOST_Hiv[i];
+	// 		pDALY_OffArt[i] = theDALY_OffArt[i];
+	// 		pDALY_OnArt[i] = theDALY_OnArt[i];
+	// 		pDALY_LYL[i] = theDALY_LYL[i];
+	// 	}
+	// 	pPOP_15to49[i] = thePOP_15to49[i];
+	// 	pHIV_15to49[i] = theHIV_15to49[i];
+	// 	pART_15to49[i] = theART_15to49[i];
+	// 	pPOP_15plus[i] = thePOP_15plus[i];
+	// 	pAidsDeath_15plus[i] = theAidsDeath_15plus[i];
+	// 	pCd4_200[i] = theCD4_200[i];
+	// 	pCd4_200350[i] = theCD4_200350[i];
+	// 	pCd4_350500[i] = theCD4_350500[i];
+	// 	pCd4_500[i] = theCD4_500[i];
+	// 	pCd4_200_Art[i] = theCD4_200_Art[i];
+	// 	pCd4_200350_Art[i] = theCD4_200350_Art[i];
+	// 	pCd4_350500_Art[i] = theCD4_350500_Art[i];
+	// 	pCd4_500_Art[i] = theCD4_500_Art[i];
+	// 	pWHO_1[i] = theWHO_1[i];
+	// 	pWHO_2[i] = theWHO_2[i];
+	// 	pWHO_3[i] = theWHO_3[i];
+	// 	pWHO_4[i] = theWHO_4[i];
+	// 	pWHO_1_Art[i] = theWHO_1_Art[i];
+	// 	pWHO_2_Art[i] = theWHO_2_Art[i];
+	// 	pWHO_3_Art[i] = theWHO_3_Art[i];
+	// 	pWHO_4_Art[i] = theWHO_4_Art[i];
+	// 	pINCIDENCE[i] = theINCIDENCE[i];
+	// 	pDeath[i] = theDeath[i];
+	// 	pAidsDeath[i] = theAidsDeath[i];
+	// }
 
 	for(size_t i=0;i<36;i++) {
 		pGuidelines_PopDist_HivNegative[i] = theGuidelines_PopDist_HivNegative[i];

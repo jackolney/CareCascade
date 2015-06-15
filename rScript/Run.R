@@ -78,3 +78,6 @@ sum(ImmArt$sDALY)
 sum(Baseline$sDALY_OffArt)
 sum(Baseline$sDALY_OnArt)
 sum(Baseline$sDALY_LYL)
+
+
+plot(Baseline$sHIV_15to49,type='b',lwd=2)
