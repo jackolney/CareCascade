@@ -3,10 +3,13 @@ setwd("/Users/jack/git/CareCascade")
 source("./rScript/BaselineFigures.R")
 
 system("date")
-popSize = 100
+popSize = 1000
 dyn.load("./source/main.so")
 
-Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+Baseline2 <- .Call("CallCascade",popSize, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+Baseline2
+
+Baseline <- .Call("CallCascade",popSize, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 Baseline
 
 system("date")
@@ -78,3 +81,6 @@ sum(ImmArt$sDALY)
 sum(Baseline$sDALY_OffArt)
 sum(Baseline$sDALY_OnArt)
 sum(Baseline$sDALY_LYL)
+
+plot(Baseline$sINCIDENCE,type='l',lwd=2)
+lines(Baseline2$sINCIDENCE,type='l',lwd=2,col="red")
