@@ -16,14 +16,6 @@ dyn.load("./source/main.so")
 ImmArt <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0)
 ImmArt
 
-system("date")
-popSize = 100
-dyn.load("./source/main.so")
-
-ImmArt <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0)
-ImmArt
-
-
 names(Baseline)
 
 plot(Baseline$sAidsDeath,type='b',lwd=2)
