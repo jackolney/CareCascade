@@ -10,6 +10,44 @@ Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 Baseline
 
 
+system("date")
+popSize = 100
+dyn.load("./source/main.so")
+
+ImmArt <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0)
+ImmArt
+
+
+names(Baseline)
+
+plot(Baseline$sAidsDeath,type='b',lwd=2)
+lines(ImmArt$sAidsDeath,col="red",lwd=2,type='b')
+
+sum(ImmArt$sDALY)
+
+ImmArt$sDALY_OffArt / ImmArt$sDALY
+ImmArt$sDALY_OnArt / ImmArt$sDALY
+plot(ImmArt$sDALY_LYL / ImmArt$sDALY,type='b',lwd=2,ylim=c(0,1))
+
+# DALYs comparison
+
+(sum(Baseline$sDALY) - sum(ImmArt$sDALY)) / sum(Baseline$sDALY)
+
+plot(ImmArt$sDALY)
+
+# Deaths
+
+(sum(Baseline$sCARE) - sum(ImmArt$sCARE)) / sum(Baseline$sCARE)
+
+sum(Baseline$sCARE)
+sum(Baseline$sAidsDeath[41:60])
+
+plot(Baseline$sAidsDeath[41:60] - ImmArt$sAidsDeath[41:60],type='b',lwd=2)
+
+sum(ImmArt$sCARE)
+
+(sum(Baseline$sDALY) - sum(ImmArt$sDALY)) / sum(Baseline$sDALY)
+
 totalDALY <- sum(Baseline$sDALY)
 
 sum(Baseline$sDALY_OffArt)
