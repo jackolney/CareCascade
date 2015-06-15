@@ -239,7 +239,7 @@ SEXP CallCascade(SEXP s_pop,
 	cout << "Hello, Jack - the model is running..." << endl;
 	cout << "Caution: WP19 version. Runs until 2035." << endl;
 	theRng = new Rng(mach_absolute_time());
-	theQ = new eventQ(0,(80 * 365.25) + 1);
+	theQ = new eventQ(0,(140 * 365.25) + 1);
 	population * thePop = new population(*REAL(s_pop));
 	theQ->RunEvents();
 	delete theQ;
@@ -279,8 +279,8 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sART_15to49 = allocVector(REALSXP,140));
 	PROTECT(sPOP_15plus = allocVector(REALSXP,140));
 	PROTECT(sAidsDeath_15plus = allocVector(REALSXP,140));
-	PROTECT(sPOP_AgeSex_2007 = allocVector(REALSXP,100));
-	PROTECT(sHIV_AgeSex_2007 = allocVector(REALSXP,100));
+	PROTECT(sPOP_AgeSex_2007 = allocVector(REALSXP,20));
+	PROTECT(sHIV_AgeSex_2007 = allocVector(REALSXP,20));
 	PROTECT(sPOP_NoArtCd4_2007 = allocVector(REALSXP,4));
 	PROTECT(sPOP_AgeSex_2012 = allocVector(REALSXP,16));
 	PROTECT(sHIV_AgeSex_2012 = allocVector(REALSXP,16));
@@ -334,8 +334,8 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sCLINIC = allocVector(REALSXP,5));
 	PROTECT(sDeath = allocVector(REALSXP,140));
 	PROTECT(sAidsDeath = allocVector(REALSXP,140));
-	PROTECT(sDeath_2010_Age = allocVector(REALSXP,100));
-	PROTECT(sAidsDeath_2010_Age = allocVector(REALSXP,100));
+	PROTECT(sDeath_2010_Age = allocVector(REALSXP,20));
+	PROTECT(sAidsDeath_2010_Age = allocVector(REALSXP,20));
 	PROTECT(sGuidelines_PopDist_HivNegative = allocVector(INTSXP,36));
 	PROTECT(sGuidelines_PopDist_500_NeverDiag = allocVector(INTSXP,36));
 	PROTECT(sGuidelines_PopDist_500_DiagNotInCareNeverCare = allocVector(INTSXP,36));
@@ -550,7 +550,7 @@ SEXP CallCascade(SEXP s_pop,
 	int * pPie_2 = INTEGER(sPie_2);
 	int * pPie_3 = INTEGER(sPie_3);
 
-	for(size_t i=0;i<140;i++) {
+	for(size_t i=0;i<66;i++) {
 		if(i<2)
 			pMid2010[i] = mid2010[i];
 		if(i<2)
@@ -598,7 +598,7 @@ SEXP CallCascade(SEXP s_pop,
 			pPOP_AgeSex_2012[i] = thePOP_AgeSex_2012[i];
 			pHIV_AgeSex_2012[i] = theHIV_AgeSex_2012[i];
 		}
-		if(i<100) {
+		if(i<20) {
 			pPOP_AgeSex_2007[i] = thePOP_AgeSex_2007[i];
 			pHIV_AgeSex_2007[i] = theHIV_AgeSex_2007[i];
 			pDeath_2010_Age[i] = theDeath_2010_Age[i];

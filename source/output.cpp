@@ -127,8 +127,8 @@ void CreateOutputArray()
 	theART_15to49 = new double[140];
 	thePOP_15plus = new double[140];
 	theAidsDeath_15plus = new double[140];
-	thePOP_AgeSex_2007 = new double[100];
-	theHIV_AgeSex_2007 = new double[100];
+	thePOP_AgeSex_2007 = new double[20];
+	theHIV_AgeSex_2007 = new double[20];
 	thePOP_NoArtCd4_2007 = new double[4];
 	thePOP_AgeSex_2012 = new double[16];
 	theHIV_AgeSex_2012 = new double[16];
@@ -158,8 +158,8 @@ void CreateOutputArray()
 	theCLINIC = new double[5]; // NeverDiagnosed, DiagnosedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly.
 	theDeath = new double[140];
 	theAidsDeath = new double[140];
-	theDeath_2010_Age = new double[100];
-	theAidsDeath_2010_Age = new double[100];
+	theDeath_2010_Age = new double[20];
+	theAidsDeath_2010_Age = new double[20];
 	theDALY_OffArt = new double[100];
 	theDALY_OnArt = new double[100];
 	theDALY_LYL = new double[100];
@@ -179,11 +179,13 @@ void CreateOutputArray()
 			thePOP_AgeSex_2012[i] = 0;
 			theHIV_AgeSex_2012[i] = 0;
 		}
-		if(i<100) {
+		if(i<20) {
 			thePOP_AgeSex_2007[i] = 0;
 			theHIV_AgeSex_2007[i] = 0;
 			theDeath_2010_Age[i] = 0;
 			theAidsDeath_2010_Age[i] = 0;
+		}
+		if(i<100) {
 			theDALY[i] = 0;
 			theCOST[i] = 0;
 			thePreArtCOST[i] = 0;
