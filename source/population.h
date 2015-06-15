@@ -41,10 +41,11 @@ public:
 	/* Accessor Methods */
 	double GetReferenceYear() const { return referenceYear; }
 	double GetBeta() const { return beta; }
+	int GetPopulationSize() const { return populationSize; }
 	
 	/* Incidence Calculation */
 	double GetWeightedTotal() const;
-	unsigned int GetInfectedCases();
+	unsigned int GetInfectedCases() const { return incidentCases; }
 	void CalculateBeta();
 	double CalculateLambda(const double * theIRR, const double theTime);
 	void CalculateIncidence(const size_t theIndex, const double theTime);

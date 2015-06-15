@@ -95,7 +95,7 @@ void WriteArt(person * const thePerson, const double theTime, const size_t theIn
 
 void WriteCare(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetHivDeath() && theTime >= 14610 && theTime < 21915) {
+	if(thePerson->GetHivDeath() && theTime >= 14610 && theTime < 51135) {
 		// NeverDiagnosed
 		theCARE[0] += !thePerson->GetDiagnosedState();
 		// DiagnosedButNeverLinkedToCare
@@ -116,7 +116,7 @@ void WriteCare(person * const thePerson, const double theTime)
 
 void WriteClinic(person * const thePerson, const double theTime)
 {
-	if(thePerson->GetEverCd4TestState() && thePerson->GetHivDeath() && theTime >= 14610 && theTime < 21915) {
+	if(thePerson->GetEverCd4TestState() && thePerson->GetHivDeath() && theTime >= 14610 && theTime < 51135) {
 		// NeverDiagnosed
 		theCLINIC[0] += !thePerson->GetDiagnosedState();
 		// DiagnosedButNeverInitiatedArt
@@ -135,12 +135,12 @@ void WriteClinic(person * const thePerson, const double theTime)
 
 void WriteDeath(person * const thePerson, const double theTime)
 {
-	double yr [66];
-	for(size_t i = 0; i<66; i++)
+	double yr [140];
+	for(size_t i = 0; i<140; i++)
 		yr[i] = 365.25 + (i * 365.25);
 
 	unsigned int i = 0;
-	while(theTime > yr[i] && i<66)
+	while(theTime > yr[i] && i<140)
 		i++;
 	
 	theDeath[i]++;
@@ -161,12 +161,12 @@ void WriteDeath(person * const thePerson, const double theTime)
 
 void WriteAidsDeath(person * const thePerson, const double theTime)
 {
-	double yr [66];
-	for(size_t i = 0; i<66; i++)
+	double yr [140];
+	for(size_t i = 0; i<140; i++)
 		yr[i] = 365.25 + (i * 365.25);
 
 	unsigned int i = 0;
-	while(theTime > yr[i] && i<66)
+	while(theTime > yr[i] && i<140)
 		i++;
 	
 	theAidsDeath[i] += thePerson->GetSeroStatus();

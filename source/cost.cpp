@@ -121,12 +121,12 @@ void WriteCost(person * const thePerson, const double theTime)
 	if(thePerson->Alive()) {
 		if(theTime > 14610) {
 			/* Create array with dates from 2011 to 2030 (to allow us to capture DALYs at year end between 2010 and 2030). */
-			double yr [26];
-			for(size_t i = 0; i<26; i++)
+			double yr [100];
+			for(size_t i = 0; i<100; i++)
 				yr[i] = 14975.25 + (i * 365.25);
 
 			unsigned int i = 0;
-			while(theTime > yr[i] && i < 26)
+			while(theTime > yr[i] && i < 100)
 				i++;
 			
 			ChargeArtCare(thePerson,theTime,yr[i] - 365.25);
