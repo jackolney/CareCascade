@@ -4,11 +4,13 @@ source("./rScript/BaselineFigures.R")
 
 system("date")
 popSize = 100
-dyn.load("./source/main.so")
+dyn.load("./main.so")
 
 Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 Baseline
 
+names(Baseline)
+Baseline$sPOP * 100
 
 totalDALY <- sum(Baseline$sDALY)
 

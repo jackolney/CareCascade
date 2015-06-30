@@ -185,6 +185,7 @@ extern int * theGuidelines_PreArtDropout;
 extern int * theGuidelines_ArtDropout;
 
 extern int * mid2010;
+extern double * thePOP;
 
 extern "C" {
 
@@ -270,6 +271,7 @@ SEXP CallCascade(SEXP s_pop,
 	sGuidelines_Death_200_ArtMoreSixMonths, sGuidelines_Death_200_OffArt, sGuidelines_Art_500, sGuidelines_Art_350500, sGuidelines_Art_200350, sGuidelines_Art_200, sGuidelines_NewInfectionsAdult, sGuidelines_NewDiagnoses, sGuidelines_PreArtDropout, sGuidelines_ArtDropout;
 
 	SEXP sMid2010;
+	SEXP sPOP;
 
 	PROTECT(sCARE = allocVector(REALSXP,6));
 	PROTECT(sDALY = allocVector(REALSXP,20));
@@ -409,6 +411,7 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sDALY_OffArt = allocVector(REALSXP,20));
 	PROTECT(sDALY_OnArt = allocVector(REALSXP,20));
 	PROTECT(sDALY_LYL = allocVector(REALSXP,20));
+	PROTECT(sPOP = allocVector(REALSXP,66));
 
 	double * pCARE = REAL(sCARE);
 	double * pDALY = REAL(sDALY);
@@ -478,6 +481,7 @@ SEXP CallCascade(SEXP s_pop,
 	double * pDALY_OffArt = REAL(sDALY_OffArt);
 	double * pDALY_OnArt = REAL(sDALY_OnArt);
 	double * pDALY_LYL = REAL(sDALY_LYL);
+	double * pPOP = REAL(sPOP);
 
 	int * pGuidelines_PopDist_HivNegative = INTEGER(sGuidelines_PopDist_HivNegative);
 	int * pGuidelines_PopDist_500_NeverDiag = INTEGER(sGuidelines_PopDist_500_NeverDiag);
@@ -641,6 +645,7 @@ SEXP CallCascade(SEXP s_pop,
 		pINCIDENCE[i] = theINCIDENCE[i];
 		pDeath[i] = theDeath[i];
 		pAidsDeath[i] = theAidsDeath[i];
+		pPOP[i] = thePOP[i];
 	}
 
 	for(size_t i=0;i<36;i++) {
@@ -712,7 +717,7 @@ SEXP CallCascade(SEXP s_pop,
 		pGuidelines_ArtDropout[i] = theGuidelines_ArtDropout[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,138));
+	PROTECT(sOUT = allocVector(VECSXP,139));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
@@ -851,8 +856,9 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,135,sDALY_OffArt);
 	SET_VECTOR_ELT(sOUT,136,sDALY_OnArt);
 	SET_VECTOR_ELT(sOUT,137,sDALY_LYL);
+	SET_VECTOR_ELT(sOUT,138,sPOP);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,138));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,139));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
@@ -991,9 +997,10 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,135,mkChar("sDALY_OffArt"));
 	SET_VECTOR_ELT(sOUTNAMES,136,mkChar("sDALY_OnArt"));
 	SET_VECTOR_ELT(sOUTNAMES,137,mkChar("sDALY_LYL"));
+	SET_VECTOR_ELT(sOUTNAMES,138,mkChar("sPOP"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(154);
+	UNPROTECT(155);
 	return(sOUT);
 	}
 
