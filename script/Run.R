@@ -3,11 +3,14 @@ setwd("/Users/jack/git/CareCascade")
 source("./rScript/BaselineFigures.R")
 
 system("date")
-popSize = 100
+popSize = 1000
 dyn.load("./main.so")
 
 Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 Baseline
+
+Baseline$sDALY
+Baseline$sCOST
 
 names(Baseline)
 Baseline$sPOP * 100
@@ -29,3 +32,4 @@ require(RColorBrewer)
 Color <- brewer.pal(9,"Set1")
 
 barplot(as.matrix(Out),col=Color)
+
