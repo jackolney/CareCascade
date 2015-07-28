@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jackolney/CareCascade.svg?branch=master)](https://travis-ci.org/jackolney/CareCascade)
+
 #CareCascade
 
 ####Cascade model update
