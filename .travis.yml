@@ -1,3 +1,14 @@
 language: cpp
+
+os:
+  - osx
+  - linux
+
 compiler:
   - g++
+
+before_install:
+  - g++ --version
+  - R CMD SHLIB --help
+
+script: makefile
