@@ -1,4 +1,6 @@
-language: cpp
+language: r
+
+sudo: required
 
 os:
   - osx
