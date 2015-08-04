@@ -12,6 +12,7 @@
 using namespace std;
 
 extern double * theCARE;
+extern double * theCARE_PT;
 extern double * thePOP;
 extern double * theHIV;
 extern double * thePOP_15to49;
@@ -109,6 +110,35 @@ void WriteCare(person * const thePerson, const double theTime)
 		// ArtEarly
 		theCARE[5] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() > 1);
 	}
+}
+
+/////////////////////
+/////////////////////
+
+void UpdateCarePersonTime(person * const thePerson, const double theTime)
+{
+	// Whole bunch of rules.
+	// Update some shit.
+
+	// Need to call it EVERY event that a person is involved in.
+	// It needs to know the incremental time? No.
+
+	// It needs to know how much time has passed since its last event.
+
+	// person.lastUpdateTime = blah.
+
+	if(thePerson->Alive() && thePerson->GetSeroStatus() && theTime >= 14610 && theTime < 21915) {
+
+		theCARE_PT[0] += theTime - thePerson->GetLastUpdateTime();
+		theCARE_PT[1] += theTime - thePerson->GetLastUpdateTime();
+		theCARE_PT[2] += theTime - thePerson->GetLastUpdateTime();
+		theCARE_PT[3] += theTime - thePerson->GetLastUpdateTime();
+		theCARE_PT[4] += theTime - thePerson->GetLastUpdateTime();
+		theCARE_PT[5] += theTime - thePerson->GetLastUpdateTime();
+
+		thePerson->SetLastUpdateTime(theTime);
+	}
+
 }
 
 /////////////////////

@@ -66,6 +66,8 @@ bool VectorUpdate::CheckValid()
 void VectorUpdate::Execute()
 {
 	pPerson->UpdatePopulation();
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -133,6 +135,8 @@ bool Infection::CheckValid()
 void Infection::Execute()
 {
 	pPerson->Hiv(GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -188,6 +192,8 @@ bool Death::CheckValid()
 
 void Death::Execute()
 {
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 	UpdateDaly(pPerson,GetTime());
 	WriteCost(pPerson,GetTime());
 	pPerson->Kill(GetTime(),hivRelated);
@@ -232,6 +238,8 @@ void Cd4Decline::Execute()
 	pPerson->UpdateInfectiousnessArray();
 	// if(pPerson->GetCurrentCd4() == 1)
 	// 	SchedulePictHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -263,6 +271,8 @@ void Cd4Recover::Execute()
 	ScheduleCd4Update(pPerson,GetTime());
 	pPerson->AssignHivDeathDate(GetTime());
 	pPerson->UpdateInfectiousnessArray();
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -295,6 +305,8 @@ void WhoDecline::Execute()
 	pPerson->AssignHivDeathDate(GetTime());
 	if(pPerson->GetCurrentWho() > 2)
 		SchedulePictHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -327,6 +339,8 @@ void WhoRecover::Execute()
 	pPerson->AssignHivDeathDate(GetTime());
 	if(pPerson->GetCurrentWho() > 2)
 		SchedulePictHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////

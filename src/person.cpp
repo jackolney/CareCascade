@@ -40,6 +40,11 @@ deathDay(0),
 birthDay(Time),
 artDay(0),
 artTime(0),
+diagDay(0),
+careDay(0),
+initArtDay(0),
+lostArtDay(0),
+lastUpdateTime(0),
 hivDate(0),
 hivDeathDate(0),
 cd4DeclineDate(0),
@@ -119,6 +124,13 @@ calEligibleAtEnrollment(false)
 	SeedCalibration(this,13514.25,14609,14974,16225);
 	SeedInterventions(this);
 	SeedTreatmentUpdate(this,Time);
+	
+	// For person-time calculations
+	if(Time > 14610) {
+		lastUpdateTime = Time;
+	} else {
+		lastUpdateTime = 14610;
+	}
 }
 
 person::~person()

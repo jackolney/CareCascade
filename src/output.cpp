@@ -15,6 +15,7 @@
 using namespace std;
 
 double * theCARE;
+double * theCARE_PT;
 double * theDALY;
 double * theCOST;
 double * thePOP;
@@ -110,6 +111,8 @@ void Output::Execute()
 		Write2012(pPerson);
 	if(GetTime() == 16436.25)
 		Write2014(pPerson);
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -118,6 +121,7 @@ void Output::Execute()
 void CreateOutputArray()
 {
 	theCARE = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly.
+	theCARE_PT = new double[6]; // Person-time tracker for each category.
 	theDALY = new double[20];
 	theCOST = new double[20];
 	thePOP = new double[66];
@@ -169,8 +173,10 @@ void CreateOutputArray()
 			thePOP_NoArtCd4_2007[i] = 0;
 		if(i<5)
 			theCLINIC[i] = 0;
-		if(i<6)
+		if(i<6) {
 			theCARE[i] = 0;
+			theCARE_PT[i] = 0;	
+		}
 		if(i<10) {
 			thePOP_AgeSex_2014[i] = 0;
 			theHIV_AgeSex_2014[i] = 0;

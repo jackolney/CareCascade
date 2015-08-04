@@ -19,6 +19,7 @@
 #include "interventionEvents.h"
 #include "interventionUpdate.h"
 #include "wp19Update.h"
+#include "outputUpdate.h"
 #include "rng.h"
 
 extern Rng * theRng;
@@ -49,6 +50,8 @@ void SeedInitialHivTests::Execute()
 		UpdateTreatmentGuidelines(pPerson,1,3);
 	ScheduleVctHivTest(pPerson,GetTime());
 	SchedulePictHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -78,6 +81,8 @@ void SeedTreatmentGuidelinesUpdate::Execute()
 		UpdateTreatmentGuidelines(pPerson,2,3);
 	// if(GetTime() >= 16436.25)
 	// 	UpdateTreatmentGuidelines(pPerson,3,3);
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -118,6 +123,8 @@ void VctHivTest::Execute()
 			ChargePreArtClinicVisit(pPerson);
 	}
 	ScheduleVctHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 };
 
 /////////////////////
@@ -154,6 +161,8 @@ void PictHivTest::Execute()
 			ChargePreArtClinicVisit(pPerson);
 	}
 	SchedulePictHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -197,6 +206,8 @@ void Cd4Test::Execute()
 		ScheduleCd4TestResult(pPerson,GetTime());
 	else
 		SchedulePreArtResultDropout(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 };
 
 /////////////////////
@@ -231,6 +242,8 @@ void Cd4TestResult::Execute()
 	else
 		SchedulePreArtTestDropout(pPerson,GetTime());
 	SchedulePictHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -259,6 +272,8 @@ void PreArtDropout::Execute()
 	pPerson->SetInCareState(false,GetTime());
 	ScheduleVctHivTest(pPerson,GetTime());
 	SchedulePictHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -291,6 +306,8 @@ void ArtInitiation::Execute()
 	ScheduleWhoUpdate(pPerson,GetTime());
 	ScheduleArtDropout(pPerson,GetTime());
 	pPerson->UpdateInfectiousnessArray();
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -319,6 +336,8 @@ void ArtDropout::Execute()
 	ScheduleCd4Update(pPerson,GetTime());
 	ScheduleWhoUpdate(pPerson,GetTime());
 	pPerson->UpdateInfectiousnessArray();
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////

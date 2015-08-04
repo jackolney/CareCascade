@@ -97,6 +97,9 @@ public:
 	/* Population function */
 	void UpdatePopulation() { iPop->UpdateVector(this); }
 	void UpdateInfectiousnessArray() { iPop->UpdateArray(this); }
+
+	/* Person-time functions */
+	void SetLastUpdateTime(const double theTime) { lastUpdateTime = theTime; }
 	
 	//////////////////////
 	/* Accessor methods */
@@ -198,6 +201,9 @@ public:
 	bool GetArtAtEnrollment() const { return artAtEnrollment; }
 	bool GetCalEverReturnArt() const { return calEverReturnArt; }
 	bool GetCalEligibleAtEnrollment() const { return calEligibleAtEnrollment; }
+
+	/* Person-time functions */
+	double GetLastUpdateTime() const { return lastUpdateTime; }
 	
 private:
 	/* Basic characteristics */
@@ -219,6 +225,11 @@ private:
 	const double birthDay;
 	double artDay;
 	double artTime;
+	double diagDay;
+	double careDay;
+	double initArtDay;
+	double lostArtDay;
+	double lastUpdateTime;
 	
 	/* Date = time an event will occur */
 	double hivDate;

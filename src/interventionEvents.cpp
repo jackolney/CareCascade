@@ -14,6 +14,7 @@
 #include "impact.h"
 #include "cost.h"
 #include "rng.h"
+#include "outputUpdate.h"
 #include "cascadeEvents.h"
 #include "cascadeUpdate.h"
 
@@ -109,6 +110,8 @@ void HctHivTest::Execute()
 			ScheduleInitialCd4TestAfterHct(pPerson,GetTime());
 		SchedulePictHivTest(pPerson,GetTime());
 	}
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -140,6 +143,8 @@ void HctPocCd4Test::Execute()
 	else if(HctLinkage(pPerson,GetTime()))
 		ScheduleInitialCd4TestAfterHct(pPerson,GetTime());
 	SchedulePictHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -169,6 +174,8 @@ void PreArtOutreach::Execute()
 	ChargePreArtOutreach(pPerson);
 	if(theRng->Sample(probReturn))
 		new Cd4Test(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -210,6 +217,8 @@ void VctPocCd4Test::Execute()
 			SchedulePreArtCd4Test(pPerson,GetTime());
 	}
 	SchedulePictHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -252,6 +261,8 @@ void PocCd4Test::Execute() // Update.
 			SchedulePreArtCd4Test(pPerson,GetTime());
 	}
 	SchedulePictHivTest(pPerson,GetTime());
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////
@@ -287,6 +298,8 @@ void ArtOutreach::Execute()
 		ScheduleArtDropout(pPerson,GetTime());
 		pPerson->UpdateInfectiousnessArray();
 	}
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////

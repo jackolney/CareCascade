@@ -13,6 +13,7 @@
 #include "interventionEvents.h"
 #include "cascadeEvents.h"
 #include "cascadeUpdate.h"
+#include "outputUpdate.h"
 #include "toolbox.h"
 
 using namespace std;
@@ -247,6 +248,9 @@ void Interventions::Execute()
 	}
 	
 	/////////////////////
+
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 	
 }
 

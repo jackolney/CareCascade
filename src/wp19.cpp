@@ -11,6 +11,7 @@
 #include "impact.h"
 #include "cost.h"
 #include "wp19Update.h"
+#include "outputUpdate.h"
 
 using namespace std;
 
@@ -119,6 +120,8 @@ bool GuidelinesOutput::CheckValid()
 void GuidelinesOutput::Execute()
 {
 	WriteGuidelinesPopDist(pPerson,index);
+	// Person-time calculation
+	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////

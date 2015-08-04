@@ -1,13 +1,15 @@
 #Test Script for CareCascade
 setwd("/Users/jack/git/CareCascade")
-source("./rScript/BaselineFigures.R")
+# source("./rScript/BaselineFigures.R")
 
 system("date")
-popSize = 100
+popSize = 1000
 dyn.load("./main.so")
 
-Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-Baseline
+# Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+# Baseline
+
+.Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 names(Baseline)
 Baseline$sPOP * 100
