@@ -120,8 +120,6 @@ bool GuidelinesOutput::CheckValid()
 void GuidelinesOutput::Execute()
 {
 	WriteGuidelinesPopDist(pPerson,index);
-	// Person-time calculation
-	UpdateCarePersonTime(pPerson,GetTime());
 }
 
 /////////////////////

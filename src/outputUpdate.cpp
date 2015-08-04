@@ -117,24 +117,19 @@ void WriteCare(person * const thePerson, const double theTime)
 
 void UpdateCarePersonTime(person * const thePerson, const double theTime)
 {
-	// Whole bunch of rules.
-	// Update some shit.
-
-	// Need to call it EVERY event that a person is involved in.
-	// It needs to know the incremental time? No.
-
-	// It needs to know how much time has passed since its last event.
-
-	// person.lastUpdateTime = blah.
-
 	if(thePerson->Alive() && thePerson->GetSeroStatus() && theTime >= 14610 && theTime < 21915) {
-
-		theCARE_PT[0] += theTime - thePerson->GetLastUpdateTime();
-		theCARE_PT[1] += theTime - thePerson->GetLastUpdateTime();
-		theCARE_PT[2] += theTime - thePerson->GetLastUpdateTime();
-		theCARE_PT[3] += theTime - thePerson->GetLastUpdateTime();
-		theCARE_PT[4] += theTime - thePerson->GetLastUpdateTime();
-		theCARE_PT[5] += theTime - thePerson->GetLastUpdateTime();
+		if(!thePerson->GetDiagnosedState())
+			theCARE_PT[0] += (theTime - thePerson->GetLastUpdateTime()) / 365.25;
+		else if(thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestState() && !thePerson->GetEverArt())
+			theCARE_PT[1] += (theTime - thePerson->GetLastUpdateTime()) / 365.25;
+		else if(thePerson->GetDiagnosedState() && thePerson->GetEverCd4TestState() && !thePerson->GetEverArt())
+			theCARE_PT[2] += (theTime - thePerson->GetLastUpdateTime()) / 365.25;
+		else if(thePerson->GetArtInitiationState() && thePerson->GetCd4AtArt() == 1)
+			theCARE_PT[3] += (theTime - thePerson->GetLastUpdateTime()) / 365.25;
+		else if(thePerson->GetEverArt() && !thePerson->GetArtInitiationState())
+			theCARE_PT[4] += (theTime - thePerson->GetLastUpdateTime()) / 365.25;
+		else if(thePerson->GetArtInitiationState() && thePerson->GetCd4AtArt() > 1)
+			theCARE_PT[5] += (theTime - thePerson->GetLastUpdateTime()) / 365.25;
 
 		thePerson->SetLastUpdateTime(theTime);
 	}
