@@ -15,6 +15,16 @@ Baseline$sCARE_PT
 
 Baseline$sCARE / Baseline$sCARE_PT
 
+
+Prev <- Baseline$sHIV_15to49 / Baseline$sPOP_15to49
+Inc <- Baseline$sINCIDENCE
+Year <- seq(1970,2035,1)
+Scenario <- "Baseline"
+
+length(Year)
+Output <- data.frame(Year,Prev,Inc)
+
+plot(Baseline$sHIV_15to49 / Baseline$sPOP_15to49,type='l',lwd=2)
 # names(Baseline)
 # Baseline$sPOP * 100
 
