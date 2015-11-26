@@ -4,12 +4,12 @@ setwd("/Users/jack/git/CareCascade")
 # source("./rScript/BaselineFigures.R")
 
 system("date")
-popSize = 1000
+popSize = 10000
 dyn.load("./main.so")
 
 Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 Baseline
-
+names(Baseline)
 Baseline$sCARE
 Baseline$sCARE_PT
 
