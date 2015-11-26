@@ -194,7 +194,17 @@ void WriteCost(person * const thePerson, const double theTime)
 			thePreArtCOST[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetLinkageCost() + thePerson->GetImpCareCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetPreArtOutreachCost();
 			theArtCOST[i] += thePerson->GetAnnualArtCost() + thePerson->GetAnnualAdherenceCost() + thePerson->GetArtOutreachCost() + thePerson->GetPreArtOutreachCost();
 
-			// HERE INCLUDE THE UNIT COST CALCULATIONS.
+			// Cost Unit Feedback from thePerson to theUNIT output arrays.
+			theUNIT_HctVisitCost[i] += thePerson->GetHctVisitUnit();
+			theUNIT_RapidHivTestCost[i] += thePerson->GetRapidHivTestUnit();
+			theUNIT_LinkageCost[i] += thePerson->GetLinkageUnit();
+			theUNIT_ImpCareCost[i] += thePerson->GetImpCareUnit();
+			theUNIT_PreArtClinicVisitCost[i] += thePerson->GetPreArtClinicVisitUnit();
+			theUNIT_LabCd4TestCost[i] += thePerson->GetLabCd4TestUnit();
+			theUNIT_PocCd4TestCost[i] += thePerson->GetPocCd4TestUnit();
+			theUNIT_AnnualArtCost[i] += thePerson->GetAnnualArtUnit();
+			theUNIT_AnnualAdherenceCost[i] += thePerson->GetAnnualAdherenceUnit();
+			theUNIT_OutreachCost[i] += thePerson->GetArtOutreachUnit() + thePerson->GetPreArtOutreachUnit();
 			
 			if(thePerson->GetSeroStatus()) {
 				thePreArtCOST_Hiv[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetLinkageCost() + thePerson->GetImpCareCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetPreArtOutreachCost();
