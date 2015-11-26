@@ -1,12 +1,12 @@
 Calibrate <- function() {
 	# Calibration Script for CareCascade
 	setwd("/Users/jack/git/CareCascade")
-	source("./rScript/BaselineFigures.R")
+	source("./script/BaselineFigures.R")
 
 	rm(list=ls())
 	system("date")
 	popSize = 100
-	dyn.load("./source/main.so")
+	dyn.load("./main.so")
 	Calibration <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
 	Calibration
 
