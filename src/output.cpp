@@ -62,6 +62,18 @@ double * theDALY_OffArt;
 double * theDALY_OnArt;
 double * theDALY_LYL;
 
+/* COST UNITS (values which we multiply by unit cost to arrive at COST) */
+double * theUNIT_HctVisitCost;
+double * theUNIT_RapidHivTestCost;
+double * theUNIT_LinkageCost;
+double * theUNIT_ImpCareCost;
+double * theUNIT_PreArtClinicVisitCost;
+double * theUNIT_LabCd4TestCost;
+double * theUNIT_PocCd4TestCost;
+double * theUNIT_AnnualArtCost;
+double * theUNIT_AnnualAdherenceCost;
+double * theUNIT_OutreachCost;
+
 /////////////////////
 /////////////////////
 
@@ -167,7 +179,17 @@ void CreateOutputArray()
 	theDALY_OffArt = new double[20];
 	theDALY_OnArt = new double[20];
 	theDALY_LYL = new double[20];
-	
+	theUNIT_HctVisitCost = new double[20];
+	theUNIT_RapidHivTestCost = new double[20];
+	theUNIT_LinkageCost = new double[20];
+	theUNIT_ImpCareCost = new double[20];
+	theUNIT_PreArtClinicVisitCost = new double[20];
+	theUNIT_LabCd4TestCost = new double[20];
+	theUNIT_PocCd4TestCost = new double[20];
+	theUNIT_AnnualArtCost = new double[20];
+	theUNIT_AnnualAdherenceCost = new double[20];
+	theUNIT_OutreachCost = new double[20];
+
 	for(size_t i=0;i<66;i++) {
 		if(i<4)
 			thePOP_NoArtCd4_2007[i] = 0;
@@ -175,7 +197,7 @@ void CreateOutputArray()
 			theCLINIC[i] = 0;
 		if(i<6) {
 			theCARE[i] = 0;
-			theCARE_PT[i] = 0;	
+			theCARE_PT[i] = 0;
 		}
 		if(i<10) {
 			thePOP_AgeSex_2014[i] = 0;
@@ -198,7 +220,17 @@ void CreateOutputArray()
 			theArtCOST_Hiv[i] = 0;
 			theDALY_OffArt[i] = 0;
 			theDALY_OnArt[i] = 0;
-			theDALY_LYL[i] = 0;		
+			theDALY_LYL[i] = 0;
+			theUNIT_HctVisitCost[i] = 0;
+			theUNIT_RapidHivTestCost[i] = 0;
+			theUNIT_LinkageCost[i] = 0;
+			theUNIT_ImpCareCost[i] = 0;
+			theUNIT_PreArtClinicVisitCost[i] = 0;
+			theUNIT_LabCd4TestCost[i] = 0;
+			theUNIT_PocCd4TestCost[i] = 0;
+			theUNIT_AnnualArtCost[i] = 0;
+			theUNIT_AnnualAdherenceCost[i] = 0;
+			theUNIT_OutreachCost[i] = 0;
 		}
 		thePOP[i] = 0;
 		thePOP_15to49[i] = 0;

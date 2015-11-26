@@ -146,7 +146,7 @@ void WriteCost(person * const thePerson, const double theTime)
 			unsigned int i = 0;
 			while(theTime > yr[i] && i < 26)
 				i++;
-			
+
 			// Annual Cost Functions to call
 			ChargeArtCare(thePerson,theTime,yr[i] - 365.25);
 			ChargeAdherence(thePerson,theTime,yr[i] - 365.25);
@@ -155,6 +155,8 @@ void WriteCost(person * const thePerson, const double theTime)
 			theCOST[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetLinkageCost() + thePerson->GetImpCareCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetAnnualArtCost() + thePerson->GetAnnualAdherenceCost() + thePerson->GetArtOutreachCost() + thePerson->GetPreArtOutreachCost();
 			thePreArtCOST[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetLinkageCost() + thePerson->GetImpCareCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetPreArtOutreachCost();
 			theArtCOST[i] += thePerson->GetAnnualArtCost() + thePerson->GetAnnualAdherenceCost() + thePerson->GetArtOutreachCost() + thePerson->GetPreArtOutreachCost();
+
+			// HERE INCLUDE THE UNIT COST CALCULATIONS.
 			
 			if(thePerson->GetSeroStatus()) {
 				thePreArtCOST_Hiv[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetLinkageCost() + thePerson->GetImpCareCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetPreArtOutreachCost();

@@ -70,6 +70,18 @@ extern double * theDALY_OffArt;
 extern double * theDALY_OnArt;
 extern double * theDALY_LYL;
 
+/* COST UNITS (not Unit Costs) */
+extern double * theUNIT_HctVisitCost;
+extern double * theUNIT_RapidHivTestCost;
+extern double * theUNIT_LinkageCost;
+extern double * theUNIT_ImpCareCost;
+extern double * theUNIT_PreArtClinicVisitCost;
+extern double * theUNIT_LabCd4TestCost;
+extern double * theUNIT_PocCd4TestCost;
+extern double * theUNIT_AnnualArtCost;
+extern double * theUNIT_AnnualAdherenceCost;
+extern double * theUNIT_OutreachCost;
+
 /* Calibration pointers */
 extern double * C1;
 extern double * L21;
@@ -271,6 +283,18 @@ SEXP CallCascade(SEXP s_pop,
 	sGuidelines_Death_200350_ArtLessSixMonths, sGuidelines_Death_200350_ArtMoreSixMonths, sGuidelines_Death_200350_OffArt, sGuidelines_Death_200_NeverDiag, sGuidelines_Death_200_DiagNotInCareNeverCare, sGuidelines_Death_200_DiagNotInCareEverCare, sGuidelines_Death_200_InCareNeverArt, sGuidelines_Death_200_ArtLessSixMonths,
 	sGuidelines_Death_200_ArtMoreSixMonths, sGuidelines_Death_200_OffArt, sGuidelines_Art_500, sGuidelines_Art_350500, sGuidelines_Art_200350, sGuidelines_Art_200, sGuidelines_NewInfectionsAdult, sGuidelines_NewDiagnoses, sGuidelines_PreArtDropout, sGuidelines_ArtDropout;
 
+	/* Cost Units */
+	SEXP sUNIT_HctVisitCost;
+	SEXP sUNIT_RapidHivTestCost;
+	SEXP sUNIT_LinkageCost;
+	SEXP sUNIT_ImpCareCost;
+	SEXP sUNIT_PreArtClinicVisitCost;
+	SEXP sUNIT_LabCd4TestCost;
+	SEXP sUNIT_PocCd4TestCost;
+	SEXP sUNIT_AnnualArtCost;
+	SEXP sUNIT_AnnualAdherenceCost;
+	SEXP sUNIT_OutreachCost;
+
 	SEXP sMid2010;
 	SEXP sPOP;
 
@@ -414,6 +438,16 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sDALY_OnArt = allocVector(REALSXP,20));
 	PROTECT(sDALY_LYL = allocVector(REALSXP,20));
 	PROTECT(sPOP = allocVector(REALSXP,66));
+	PROTECT(sUNIT_HctVisitCost = allocVector(REALSXP,20));
+	PROTECT(sUNIT_RapidHivTestCost = allocVector(REALSXP,20));
+	PROTECT(sUNIT_LinkageCost = allocVector(REALSXP,20));
+	PROTECT(sUNIT_ImpCareCost = allocVector(REALSXP,20));
+	PROTECT(sUNIT_PreArtClinicVisitCost = allocVector(REALSXP,20));
+	PROTECT(sUNIT_LabCd4TestCost = allocVector(REALSXP,20));
+	PROTECT(sUNIT_PocCd4TestCost = allocVector(REALSXP,20));
+	PROTECT(sUNIT_AnnualArtCost = allocVector(REALSXP,20));
+	PROTECT(sUNIT_AnnualAdherenceCost = allocVector(REALSXP,20));
+	PROTECT(sUNIT_OutreachCost = allocVector(REALSXP,20));
 
 	double * pCARE = REAL(sCARE);
 	double * pCARE_PT = REAL(sCARE_PT);
@@ -485,6 +519,18 @@ SEXP CallCascade(SEXP s_pop,
 	double * pDALY_OnArt = REAL(sDALY_OnArt);
 	double * pDALY_LYL = REAL(sDALY_LYL);
 	double * pPOP = REAL(sPOP);
+
+	/* Cost Units */
+	double * pUNIT_HctVisitCost = REAL(sUNIT_HctVisitCost);
+	double * pUNIT_RapidHivTestCost = REAL(sUNIT_RapidHivTestCost);
+	double * pUNIT_LinkageCost = REAL(sUNIT_LinkageCost);
+	double * pUNIT_ImpCareCost = REAL(sUNIT_ImpCareCost);
+	double * pUNIT_PreArtClinicVisitCost = REAL(sUNIT_PreArtClinicVisitCost);
+	double * pUNIT_LabCd4TestCost = REAL(sUNIT_LabCd4TestCost);
+	double * pUNIT_PocCd4TestCost = REAL(sUNIT_PocCd4TestCost);
+	double * pUNIT_AnnualArtCost = REAL(sUNIT_AnnualArtCost);
+	double * pUNIT_AnnualAdherenceCost = REAL(sUNIT_AnnualAdherenceCost);
+	double * pUNIT_OutreachCost = REAL(sUNIT_OutreachCost);
 
 	int * pGuidelines_PopDist_HivNegative = INTEGER(sGuidelines_PopDist_HivNegative);
 	int * pGuidelines_PopDist_500_NeverDiag = INTEGER(sGuidelines_PopDist_500_NeverDiag);
@@ -620,6 +666,16 @@ SEXP CallCascade(SEXP s_pop,
 			pDALY_OffArt[i] = theDALY_OffArt[i];
 			pDALY_OnArt[i] = theDALY_OnArt[i];
 			pDALY_LYL[i] = theDALY_LYL[i];
+			pUNIT_HctVisitCost[i] = theUNIT_HctVisitCost[i];
+			pUNIT_RapidHivTestCost[i] = theUNIT_RapidHivTestCost[i];
+			pUNIT_LinkageCost[i] = theUNIT_LinkageCost[i];
+			pUNIT_ImpCareCost[i] = theUNIT_ImpCareCost[i];
+			pUNIT_PreArtClinicVisitCost[i] = theUNIT_PreArtClinicVisitCost[i];
+			pUNIT_LabCd4TestCost[i] = theUNIT_LabCd4TestCost[i];
+			pUNIT_PocCd4TestCost[i] = theUNIT_PocCd4TestCost[i];
+			pUNIT_AnnualArtCost[i] = theUNIT_AnnualArtCost[i];
+			pUNIT_AnnualAdherenceCost[i] = theUNIT_AnnualAdherenceCost[i];
+			pUNIT_OutreachCost[i] = theUNIT_OutreachCost[i];
 		}
 		if(i<36)
 			pL21[i] = L21[i];
@@ -721,7 +777,7 @@ SEXP CallCascade(SEXP s_pop,
 		pGuidelines_ArtDropout[i] = theGuidelines_ArtDropout[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,140));
+	PROTECT(sOUT = allocVector(VECSXP,150));
 	SET_VECTOR_ELT(sOUT,0,sCARE);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
@@ -862,8 +918,18 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,137,sDALY_LYL);
 	SET_VECTOR_ELT(sOUT,138,sPOP);
 	SET_VECTOR_ELT(sOUT,139,sCARE_PT);
+	SET_VECTOR_ELT(sOUT,140,sUNIT_HctVisitCost);
+	SET_VECTOR_ELT(sOUT,141,sUNIT_RapidHivTestCost);
+	SET_VECTOR_ELT(sOUT,142,sUNIT_LinkageCost);
+	SET_VECTOR_ELT(sOUT,143,sUNIT_ImpCareCost);
+	SET_VECTOR_ELT(sOUT,144,sUNIT_PreArtClinicVisitCost);
+	SET_VECTOR_ELT(sOUT,145,sUNIT_LabCd4TestCost);
+	SET_VECTOR_ELT(sOUT,146,sUNIT_PocCd4TestCost);
+	SET_VECTOR_ELT(sOUT,147,sUNIT_AnnualArtCost);
+	SET_VECTOR_ELT(sOUT,148,sUNIT_AnnualAdherenceCost);
+	SET_VECTOR_ELT(sOUT,149,sUNIT_OutreachCost);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,140));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,150));
 	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
@@ -1004,9 +1070,19 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,137,mkChar("sDALY_LYL"));
 	SET_VECTOR_ELT(sOUTNAMES,138,mkChar("sPOP"));
 	SET_VECTOR_ELT(sOUTNAMES,139,mkChar("sCARE_PT"));
+	SET_VECTOR_ELT(sOUTNAMES,140,mkChar("sUNIT_HctVisitCost"));
+	SET_VECTOR_ELT(sOUTNAMES,141,mkChar("sUNIT_RapidHivTestCost"));
+	SET_VECTOR_ELT(sOUTNAMES,142,mkChar("sUNIT_LinkageCost"));
+	SET_VECTOR_ELT(sOUTNAMES,143,mkChar("sUNIT_ImpCareCost"));
+	SET_VECTOR_ELT(sOUTNAMES,144,mkChar("sUNIT_PreArtClinicVisitCost"));
+	SET_VECTOR_ELT(sOUTNAMES,145,mkChar("sUNIT_LabCd4TestCost"));
+	SET_VECTOR_ELT(sOUTNAMES,146,mkChar("sUNIT_PocCd4TestCost"));
+	SET_VECTOR_ELT(sOUTNAMES,147,mkChar("sUNIT_AnnualArtCost"));
+	SET_VECTOR_ELT(sOUTNAMES,148,mkChar("sUNIT_AnnualAdherenceCost"));
+	SET_VECTOR_ELT(sOUTNAMES,149,mkChar("sUNIT_OutreachCost"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(156);
+	UNPROTECT(166);
 	return(sOUT);
 	}
 
