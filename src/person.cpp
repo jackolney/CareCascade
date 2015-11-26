@@ -45,6 +45,7 @@ careDay(0),
 initArtDay(0),
 lostArtDay(0),
 lastUpdateTime(0),
+diagNotLinkedTime(0),
 hivDate(0),
 hivDeathDate(0),
 cd4DeclineDate(0),
@@ -58,6 +59,7 @@ diagnosed(false),
 diagnosisCount(0),
 diagnosisRoute(0),
 lastDiagnosisRoute(0),
+lastDiagnosisDay(0),
 inCare(false),
 everCare(false),
 everCd4Test(false),
@@ -93,6 +95,8 @@ iAnnualArtCost(0),
 iAdherenceCost(0),
 iArtOutreachCost(0),
 iPreArtOutreachCost(0),
+iLinkageCost(0),
+iImpCareCost(0),
 iPop(thePop),
 personIndex(0),
 rowIndex(0),
@@ -393,10 +397,12 @@ void person::SetDiagnosedState(const bool theState, unsigned int theRoute, const
 		calEverDiag = theState;
 		calDiagRoute = theRoute;
 		calDiagDay = theTime;
+		diagDay = theTime;
 		WriteGuidelinesNewDiagnosis();
 	}
 	diagnosisCount++;
 	lastDiagnosisRoute = theRoute;
+	lastDiagnosisDay = theTime;
 }
 
 /////////////////////
@@ -409,6 +415,13 @@ void person::SetInCareState(const bool theState, const double theTime)
 			everReturnPreArtCare = true;
 			if(GetEligible())
 				eligibleAtReturnPreArtCare = true;
+		}
+		// Diagnosed but not linked to care time (for linkage intervention and annual linkage cost)
+		if(theTime > 14610 && !GetEverArt()) {
+			if(everLostPreArtCare)
+				diagNotLinkedTime += theTime - lastDiagnosisDay;
+			else
+				diagNotLinkedTime += theTime - diagDay;
 		}
 	} else if(!GetEverArt()) {
 		everLostPreArtCare = true;

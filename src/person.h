@@ -86,7 +86,9 @@ public:
 	void SetAnnualAdherenceCost(const double theCost) { iAdherenceCost += theCost; }
 	void SetArtOutreachCost(const double theCost) { iArtOutreachCost += theCost; }
 	void SetPreArtOutreachCost(const double theCost) { iPreArtOutreachCost += theCost; }
-	void ResetCost() { iHctVisitCost = 0; iRapidHivTestCost = 0; iPreArtClinicVisitCost = 0; iLabCd4TestCost = 0; iPocCd4TestCost = 0; iAnnualArtCost = 0; iAdherenceCost = 0; iArtOutreachCost = 0; iPreArtOutreachCost = 0; artTime = 0; }
+	void SetLinkageCost(const double theCost) { iLinkageCost += theCost; }
+	void SetImpCareCost(const double theCost) { iImpCareCost += theCost; }
+	void ResetCost() { iHctVisitCost = 0; iRapidHivTestCost = 0; iPreArtClinicVisitCost = 0; iLabCd4TestCost = 0; iPocCd4TestCost = 0; iAnnualArtCost = 0; iAdherenceCost = 0; iArtOutreachCost = 0; iPreArtOutreachCost = 0; artTime = 0; diagNotLinkedTime = 0; iLinkageCost = 0; iImpCareCost = 0; }
 	
 	/* Vector functions */
 	void SetPersonIndex(const size_t theIndex) { personIndex = theIndex; }
@@ -130,6 +132,7 @@ public:
 	double GetSeroconversionDay() const { return seroconversionDay; }
 	double GetArtDay() const { return artDay; }
 	double GetArtTime() const { return artTime; }
+	double GetDiagNotLinkedTime() const { return diagNotLinkedTime; }
 	bool GetEverReturnCare() const { return everReturnPreArtCare; }
 	bool GetEligibleAtReturnCare() const { return eligibleAtReturnPreArtCare; }
 	
@@ -166,6 +169,8 @@ public:
 	double GetAnnualAdherenceCost() const { return iAdherenceCost; }
 	double GetArtOutreachCost() const { return iArtOutreachCost; }
 	double GetPreArtOutreachCost() const { return iPreArtOutreachCost; }
+	double GetLinkageCost() const { return iLinkageCost; }
+	double GetImpCareCost() const { return iImpCareCost; }
 	
 	/* Output functions */
 	bool GetHivDeath() const { return hivDeath; }
@@ -230,6 +235,7 @@ private:
 	double initArtDay;
 	double lostArtDay;
 	double lastUpdateTime;
+	double diagNotLinkedTime;
 	
 	/* Date = time an event will occur */
 	double hivDate;
@@ -250,6 +256,7 @@ private:
 	unsigned int diagnosisCount;
 	unsigned int diagnosisRoute; //1 = Hct, 2 = Vct, 3 = Pict.
 	unsigned int lastDiagnosisRoute;
+	double lastDiagnosisDay;
 	bool inCare;
 	bool everCare;
 	bool everCd4Test;
@@ -293,6 +300,8 @@ private:
 	double iAdherenceCost;
 	double iArtOutreachCost;
 	double iPreArtOutreachCost;
+	double iLinkageCost;
+	double iImpCareCost;
 	
 	/* Data */
 	population * const iPop;

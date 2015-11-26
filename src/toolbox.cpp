@@ -86,6 +86,8 @@ bool pocFlag = false;
 bool vctPocFlag = false;
 bool immediateArtFlag = false;
 bool adherenceFlag = false;
+bool linkageFlag = false;
+bool impCareFlag = false;
 
 ////////////////
 //DALY WEIGHTS//
@@ -113,6 +115,8 @@ double annualArtCost = 367.00;
 /* Intervention costs */
 double annualAdherenceCost = 33.54;
 double outreachCost = 19.55;
+double annualLinkageCost = 2.61;
+double impCareCost = 7.05;
 
 //How to use:
 /* HBCT */

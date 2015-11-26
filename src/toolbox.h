@@ -80,6 +80,8 @@ extern bool pocFlag;
 extern bool vctPocFlag;
 extern bool immediateArtFlag;
 extern bool adherenceFlag;
+extern bool linkageFlag;
+extern bool impCareFlag;
 
 ////////////////
 
@@ -108,6 +110,8 @@ extern double annualArtCost;
 /* Intervention costs */
 extern double annualAdherenceCost;
 extern double outreachCost;
+extern double annualLinkageCost;
+extern double impCareCost;
 
 //How to use:
 /* HBCT */

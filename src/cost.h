@@ -30,6 +30,10 @@ void ChargePocCd4Test(person * const thePerson);
 
 void ChargeArtCare(person * const thePerson, const double theTime, const double	theArrayTime);
 
+void ChargeLinkageInt(person * const thePerson);
+
+void ChargeImprovedCareInt(person * const thePerson);
+
 /////////////////////
 /////////////////////
 

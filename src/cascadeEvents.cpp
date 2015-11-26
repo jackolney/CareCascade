@@ -196,6 +196,7 @@ void Cd4Test::Execute()
 	UpdateDaly(pPerson,GetTime());
 	ChargePreArtClinicVisit(pPerson);
 	ChargePreArtClinicCd4Test(pPerson);
+	ChargeImprovedCareInt(pPerson);
 	pPerson->SetEverCd4TestState(true);
 	pPerson->SetInCareState(true,GetTime());
 	if(immediateArtFlag)
@@ -232,6 +233,7 @@ void Cd4TestResult::Execute()
 {
 	UpdateDaly(pPerson,GetTime());
 	ChargePreArtClinicCd4ResultVisit(pPerson);
+	ChargeImprovedCareInt(pPerson);
 	pPerson->SetEverCd4TestResultState(true);
 	if(immediateArtFlag)
 		ScheduleImmediateArt(pPerson,GetTime());

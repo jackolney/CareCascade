@@ -118,6 +118,7 @@ void Interventions::Execute()
 	
 	if(*p_Linkage) {
 		D(cout << "Linkage intervention." << endl);
+		linkageFlag = true;
 		if(*p_Linkage == 1) {
 			hctProbLink = 1;
 			hctProbLinkPreviouslyDiagnosed = 1;
@@ -148,6 +149,7 @@ void Interventions::Execute()
 	
 	if(*p_ImprovedCare) {
 		D(cout << "ImprovedCare intervention." << endl);
+		impCareFlag = true;
 		if(*p_ImprovedCare == 1) {
 			cd4ResultProbAttend = 1;
 			hctShortTermRetention = 1;
