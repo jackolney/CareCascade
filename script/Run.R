@@ -45,3 +45,64 @@ plot(Baseline$sHIV_15to49 / Baseline$sPOP_15to49,type='l',lwd=2)
 # Color <- brewer.pal(9,"Set1")
 
 # barplot(as.matrix(Out),col=Color)
+
+
+# Cost Unit Check
+require(scales)
+dollar(sum(Baseline$sCOST))
+
+
+# Intervention costs
+hctVisitCost = 8.00
+rapidHivTestCost = 10.00
+preArtClinicVisitCost = 28.00
+labCd4TestCost = 12.00
+pocCd4TestCost = 42.00
+annualArtCost = 367.00
+annualAdherenceCost = 33.54
+outreachCost = 19.55
+annualLinkageCost = 2.61
+impCareCost = 7.05
+
+ComparisonCost <- vector()
+ComparisonCost[1] <- sum(Baseline$sUNIT_HctVisitCost) * hctVisitCost
+ComparisonCost[2] <- sum(Baseline$sUNIT_RapidHivTestCost) * rapidHivTestCost
+ComparisonCost[3] <- sum(Baseline$sUNIT_LinkageCost) * annualLinkageCost
+ComparisonCost[4] <- sum(Baseline$sUNIT_ImpCareCost) * impCareCost
+ComparisonCost[5] <- sum(Baseline$sUNIT_PreArtClinicVisitCost) * preArtClinicVisitCost
+ComparisonCost[6] <- sum(Baseline$sUNIT_LabCd4TestCost) * labCd4TestCost
+ComparisonCost[7] <- sum(Baseline$sUNIT_PocCd4TestCost) * pocCd4TestCost
+ComparisonCost[8] <- sum(Baseline$sUNIT_AnnualArtCost) * annualArtCost
+ComparisonCost[9] <- sum(Baseline$sUNIT_AnnualAdherenceCost) * annualAdherenceCost
+ComparisonCost[10] <- sum(Baseline$sUNIT_OutreachCost) * outreachCost
+
+dollar(sum(ComparisonCost))
+dollar(sum(Baseline$sCOST))
+
+plot(cumsum(Baseline$sUNIT_AnnualArtCost) * annualArtCost,type='l',lwd=2)
+lines(cumsum(Baseline$sArtCOST),lwd=2,col='red')
+
+sum(Baseline$sPreArtCOST)
+sum(Baseline$sUNIT_RapidHivTestCost * rapidHivTestCost) + sum(Baseline$sUNIT_PreArtClinicVisitCost * preArtClinicVisitCost) + sum(Baseline$sUNIT_LabCd4TestCost * labCd4TestCost)
+
+# Just focus on ART costs initially. Then scale up.
+annualArtCost = 367.00
+ArtCost <- vector()
+for(i in 1:20) {
+    if(i == 1)
+        ArtCost[i] <- annualArtCost * 0.94
+    else
+        ArtCost[i] <- ArtCost[i-1] * 0.94
+}
+ArtCost
+
+sum(Baseline$sUNIT_AnnualArtCost * annualArtCost)
+plot(cumsum(Baseline$sUNIT_AnnualArtCost * ArtCost),type='l',lwd=2)
+lines(cumsum(Baseline$sArtCOST),lwd=2,col='red')
+
+
+dollar(sum(Baseline$sArtCOST))
+dollar(sum(Baseline$sUNIT_AnnualArtCost * ArtCost))
+
+plot(cumsum(Baseline$sUNIT_AnnualArtCost),type='l')
+lines(cumsum(Baseline$sArtCOST))

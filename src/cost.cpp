@@ -214,6 +214,7 @@ void WriteCost(person * const thePerson, const double theTime)
 			}
 		}
 		thePerson->ResetCost();
+		thePerson->ResetUnit();
 	}
 }
 
