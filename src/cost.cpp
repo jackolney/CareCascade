@@ -19,6 +19,18 @@ extern double * theArtCOST;
 extern double * thePreArtCOST_Hiv;
 extern double * theArtCOST_Hiv;
 
+/* COST UNITS */
+extern double * theUNIT_HctVisitCost;
+extern double * theUNIT_RapidHivTestCost;
+extern double * theUNIT_LinkageCost;
+extern double * theUNIT_ImpCareCost;
+extern double * theUNIT_PreArtClinicVisitCost;
+extern double * theUNIT_LabCd4TestCost;
+extern double * theUNIT_PocCd4TestCost;
+extern double * theUNIT_AnnualArtCost;
+extern double * theUNIT_AnnualAdherenceCost;
+extern double * theUNIT_OutreachCost;
+
 /////////////////////
 /////////////////////
 
@@ -26,6 +38,11 @@ void ChargeHctVisit(person * const thePerson)
 {
 	thePerson->SetHctVisitCost(hctVisitCost);
 	thePerson->SetRapidHivTestCost(rapidHivTestCost);
+
+	/* Cost Units  */
+	/* Pass these values 1 if an event occurs, else pass them the person-time */
+	thePerson->SetHctVisitUnit(1);
+	thePerson->SetRapidHivTestUnit(1);
 }
 
 /////////////////////
@@ -34,6 +51,7 @@ void ChargeHctVisit(person * const thePerson)
 void ChargeVctPictHivTest(person * const thePerson)
 {
 	thePerson->SetRapidHivTestCost(rapidHivTestCost);
+	thePerson->SetRapidHivTestUnit(1);
 }
 
 /////////////////////
@@ -42,6 +60,7 @@ void ChargeVctPictHivTest(person * const thePerson)
 void ChargePreArtClinicVisit(person * const thePerson)
 {
 	thePerson->SetPreArtClinicVisitCost(preArtClinicVisitCost);
+	thePerson->SetPreArtClinicVisitUnit(1);
 }
 
 /////////////////////
@@ -50,6 +69,7 @@ void ChargePreArtClinicVisit(person * const thePerson)
 void ChargePreArtClinicCd4Test(person * const thePerson)
 {
 	thePerson->SetLabCd4TestCost(labCd4TestCost);
+	thePerson->SetLabCd4TestUnit(1);
 }
 
 /////////////////////
@@ -58,6 +78,7 @@ void ChargePreArtClinicCd4Test(person * const thePerson)
 void ChargePreArtClinicCd4ResultVisit(person * const thePerson)
 {
 	thePerson->SetPreArtClinicVisitCost(preArtClinicVisitCost);
+	thePerson->SetPreArtClinicVisitUnit(1);
 }
 
 /////////////////////
@@ -66,6 +87,7 @@ void ChargePreArtClinicCd4ResultVisit(person * const thePerson)
 void ChargePocCd4Test(person * const thePerson)
 {
 	thePerson->SetPocCd4TestCost(pocCd4TestCost);
+	thePerson->SetPocCd4TestUnit(1);
 }
 
 /////////////////////
@@ -74,12 +96,17 @@ void ChargePocCd4Test(person * const thePerson)
 void ChargeArtCare(person * const thePerson, const double theTime, const double theArrayTime)
 {
 	if(thePerson->GetArtInitiationState()) {
-		if(thePerson->GetArtDay() <= theArrayTime)
+		if(thePerson->GetArtDay() <= theArrayTime) {
 			thePerson->SetAnnualArtCost((((theTime - theArrayTime) + thePerson->GetArtTime()) / 365.25) * annualArtCost);
-		else
+			thePerson->SetAnnualArtUnit(((theTime - theArrayTime) + thePerson->GetArtTime()) / 365.25);
+		} else {
 			thePerson->SetAnnualArtCost((((theTime - thePerson->GetArtDay()) + thePerson->GetArtTime()) / 365.25) * annualArtCost);
-	} else
+			thePerson->SetAnnualArtUnit(((theTime - thePerson->GetArtDay()) + thePerson->GetArtTime()) / 365.25);
+		}
+	} else {
 		thePerson->SetAnnualArtCost((thePerson->GetArtTime() / 365.25) * annualArtCost);
+		thePerson->SetAnnualArtUnit(thePerson->GetArtTime() / 365.25);
+	}
 }
 
 
@@ -88,8 +115,10 @@ void ChargeArtCare(person * const thePerson, const double theTime, const double 
 
 void ChargeLinkageInt(person * const thePerson)
 {
-	if(linkageFlag && thePerson->GetDiagnosedState())
+	if(linkageFlag && thePerson->GetDiagnosedState()) {
 		thePerson->SetLinkageCost((thePerson->GetDiagNotLinkedTime() / 365.25) * annualLinkageCost);
+		thePerson->SetLinkageUnit(thePerson->GetDiagNotLinkedTime() / 365.25);
+	}
 }
 
 /////////////////////
@@ -97,8 +126,10 @@ void ChargeLinkageInt(person * const thePerson)
 
 void ChargeImprovedCareInt(person * const thePerson)
 {
-	if(impCareFlag)
+	if(impCareFlag) {
 		thePerson->SetImpCareCost(impCareCost);
+		thePerson->SetImpCareUnit(1);
+	}
 }
 
 /////////////////////
@@ -107,12 +138,17 @@ void ChargeImprovedCareInt(person * const thePerson)
 void ChargeAdherence(person * const thePerson, const double theTime, const double theArrayTime)
 {
 	if(adherenceFlag && thePerson->GetArtInitiationState()) {
-		if(thePerson->GetArtDay() <= theArrayTime)
+		if(thePerson->GetArtDay() <= theArrayTime) {
 			thePerson->SetAnnualAdherenceCost((((theTime - theArrayTime) + thePerson->GetArtTime()) / 365.25) * annualAdherenceCost);
-		else
+			thePerson->SetAnnualAdherenceUnit(((theTime - theArrayTime) + thePerson->GetArtTime()) / 365.25);
+		} else {
 			thePerson->SetAnnualAdherenceCost((((theTime - thePerson->GetArtDay()) + thePerson->GetArtTime()) / 365.25) * annualAdherenceCost);
-	} else
+			thePerson->SetAnnualAdherenceUnit(((theTime - thePerson->GetArtDay()) + thePerson->GetArtTime()) / 365.25);
+		}
+	} else {
 		thePerson->SetAnnualAdherenceCost((thePerson->GetArtTime() / 365.25) * annualAdherenceCost);
+		thePerson->SetAnnualAdherenceUnit(thePerson->GetArtTime() / 365.25);
+	}
 }
 
 /////////////////////
@@ -121,6 +157,7 @@ void ChargeAdherence(person * const thePerson, const double theTime, const doubl
 void ChargePreArtOutreach(person * const thePerson)
 {
 	thePerson->SetPreArtOutreachCost(outreachCost);
+	thePerson->SetPreArtOutreachUnit(1);
 }
 
 /////////////////////
@@ -129,6 +166,7 @@ void ChargePreArtOutreach(person * const thePerson)
 void ChargeArtOutreach(person * const thePerson)
 {
 	thePerson->SetArtOutreachCost(outreachCost);
+	thePerson->SetArtOutreachUnit(1);
 }
 
 /////////////////////
