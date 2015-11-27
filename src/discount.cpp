@@ -63,6 +63,8 @@ void Discount()
 	/* Intervention costs */
 	annualAdherenceCost *= 0.94;
 	outreachCost *= 0.94;
+	annualLinkageCost *= 0.94;
+	impCareCost *= 0.94;
 }
 
 /////////////////////
