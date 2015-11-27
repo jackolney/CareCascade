@@ -199,7 +199,7 @@ void WriteCost(person * const thePerson, const double theTime)
 	if(thePerson->Alive()) {
 		if(theTime > 14610) {
 			/* Create array with dates from 2011 to 2030 (to allow us to capture DALYs at year end between 2010 and 2030). */
-			double yr [26];
+			double yr [26]; // 26 is a hangover from WP19 work - although the model is stopped after 60 years + 1 day so these are never called.
 			for(size_t i = 0; i<26; i++)
 				yr[i] = 14975.25 + (i * 365.25);
 
@@ -229,16 +229,27 @@ void WriteCost(person * const thePerson, const double theTime)
 			theUNIT_OutreachCost[i] += thePerson->GetArtOutreachUnit() + thePerson->GetPreArtOutreachUnit();
 
 			// Store Unit Costs - e.g. annualArtCost etc.
-			theUnitCost_HctVisitCost[i] = hctVisitCost;
-			theUnitCost_RapidHivTestCost[i] = rapidHivTestCost;
-			theUnitCost_LinkageCost[i] = annualLinkageCost;
-			theUnitCost_ImpCareCost[i] = impCareCost;
-			theUnitCost_PreArtClinicVisitCost[i] = preArtClinicVisitCost;
-			theUnitCost_LabCd4TestCost[i] = labCd4TestCost;
-			theUnitCost_PocCd4TestCost[i] = pocCd4TestCost;
-			theUnitCost_AnnualArtCost[i] = annualArtCost;
-			theUnitCost_AnnualAdherenceCost[i] = annualAdherenceCost;
-			theUnitCost_OutreachCost[i] = outreachCost;
+			// The if == 0 stops the values being overwritten and additionally fixes an issue where the first index was being overwritten (suspect another piece of memory overrunning into [0] of array).
+			if(theUnitCost_HctVisitCost[i] == 0)
+				theUnitCost_HctVisitCost[i] = hctVisitCost;
+			if(theUnitCost_RapidHivTestCost[i] == 0)
+				theUnitCost_RapidHivTestCost[i] = rapidHivTestCost;
+			if(theUnitCost_LinkageCost[i] == 0)
+				theUnitCost_LinkageCost[i] = annualLinkageCost;
+			if(theUnitCost_ImpCareCost[i] == 0)
+				theUnitCost_ImpCareCost[i] = impCareCost;
+			if(theUnitCost_PreArtClinicVisitCost[i] == 0)
+				theUnitCost_PreArtClinicVisitCost[i] = preArtClinicVisitCost;
+			if(theUnitCost_LabCd4TestCost[i] == 0)
+				theUnitCost_LabCd4TestCost[i] = labCd4TestCost;
+			if(theUnitCost_PocCd4TestCost[i] == 0)
+				theUnitCost_PocCd4TestCost[i] = pocCd4TestCost;
+			if(theUnitCost_AnnualArtCost[i] == 0)
+				theUnitCost_AnnualArtCost[i] = annualArtCost;
+			if(theUnitCost_AnnualAdherenceCost[i] == 0)
+				theUnitCost_AnnualAdherenceCost[i] = annualAdherenceCost;
+			if(theUnitCost_OutreachCost[i] == 0)
+				theUnitCost_OutreachCost[i] = outreachCost;
 			
 			if(thePerson->GetSeroStatus()) {
 				thePreArtCOST_Hiv[i] += thePerson->GetHctVisitCost() + thePerson->GetRapidHivTestCost() + thePerson->GetLinkageCost() + thePerson->GetImpCareCost() + thePerson->GetPreArtClinicVisitCost() + thePerson->GetLabCd4TestCost() + thePerson->GetPocCd4TestCost() + thePerson->GetPreArtOutreachCost();
