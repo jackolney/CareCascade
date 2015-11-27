@@ -18,7 +18,7 @@ using namespace std;
 void SeedDiscount()
 {
 	for(size_t i=0;i<25;i++)
-		new AnnualDiscount(14975.25 + (i * 365.25));
+		new AnnualDiscount(14975.25 + 1 + (i * 365.25)); // + 1 so that discounting occurs the day after costs are collected.
 }
 
 /////////////////////

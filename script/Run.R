@@ -65,16 +65,16 @@ annualLinkageCost = 2.61
 impCareCost = 7.05
 
 ComparisonCost <- vector()
-ComparisonCost[1] <- sum(Baseline$sUNIT_HctVisitCost) * hctVisitCost
-ComparisonCost[2] <- sum(Baseline$sUNIT_RapidHivTestCost) * rapidHivTestCost
-ComparisonCost[3] <- sum(Baseline$sUNIT_LinkageCost) * annualLinkageCost
-ComparisonCost[4] <- sum(Baseline$sUNIT_ImpCareCost) * impCareCost
-ComparisonCost[5] <- sum(Baseline$sUNIT_PreArtClinicVisitCost) * preArtClinicVisitCost
-ComparisonCost[6] <- sum(Baseline$sUNIT_LabCd4TestCost) * labCd4TestCost
-ComparisonCost[7] <- sum(Baseline$sUNIT_PocCd4TestCost) * pocCd4TestCost
-ComparisonCost[8] <- sum(Baseline$sUNIT_AnnualArtCost) * annualArtCost
-ComparisonCost[9] <- sum(Baseline$sUNIT_AnnualAdherenceCost) * annualAdherenceCost
-ComparisonCost[10] <- sum(Baseline$sUNIT_OutreachCost) * outreachCost
+ComparisonCost[1] <- sum(Baseline$sUNIT_HctVisitCost * Baseline$sUnitCost_HctVisitCost)
+ComparisonCost[2] <- sum(Baseline$sUNIT_RapidHivTestCost * Baseline$sUnitCost_RapidHivTestCost)
+ComparisonCost[3] <- sum(Baseline$sUNIT_LinkageCost * Baseline$sUnitCost_LinkageCost)
+ComparisonCost[4] <- sum(Baseline$sUNIT_ImpCareCost * Baseline$sUnitCost_ImpCareCost)
+ComparisonCost[5] <- sum(Baseline$sUNIT_PreArtClinicVisitCost * Baseline$sUnitCost_PreArtClinicVisitCost)
+ComparisonCost[6] <- sum(Baseline$sUNIT_LabCd4TestCost * Baseline$sUnitCost_LabCd4TestCost)
+ComparisonCost[7] <- sum(Baseline$sUNIT_PocCd4TestCost * Baseline$sUnitCost_PocCd4TestCost)
+ComparisonCost[8] <- sum(Baseline$sUNIT_AnnualArtCost * Baseline$sUnitCost_AnnualArtCost)
+ComparisonCost[9] <- sum(Baseline$sUNIT_AnnualAdherenceCost * Baseline$sUnitCost_AnnualAdherenceCost)
+ComparisonCost[10] <- sum(Baseline$sUNIT_OutreachCost * Baseline$sUnitCost_OutreachCost)
 
 dollar(sum(ComparisonCost))
 dollar(sum(Baseline$sCOST))
@@ -90,7 +90,7 @@ annualArtCost = 367.00
 ArtCost <- vector()
 for(i in 1:20) {
     if(i == 1)
-        ArtCost[i] <- annualArtCost * 0.94
+        ArtCost[i] <- annualArtCost
     else
         ArtCost[i] <- ArtCost[i-1] * 0.94
 }
@@ -106,3 +106,13 @@ dollar(sum(Baseline$sUNIT_AnnualArtCost * ArtCost))
 
 plot(cumsum(Baseline$sUNIT_AnnualArtCost),type='l')
 lines(cumsum(Baseline$sArtCOST))
+
+
+sum(Baseline$sUNIT_AnnualArtCost)
+
+plot(cumsum(Baseline$sArtCOST),type='l',lwd=2)
+lines(cumsum(Baseline$sUNIT_AnnualArtCost * Baseline$sUnitCost_AnnualArtCost),lwd=2,col="red")
+
+plot(Baseline$sArtCOST,type='l',lwd=2)
+lines(Baseline$sUNIT_AnnualArtCost * Baseline$sUnitCost_AnnualArtCost,lwd=2,col="red")
+
