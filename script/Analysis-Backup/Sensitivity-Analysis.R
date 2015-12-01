@@ -134,7 +134,7 @@ sum(Baseline$sCOST) * 10
 # 1) Use the MEAN 'Baseline' and just vary unit costs in the interventions.
 # 2) For each draw of parameters, do the calculation: Intervention$COST - Baseline$COST and plot that.
 
-Calculate_LatinHyper <- function(TheIntervention,Draws) {
+Calculate_LatinHyper <- function(TheIntervention,Draws,CostScenario) {
     # Baseline Unit Costs
     HctVisit.Normal <- 8
     RapidHivTest.Normal <- 10
@@ -196,27 +196,86 @@ Calculate_LatinHyper <- function(TheIntervention,Draws) {
         HctVisit.max = 1.5
     }
 
+    # Other variables
+    # Control
+
+    if(CostScenario == "all" | CostScenario == "All") {
+        RapidHivTest.min = 0.5
+        RapidHivTest.max = 1.5
+        PreArtClinicVisit.min = 0.5
+        PreArtClinicVisit.max = 1.5
+        LabCd4Test.min = 0.5
+        LabCd4Test.max = 1.5
+        AnnualArt.min = 0.5
+        AnnualArt.max = 1.5
+    } else if(CostScenario == "RapidHivTest") {
+        RapidHivTest.min = 1
+        RapidHivTest.max = 1
+        PreArtClinicVisit.min = 0.5
+        PreArtClinicVisit.max = 1.5
+        LabCd4Test.min = 0.5
+        LabCd4Test.max = 1.5
+        AnnualArt.min = 0.5
+        AnnualArt.max = 1.5
+    } else if(CostScenario == "PreArtClinicVisit") {
+        RapidHivTest.min = 0.5
+        RapidHivTest.max = 1.5
+        PreArtClinicVisit.min = 1
+        PreArtClinicVisit.max = 1
+        LabCd4Test.min = 0.5
+        LabCd4Test.max = 1.5
+        AnnualArt.min = 0.5
+        AnnualArt.max = 1.5
+    } else if(CostScenario == "LabCd4Test") {
+        RapidHivTest.min = 0.5
+        RapidHivTest.max = 1.5
+        PreArtClinicVisit.min = 0.5
+        PreArtClinicVisit.max = 1.5
+        LabCd4Test.min = 1
+        LabCd4Test.max = 1
+        AnnualArt.min = 0.5
+        AnnualArt.max = 1.5
+    } else if(CostScenario == "AnnualArt") {
+        RapidHivTest.min = 0.5
+        RapidHivTest.max = 1.5
+        PreArtClinicVisit.min = 0.5
+        PreArtClinicVisit.max = 1.5
+        LabCd4Test.min = 0.5
+        LabCd4Test.max = 1.5
+        AnnualArt.min = 1
+        AnnualArt.max = 1
+    } else {
+        RapidHivTest.min = 0.5
+        RapidHivTest.max = 1.5
+        PreArtClinicVisit.min = 0.5
+        PreArtClinicVisit.max = 1.5
+        LabCd4Test.min = 0.5
+        LabCd4Test.max = 1.5
+        AnnualArt.min = 0.5
+        AnnualArt.max = 1.5
+    }
+
     # .min = 50% .max = 150%
     parRange <- data.frame(min = c(
         HctVisit.Normal * HctVisit.min,
-        RapidHivTest.Normal * 0.5,
+        RapidHivTest.Normal * RapidHivTest.min,
         Linkage.Normal * Linkage.min,
         ImpCare.Normal * ImpCare.min,
-        PreArtClinicVisit.Normal * 0.5,
-        LabCd4Test.Normal * 0.5,
+        PreArtClinicVisit.Normal * PreArtClinicVisit.min,
+        LabCd4Test.Normal * LabCd4Test.min,
         PocCd4Test.Normal * PocCd4Test.min,
-        AnnualArt.Normal * 0.5,
+        AnnualArt.Normal * AnnualArt.min,
         AnnualAdherence.Normal * Adherence.min,
         Outreach.Normal * Outreach.min),
     max = c(
         HctVisit.Normal * HctVisit.max,
-        RapidHivTest.Normal * 1.5,
+        RapidHivTest.Normal * RapidHivTest.max,
         Linkage.Normal * Linkage.max,
         ImpCare.Normal * ImpCare.max,
-        PreArtClinicVisit.Normal * 1.5,
-        LabCd4Test.Normal * 1.5,
+        PreArtClinicVisit.Normal * PreArtClinicVisit.max,
+        LabCd4Test.Normal * LabCd4Test.max,
         PocCd4Test.Normal * PocCd4Test.max,
-        AnnualArt.Normal * 1.5,
+        AnnualArt.Normal * AnnualArt.max,
         AnnualAdherence.Normal * Adherence.max,
         Outreach.Normal * Outreach.max))
 
@@ -227,7 +286,7 @@ Calculate_LatinHyper <- function(TheIntervention,Draws) {
     return(LHS_Cost)
 }
 
-Calculate_LatinHyper("Baseline",10)
+Calculate_LatinHyper("Baseline",10,"all")
 
 ################################
 # Read in previous results set #
@@ -310,7 +369,7 @@ TheColor <- Color
 for(i in 1:length(short_interventions)) {
     print(short_interventions[i])
     # Dont need to calculate seperate costs for each draw
-    TheSample <- Calculate_LatinHyper(short_interventions[i],LHS_Length)
+    TheSample <- Calculate_LatinHyper(short_interventions[i],LHS_Length,"AnnualArt")
 
     for(j in 1:dim(TheSample)[1]) {
         cat(paste("\t",j,"\n"))
@@ -377,6 +436,7 @@ require(ggplot2)
 require(RColorBrewer)
 require(scales)
 library(grid)
+library(gridExtra)
 
 p <- ggplot(TheResults,aes(x=Dalys, y=Cost))
 p <- p + geom_point(col=TheColor, alpha=1/30, size=0.5, shape=16)
@@ -399,12 +459,82 @@ p <- p + theme(plot.margin = unit(c(0.35, 1, 0.3, 0.35), "cm"))
 p <- p + geom_point(data=results,aes(x=Dalys, y=Cost, fill=Interventions, label=Interventions),col=Color,alpha=1, size=2, shape=16)
 p
 
-quartz.save(file='./plots/Fig3_Uncertainty.pdf',type='pdf')
+# quartz.save(file='./plots/Uncertainty/Fig3_Uncertainty-All.pdf',type='pdf')
+# quartz.save(file='./plots/Uncertainty/Fig3_Uncertainty-RapidHivTest.pdf',type='pdf')
+# quartz.save(file='./plots/Uncertainty/Fig3_Uncertainty-PreArtClinicVisit.pdf',type='pdf')
+# quartz.save(file='./plots/Uncertainty/Fig3_Uncertainty-LabCd4Test.pdf',type='pdf')
+# quartz.save(file='./plots/Uncertainty/Fig3_Uncertainty-AnnualArt.pdf',type='pdf')
 
 #################
 # DATA ANALYSIS #
 #################
 
 # For example to see the range of costs that result from the LHS methods.
-TheResults %>% filter(Interventions == "HBCT") %>% select(Cost) %>% range() %>% dollar()
+# TheResults %>% filter(Interventions == "HBCT") %>% select(Cost) %>% range() %>% dollar()
+
+# Interventions
+
+
+Upper <- c()
+Lower <- c()
+
+for(i in 1:length(Interventions)) {
+    TheRange <- TheResults %>% filter(Interventions == Interventions[i]) %>% select(Cost) %>% range()
+    Lower[i] <- dollar(round(TheRange[1] / 1e+6,0))
+    Upper[i] <- dollar(round(TheRange[2] / 1e+6,0))
+}
+
+Range.Output <- data.frame(Interventions,Upper,Lower)
+
+mytheme <- gridExtra::ttheme_default(
+    core = list(
+        fg_params=list(cex = 0.45),
+        padding=unit(c(2,3), "mm")
+        ),
+    colhead = list(
+        fg_params=list(cex = 0.45),
+        padding=unit(c(2,3), "mm")
+        ),
+    rowhead = list(
+        fg_params=list(cex = 0.45),
+        padding=unit(c(2,3), "mm")
+        ))
+
+p <- ggplot(TheResults,aes(x=Dalys, y=Cost))
+p <- p + geom_point(col=TheColor, alpha=1/30, size=0.5, shape=16)
+p <- p + theme_classic()
+p <- p + scale_x_continuous(limits=c(0,2e+06), breaks=seq(0,2e+06,5e+05),labels=scientific,expand=c(0,0))
+p <- p + scale_y_continuous(limits=c(0,4.5e+09), breaks=seq(0,4.5e+09,5e+08),labels=scientific,expand=c(0,0))
+p <- p + xlab("DALYs averted")
+p <- p + ylab("Additional cost (2013 USD)")
+p <- p + ggtitle("DALYs averted and additional cost of interventions acting on HIV care between 2010 and 2030")
+p <- p + theme(plot.title=element_text(size=7,face='bold'))
+p <- p + theme(axis.title=element_text(size=8))
+p <- p + theme(axis.text=element_text(size=7))
+p <- p + theme(legend.position=c(0.3,0.32))
+p <- p + theme(legend.title=element_blank())
+p <- p + theme(legend.text=element_text(size=7))
+p <- p + theme(legend.justification=c(1,0))
+p <- p + theme(legend.key = element_blank())
+p <- p + theme(legend.key.size = unit(0.35, "cm"))
+p <- p + theme(plot.margin = unit(c(0.35, 1, 0.3, 0.35), "cm"))
+p <- p + geom_point(data=results,aes(x=Dalys, y=Cost, fill=Interventions, label=Interventions),col=Color,alpha=1, size=2, shape=16)
+# p <- p + annotation_custom(tableGrob(Range.Output, theme = mytheme), xmin=1.25e+6, xmax=1.3e+6, ymin=2.5e+9, ymax=2.5e+9)
+# p
+
+graphics.off()
+adjustWeight = 0.75
+quartz.options(h=5 * adjustWeight,w=11 * adjustWeight)
+
+TheTable <- tableGrob(Range.Output, rows=NULL, theme = mytheme, cols=c("Intervention","Upper (million)","Lower (million)"))
+TheGGPlot <- ggplotGrob(p)
+TheGGPlot <- gtable::gtable_add_cols(TheGGPlot, unit(2,"in"))
+TheGGPlot <- gtable::gtable_add_grob(TheGGPlot, TheTable, t=3, b=1, l=5, r=-1)
+grid.draw(TheGGPlot)
+
+# quartz.save(file='./plots/Uncertainty/With-Table/Fig3_Uncertainty-All.pdf',type='pdf')
+# quartz.save(file='./plots/Uncertainty/With-Table/Fig3_Uncertainty-RapidHivTest.pdf',type='pdf')
+# quartz.save(file='./plots/Uncertainty/With-Table/Fig3_Uncertainty-PreArtClinicVisit.pdf',type='pdf')
+# quartz.save(file='./plots/Uncertainty/With-Table/Fig3_Uncertainty-LabCd4Test.pdf',type='pdf')
+# quartz.save(file='./plots/Uncertainty/With-Table/Fig3_Uncertainty-AnnualArt.pdf',type='pdf')
 
