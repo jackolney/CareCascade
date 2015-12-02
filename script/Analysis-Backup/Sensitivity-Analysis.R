@@ -4,10 +4,6 @@
 rm(list=ls())
 setwd("/Volumes/jjo11/cascade/CareCascadeV2/2015/November/27th/Normal")
 
-# Take the mean impact (and cost)
-# Unit cost work out range...
-# Check over with Tim and Jeff
-
 # Load up results.
 run <- c("run1","run2","run3","run4","run5","run6","run7","run8","run9","run10")
 interventions <- c("Baseline", "Hbct_1", "Hbct_2", "Vct_1", "Vct_2", "HbctPocCd4_1", "HbctPocCd4_2", "Linkage_1", "Linkage_2", "VctPocCd4", "PreOutreach_1", "PreOutreach_2", "ImprovedCare_1", "ImprovedCare_2", "PocCd4", "ArtOutreach_1", "ArtOutreach_2", "Adherence_1", "Adherence_2", "ImmediateArt", "UniversalTestAndTreat_1", "UniversalTestAndTreat_2")
