@@ -7,6 +7,11 @@ system("date")
 popSize = 1000
 dyn.load("./main.so")
 
+# // [[Rcpp:export]]
+#  above definition of CallCascade in the cpp file
+# Rcpp::compileAttributes()
+# devtools::document()
+
 Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 Baseline
 names(Baseline)
