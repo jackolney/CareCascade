@@ -8,8 +8,8 @@ before_install:
     - "./travis-tool.sh bootstrap"
 
 install:
-    - CXX = g++
-    - CXXFLAGS = "-mtune=native -03 -Wall -pedantic -Wconversion"
+    - CXX=g++
+    - CXXFLAGS="-mtune=native -03 -Wall -pedantic -Wconversion"
     - make cascade
 
 script:
