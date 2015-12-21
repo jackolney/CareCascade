@@ -10,7 +10,7 @@ before_install:
 install:
     - CXX=g++
     - CXXFLAGS="-mtune=native -03 -Wall -pedantic -Wconversion"
+    - R CMD SHLIB -o main.so main.cpp wp19Update.cpp wp19.cpp update.cpp toolbox.cpp rlib.cpp population.cpp person.cpp outputUpdate.cpp output.cpp interventions.cpp interventionUpdate.cpp interventionEvents.cpp impact.cpp events.cpp eventQ.cpp event.cpp discount.cpp cost.cpp cohort.cpp cascadeUpdate.cpp cascadeEvents.cpp calibration.cpp
 
 script:
-    - make cascade
     - echo done.
