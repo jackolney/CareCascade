@@ -1,3 +1,6 @@
+CXX = g++
+CXXFLAGS = "-mtune=native -03 -Wall -pedantic -Wconversion"
+
 ODIR = ./src
 
 OBJ = main.cpp wp19Update.cpp wp19.cpp update.cpp toolbox.cpp rlib.cpp \
