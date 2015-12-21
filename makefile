@@ -13,16 +13,6 @@ cascade: $(OBJECTS)
 	@echo 'Compiling...'
 	R CMD SHLIB -o $(OUT) $(OBJECTS)
 	@echo 'Done.'
-	@read -p "Would you like to clean *.o files: " CLEAN \
-	echo $$CLEAN
-
-ifeq ($$CLEAN,y)
-	@echo 'Cleaning...' \
-	rm -f $(ODIR)/*.o \
-	@echo 'Finished.'
-else
-	@echo 'Finished.'
-endif
 
 .PHONY: clean
 
