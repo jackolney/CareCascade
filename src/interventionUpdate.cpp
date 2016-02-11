@@ -13,6 +13,7 @@
 #include "cascadeEvents.h"
 #include "rng.h"
 #include "toolbox.h"
+#include <R.h>
 
 extern Rng * theRng;
 
@@ -36,7 +37,7 @@ void ScheduleHctHivTest(person * const thePerson, const double theTime, const bo
 void SchedulePerpetualHctHivTest(person * const thePerson, const double theTime)
 {
 	if(thePerson->GetBirthDay() != 0 && theTime >= 14610 && theTime < 21915)
-		new HctHivTest(thePerson,theTime + (theRng->doub() * 365.25),0);
+		new HctHivTest(thePerson,theTime + (unif_rand() * 365.25),0);
 }
 
 ////////////////////

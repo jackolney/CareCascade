@@ -4,7 +4,7 @@ setwd("/Users/jack/git/CareCascade")
 # source("./rScript/BaselineFigures.R")
 
 system("date")
-popSize = 1000
+popSize = 10000
 dyn.load("./main.so")
 
 # // [[Rcpp:export]]

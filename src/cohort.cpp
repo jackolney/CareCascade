@@ -12,6 +12,7 @@
 #include "event.h"
 #include "events.h"
 #include "rng.h"
+#include <R.h>
 
 extern Rng * theRng;
 
@@ -34,8 +35,8 @@ unsigned int cohort::GetCohortSize() const
 void cohort::GenerateCohort(const double theTime)
 {
 	for(size_t i = 0; i < cohortSize; i++)
-		ScheduleNewPerson(theRng->doub() * 365.25 + theTime); //The arguement here specifies when an individual will enter the model.
-	
+		ScheduleNewPerson(unif_rand() * 365.25 + theTime); //The arguement here specifies when an individual will enter the model.
+
 	SelfDestruct(); // This kills the cohort instance.
 }
 

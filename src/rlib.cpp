@@ -635,7 +635,7 @@ SEXP CallCascade(SEXP s_pop,
 	int * pGuidelines_Death_200_InCareNeverArt = INTEGER(sGuidelines_Death_200_InCareNeverArt);
 	int * pGuidelines_Death_200_ArtLessSixMonths = INTEGER(sGuidelines_Death_200_ArtLessSixMonths);
 	int * pGuidelines_Death_200_ArtMoreSixMonths = INTEGER(sGuidelines_Death_200_ArtMoreSixMonths);
-	int * pGuidelines_Death_200_OffArt = INTEGER(sGuidelines_Death_200_OffArt);	
+	int * pGuidelines_Death_200_OffArt = INTEGER(sGuidelines_Death_200_OffArt);
 	int * pGuidelines_Art_500 = INTEGER(sGuidelines_Art_500);
 	int * pGuidelines_Art_350500 = INTEGER(sGuidelines_Art_350500);
 	int * pGuidelines_Art_200350 = INTEGER(sGuidelines_Art_200350);
@@ -676,7 +676,7 @@ SEXP CallCascade(SEXP s_pop,
 		if(i<6) {
 			pCARE[i] = theCARE[i];
 			pCARE_PT[i] = theCARE_PT[i];
-			pPie_3[i] = Pie_3[i];	
+			pPie_3[i] = Pie_3[i];
 		}
 		if(i<9) {
 			pC1[i] = C1[i];

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Jack Olney. All rights reserved.
 //
 
+#include <cstdlib>
 #include <stdio.h>
 #include "toolbox.h"
 #include "rng.h"
@@ -133,13 +134,12 @@ double impCareCost = 7.05;
 //Clinic visit = $28 (Result visit)
 //Clinic visit + POC-CD4 test = 28 + 42 = $70
 
-/* Random */
+// Function used in random_shuffle call
 double Random(const int i)
 {
-	unsigned long long r = theRng->int64();
-	return r % i;
+    unsigned long long r = std::rand();
+    return r % i;
 }
-
 
 int Round(const double theDouble)
 {
