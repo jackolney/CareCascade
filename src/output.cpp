@@ -15,6 +15,7 @@
 using namespace std;
 
 double * theCARE;
+double * theCARE2;
 double * theCARE_PT;
 double * theDALY;
 double * theCOST;
@@ -144,7 +145,8 @@ void Output::Execute()
 
 void CreateOutputArray()
 {
-	theCARE = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly.
+	theCARE = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly. (2010 to 2015)
+	theCARE2 = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly. (2025 to 2030)
 	theCARE_PT = new double[6]; // Person-time tracker for each category.
 	theDALY = new double[20];
 	theCOST = new double[20];
@@ -219,6 +221,7 @@ void CreateOutputArray()
 			theCLINIC[i] = 0;
 		if(i<6) {
 			theCARE[i] = 0;
+			theCARE2[i] = 0;
 			theCARE_PT[i] = 0;
 		}
 		if(i<10) {

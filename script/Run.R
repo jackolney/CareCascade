@@ -4,7 +4,7 @@ setwd("/Users/jack/git/CareCascade")
 # source("./rScript/BaselineFigures.R")
 
 system("date")
-popSize = 10000
+popSize = 1000
 dyn.load("./main.so")
 
 # // [[Rcpp:export]]
@@ -16,6 +16,7 @@ Baseline <- .Call("CallCascade",popSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 Baseline
 names(Baseline)
 Baseline$sCARE
+Baseline$sCARE2
 Baseline$sCARE_PT
 
 Baseline$sCARE / Baseline$sCARE_PT
@@ -85,3 +86,22 @@ ArtCost
 
 plot(cumsum(Baseline$sUNIT_AnnualArtCost * ArtCost),type='l',lwd=2)
 lines(cumsum(Baseline$sArtCOST),lwd=2,col='red')
+
+
+one <- Baseline$sCARE
+two <- Baseline$sCARE2
+
+state <- c("Never tested",
+        "Tested but never\nlinked to care",
+        "Tested and linked, but\n never initiated ART",
+        "Initiated ART but died\nfollowing late initiation (<200)",
+        "Initiated ART but\ndied off ART",
+        "Initiatied ART but\nnot late (>200)")
+
+test <- data.frame(state, one, two)
+
+out <- reshape2::melt(test)
+
+out$state <- factor(out$state, levels = state)
+
+ggplot(out, aes(x = state, y = value, fill = variable)) + geom_bar(stat = "identity", position = "dodge")
