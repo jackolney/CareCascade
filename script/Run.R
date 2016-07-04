@@ -88,8 +88,11 @@ plot(cumsum(Baseline$sUNIT_AnnualArtCost * ArtCost),type='l',lwd=2)
 lines(cumsum(Baseline$sArtCOST),lwd=2,col='red')
 
 
-one <- Baseline$sCARE
-two <- Baseline$sCARE2
+one_m <- Baseline$sCARE1_m
+one_f <- Baseline$sCARE1_f
+
+two_m <- Baseline$sCARE2_m
+two_f <- Baseline$sCARE2_f
 
 state <- c("Never tested",
         "Tested but never\nlinked to care",
@@ -98,7 +101,7 @@ state <- c("Never tested",
         "Initiated ART but\ndied off ART",
         "Initiatied ART but\nnot late (>200)")
 
-test <- data.frame(state, one, two)
+test <- data.frame(state, one_m, one_f, two_m, two_f)
 
 out <- reshape2::melt(test)
 
