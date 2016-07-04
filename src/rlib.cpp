@@ -24,8 +24,10 @@ Rng * theRng;
 eventQ * theQ;
 
 /* Output Pointers */
-extern double * theCARE;
-extern double * theCARE2;
+extern double * theCARE1_m;
+extern double * theCARE1_f;
+extern double * theCARE2_m;
+extern double * theCARE2_f;
 extern double * theCARE_PT;
 extern double * theDALY;
 extern double * theCOST;
@@ -274,7 +276,7 @@ SEXP CallCascade(SEXP s_pop,
 	delete theRng;
 
 	/* OUTPUTS */
-	SEXP sOUT, sCARE, sCARE2, sCARE_PT, sDALY, sCOST, sPOP_15to49, sHIV_15to49, sART_15to49, sPOP_15plus, sAidsDeath_15plus,
+	SEXP sOUT, sCARE1_m, sCARE1_f, sCARE2_m, sCARE2_f, sCARE_PT, sDALY, sCOST, sPOP_15to49, sHIV_15to49, sART_15to49, sPOP_15plus, sAidsDeath_15plus,
 	sPOP_AgeSex_2007, sHIV_AgeSex_2007, sPOP_NoArtCd4_2007, sPOP_AgeSex_2012, sHIV_AgeSex_2012, sPOP_AgeSex_2014,
 	sHIV_AgeSex_2014, sCD4_200, sCD4_200350, sCD4_350500, sCD4_500, sCD4_200_Art, sCD4_200350_Art, sCD4_350500_Art,
 	sCD4_500_Art, sWHO_1, sWHO_2, sWHO_3, sWHO_4, sWHO_1_Art, sWHO_2_Art, sWHO_3_Art, sWHO_4_Art, sINCIDENCE, sPreArtCOST,
@@ -323,8 +325,10 @@ SEXP CallCascade(SEXP s_pop,
 	SEXP sMid2010;
 	SEXP sPOP;
 
-	PROTECT(sCARE = allocVector(REALSXP,6));
-	PROTECT(sCARE2 = allocVector(REALSXP,6));
+	PROTECT(sCARE1_m = allocVector(REALSXP,6));
+	PROTECT(sCARE1_f = allocVector(REALSXP,6));
+	PROTECT(sCARE2_m = allocVector(REALSXP,6));
+	PROTECT(sCARE2_f = allocVector(REALSXP,6));
 	PROTECT(sCARE_PT = allocVector(REALSXP,6));
 	PROTECT(sDALY = allocVector(REALSXP,20));
 	PROTECT(sCOST = allocVector(REALSXP,20));
@@ -485,8 +489,10 @@ SEXP CallCascade(SEXP s_pop,
 	PROTECT(sUnitCost_AnnualAdherenceCost = allocVector(REALSXP,20));
 	PROTECT(sUnitCost_OutreachCost = allocVector(REALSXP,20));
 
-	double * pCARE = REAL(sCARE);
-	double * pCARE2 = REAL(sCARE2);
+	double * pCARE1_m = REAL(sCARE1_m);
+	double * pCARE1_f = REAL(sCARE1_f);
+	double * pCARE2_m = REAL(sCARE2_m);
+	double * pCARE2_f = REAL(sCARE2_f);
 	double * pCARE_PT = REAL(sCARE_PT);
 	double * pDALY = REAL(sDALY);
 	double * pCOST = REAL(sCOST);
@@ -677,8 +683,10 @@ SEXP CallCascade(SEXP s_pop,
 		if(i<5)
 			pCLINIC[i] = theCLINIC[i];
 		if(i<6) {
-			pCARE[i] = theCARE[i];
-			pCARE2[i] = theCARE2[i];
+			pCARE1_m[i] = theCARE1_m[i];
+			pCARE1_f[i] = theCARE1_f[i];
+			pCARE2_m[i] = theCARE2_m[i];
+			pCARE2_f[i] = theCARE2_f[i];
 			pCARE_PT[i] = theCARE_PT[i];
 			pPie_3[i] = Pie_3[i];
 		}
@@ -837,8 +845,8 @@ SEXP CallCascade(SEXP s_pop,
 		pGuidelines_ArtDropout[i] = theGuidelines_ArtDropout[i];
 	}
 
-	PROTECT(sOUT = allocVector(VECSXP,161));
-	SET_VECTOR_ELT(sOUT,0,sCARE);
+	PROTECT(sOUT = allocVector(VECSXP,163));
+	SET_VECTOR_ELT(sOUT,0,sCARE1_m);
 	SET_VECTOR_ELT(sOUT,1,sDALY);
 	SET_VECTOR_ELT(sOUT,2,sCOST);
 	SET_VECTOR_ELT(sOUT,3,sPOP_15to49);
@@ -998,10 +1006,12 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUT,157,sUnitCost_AnnualArtCost);
 	SET_VECTOR_ELT(sOUT,158,sUnitCost_AnnualAdherenceCost);
 	SET_VECTOR_ELT(sOUT,159,sUnitCost_OutreachCost);
-	SET_VECTOR_ELT(sOUT,160,sCARE2);
+	SET_VECTOR_ELT(sOUT,160,sCARE1_f);
+	SET_VECTOR_ELT(sOUT,161,sCARE2_m);
+	SET_VECTOR_ELT(sOUT,162,sCARE2_f);
 
-	PROTECT(sOUTNAMES = allocVector(VECSXP,161));
-	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE"));
+	PROTECT(sOUTNAMES = allocVector(VECSXP,163));
+	SET_VECTOR_ELT(sOUTNAMES,0,mkChar("sCARE1_m"));
 	SET_VECTOR_ELT(sOUTNAMES,1,mkChar("sDALY"));
 	SET_VECTOR_ELT(sOUTNAMES,2,mkChar("sCOST"));
 	SET_VECTOR_ELT(sOUTNAMES,3,mkChar("sPOP_15to49"));
@@ -1161,10 +1171,12 @@ SEXP CallCascade(SEXP s_pop,
 	SET_VECTOR_ELT(sOUTNAMES,157,mkChar("sUnitCost_AnnualArtCost"));
 	SET_VECTOR_ELT(sOUTNAMES,158,mkChar("sUnitCost_AnnualAdherenceCost"));
 	SET_VECTOR_ELT(sOUTNAMES,159,mkChar("sUnitCost_OutreachCost"));
-	SET_VECTOR_ELT(sOUTNAMES,160,mkChar("sCARE2"));
+	SET_VECTOR_ELT(sOUTNAMES,160,mkChar("sCARE1_f"));
+	SET_VECTOR_ELT(sOUTNAMES,161,mkChar("sCARE2_m"));
+	SET_VECTOR_ELT(sOUTNAMES,162,mkChar("sCARE2_f"));
 	namesgets(sOUT,sOUTNAMES);
 
-	UNPROTECT(177);
+	UNPROTECT(179);
 	return(sOUT);
 	}
 

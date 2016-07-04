@@ -4,7 +4,7 @@ setwd("/Users/jack/git/CareCascade")
 # source("./rScript/BaselineFigures.R")
 
 system("date")
-popSize = 1000
+popSize = 100
 dyn.load("./main.so")
 
 # // [[Rcpp:export]]
@@ -105,3 +105,10 @@ out <- reshape2::melt(test)
 out$state <- factor(out$state, levels = state)
 
 ggplot(out, aes(x = state, y = value, fill = variable)) + geom_bar(stat = "identity", position = "dodge")
+
+
+Baseline$sCARE1_m
+Baseline$sCARE1_f
+
+Baseline$sCARE2_m
+Baseline$sCARE2_f

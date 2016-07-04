@@ -11,8 +11,10 @@
 
 using namespace std;
 
-extern double * theCARE;
-extern double * theCARE2;
+extern double * theCARE1_m;
+extern double * theCARE1_f;
+extern double * theCARE2_m;
+extern double * theCARE2_f;
 extern double * theCARE_PT;
 extern double * thePOP;
 extern double * theHIV;
@@ -99,34 +101,64 @@ void WriteCare(person * const thePerson, const double theTime)
 {
 	// For 2010 to 2015
 	if(thePerson->GetHivDeath() && theTime >= 14610 && theTime < 16436.25) {
-		// NeverDiagnosed
-		theCARE[0] += !thePerson->GetDiagnosedState();
-		// DiagnosedButNeverLinkedToCare
-		theCARE[1] += (thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
-		// DiagnosedLinkedButNeverInitiatedArt
-		theCARE[2] += (thePerson->GetDiagnosedState() && thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
-		// ArtLate
-		theCARE[3] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() == 1);
-		// ArtButDiedOffArt
-		theCARE[4] += (thePerson->GetEverArt() && !thePerson->GetArtDeath());
-		// ArtEarly
-		theCARE[5] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() > 1);
+		if(thePerson->GetGender()) {
+			// NeverDiagnosed
+			theCARE1_m[0] += !thePerson->GetDiagnosedState();
+			// DiagnosedButNeverLinkedToCare
+			theCARE1_m[1] += (thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
+			// DiagnosedLinkedButNeverInitiatedArt
+			theCARE1_m[2] += (thePerson->GetDiagnosedState() && thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
+			// ArtLate
+			theCARE1_m[3] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() == 1);
+			// ArtButDiedOffArt
+			theCARE1_m[4] += (thePerson->GetEverArt() && !thePerson->GetArtDeath());
+			// ArtEarly
+			theCARE1_m[5] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() > 1);
+		} else {
+			// NeverDiagnosed
+			theCARE1_f[0] += !thePerson->GetDiagnosedState();
+			// DiagnosedButNeverLinkedToCare
+			theCARE1_f[1] += (thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
+			// DiagnosedLinkedButNeverInitiatedArt
+			theCARE1_f[2] += (thePerson->GetDiagnosedState() && thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
+			// ArtLate
+			theCARE1_f[3] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() == 1);
+			// ArtButDiedOffArt
+			theCARE1_f[4] += (thePerson->GetEverArt() && !thePerson->GetArtDeath());
+			// ArtEarly
+			theCARE1_f[5] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() > 1);
+		}
 	}
 
 	// For 2025 to 2030
 	if(thePerson->GetHivDeath() && theTime >= 20088.75 && theTime < 21915) {
-		// NeverDiagnosed
-		theCARE2[0] += !thePerson->GetDiagnosedState();
-		// DiagnosedButNeverLinkedToCare
-		theCARE2[1] += (thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
-		// DiagnosedLinkedButNeverInitiatedArt
-		theCARE2[2] += (thePerson->GetDiagnosedState() && thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
-		// ArtLate
-		theCARE2[3] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() == 1);
-		// ArtButDiedOffArt
-		theCARE2[4] += (thePerson->GetEverArt() && !thePerson->GetArtDeath());
-		// ArtEarly
-		theCARE2[5] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() > 1);
+		if(thePerson->GetGender()) {
+			// NeverDiagnosed
+			theCARE2_m[0] += !thePerson->GetDiagnosedState();
+			// DiagnosedButNeverLinkedToCare
+			theCARE2_m[1] += (thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
+			// DiagnosedLinkedButNeverInitiatedArt
+			theCARE2_m[2] += (thePerson->GetDiagnosedState() && thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
+			// ArtLate
+			theCARE2_m[3] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() == 1);
+			// ArtButDiedOffArt
+			theCARE2_m[4] += (thePerson->GetEverArt() && !thePerson->GetArtDeath());
+			// ArtEarly
+			theCARE2_m[5] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() > 1);
+		} else {
+			// NeverDiagnosed
+			theCARE2_f[0] += !thePerson->GetDiagnosedState();
+			// DiagnosedButNeverLinkedToCare
+			theCARE2_f[1] += (thePerson->GetDiagnosedState() && !thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
+			// DiagnosedLinkedButNeverInitiatedArt
+			theCARE2_f[2] += (thePerson->GetDiagnosedState() && thePerson->GetEverCd4TestState() && !thePerson->GetEverArt());
+			// ArtLate
+			theCARE2_f[3] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() == 1);
+			// ArtButDiedOffArt
+			theCARE2_f[4] += (thePerson->GetEverArt() && !thePerson->GetArtDeath());
+			// ArtEarly
+			theCARE2_f[5] += (thePerson->GetEverArt() && thePerson->GetArtDeath() && thePerson->GetCd4AtArt() > 1);
+		}
 	}
 }
 

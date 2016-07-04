@@ -14,8 +14,10 @@
 
 using namespace std;
 
-double * theCARE;
-double * theCARE2;
+double * theCARE1_m;
+double * theCARE1_f;
+double * theCARE2_m;
+double * theCARE2_f;
 double * theCARE_PT;
 double * theDALY;
 double * theCOST;
@@ -145,8 +147,10 @@ void Output::Execute()
 
 void CreateOutputArray()
 {
-	theCARE = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly. (2010 to 2015)
-	theCARE2 = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly. (2025 to 2030)
+	theCARE1_m = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly. (2010 to 2015)
+	theCARE1_f = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly. (2010 to 2015)
+	theCARE2_m = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly. (2025 to 2030)
+	theCARE2_f = new double[6]; // NeverDiagnosed, DiagnosedButNeverLinkedToCare, DiagnosedLinkedButNeverInitiatedArt, ArtLate, ArtButDiedOffArt, ArtEarly. (2025 to 2030)
 	theCARE_PT = new double[6]; // Person-time tracker for each category.
 	theDALY = new double[20];
 	theCOST = new double[20];
@@ -220,8 +224,10 @@ void CreateOutputArray()
 		if(i<5)
 			theCLINIC[i] = 0;
 		if(i<6) {
-			theCARE[i] = 0;
-			theCARE2[i] = 0;
+			theCARE1_m[i] = 0;
+			theCARE1_f[i] = 0;
+			theCARE2_m[i] = 0;
+			theCARE2_f[i] = 0;
 			theCARE_PT[i] = 0;
 		}
 		if(i<10) {
